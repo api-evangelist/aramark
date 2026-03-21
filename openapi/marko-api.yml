@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Aramark Marko API
+  description: >-
+    Marko is Aramark's data and AI platform providing fast, frictionless
+    access to Aramark's robust data universe with 70+ services designed
+    to provide realtime insights and streamline business processes. The
+    API catalog includes services for Organization, Point of Sale, Product,
+    Profit Centers, Revenue Snapshot, Security, and Service management.
+  version: 1.0.0
+  contact:
+    name: Aramark
+    url: https://marko-developers.aramark.net/
+servers:
+  - url: https://www.marko.aramark.net/v1
+    description: Marko API Production Server
+paths:
+  /organization:
+    get:
+      operationId: getOrganization
+      summary: Get Organization Data
+      description: Retrieve organization data from the Aramark data platform.
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          schema:
+            type: string
+            default: application/json
+      responses:
+        '200':
+          description: Successful response with organization data.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+        '403':
+          description: Forbidden - insufficient permissions.
+  /service:
+    get:
+      operationId: getService
+      summary: Get Service Data
+      description: Retrieve service data from the Aramark data platform.
+      responses:
+        '200':
+          description: Successful response with service data.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+  /product:
+    get:
+      operationId: getProduct
+      summary: Get Product Data
+      description: Retrieve product data from the Aramark data platform.
+      responses:
+        '200':
+          description: Successful response with product data.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+  /profit-centers:
+    get:
+      operationId: getProfitCenters
+      summary: Get Profit Centers
+      description: Retrieve profit center data from the Aramark data platform.
+      responses:
+        '200':
+          description: Successful response with profit center data.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+  /revenue-snapshot:
+    get:
+      operationId: getRevenueSnapshot
+      summary: Get Revenue Snapshot
+      description: Retrieve revenue snapshot data from the Aramark data platform.
+      responses:
+        '200':
+          description: Successful response with revenue snapshot.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+  /point-of-sale:
+    get:
+      operationId: getPointOfSale
+      summary: Get Point of Sale Data
+      description: Retrieve point of sale data from the Aramark data platform.
+      responses:
+        '200':
+          description: Successful response with POS data.
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized - invalid or missing API key.
+security:
+  - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
