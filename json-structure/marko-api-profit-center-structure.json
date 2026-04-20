@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Profit center identifier",
+      "example": "PC-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Profit center name",
+      "example": "Campus Center Dining"
+    },
+    "code": {
+      "type": "string",
+      "description": "Profit center code",
+      "example": "NE-CC-001"
+    },
+    "parentId": {
+      "type": "string",
+      "description": "Parent profit center identifier",
+      "example": "PC-REGION-NE"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the profit center is active",
+      "example": true
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-structure/marko-api-profit-center-structure.json",
+  "name": "ProfitCenter",
+  "description": "ProfitCenter schema from Aramark Marko API"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "ORG-001",
+  "name": "Northeast District",
+  "type": "DISTRICT",
+  "parentId": "REGION-NE",
+  "locationCount": 45
+}

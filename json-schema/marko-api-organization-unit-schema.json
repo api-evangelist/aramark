@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique organization unit identifier",
+      "example": "ORG-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Organization unit name",
+      "example": "Northeast District"
+    },
+    "type": {
+      "type": "string",
+      "description": "Organization unit type",
+      "enum": [
+        "REGION",
+        "DISTRICT",
+        "LOCATION",
+        "ACCOUNT"
+      ],
+      "example": "DISTRICT"
+    },
+    "parentId": {
+      "type": "string",
+      "description": "Parent organization unit identifier",
+      "example": "REGION-NE"
+    },
+    "locationCount": {
+      "type": "integer",
+      "description": "Number of locations under this unit",
+      "example": 45
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-organization-unit-schema.json",
+  "title": "OrganizationUnit",
+  "description": "OrganizationUnit schema from Aramark Marko API"
+}

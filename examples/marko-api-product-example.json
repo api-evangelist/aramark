@@ -1,0 +1,11 @@
+{
+  "id": "PROD-001",
+  "name": "Grilled Chicken",
+  "category": "ENTREE",
+  "price": 8.95,
+  "calories": 380,
+  "allergens": [
+    "GLUTEN",
+    "DAIRY"
+  ]
+}

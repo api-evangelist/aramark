@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Product identifier",
+      "example": "PROD-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name",
+      "example": "Grilled Chicken"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category",
+      "enum": [
+        "ENTREE",
+        "SIDE",
+        "BEVERAGE",
+        "DESSERT",
+        "SNACK"
+      ],
+      "example": "ENTREE"
+    },
+    "price": {
+      "type": "number",
+      "description": "Product price in USD",
+      "example": 8.95
+    },
+    "calories": {
+      "type": "integer",
+      "description": "Caloric content",
+      "example": 380
+    },
+    "allergens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of allergens",
+      "example": [
+        "GLUTEN",
+        "DAIRY"
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-product-schema.json",
+  "title": "Product",
+  "description": "Product schema from Aramark Marko API"
+}

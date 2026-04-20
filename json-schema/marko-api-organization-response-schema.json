@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OrganizationUnit"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total record count",
+      "example": 10
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-organization-response-schema.json",
+  "title": "OrganizationResponse",
+  "description": "OrganizationResponse schema from Aramark Marko API"
+}

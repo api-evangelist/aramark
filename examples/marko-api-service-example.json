@@ -1,0 +1,7 @@
+{
+  "id": "SVC-001",
+  "type": "FOOD_SERVICE",
+  "locationId": "LOC-001",
+  "status": "ACTIVE",
+  "name": "Campus Dining"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Product"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total record count",
+      "example": 50
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-product-response-schema.json",
+  "title": "ProductResponse",
+  "description": "ProductResponse schema from Aramark Marko API"
+}

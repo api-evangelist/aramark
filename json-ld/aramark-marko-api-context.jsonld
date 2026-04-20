@@ -1,0 +1,122 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aramark": "https://marko.aramark.net/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ErrorResponse": "aramark:ErrorResponse",
+    "OrganizationUnit": "aramark:OrganizationUnit",
+    "OrganizationResponse": "aramark:OrganizationResponse",
+    "Service": "aramark:Service",
+    "ServiceResponse": "aramark:ServiceResponse",
+    "Product": "aramark:Product",
+    "ProductResponse": "aramark:ProductResponse",
+    "ProfitCenter": "aramark:ProfitCenter",
+    "ProfitCenterResponse": "aramark:ProfitCenterResponse",
+    "RevenueSnapshot": "aramark:RevenueSnapshot",
+    "RevenueSnapshotResponse": "aramark:RevenueSnapshotResponse",
+    "POSTransaction": "aramark:POSTransaction",
+    "POSResponse": "aramark:POSResponse",
+    "active": {
+      "@id": "aramark:active",
+      "@type": "xsd:boolean"
+    },
+    "allergens": {
+      "@id": "aramark:allergens",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "aramark:amount",
+      "@type": "xsd:decimal"
+    },
+    "averageTicket": {
+      "@id": "aramark:averageTicket",
+      "@type": "xsd:decimal"
+    },
+    "calories": {
+      "@id": "aramark:calories",
+      "@type": "xsd:integer"
+    },
+    "category": {
+      "@id": "aramark:category",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "aramark:code",
+      "@type": "xsd:integer"
+    },
+    "count": {
+      "@id": "aramark:count",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "aramark:data",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "id": "dcterms:identifier",
+    "items": {
+      "@id": "aramark:items",
+      "@type": "xsd:integer"
+    },
+    "locationCount": {
+      "@id": "aramark:locationCount",
+      "@type": "xsd:integer"
+    },
+    "locationId": {
+      "@id": "aramark:locationId",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "aramark:message",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "parentId": {
+      "@id": "aramark:parentId",
+      "@type": "xsd:string"
+    },
+    "paymentMethod": {
+      "@id": "aramark:paymentMethod",
+      "@type": "xsd:string"
+    },
+    "period": {
+      "@id": "aramark:period",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "aramark:price",
+      "@type": "xsd:decimal"
+    },
+    "profitCenterId": {
+      "@id": "aramark:profitCenterId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "aramark:status",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "aramark:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "totalRevenue": {
+      "@id": "aramark:totalRevenue",
+      "@type": "xsd:decimal"
+    },
+    "transactionCount": {
+      "@id": "aramark:transactionCount",
+      "@type": "xsd:integer"
+    },
+    "transactionId": {
+      "@id": "aramark:transactionId",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "aramark:type",
+      "@type": "xsd:string"
+    }
+  }
+}

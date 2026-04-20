@@ -1,0 +1,164 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Aramark
+  description: Vocabulary for the Aramark Marko data platform covering organization, point-of-sale, product, profit center, revenue, and service APIs.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+
+operational:
+  apis:
+    - name: Aramark Marko API
+      namespace: marko-api
+      version: '1.0.0'
+      baseUrl: https://www.marko.aramark.net/v1
+      status: active
+
+  resources:
+    - name: organization
+      description: Organizational hierarchy including regions, districts, and locations
+      apis: [marko-api]
+      actions: [get]
+    - name: service
+      description: Aramark service types and delivery tracking
+      apis: [marko-api]
+      actions: [get]
+    - name: product
+      description: Food and beverage product catalog with pricing and nutritional data
+      apis: [marko-api]
+      actions: [get]
+    - name: profit-centers
+      description: Financial units for revenue tracking and reporting
+      apis: [marko-api]
+      actions: [get]
+    - name: revenue-snapshot
+      description: Revenue performance data by period and profit center
+      apis: [marko-api]
+      actions: [get]
+    - name: point-of-sale
+      description: POS transaction data for sales analysis and reconciliation
+      apis: [marko-api]
+      actions: [get]
+
+  actions:
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve data records with optional filtering parameters
+
+  schemas:
+    operations:
+      - name: OrganizationUnit
+        description: Organizational unit including region, district, and location levels
+        properties: [id, name, type, parentId, locationCount]
+      - name: Service
+        description: Aramark service offering at a location
+        properties: [id, type, locationId, status, name]
+      - name: Product
+        description: Food or beverage product with pricing and nutritional info
+        properties: [id, name, category, price, calories, allergens]
+      - name: ProfitCenter
+        description: Financial profit center unit
+        properties: [id, name, code, parentId, active]
+      - name: RevenueSnapshot
+        description: Revenue performance snapshot for a period
+        properties: [profitCenterId, period, totalRevenue, transactionCount, averageTicket]
+      - name: POSTransaction
+        description: Point-of-sale transaction record
+        properties: [transactionId, locationId, amount, items, timestamp, paymentMethod]
+
+  parameters:
+    filters:
+      - name: locationId
+        description: Filter by Aramark location
+      - name: startDate
+        description: Start date for time-range filtering
+      - name: endDate
+        description: End date for time-range filtering
+      - name: profitCenterId
+        description: Filter by profit center
+      - name: category
+        description: Filter by product or service category
+
+  enums:
+    org_type:
+      - REGION
+      - DISTRICT
+      - LOCATION
+      - ACCOUNT
+    service_type:
+      - FOOD_SERVICE
+      - FACILITIES
+      - UNIFORM
+      - RETAIL
+    service_status:
+      - ACTIVE
+      - INACTIVE
+      - SUSPENDED
+    product_category:
+      - ENTREE
+      - SIDE
+      - BEVERAGE
+      - DESSERT
+      - SNACK
+    payment_method:
+      - CREDIT
+      - DEBIT
+      - CASH
+      - MEAL_PLAN
+      - MOBILE
+
+  authentication:
+    schemes:
+      - type: apiKey
+        in: header
+        headerName: apiKey
+        description: API key from Marko developer portal
+        usedBy: [Aramark Marko API]
+
+capability:
+  workflows: []
+  personas:
+    - id: bi-analyst
+      name: BI Analyst
+      description: Builds dashboards and reports using Aramark operational data
+      workflows: []
+    - id: finance-manager
+      name: Finance Manager
+      description: Monitors revenue performance and profit center reporting
+      workflows: []
+    - id: operations-manager
+      name: Operations Manager
+      description: Tracks service delivery and organizational performance
+      workflows: []
+  domains:
+    - name: Food Services
+      description: Campus dining, catering, and food service operations
+    - name: Revenue Analytics
+      description: Financial performance tracking by profit center and period
+    - name: Facilities Management
+      description: Facilities operations and service tracking
+  namespaces:
+    - type: consumed
+      namespace: marko-api
+  binds: []
+
+crossReference:
+  - resource: organization
+    operations: [getOrganization]
+    personas: [bi-analyst, operations-manager]
+  - resource: point-of-sale
+    operations: [getPointOfSale]
+    personas: [bi-analyst, finance-manager]
+  - resource: product
+    operations: [getProduct]
+    personas: [operations-manager, bi-analyst]
+  - resource: profit-centers
+    operations: [getProfitCenters]
+    personas: [finance-manager]
+  - resource: revenue-snapshot
+    operations: [getRevenueSnapshot]
+    personas: [finance-manager, bi-analyst]
+  - resource: service
+    operations: [getService]
+    personas: [operations-manager]

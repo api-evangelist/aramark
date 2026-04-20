@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Service"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total record count",
+      "example": 5
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-service-response-schema.json",
+  "title": "ServiceResponse",
+  "description": "ServiceResponse schema from Aramark Marko API"
+}

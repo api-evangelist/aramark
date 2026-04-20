@@ -1,0 +1,7 @@
+{
+  "id": "PC-001",
+  "name": "Campus Center Dining",
+  "code": "NE-CC-001",
+  "parentId": "PC-REGION-NE",
+  "active": true
+}

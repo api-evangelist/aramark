@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "string",
+      "description": "Transaction identifier",
+      "example": "TXN-001"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Location identifier",
+      "example": "LOC-001"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount in USD",
+      "example": 12.5
+    },
+    "items": {
+      "type": "integer",
+      "description": "Number of items in the transaction",
+      "example": 2
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Transaction timestamp (ISO 8601)",
+      "example": "2026-04-19T12:30:00Z"
+    },
+    "paymentMethod": {
+      "type": "string",
+      "description": "Payment method used",
+      "enum": [
+        "CREDIT",
+        "DEBIT",
+        "CASH",
+        "MEAL_PLAN",
+        "MOBILE"
+      ],
+      "example": "MEAL_PLAN"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-pos-transaction-schema.json",
+  "title": "POSTransaction",
+  "description": "POSTransaction schema from Aramark Marko API"
+}

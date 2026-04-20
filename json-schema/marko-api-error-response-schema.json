@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Error message",
+      "example": "Unauthorized"
+    },
+    "code": {
+      "type": "integer",
+      "description": "Error code",
+      "example": 401
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-error-response-schema.json",
+  "title": "ErrorResponse",
+  "description": "ErrorResponse schema from Aramark Marko API"
+}

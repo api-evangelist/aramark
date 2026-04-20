@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RevenueSnapshot"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total record count",
+      "example": 12
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-revenue-snapshot-response-schema.json",
+  "title": "RevenueSnapshotResponse",
+  "description": "RevenueSnapshotResponse schema from Aramark Marko API"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/POSTransaction"
+      }
+    },
+    "count": {
+      "type": "int32",
+      "description": "Total record count",
+      "example": 100
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-structure/marko-api-pos-response-structure.json",
+  "name": "POSResponse",
+  "description": "POSResponse schema from Aramark Marko API"
+}

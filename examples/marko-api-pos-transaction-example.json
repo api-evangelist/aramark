@@ -1,0 +1,8 @@
+{
+  "transactionId": "TXN-001",
+  "locationId": "LOC-001",
+  "amount": 12.5,
+  "items": 2,
+  "timestamp": "2026-04-19T12:30:00Z",
+  "paymentMethod": "MEAL_PLAN"
+}

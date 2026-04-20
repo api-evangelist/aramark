@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Service identifier",
+      "example": "SVC-001"
+    },
+    "type": {
+      "type": "string",
+      "description": "Service type",
+      "enum": [
+        "FOOD_SERVICE",
+        "FACILITIES",
+        "UNIFORM",
+        "RETAIL"
+      ],
+      "example": "FOOD_SERVICE"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Location identifier",
+      "example": "LOC-001"
+    },
+    "status": {
+      "type": "string",
+      "description": "Service status",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "SUSPENDED"
+      ],
+      "example": "ACTIVE"
+    },
+    "name": {
+      "type": "string",
+      "description": "Service name",
+      "example": "Campus Dining"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-schema/marko-api-service-schema.json",
+  "title": "Service",
+  "description": "Service schema from Aramark Marko API"
+}
