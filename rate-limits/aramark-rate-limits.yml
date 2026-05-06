@@ -4,86 +4,39 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Aramark
 providerId: aramark
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Food Services
-  - Facilities Management
-  - Uniform Services
-  - Data Platform
-  - Fortune 500
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Aramark API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+- Food Services
+- Facilities Management
+- Uniform Services
+- Data Platform
+- Fortune 500
+- Rate Limiting
+- Quotas
+- Throttling
+description: Aramark does not publish concrete rate-limit numbers, throttling thresholds, or response-header
+  conventions. This artifact records the gap; see notes for research findings.
+notes: No public rate-limit or quota numbers documented on the Marko developer portal.
+sources:
+- https://www.aramark.com
+- https://marko-developers.aramark.net/
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Aramark Marko API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Aramark Marko API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Aramark Marko API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Aramark Marko API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Aramark Marko API
+- name: Per-contract limits
+  scope: account
+  metric: varies
+  limit: see provider integration agreement
+  notes: No public rate-limit numbers; throughput is governed by individual customer or partner contracts.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header
+    that may be returned, even though the provider does not publish formal retry semantics.
+- name: Contract-Scoped Limits
+  description: Quotas, burst, and concurrency ceilings are governed by the individual customer or partner
+    contract rather than a public policy. Coordinate with the provider to confirm thresholds before scaling
+    traffic.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
