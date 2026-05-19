@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aramark Marko API — Service
+  description: 'Aramark Marko API — Service. 1 operations. Lead operation: Aramark Get Service Data. Self-contained Naftiko
+    capability covering one Aramark business surface.'
+  tags:
+  - Aramark
+  - Service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ARAMARK_API_KEY: ARAMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marko-service
+    baseUri: https://www.marko.aramark.net/v1
+    description: Aramark Marko API — Service business capability. Self-contained, no shared references.
+    resources:
+    - name: service
+      path: /service
+      operations:
+      - name: getservice
+        method: GET
+        description: Aramark Get Service Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: serviceType
+          in: query
+          type: string
+          description: Filter by service type
+        - name: locationId
+          in: query
+          type: string
+          description: Filter by location
+    authentication:
+      type: apikey
+      key: apiKey
+      value: '{{env.ARAMARK_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: marko-service-rest
+    port: 8080
+    description: REST adapter for Aramark Marko API — Service. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/service
+      name: service
+      description: REST surface for service.
+      operations:
+      - method: GET
+        name: getservice
+        description: Aramark Get Service Data
+        call: marko-service.getservice
+        with:
+          serviceType: rest.serviceType
+          locationId: rest.locationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marko-service-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aramark Marko API — Service. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: aramark-get-service-data
+      description: Aramark Get Service Data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marko-service.getservice
+      with:
+        serviceType: tools.serviceType
+        locationId: tools.locationId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Aramark Marko API — Organization
+  description: 'Aramark Marko API — Organization. 1 operations. Lead operation: Aramark Get Organization Data. Self-contained
+    Naftiko capability covering one Aramark business surface.'
+  tags:
+  - Aramark
+  - Organization
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ARAMARK_API_KEY: ARAMARK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: marko-organization
+    baseUri: https://www.marko.aramark.net/v1
+    description: Aramark Marko API — Organization business capability. Self-contained, no shared references.
+    resources:
+    - name: organization
+      path: /organization
+      operations:
+      - name: getorganization
+        method: GET
+        description: Aramark Get Organization Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: locationId
+          in: query
+          type: string
+          description: Filter by location identifier
+        - name: orgType
+          in: query
+          type: string
+          description: Filter by organization type
+    authentication:
+      type: apikey
+      key: apiKey
+      value: '{{env.ARAMARK_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: marko-organization-rest
+    port: 8080
+    description: REST adapter for Aramark Marko API — Organization. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organization
+      name: organization
+      description: REST surface for organization.
+      operations:
+      - method: GET
+        name: getorganization
+        description: Aramark Get Organization Data
+        call: marko-organization.getorganization
+        with:
+          locationId: rest.locationId
+          orgType: rest.orgType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: marko-organization-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Aramark Marko API — Organization. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: aramark-get-organization-data
+      description: Aramark Get Organization Data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: marko-organization.getorganization
+      with:
+        locationId: tools.locationId
+        orgType: tools.orgType
+      outputParameters:
+      - type: object
+        mapping: $.
