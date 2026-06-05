@@ -1,13 +1,20 @@
 # Aramark (aramark)
+
 Aramark is a Fortune 500 company providing food, facilities, and uniform services. The Marko platform provides a data and AI API with 70+ services for real-time insights across organizational, point-of-sale, product, and revenue data.
 
-**URL:** [https://marko-developers.aramark.net/](https://marko-developers.aramark.net/)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml)
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Scope
 
-## Tags:
+- **Type:** Index
 
- - Food Services, Facilities Management, Uniform Services, Data Platform, Fortune 500
+## Tags
+
+- Food Services
+- Facilities Management
+- Uniform Services
+- Data Platform
+- Fortune 500
 
 ## Timestamps
 
@@ -17,90 +24,46 @@ Aramark is a Fortune 500 company providing food, facilities, and uniform service
 ## APIs
 
 ### Aramark Marko API
-Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
 
-**Human URL:** [https://marko-developers.aramark.net/](https://marko-developers.aramark.net/)
+Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes. The API catalog includes services for Organization, Point of Sale, Product, Profit Centers, Revenue Snapshot, Security, and Service management.
 
-#### Tags:
+- **Human URL:** [https://marko-developers.aramark.net/](https://marko-developers.aramark.net/)
+- **Base URL:** `https://www.marko.aramark.net/v1`
 
- - Data Platform, Facilities Management, Food Services, Point of Sale, Revenue Analytics, Organization Management
+#### Tags
+
+- Data Platform
+- Facilities Management
+- Food Services
+- Point of Sale
+- Revenue Analytics
+- Organization Management
 
 #### Properties
 
 - [Portal](https://marko-developers.aramark.net/)
 - [Documentation](https://marko-developers.aramark.net/catalog)
-- [FAQ](https://marko-developers.aramark.net/faqs)
-- [OpenAPI](openapi/marko-api.yml)
+- [F A Q](https://marko-developers.aramark.net/faqs)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/openapi/marko-api.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/marko-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/marko-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
+- [LinkedIn](https://www.linkedin.com/company/aramark)
 - [Portal](https://marko-developers.aramark.net/)
 - [Documentation](https://marko-developers.aramark.net/catalog)
-- [GitHubOrganization](https://github.com/aramarkservicesinc)
-- [FAQ](https://marko-developers.aramark.net/faqs)
-- [SignUp](https://marko-developers.aramark.net/)
-
-## Features
-
-| Name | Description |
-|------|-------------|
-| Real-Time Data | Access real-time operational data across Aramark facilities for immediate decision-making. |
-| Organization Services | APIs for managing Aramark organizational hierarchy, locations, and reporting structures. |
-| Point of Sale Integration | Real-time POS transaction data for sales analysis and reconciliation. |
-| Revenue Analytics | Revenue snapshot and financial performance data across profit centers. |
-| Product Catalog | Product and menu data services for food and beverage offerings. |
-| Facilities Management | Data services for facilities operations, service tracking, and management reporting. |
-
-## Use Cases
-
-| Name | Description |
-|------|-------------|
-| Business Intelligence | Integrate Aramark operational data into BI tools for management reporting and performance analysis. |
-| POS Reconciliation | Automate reconciliation of point-of-sale transactions across multiple Aramark locations. |
-| Revenue Reporting | Build dashboards for real-time revenue tracking across profit centers and business units. |
-| Supply Chain Optimization | Use product and service data to optimize supply chain and inventory management. |
-| Operational Analytics | Analyze service delivery performance and operational efficiency across Aramark facilities. |
-
-## Integrations
-
-| Name | Description |
-|------|-------------|
-| Tableau | Connect Marko API data to Tableau for visual analytics and reporting. |
-| Power BI | Integrate Aramark operational data with Microsoft Power BI dashboards. |
-| Salesforce | Sync Aramark organizational and service data with Salesforce CRM. |
-| SAP | Connect Marko revenue and profit center data with SAP ERP systems. |
-
-## Artifacts
-
-Machine-readable API specifications organized by format.
-
-### OpenAPI
-
-- [Aramark Marko API](openapi/marko-api.yml)
-
-### JSON Schema
-
-- [Organization Unit](json-schema/marko-api-organization-unit-schema.json)
-- [Service](json-schema/marko-api-service-schema.json)
-- [Product](json-schema/marko-api-product-schema.json)
-- [Profit Center](json-schema/marko-api-profit-center-schema.json)
-- [Revenue Snapshot](json-schema/marko-api-revenue-snapshot-schema.json)
-- [POS Transaction](json-schema/marko-api-p-o-s-transaction-schema.json)
-
-### JSON-LD
-
-- [Aramark Marko API Context](json-ld/aramark-marko-api-context.jsonld)
-
-## Vocabulary
-
-- [Aramark Vocabulary](vocabulary/aramark-vocabulary.yaml) — Unified taxonomy mapping 6 resources, 1 action, 0 workflows, and 3 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Aramark Spectral Rules](rules/aramark-spectral-rules.yml) — 22 rules across 9 categories enforcing Aramark Marko API conventions
+- [GitHub Organization](https://github.com/aramarkservicesinc)
+- [F A Q](https://marko-developers.aramark.net/faqs)
+- [Sign Up](https://marko-developers.aramark.net/)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
+- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml)
+- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/vocabulary/aramark-vocabulary.yaml)
+- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
