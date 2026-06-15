@@ -1,0 +1,258 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aramark Marko API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Organization Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/organization",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "LOC-001",
+                "type": "query",
+                "description": "Filter by location identifier"
+              },
+              {
+                "name": "orgType",
+                "value": "DISTRICT",
+                "type": "query",
+                "description": "Filter by organization type"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve organization hierarchy and location data from the Aramark Marko data platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Service Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/service",
+            "params": [
+              {
+                "name": "serviceType",
+                "value": "FOOD_SERVICE",
+                "type": "query",
+                "description": "Filter by service type"
+              },
+              {
+                "name": "locationId",
+                "value": "LOC-001",
+                "type": "query",
+                "description": "Filter by location"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve service management and tracking data from the Aramark Marko platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Product Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/product",
+            "params": [
+              {
+                "name": "category",
+                "value": "ENTREE",
+                "type": "query",
+                "description": "Filter by product category"
+              },
+              {
+                "name": "locationId",
+                "value": "LOC-001",
+                "type": "query",
+                "description": "Filter by location"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve product and menu catalog data from the Aramark Marko platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profit Centers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Profit Centers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/profit-centers",
+            "params": [
+              {
+                "name": "parentId",
+                "value": "PC-REGION-NE",
+                "type": "query",
+                "description": "Filter by parent profit center"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve profit center and financial unit data from the Aramark Marko platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Revenue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Revenue Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/revenue-snapshot",
+            "params": [
+              {
+                "name": "profitCenterId",
+                "value": "PC-001",
+                "type": "query",
+                "description": "Filter by profit center"
+              },
+              {
+                "name": "startDate",
+                "value": "2026-04-01",
+                "type": "query",
+                "description": "Start date for revenue period (YYYY-MM-DD)"
+              },
+              {
+                "name": "endDate",
+                "value": "2026-04-19",
+                "type": "query",
+                "description": "End date for revenue period (YYYY-MM-DD)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve revenue snapshot and financial performance data from the Aramark Marko platform."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Point of Sale",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Point of Sale Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/point-of-sale",
+            "params": [
+              {
+                "name": "locationId",
+                "value": "LOC-001",
+                "type": "query",
+                "description": "Filter by location identifier"
+              },
+              {
+                "name": "startDate",
+                "value": "2026-04-01",
+                "type": "query",
+                "description": "Start date (YYYY-MM-DD)"
+              },
+              {
+                "name": "endDate",
+                "value": "2026-04-19",
+                "type": "query",
+                "description": "End date (YYYY-MM-DD)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve point of sale transaction data from the Aramark Marko platform."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
