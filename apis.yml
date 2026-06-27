@@ -49,7 +49,7 @@ common:
     url: https://github.com/aramarkservicesinc
   - type: FAQ
     url: https://marko-developers.aramark.net/faqs
-  - type: SignUp
+  - type: Signup
     url: https://marko-developers.aramark.net/
   - type: Features
     data:
