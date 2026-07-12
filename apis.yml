@@ -39,6 +39,10 @@ created: '2026-03-26'
 modified: '2026-04-19'
 specificationVersion: '0.19'
 common:
+  - type: DomainSecurity
+    url: security/aramark-domain-security.yml
+  - type: Authentication
+    url: authentication/aramark-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/aramark
   - type: Portal

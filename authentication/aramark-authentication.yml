@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/marko-api.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: apiKey
+  description: API key for Marko platform authentication, obtained from the developer portal.
+  sources:
+  - openapi/marko-api.yml
