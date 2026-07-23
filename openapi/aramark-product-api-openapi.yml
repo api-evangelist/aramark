@@ -1,0 +1,135 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization Product API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Product
+  description: Product and menu catalog data
+paths:
+  /product:
+    get:
+      operationId: getProduct
+      summary: Aramark Get Product Data
+      description: Retrieve product and menu catalog data from the Aramark Marko platform.
+      tags:
+      - Product
+      parameters:
+      - name: category
+        in: query
+        description: Filter by product category
+        schema:
+          type: string
+        example: ENTREE
+      - name: locationId
+        in: query
+        description: Filter by location
+        schema:
+          type: string
+        example: LOC-001
+      responses:
+        '200':
+          description: Product data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+              examples:
+                GetProduct200Example:
+                  summary: Default getProduct 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: PROD-001
+                      name: Grilled Chicken
+                      category: ENTREE
+                      price: 8.95
+                      calories: 380
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    ProductResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total record count
+          example: 50
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Product identifier
+          example: PROD-001
+        name:
+          type: string
+          description: Product name
+          example: Grilled Chicken
+        category:
+          type: string
+          description: Product category
+          enum:
+          - ENTREE
+          - SIDE
+          - BEVERAGE
+          - DESSERT
+          - SNACK
+          example: ENTREE
+        price:
+          type: number
+          description: Product price in USD
+          example: 8.95
+        calories:
+          type: integer
+          description: Caloric content
+          example: 380
+        allergens:
+          type: array
+          items:
+            type: string
+          description: List of allergens
+          example:
+          - GLUTEN
+          - DAIRY
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.

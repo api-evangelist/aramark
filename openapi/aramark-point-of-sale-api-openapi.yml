@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization Point of Sale API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Point of Sale
+  description: Point of sale transaction data
+paths:
+  /point-of-sale:
+    get:
+      operationId: getPointOfSale
+      summary: Aramark Get Point of Sale Data
+      description: Retrieve point of sale transaction data from the Aramark Marko platform.
+      tags:
+      - Point of Sale
+      parameters:
+      - name: locationId
+        in: query
+        description: Filter by location identifier
+        schema:
+          type: string
+        example: LOC-001
+      - name: startDate
+        in: query
+        description: Start date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-01'
+      - name: endDate
+        in: query
+        description: End date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-19'
+      responses:
+        '200':
+          description: Point of sale data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POSResponse'
+              examples:
+                GetPointOfSale200Example:
+                  summary: Default getPointOfSale 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - transactionId: TXN-001
+                      locationId: LOC-001
+                      amount: 12.5
+                      items: 2
+                      timestamp: '2026-04-19T12:30:00Z'
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    POSTransaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction identifier
+          example: TXN-001
+        locationId:
+          type: string
+          description: Location identifier
+          example: LOC-001
+        amount:
+          type: number
+          description: Transaction amount in USD
+          example: 12.5
+        items:
+          type: integer
+          description: Number of items in the transaction
+          example: 2
+        timestamp:
+          type: string
+          format: date-time
+          description: Transaction timestamp (ISO 8601)
+          example: '2026-04-19T12:30:00Z'
+        paymentMethod:
+          type: string
+          description: Payment method used
+          enum:
+          - CREDIT
+          - DEBIT
+          - CASH
+          - MEAL_PLAN
+          - MOBILE
+          example: MEAL_PLAN
+    POSResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/POSTransaction'
+        count:
+          type: integer
+          description: Total record count
+          example: 100
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.

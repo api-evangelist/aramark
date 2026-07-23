@@ -1,0 +1,130 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization Service API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Service
+  description: Service management and tracking
+paths:
+  /service:
+    get:
+      operationId: getService
+      summary: Aramark Get Service Data
+      description: Retrieve service management and tracking data from the Aramark Marko platform.
+      tags:
+      - Service
+      parameters:
+      - name: serviceType
+        in: query
+        description: Filter by service type
+        schema:
+          type: string
+        example: FOOD_SERVICE
+      - name: locationId
+        in: query
+        description: Filter by location
+        schema:
+          type: string
+        example: LOC-001
+      responses:
+        '200':
+          description: Service data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceResponse'
+              examples:
+                GetService200Example:
+                  summary: Default getService 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: SVC-001
+                      type: FOOD_SERVICE
+                      locationId: LOC-001
+                      status: ACTIVE
+                      name: Campus Dining
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Service identifier
+          example: SVC-001
+        type:
+          type: string
+          description: Service type
+          enum:
+          - FOOD_SERVICE
+          - FACILITIES
+          - UNIFORM
+          - RETAIL
+          example: FOOD_SERVICE
+        locationId:
+          type: string
+          description: Location identifier
+          example: LOC-001
+        status:
+          type: string
+          description: Service status
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - SUSPENDED
+          example: ACTIVE
+        name:
+          type: string
+          description: Service name
+          example: Campus Dining
+    ServiceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+        count:
+          type: integer
+          description: Total record count
+          example: 5
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.

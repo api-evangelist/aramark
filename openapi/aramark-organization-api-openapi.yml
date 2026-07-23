@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Organization
+  description: Organization hierarchy and location management
+paths:
+  /organization:
+    get:
+      operationId: getOrganization
+      summary: Aramark Get Organization Data
+      description: Retrieve organization hierarchy and location data from the Aramark Marko data platform.
+      tags:
+      - Organization
+      parameters:
+      - name: locationId
+        in: query
+        description: Filter by location identifier
+        schema:
+          type: string
+        example: LOC-001
+      - name: orgType
+        in: query
+        description: Filter by organization type
+        schema:
+          type: string
+        example: DISTRICT
+      responses:
+        '200':
+          description: Organization data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
+              examples:
+                GetOrganization200Example:
+                  summary: Default getOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: ORG-001
+                      name: Northeast District
+                      type: DISTRICT
+                      parentId: REGION-NE
+                      locationCount: 45
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    OrganizationUnit:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization unit identifier
+          example: ORG-001
+        name:
+          type: string
+          description: Organization unit name
+          example: Northeast District
+        type:
+          type: string
+          description: Organization unit type
+          enum:
+          - REGION
+          - DISTRICT
+          - LOCATION
+          - ACCOUNT
+          example: DISTRICT
+        parentId:
+          type: string
+          description: Parent organization unit identifier
+          example: REGION-NE
+        locationCount:
+          type: integer
+          description: Number of locations under this unit
+          example: 45
+    OrganizationResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationUnit'
+        count:
+          type: integer
+          description: Total record count
+          example: 10
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.

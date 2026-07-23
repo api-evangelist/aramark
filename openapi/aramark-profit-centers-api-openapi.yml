@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization Profit Centers API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Profit Centers
+  description: Profit center and financial unit management
+paths:
+  /profit-centers:
+    get:
+      operationId: getProfitCenters
+      summary: Aramark Get Profit Centers
+      description: Retrieve profit center and financial unit data from the Aramark Marko platform.
+      tags:
+      - Profit Centers
+      parameters:
+      - name: parentId
+        in: query
+        description: Filter by parent profit center
+        schema:
+          type: string
+        example: PC-REGION-NE
+      responses:
+        '200':
+          description: Profit center data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfitCenterResponse'
+              examples:
+                GetProfitCenters200Example:
+                  summary: Default getProfitCenters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: PC-001
+                      name: Campus Center Dining
+                      code: NE-CC-001
+                      parentId: PC-REGION-NE
+                      active: true
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    ProfitCenterResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfitCenter'
+        count:
+          type: integer
+          description: Total record count
+          example: 20
+    ProfitCenter:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Profit center identifier
+          example: PC-001
+        name:
+          type: string
+          description: Profit center name
+          example: Campus Center Dining
+        code:
+          type: string
+          description: Profit center code
+          example: NE-CC-001
+        parentId:
+          type: string
+          description: Parent profit center identifier
+          example: PC-REGION-NE
+        active:
+          type: boolean
+          description: Whether the profit center is active
+          example: true
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.

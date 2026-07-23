@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Aramark Marko Organization Revenue API
+  description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
+  version: 1.0.0
+  x-generated-from: documentation
+  contact:
+    name: Aramark Developer Portal
+    url: https://marko-developers.aramark.net/
+servers:
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Revenue
+  description: Revenue snapshot and financial analytics
+paths:
+  /revenue-snapshot:
+    get:
+      operationId: getRevenueSnapshot
+      summary: Aramark Get Revenue Snapshot
+      description: Retrieve revenue snapshot and financial performance data from the Aramark Marko platform.
+      tags:
+      - Revenue
+      parameters:
+      - name: profitCenterId
+        in: query
+        description: Filter by profit center
+        schema:
+          type: string
+        example: PC-001
+      - name: startDate
+        in: query
+        description: Start date for revenue period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-01'
+      - name: endDate
+        in: query
+        description: End date for revenue period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-19'
+      responses:
+        '200':
+          description: Revenue snapshot data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueSnapshotResponse'
+              examples:
+                GetRevenueSnapshot200Example:
+                  summary: Default getRevenueSnapshot 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - profitCenterId: PC-001
+                      period: 2026-04
+                      totalRevenue: 125430.5
+                      transactionCount: 3215
+                      averageTicket: 39.02
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RevenueSnapshot:
+      type: object
+      properties:
+        profitCenterId:
+          type: string
+          description: Profit center identifier
+          example: PC-001
+        period:
+          type: string
+          description: Revenue period (YYYY-MM)
+          example: 2026-04
+        totalRevenue:
+          type: number
+          description: Total revenue for the period in USD
+          example: 125430.5
+        transactionCount:
+          type: integer
+          description: Number of transactions in the period
+          example: 3215
+        averageTicket:
+          type: number
+          description: Average transaction value in USD
+          example: 39.02
+    RevenueSnapshotResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueSnapshot'
+        count:
+          type: integer
+          description: Total record count
+          example: 12
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.
