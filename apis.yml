@@ -1,34 +1,121 @@
 aid: aramark
 url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml
 apis:
-  - aid: aramark:marko-api
-    name: Aramark Marko API
-    description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline 
-      business processes. The API catalog includes services for Organization, Point of Sale, Product, Profit Centers, Revenue Snapshot, Security, and Service management.
-    humanURL: https://marko-developers.aramark.net/
-    baseURL: https://www.marko.aramark.net/v1
-    tags:
-    - Data Platform
-    - Facilities Management
-    - Food Services
-    - Point of Sale
-    - Revenue Analytics
-    - Organization Management
-    properties:
-    - type: Portal
-      url: https://marko-developers.aramark.net/
-    - type: Documentation
-      url: https://marko-developers.aramark.net/catalog
-    - type: FAQ
-      url: https://marko-developers.aramark.net/faqs
-    - type: OpenAPI
-      url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/openapi/marko-api.yml
+- aid: aramark:aramark-organization-api
+  name: Aramark Organization API
+  description: Organization hierarchy and location management
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
+- aid: aramark:aramark-point-of-sale-api
+  name: Aramark Point of Sale API
+  description: Point of sale transaction data
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Point of Sale
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-point-of-sale-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
+- aid: aramark:aramark-product-api
+  name: Aramark Product API
+  description: Product and menu catalog data
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-product-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
+- aid: aramark:aramark-profit-centers-api
+  name: Aramark Profit Centers API
+  description: Profit center and financial unit management
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Profit Centers
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-profit-centers-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
+- aid: aramark:aramark-revenue-api
+  name: Aramark Revenue API
+  description: Revenue snapshot and financial analytics
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Revenue
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-revenue-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
+- aid: aramark:aramark-service-api
+  name: Aramark Service API
+  description: Service management and tracking
+  humanURL: https://marko-developers.aramark.net/
+  baseURL: https://www.marko.aramark.net/v1
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-api-openapi.yml
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: Documentation
+    url: https://marko-developers.aramark.net/catalog
+  - type: FAQ
+    url: https://marko-developers.aramark.net/faqs
 description: >-
   Aramark is a Fortune 500 company providing food, facilities, and uniform services. The Marko platform provides a data and AI API with 70+ services for real-time insights across organizational, point-of-sale,
   product, and revenue data.
 name: Aramark
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 tags:
   - Food Services
   - Facilities Management
