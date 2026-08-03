@@ -1,0 +1,24 @@
+{
+  "provider": "aramark",
+  "sources": [
+    "aramark-organization-api-openapi.yml",
+    "aramark-point-of-sale-api-openapi.yml",
+    "aramark-product-api-openapi.yml",
+    "aramark-profit-centers-api-openapi.yml",
+    "aramark-revenue-api-openapi.yml",
+    "aramark-service-api-openapi.yml"
+  ],
+  "outputs": [
+    "aramark-organization-api-openapi.yml",
+    "aramark-point-of-sale-api-openapi.yml",
+    "aramark-product-api-openapi.yml",
+    "aramark-profit-centers-api-openapi.yml",
+    "aramark-revenue-api-openapi.yml",
+    "aramark-service-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
