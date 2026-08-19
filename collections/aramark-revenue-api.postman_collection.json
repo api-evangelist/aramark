@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "fe2c5d49-58f2-4486-9995-f2c1bfbfa638",
+      "name": "Revenue",
+      "description": {
+        "content": "Revenue snapshot and financial analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1317ddeb-8ab8-443e-beac-baa6ad85abee",
+          "name": "Aramark Get Revenue Snapshot",
+          "request": {
+            "name": "Aramark Get Revenue Snapshot",
+            "description": {
+              "content": "Retrieve revenue snapshot and financial performance data from the Aramark Marko platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "revenue-snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "profitCenterId",
+                  "value": "<string>",
+                  "description": "Filter by profit center"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "Start date for revenue period (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "End date for revenue period (YYYY-MM-DD)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apiKey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fcdc9bd7-0eef-4a30-9e17-4a3f44e9eaf7",
+              "name": "Revenue snapshot data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue-snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profitCenterId",
+                      "value": "PC-001"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"profitCenterId\": \"PC-001\",\n      \"period\": \"2026-04\",\n      \"totalRevenue\": 125430.5,\n      \"transactionCount\": 3215,\n      \"averageTicket\": 39.02\n    }\n  ],\n  \"count\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef240930-fbd2-491e-863e-1406a1ecfd41",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue-snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "profitCenterId",
+                      "value": "PC-001"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-19"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.marko.aramark.net/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ba3294c8-665a-4e56-9c41-1b3c476c1d7e",
+    "name": "Aramark Marko Organization Revenue API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.\n\nContact Support:\n Name: Aramark Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Aramark Marko Organization Revenue API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Revenue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aramark Get Revenue Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.marko.aramark.net/v1/revenue-snapshot",
+            "params": [
+              {
+                "name": "profitCenterId",
+                "value": "PC-001",
+                "type": "query",
+                "description": "Filter by profit center"
+              },
+              {
+                "name": "startDate",
+                "value": "2026-04-01",
+                "type": "query",
+                "description": "Start date for revenue period (YYYY-MM-DD)"
+              },
+              {
+                "name": "endDate",
+                "value": "2026-04-19",
+                "type": "query",
+                "description": "End date for revenue period (YYYY-MM-DD)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apiKey",
+              "value": "{{apiKey}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve revenue snapshot and financial performance data from the Aramark Marko platform."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
