@@ -23,6 +23,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/
   baseURL: https://www.marko.aramark.net/v1
   tags:
+  - Point-of-Sale
+  tags_raw:
   - Point of Sale
   properties:
   - type: OpenAPI
