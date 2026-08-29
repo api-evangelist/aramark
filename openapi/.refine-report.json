@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "aramark-organization-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aramark-point-of-sale-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aramark-product-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aramark-profit-centers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aramark-revenue-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "aramark-service-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Aramark Marko Organization Revenue API
   description: Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes.
@@ -99,17 +99,6 @@ components:
           type: number
           description: Average transaction value in USD
           example: 39.02
-    RevenueSnapshotResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevenueSnapshot'
-        count:
-          type: integer
-          description: Total record count
-          example: 12
     ErrorResponse:
       type: object
       properties:
@@ -121,6 +110,17 @@ components:
           type: integer
           description: Error code
           example: 401
+    RevenueSnapshotResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueSnapshot'
+        count:
+          type: integer
+          description: Total record count
+          example: 12
   securitySchemes:
     apiKey:
       type: apiKey
