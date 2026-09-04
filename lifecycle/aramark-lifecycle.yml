@@ -1,0 +1,84 @@
+generated: '2026-09-04'
+method: probed
+source: openapi/ info.version + servers[]; live probes of https://marko.aramark.net (2026-09-04); https://github.com/aramarkservicesinc/markoapis
+versioning:
+  style: uri-path
+  pattern: https://marko.aramark.net/v{n}/{base_path}
+  versions_in_use:
+  - v1
+  - v2
+  - v3
+  note: 'Version lives in the URI path and is per-API, not platform-wide. Three generations are documented
+    side by side: Organization Hierarchy v1 and v2, Service Areas v1 and v2, Service Recipes v1 and v2,
+    and Service v3 all have their own catalog entries and their own OpenAPI. The older generation is never
+    marked deprecated in the spec.'
+  info_versions:
+    1.0.0-oas3: 54
+    2.0.0-oas3: 1
+    1.0.0: 4
+    1.0.1-oas3: 1
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: 0
+  note: 'No deprecation or sunset policy is published on the portal, no operation in any of the 60 specs
+    carries deprecated: true, and no RFC 8594 Sunset/Deprecation header is documented. Superseded versions
+    (v1 Organization Hierarchy, v1 Service Areas, v1 Service Recipe) stay in the catalog with no retirement
+    date.'
+status_page:
+  published: false
+  url: null
+  note: No status page, uptime page or incident feed found on marko-developers.aramark.net or aramark.com.
+sla:
+  published: false
+  note: No SLA or uptime commitment published on the public portal.
+production_availability_probe:
+  date: '2026-09-04'
+  host: https://marko.aramark.net
+  method: unauthenticated GET of the first documented operation of each API
+  interpretation: 401 with steps.oauth.v2.FailedToResolveAPIKey means an Apigee proxy is deployed and
+    demanding a key — the contract is live. 404 with messaging.adaptors.http.flow.ApplicationNotFound
+    means no proxy answers that documented production path.
+  live_401: 43
+  not_routed_404: 17
+  total: 60
+  not_routed:
+  - api: Alerts
+    url: https://marko.aramark.net/v1/alerts/profit_centers
+  - api: Ask Marko
+    url: https://marko.aramark.net/v1/ask/marko
+  - api: Business Unit Core Details
+    url: https://marko.aramark.net/v1/organization/business_unit/addresses/TESTVALUE
+  - api: District Core Details
+    url: https://marko.aramark.net/v1/organization/district/addresses/TESTVALUE
+  - api: Division Core Details
+    url: https://marko.aramark.net/v1/organization/division/addresses/TESTVALUE
+  - api: Growth
+    url: https://marko.aramark.net/v1/growth/voc/results/TESTVALUE
+  - api: Labor Manager Employees
+    url: https://marko.aramark.net/v1/labor/manager/employeees
+  - api: Line of Business Core Details
+    url: https://marko.aramark.net/v1/organization/line_of_business/addresses/TESTVALUE
+  - api: Location Core Details
+    url: https://marko.aramark.net/v1/<base_path>/location/core/TESTVALUE
+  - api: Marko Users
+    url: https://marko.aramark.net/v1/marko/users
+  - api: Point of Sale
+    url: https://marko.aramark.net/v1/pos/real_time/item_sales/TESTVALUE
+  - api: Product
+    url: https://marko.aramark.net/v1/product/retail/items/TESTVALUE
+  - api: Product Items
+    url: https://marko.aramark.net/v1/product/retail/items/TESTVALUE
+  - api: Region Core Details
+    url: https://marko.aramark.net/v1/organization/region/addresses/TESTVALUE
+  - api: Service Production Areas
+    url: https://marko.aramark.net/v1/service/production_areas
+  - api: Service Production Departments
+    url: https://marko.aramark.net/v1/service/production_departments
+  - api: Sub Location Core Details
+    url: https://marko.aramark.net/v1/organization/sub_location/addresses/TESTVALUE
+change_log:
+  published: false
+  note: The portal has a /blog section but no dated API changelog or release-notes feed. Spec history
+    is visible only as git history in https://github.com/aramarkservicesinc/markoapis.

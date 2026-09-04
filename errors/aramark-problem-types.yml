@@ -1,0 +1,67 @@
+generated: '2026-09-04'
+method: derived
+source: openapi/ 4xx/5xx responses across 60 Marko OpenAPI documents; 401 envelope observed live on https://marko.aramark.net/v1/profit_centers
+  (2026-09-04)
+format: vendor
+rfc9457: false
+note: 'The Marko APIs do not use application/problem+json. Two distinct error envelopes exist and they
+  are not the same shape. (1) Gateway faults from Apigee: {"fault":{"faultstring":"...","detail":{"errorcode":"..."}}}
+  — this is what an unauthenticated or unrouted call actually returns, and it is documented nowhere in
+  the specs. (2) In-envelope application errors: successful 200 responses carry a status field enumerated
+  Success | Error | Not Found, so an application-level error can arrive with HTTP 200. Agents must read
+  the body status field, not only the status code.'
+envelopes:
+- name: apigee-fault
+  http_status:
+  - 401
+  - 404
+  observed: https://marko.aramark.net/v1/profit_centers?search=US%20Bank%20Stadium
+  shape:
+    fault:
+      faultstring: string
+      detail:
+        errorcode: string
+  examples:
+  - errorcode: steps.oauth.v2.FailedToResolveAPIKey
+    faultstring: Failed to resolve API Key variable request.header.apikey
+    http_status: 401
+  - errorcode: messaging.adaptors.http.flow.ApplicationNotFound
+    faultstring: 'Unable to identify proxy for host: https_vhost and url: ...'
+    http_status: 404
+- name: marko-response-envelope
+  http_status:
+  - 200
+  shape:
+    status: ENUM 'Success', 'Error' or 'Not Found'
+    count: number
+    <collection>: array
+  note: Declared on the 200 response schema of essentially every Marko operation.
+problem_types:
+- status: 400
+  count: 5
+  title: Bad request — a required or malformed parameter was rejected before the request reached the backend.
+  spec_descriptions:
+  - Bad Request
+  - The server cannot or will not process the request due to an apparent client error (e.g., malformed
+    request syntax, size too large, invalid request message framing, or deceptive request routing).
+- status: 401
+  count: 2
+  title: Unauthorized — the apikey header was absent or not resolvable. Apigee returns a fault envelope,
+    not the API response envelope.
+  spec_descriptions: []
+- status: 404
+  count: 207
+  title: Requested resource does not exist.
+  spec_descriptions:
+  - Not Found
+  - Requested resource does not exist.
+- status: 405
+  count: 207
+  title: HTTP verb / operation not supported on this path.
+  spec_descriptions:
+  - HTTP Verb / Operation not supported
+  - Method Not Allowed
+summary:
+  declared_4xx_5xx_responses: 421
+  distinct_status_codes: 4
+  documented_error_reference: false

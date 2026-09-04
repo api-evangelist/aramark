@@ -1,0 +1,79 @@
+generated: '2026-09-04'
+method: generated
+source: openapi/ — 60 first-party Aramark Marko OpenAPI documents; every operationId referenced is grepped
+  from those specs
+note: Aramark publishes no Agent Skills, no AGENTS.md and no MCP server. These are API Evangelist packaged
+  skills generated from Aramark’s own contracts; every operationId in them exists in a published spec.
+summary:
+  skill_count: 4
+skills:
+- name: aramark-daily-operations-snapshot
+  file: aramark-daily-operations-snapshot.md
+  description: Pull an intra-day operating picture for one Aramark site — revenue, performance, POS sales,
+    labor and food waste — from the Marko APIs, all keyed on a single org_value.
+  operations:
+  - getRevenueSnapshot
+  - getPerformanceSnapshotByOrgValue
+  - getDailySalesByOrgValue
+  - getDailySelfServiceSalesByOrgValue
+  - getDailyLaborSummary
+  - getDailyLaborForecast
+  - getDailyFoodWasteByOrgValue
+  - getFinancialSummaryByOrgValue
+  method: generated
+- name: aramark-pos-transaction-reconciliation
+  file: aramark-pos-transaction-reconciliation.md
+  description: Reconcile a day of Aramark point-of-sale activity by pulling checks, line items, tenders,
+    discounts, taxes, service charges and adjustments for one org_value from the Marko POS APIs.
+  operations:
+  - getPOSDevices
+  - getTransactionChecks
+  - getTransactionCheckLineItems
+  - getTransactionItems
+  - getTransactionTenders
+  - getTransactionDiscounts
+  - getTransactionServiceCharges
+  - getTransactionTaxes
+  - getTransactionAdjustments
+  - getRealTimeItemSales
+  - getDailySalesByOrgValue
+  - getPOSItems
+  method: generated
+- name: aramark-record-service-execution
+  file: aramark-record-service-execution.md
+  description: Write service-execution data back to Aramark Marko — customer counts, equipment and prep
+    temperatures, waste and photos — and know which of those writes can be taken back.
+  operations:
+  - getCustomerCount
+  - putCustomerCount
+  - getEquipment
+  - putEquipmentTemperature
+  - getTemperaturePrep
+  - putTemperaturePrep
+  - getTemperatureCooling
+  - putTemperatureCooling
+  - getWasteResults
+  - putResultsWaste
+  - deleteResultsWaste
+  - getPhotos
+  - putPhotos
+  - deletePhotos
+  - putServiceResult
+  - putServiceResults
+  method: generated
+- name: aramark-resolve-org-scope
+  file: aramark-resolve-org-scope.md
+  description: Resolve which parts of the Aramark organization hierarchy your Marko API key can see, and
+    turn that into the org_value identifiers every other Marko API needs.
+  operations:
+  - getMyRole
+  - getMyHierarchy
+  - getMyProfitCenters
+  - getMyDistricts
+  - getMyRegions
+  - getMyLocations
+  - getMyClients
+  - getFinancialHierarchy
+  - getFinancialFlatHierarchyV2
+  - getProfitCenterDetailsCoreByOrgValue
+  method: generated

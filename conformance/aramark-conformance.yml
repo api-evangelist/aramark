@@ -1,0 +1,68 @@
+generated: '2026-09-04'
+method: derived
+source: openapi/ (60 Marko OpenAPI documents) + https://marko-developers.aramark.net/faqs + live probes
+  of https://marko.aramark.net
+entries:
+- id: openapi-3.0
+  conforms: true
+  evidence: 57 of 60 published Marko contracts declare openapi 3.0.0 or 3.0.1; see openapi/_original/.
+- id: swagger-2.0
+  conforms: true
+  evidence: 2 contracts (organization-suppliers, product-retail-items) are still Swagger 2.0 — openapi/_original/aramark-organization-suppliers.json,
+    openapi/_original/aramark-product-retail-items.json.
+- id: openapi-3.1
+  conforms: false
+  evidence: No contract declares 3.1.x.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in any of the 60 contracts; no /.well-known/oauth-authorization-server
+    on any host (404).
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host (404).
+- id: api-key-header
+  conforms: true
+  evidence: 'apiKey securityScheme, in: header, name: apikey, declared across the platform; live 401 steps.oauth.v2.FailedToResolveAPIKey
+    confirms enforcement.'
+- id: rfc9457
+  conforms: false
+  evidence: No application/problem+json media type anywhere; see errors/aramark-problem-types.yml.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset or Deprecation header documented; see lifecycle/aramark-lifecycle.yml.
+- id: idempotency
+  conforms: false
+  evidence: 'No Idempotency-Key mechanism; see conventions/aramark-conventions.yml idempotency.coverage:
+    none.'
+- id: pagination
+  conforms: true
+  evidence: page and size query parameters on the high-volume POS and item collections; partial coverage
+    — see conventions/aramark-conventions.yml.
+- id: json:api
+  conforms: false
+  evidence: Custom {status,count,<collection>} envelope, not JSON:API.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface published. The IoT API delivers temperature events
+    over request/response POST, not a subscription.
+- id: scim
+  conforms: false
+  evidence: Marko Users and Security expose a proprietary user/role model (postUser, postUAPRole); no
+    urn:ietf:params:scim schema URNs.
+- id: odata
+  conforms: false
+  evidence: No $metadata surface and no OData query options.
+- id: gs1
+  conforms: false
+  evidence: Product and Retail Items carry barcode and sku parameters but declare no GS1 identifier scheme.
+domain_standard:
+  declared: false
+  note: 'Foodservice and facilities management have no dominant machine-readable interchange standard
+    the way payments or healthcare do, and Aramark declares none. The nutrition, recipe and menu contracts
+    (Product Recipe, Service Recipe, Recipe Decorations, Units of Measure) model nutrition facts and units
+    in a proprietary schema rather than against a published food-data standard. Reward-only dimension:
+    no standard exists to conform to here, so nothing is scored against Aramark for this.'
+compliance:
+  published: false
+  note: No SOC 2, ISO 27001, PCI or HIPAA attestation is published for the Marko platform. No trust center
+    exists at marko-developers.aramark.net or aramark.com.

@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Aramark Marko Division Core Details
+  version: 1.0.0
+extends: openapi/aramark-division-core-details-openapi.json
+x-generated: '2026-09-04'
+x-method: generated
+x-source: openapi/_original/ verbatim harvest + live production probe 2026-09-04
+actions:
+- target: $
+  description: Add the production server the contract names in its own info.description but omits from servers[].
+    Every published Marko spec lists only qa-marko and dev-marko.
+  update:
+    servers:
+    - url: https://marko.aramark.net/v1/organization
+      description: Production (declared in info.description; API Evangelist probe of this base path returned HTTP
+        404 on 2026-09-04)
+- target: $.info
+  description: Record where this contract was harvested from and how it was verified.
+  update:
+    x-apievangelist:
+      harvested: '2026-09-04'
+      source: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_div_details.json
+      documentation: https://marko-developers.aramark.net/doc/division-core-details
+      production_probe:
+        url: https://marko.aramark.net/v1/organization/division/addresses/TESTVALUE
+        status: 404
+        result: not routed — Apigee returned ApplicationNotFound for this documented production path

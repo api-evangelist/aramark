@@ -1,0 +1,5295 @@
+generated: '2026-09-04'
+method: derived
+source: openapi/ components.schemas and definitions across 60 first-party Marko OpenAPI documents
+summary:
+  entity_count: 222
+  relationship_count: 76
+  api_count: 60
+identifier_note: 'The platform pivots on one polymorphic identifier: org_value, a path parameter carried by 5 distinct
+  APIs. It resolves against a level in the Aramark organization hierarchy — division, region, district, line of
+  business, business unit, client, location, sub location, profit center — each of which has its own Core Details
+  contract. Reading any operational figure (labor, POS, revenue, waste) means first resolving the org_value for
+  the level you want from the Organization APIs.'
+hierarchy:
+  note: Declared by the set of *-core-details contracts and the Organization Hierarchy APIs, not by a single schema.
+  levels:
+  - division
+  - region
+  - district
+  - line_of_business
+  - business_unit
+  - client
+  - location
+  - sub_location
+  - profit_center
+  contracts:
+  - openapi/aramark-division-core-details-openapi.json
+  - openapi/aramark-region-core-details-openapi.json
+  - openapi/aramark-district-core-details-openapi.json
+  - openapi/aramark-line-business-core-details-openapi.json
+  - openapi/aramark-business-unit-core-details-openapi.json
+  - openapi/aramark-organization-clients-openapi.json
+  - openapi/aramark-location-core-details-openapi.json
+  - openapi/aramark-sub-location-core-details-openapi.json
+  - openapi/aramark-organization-profit-center-core-details-openapi.json
+  - openapi/aramark-organization-hierarchy-openapi.json
+  - openapi/aramark-organization-hierarchy-v2-openapi.json
+entities:
+- entity: Anet_User
+  apis:
+  - Marko Users
+  field_count: 7
+  identifier_fields:
+  - employee_id
+  fields:
+  - display_name
+  - email
+  - employee_id
+  - first_name
+  - guid
+  - last_name
+  - upn
+- entity: Device
+  apis:
+  - Marko Users
+  field_count: 7
+  identifier_fields:
+  - device_id
+  - device_number
+  - phone_number
+  - profile_id
+  fields:
+  - create_date
+  - device_id
+  - device_number
+  - phone_number
+  - profile_id
+  - update_date
+  - valid
+- entity: Error
+  apis:
+  - Service Menu Items
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - code
+  - message
+- entity: HFL_attributes
+  apis:
+  - Product Recipe
+  field_count: 5
+  identifier_fields: []
+  fields:
+  - eat_well
+  - hearty_whole_grains
+  - plant_forward
+  - vegan
+  - vegetarian
+- entity: Profile
+  apis:
+  - Marko Users
+  field_count: 7
+  identifier_fields:
+  - profile_id
+  - user_id
+  fields:
+  - create_date
+  - profile_id
+  - profile_name
+  - profile_type
+  - update_date
+  - user_id
+  - valid
+- entity: Set
+  apis:
+  - Marko Users
+  field_count: 6
+  identifier_fields:
+  - profile_id
+  - set_id
+  fields:
+  - create_date
+  - profile_id
+  - set_id
+  - set_name
+  - status
+  - update_date
+- entity: User
+  apis:
+  - Marko Users
+  field_count: 9
+  identifier_fields:
+  - cell_number
+  - user_id
+  fields:
+  - cell_number
+  - create_date
+  - email
+  - first_name
+  - last_name
+  - name
+  - update_date
+  - user_id
+  - valid
+- entity: accrual_balances
+  apis:
+  - Labor Employee
+  field_count: 4
+  identifier_fields:
+  - employee_id
+  fields:
+  - accrual_balance
+  - accrual_code
+  - employee_id
+  - employee_name
+- entity: adjustments
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 7
+  identifier_fields:
+  - org_value
+  fields:
+  - adjustment_count
+  - bypass_adjustments
+  - org_name
+  - org_value
+  - source_system
+  - tapin2_adjustments
+  - zippin_adjustments
+- entity: alerts
+  apis:
+  - Alerts
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - type
+  - value
+- entity: allergen_attributes
+  apis:
+  - Product Recipe
+  - Service Recipe
+  field_count: 19
+  identifier_fields: []
+  fields:
+  - allergen_statement_not_available
+  - contains_added_msg
+  - contains_celery
+  - contains_eggs
+  - contains_fish
+  - contains_gluten
+  - contains_hfcs
+  - contains_milk
+  - contains_mustard
+  - contains_peanut
+  - contains_red_yellow_blue_dye
+  - contains_sesame
+  - contains_shellfish
+  - contains_soy
+  - contains_tree_nuts
+  - contains_wheat
+  - gluten_free_per_FDA
+  - non_gmo_claim
+  - nutritional_info_verified
+- entity: attachment
+  apis:
+  - Ask Marko
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - content
+  - text
+- entity: body
+  apis:
+  - Ask Marko
+  field_count: 4
+  identifier_fields: []
+  fields:
+  - channel
+  - email
+  - message
+  - mode
+- entity: brands
+  apis:
+  - Organization Brands
+  field_count: 12
+  identifier_fields:
+  - agreement_type_id
+  - brand_category_id
+  - brand_id
+  - brand_type_id
+  fields:
+  - agreement_type_desc
+  - agreement_type_id
+  - brand_category_desc
+  - brand_category_id
+  - brand_id
+  - brand_name
+  - brand_type_desc
+  - brand_type_id
+  - concept_cd
+  - concept_cd_desc
+  - enabled
+  - last_update_date
+- entity: business_unit_address_details
+  apis:
+  - Business Unit Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: business_unit_contacts_details
+  apis:
+  - Business Unit Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: business_units
+  apis:
+  - Organization Hierarchy
+  field_count: 5
+  identifier_fields:
+  - business_units_id
+  fields:
+  - business_units
+  - business_units_id
+  - business_units_name
+  - status
+  - status_description
+- entity: buttons
+  apis:
+  - Ask Marko
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - payload
+  - title
+- entity: bypass_adjustments
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 20
+  identifier_fields:
+  - adjustment_check_id
+  - adjustment_id
+  - source_venue_id
+  fields:
+  - adjustment_amount
+  - adjustment_check_id
+  - adjustment_configuration_uuid
+  - adjustment_created_date
+  - adjustment_description
+  - adjustment_display_name
+  - adjustment_id
+  - adjustment_ignored_amount
+  - adjustment_line_item_uuid
+  - adjustment_percentage
+  - adjustment_refunded_amount
+  - adjustment_tax_inclusive
+  - adjustment_type
+  - adjustment_updated_at
+  - adjustment_uuid
+  - amount
+  - check_created_date
+  - check_updated_date
+  - check_uuid
+  - source_venue_id
+- entity: bypass_check_line_item_addons
+  apis:
+  - POS Transactions
+  field_count: 5
+  identifier_fields:
+  - order_item_addon_id
+  fields:
+  - order_item_addon_group_name
+  - order_item_addon_id
+  - order_item_addon_name
+  - order_item_addon_price
+  - order_item_addon_quantity
+- entity: bypass_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 24
+  identifier_fields:
+  - check_friendly_id
+  - check_id
+  - check_location_id
+  - concession_id
+  - device_serial_number
+  - mobile_number
+  - service_location_id
+  - source_venue_id
+  fields:
+  - balance_due
+  - check_created_date
+  - check_friendly_id
+  - check_id
+  - check_location_id
+  - check_state
+  - check_updated_date
+  - check_uuid
+  - concession_description
+  - concession_id
+  - concession_name
+  - concession_uuid
+  - customer_name
+  - device_serial_number
+  - loyalty_count
+  - mobile_number
+  - name
+  - sales_tax_total
+  - service_location_id
+  - source_venue_id
+  - subtotal
+  - surcharge
+  - tip
+  - total
+- entity: bypass_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 20
+  identifier_fields:
+  - discount_check_id
+  - discount_id
+  - source_venue_id
+  fields:
+  - amount
+  - check_created_date
+  - check_updated_date
+  - check_uuid
+  - discount_amount
+  - discount_check_id
+  - discount_configuration_uuid
+  - discount_created_date
+  - discount_description
+  - discount_display_name
+  - discount_id
+  - discount_ignored_amount
+  - discount_line_item_uuid
+  - discount_percentage
+  - discount_refunded_amount
+  - discount_tax_inclusive
+  - discount_type
+  - discount_updated_at
+  - discount_uuid
+  - source_venue_id
+- entity: bypass_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 36
+  identifier_fields:
+  - base_item_category_id
+  - base_item_external_id
+  - base_item_id
+  - base_item_reporting_group_id
+  - base_item_tax_group_id
+  - item_id
+  - source_venue_id
+  fields:
+  - base_item_alcohol
+  - base_item_base_price
+  - base_item_category_id
+  - base_item_description
+  - base_item_external_id
+  - base_item_id
+  - base_item_name
+  - base_item_position
+  - base_item_reporting_group_id
+  - base_item_sku
+  - base_item_tax_group_id
+  - base_item_tax_rate
+  - base_item_weight
+  - check_created_date
+  - check_item_addons
+  - check_updated_date
+  - check_uuid
+  - item_cancelled
+  - item_count
+  - item_discount_amonut
+  - item_discount_name
+  - item_id
+  - item_menu_name
+  - item_name
+  - item_net_price_per_item
+  - item_notes
+  - item_price
+  - item_refunded
+  - item_selection_groups
+  - item_sku
+  - item_tax_inclusive
+  - item_tax_rate
+  - item_unit_price
+  - item_uuid
+  - item_variant
+  - source_venue_id
+- entity: bypass_line_item_checks
+  apis:
+  - POS Transactions
+  field_count: 6
+  identifier_fields:
+  - source_venue_id
+  fields:
+  - created_datetime
+  - last_updated_datetime
+  - line_items
+  - order_state
+  - order_uuid
+  - source_venue_id
+- entity: bypass_line_items
+  apis:
+  - POS Transactions
+  field_count: 17
+  identifier_fields:
+  - order_item_id
+  fields:
+  - addons
+  - order_item_cancelled
+  - order_item_count
+  - order_item_discount_amount
+  - order_item_discount_name
+  - order_item_id
+  - order_item_item_name
+  - order_item_menu_name
+  - order_item_net_price_per_item
+  - order_item_notes
+  - order_item_price
+  - order_item_refunded
+  - order_item_sku
+  - order_item_tax_inclusive
+  - order_item_tax_rate
+  - order_item_unit_price
+  - order_item_variant
+- entity: bypass_service_charges
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 20
+  identifier_fields:
+  - service_charge_check_id
+  - service_charge_id
+  - source_venue_id
+  fields:
+  - amount
+  - check_created_date
+  - check_updated_date
+  - check_uuid
+  - service_charge_amount
+  - service_charge_check_id
+  - service_charge_configuration_uuid
+  - service_charge_created_date
+  - service_charge_description
+  - service_charge_display_name
+  - service_charge_id
+  - service_charge_ignored_amount
+  - service_charge_line_item_uuid
+  - service_charge_refunded_amount
+  - service_charge_tax_inclusive
+  - service_charge_type
+  - service_charge_updated_at
+  - service_charge_uuid
+  - service_charget_percentage
+  - source_venue_id
+- entity: bypass_taxes
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 20
+  identifier_fields:
+  - source_venue_id
+  - tax_check_id
+  - tax_id
+  fields:
+  - amount
+  - check_updated_date
+  - check_uuid
+  - order_created_date
+  - source_venue_id
+  - tax_amount
+  - tax_check_id
+  - tax_configuration_uuid
+  - tax_created_date
+  - tax_description
+  - tax_display_name
+  - tax_id
+  - tax_ignored_amount
+  - tax_inclusive
+  - tax_line_item_uuid
+  - tax_percentage
+  - tax_refunded_amount
+  - tax_type
+  - tax_updated_at
+  - tax_uuid
+- entity: bypass_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 13
+  identifier_fields:
+  - tender_device_serial_number
+  - tender_id
+  fields:
+  - check_created_date
+  - check_updated_date
+  - check_uuid
+  - tender_amount
+  - tender_card_type
+  - tender_device_serial_number
+  - tender_id
+  - tender_is_tip
+  - tender_name
+  - tender_refunded_amount
+  - tender_tip_amount
+  - tender_type
+  - tender_voided_amount
+- entity: c_micros_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 23
+  identifier_fields:
+  - check_number
+  - guest_check_id
+  - site_id
+  - store_id
+  fields:
+  - check_close_local_date_time
+  - check_number
+  - check_open_local_date_time
+  - check_subtotal
+  - check_tax
+  - check_total
+  - discount_total
+  - error_correct_total
+  - guest_check_id
+  - meal_period_name
+  - non_taxable_sales_total
+  - number_of_items
+  - return_total
+  - service_charge_total
+  - site_id
+  - site_name
+  - source_system_name
+  - store_id
+  - store_name
+  - tax_exempt_total
+  - taxable_sales_total
+  - tip_total
+  - void_total
+- entity: c_micros_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - check_detail_id
+  - check_discount_detial_id
+  - discount_id
+  - guest_check_line_item_id
+  fields:
+  - check_detail_id
+  - check_discount_detial_id
+  - check_open_local_date_time
+  - discount_id
+  - discount_name
+  - guest_check_line_item_id
+  - line_total
+  - void_flag
+- entity: c_micros_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 16
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - item_id
+  - major_group_id
+  - minor_group_id
+  - tax_id
+  fields:
+  - check_id
+  - check_line_item_id
+  - check_local_date_time
+  - includes_tax
+  - item_id
+  - item_name
+  - item_price
+  - last_updated_date
+  - line_count
+  - line_total
+  - major_group_id
+  - major_group_name
+  - minor_group_id
+  - minor_group_name
+  - tax_id
+  - void_flag
+- entity: c_micros_service_charges
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - guest_check_id
+  - guest_check_line_item_id
+  - service_charge_id
+  fields:
+  - check_open_local_date_time
+  - guest_check_id
+  - guest_check_line_item_id
+  - line_count
+  - line_total
+  - service_charge_id
+  - service_charge_name
+  - void_flag
+- entity: c_micros_taxes
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 10
+  identifier_fields:
+  - guest_check_id
+  - revenue_center_id
+  - tax_id
+  fields:
+  - check_close_local_date_time
+  - check_open_local_date_time
+  - guest_check_id
+  - revenue_center_id
+  - revenue_center_name
+  - source_system_name
+  - tax_collected_total
+  - tax_id
+  - tax_name
+  - taxable_sales_total
+- entity: c_micros_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 7
+  identifier_fields:
+  - guest_check_id
+  - guest_check_line_item_id
+  - tender_id
+  fields:
+  - business_local_date_time
+  - guest_check_id
+  - guest_check_line_item_id
+  - line_total
+  - tender_id
+  - tender_name
+  - void_flag
+- entity: calendar_dates
+  apis:
+  - Calendar
+  field_count: 1
+  identifier_fields: []
+  fields:
+  - calendar_date
+- entity: check_line_items
+  apis:
+  - POS Transactions
+  field_count: 5
+  identifier_fields:
+  - org_value
+  fields:
+  - adjustment_count
+  - bypass_checks
+  - org_name
+  - org_value
+  - source_system
+- entity: checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 13
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_checks
+  - c_micros_checks
+  - check_count
+  - e_micros_checks
+  - mashgin_checks
+  - nextep_checks
+  - org_name
+  - org_value
+  - s_micros_checks
+  - source_system
+  - systopia_checks
+  - tapin2_checks
+  - zippin_checks
+- entity: clients
+  apis:
+  - Organization Clients
+  - Profile User
+  field_count: 10
+  identifier_fields: []
+  fields:
+  - client
+  - client_code
+  - client_family_code
+  - client_family_name
+  - client_name
+  - global_family_code
+  - global_family_name
+  - org_source
+  - profit_center
+  - profit_center_name
+- entity: content
+  apis:
+  - Ask Marko
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - type
+  - url
+- entity: deletePhotosBody
+  apis:
+  - Service
+  field_count: 1
+  identifier_fields:
+  - photo_id
+  fields:
+  - photo_id
+- entity: deleteWasteBody
+  apis:
+  - Service
+  field_count: 1
+  identifier_fields:
+  - waste_id
+  fields:
+  - waste_id
+- entity: details
+  apis:
+  - Inventory
+  - Service Inventory
+  field_count: 11
+  identifier_fields:
+  - fiscal_time_period_id
+  - vendor_item_number
+  fields:
+  - beginning_units
+  - catch_weight_flag
+  - fiscal_time_period_id
+  - last_purchase_date
+  - received_units
+  - transfer_in_quantity
+  - transfer_out_quantity
+  - unit_purchase_description
+  - vendor_item_description
+  - vendor_item_number
+  - vendor_name
+- entity: device_sites
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields:
+  - site_id
+  fields:
+  - site_id
+  - site_name
+- entity: dietary_attributes
+  apis:
+  - Product Recipe
+  - Service Recipe
+  field_count: 4
+  identifier_fields: []
+  fields:
+  - halal
+  - kosher
+  - vegan
+  - vegetarian
+- entity: discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_discounts
+  - c_micros_discounts
+  - discount_count
+  - e_micros_discounts
+  - mashgin_discounts
+  - org_name
+  - org_value
+  - s_micros_discounts
+  - source_system
+  - zippin_discounts
+- entity: district_address_details
+  apis:
+  - District Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: district_contacts_details
+  apis:
+  - District Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: districts
+  apis:
+  - Organization Hierarchy
+  - Profile User
+  field_count: 5
+  identifier_fields:
+  - district_id
+  fields:
+  - district
+  - district_id
+  - district_name
+  - status
+  - status_description
+- entity: division_address_details
+  apis:
+  - Division Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: division_contacts_details
+  apis:
+  - Division Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: divisions
+  apis:
+  - Organization Hierarchy
+  field_count: 5
+  identifier_fields:
+  - division_id
+  fields:
+  - division
+  - division_id
+  - division_name
+  - status
+  - status_description
+- entity: e_micros_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 31
+  identifier_fields:
+  - check_detail_id
+  - check_number
+  - guest_check_id
+  - revenue_center_id
+  fields:
+  - check_close_local_date_time
+  - check_detail_id
+  - check_number
+  - check_open_local_date_time
+  - check_subtotal
+  - check_tax
+  - check_total
+  - discount_total
+  - error_correct_total
+  - guest_check_id
+  - manager_void_total
+  - meal_period_name
+  - number_of_items
+  - other_total
+  - return_total
+  - revenue_center_id
+  - revenue_center_name
+  - service_charge_total
+  - source_system_name
+  - svc_charge_exempt_total
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - tax_exempt_total
+  - tip_total
+  - void_total
+- entity: e_micros_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - check_detail_id
+  - check_discount_detial_id
+  - discount_id
+  - guest_check_line_item_id
+  fields:
+  - check_detail_id
+  - check_discount_detial_id
+  - check_open_local_date_time
+  - discount_id
+  - discount_name
+  - guest_check_line_item_id
+  - line_total
+  - void_flag
+- entity: e_micros_items
+  apis:
+  - POS Items
+  - POS Transactions
+  - Point of Sale
+  field_count: 24
+  identifier_fields:
+  - check_detail_id
+  - check_item_detial_id
+  - guest_check_line_item_id
+  - item_id
+  - item_pos_ref_id
+  - major_id
+  - minor_id
+  fields:
+  - business_local_date_time
+  - check_detail_id
+  - check_item_detial_id
+  - guest_check_line_item_id
+  - item_id
+  - item_name
+  - item_pos_ref_id
+  - item_price
+  - last_update_date
+  - line_count
+  - line_total
+  - major_id
+  - major_name
+  - minor_id
+  - minor_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - void_flag
+- entity: e_micros_service_charges
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 10
+  identifier_fields:
+  - check_detail_id
+  - check_item_detial_id
+  - guest_check_line_item_id
+  - service_charge_id
+  fields:
+  - check_detail_id
+  - check_item_detial_id
+  - check_open_local_date_time
+  - guest_check_line_item_id
+  - item_price
+  - line_count
+  - line_total
+  - service_charge_id
+  - service_charge_name
+  - void_flag
+- entity: e_micros_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - check_detail_id
+  - check_tender_detial_id
+  - guest_check_line_item_id
+  - tender_id
+  fields:
+  - business_local_date_time
+  - check_detail_id
+  - check_tender_detial_id
+  - guest_check_line_item_id
+  - line_total
+  - tender_id
+  - tender_name
+  - void_flag
+- entity: employee_details
+  apis:
+  - Labor Employee
+  field_count: 18
+  identifier_fields:
+  - employee_id
+  - payroll_employee_id
+  - phone_number
+  fields:
+  - district
+  - district_name
+  - email
+  - employee_id
+  - employee_status
+  - employee_type
+  - first_name
+  - guid
+  - last_name
+  - line_of_business
+  - line_of_business_name
+  - payroll_employee_id
+  - phone_number
+  - profit_center
+  - profit_center_name
+  - region
+  - region_name
+  - upn
+- entity: employee_schedule
+  apis:
+  - Labor Daily
+  field_count: 32
+  identifier_fields:
+  - org_value
+  - source_department_id
+  - source_job_id
+  - source_location_id
+  - source_pc_id
+  - source_site_id
+  fields:
+  - actual_non_prod_hours
+  - actual_overtime_hours
+  - actual_prod_hours
+  - agency_flag
+  - calendar_date
+  - employee_status
+  - employment_status
+  - first_name
+  - full_time_indicator
+  - last_name
+  - non_aramark_employee_flag
+  - org_value
+  - sched_non_prod_hours
+  - sched_overtime_hours
+  - sched_prod_hours
+  - seasonal_flag
+  - source_department_code
+  - source_department_id
+  - source_department_name
+  - source_job_code
+  - source_job_id
+  - source_job_name
+  - source_location_code
+  - source_location_id
+  - source_location_name
+  - source_pc_code
+  - source_pc_id
+  - source_pc_name
+  - source_site_code
+  - source_site_id
+  - source_site_name
+  - union_flag
+- entity: employee_status
+  apis:
+  - Labor Employee
+  field_count: 4
+  identifier_fields:
+  - employee_id
+  fields:
+  - employee_id
+  - employee_status
+  - first_name
+  - last_name
+- entity: employee_summary
+  apis:
+  - Labor Daily
+  field_count: 54
+  identifier_fields:
+  - fiscal_day_id
+  - fiscal_month_id
+  - org_value
+  - source_employee_id
+  fields:
+  - actual_early_in_hours
+  - actual_early_in_wages
+  - actual_early_out_hours
+  - actual_early_out_wages
+  - actual_late_out_hours
+  - actual_late_out_wages
+  - actual_non_prod_hours
+  - actual_non_prod_wages
+  - actual_overtime_hours
+  - actual_overtime_wages
+  - actual_prod_Wages
+  - actual_prod_hours
+  - actual_short_lunch_hours
+  - actual_short_lunch_wages
+  - actual_very_early_in_hours
+  - actual_very_early_in_wages
+  - actual_very_late_out_hours
+  - actual_very_late_out_wages
+  - agency_flag
+  - calendar_date
+  - employee_status
+  - employment_status
+  - first_name
+  - fiscal_day_id
+  - fiscal_month_id
+  - full_time_indicator
+  - last_name
+  - non_aramark_employee_flag
+  - org_value
+  - sched_non_prod_hours
+  - sched_non_prod_wages
+  - sched_overtime_hours
+  - sched_overtime_wages
+  - sched_prod_hours
+  - sched_prod_wages
+  - seasonal_flag
+  - source_department_code
+  - source_department_name
+  - source_employee_id
+  - source_job_code
+- entity: employees
+  apis:
+  - Labor Manager Employees
+  field_count: 1
+  identifier_fields:
+  - employee_id
+  fields:
+  - employee_id
+- entity: financial_organizations
+  apis:
+  - Organization Hierarchy
+  - Organization Hierarchy V2
+  field_count: 52
+  identifier_fields:
+  - business_unit_value
+  - company_value
+  - district_value
+  - division_value
+  - line_of_business_value
+  - location_value
+  - profit_center_value
+  - region_value
+  - sub_location_value
+  fields:
+  - business_unit_contact_email
+  - business_unit_contact_first_name
+  - business_unit_contact_last_name
+  - business_unit_name
+  - business_unit_value
+  - business_units
+  - company_name
+  - company_value
+  - country_code
+  - district_contact_email
+  - district_contact_first_name
+  - district_contact_last_name
+  - district_name
+  - district_value
+  - districts
+  - division_contact_email
+  - division_contact_first_name
+  - division_contact_last_name
+  - division_name
+  - division_value
+  - divisions
+  - line_of_business_contact_email
+  - line_of_business_contact_first_name
+  - line_of_business_contact_last_name
+  - line_of_business_name
+  - line_of_business_value
+  - lines_of_business
+  - location_contact_email
+  - location_contact_first_name
+  - location_contact_last_name
+  - location_name
+  - location_value
+  - locations
+  - organization_count
+  - profit_center_contact_email
+  - profit_center_contact_first_name
+  - profit_center_contact_last_name
+  - profit_center_name
+  - profit_center_value
+  - profit_centers
+- entity: financial_summary
+  apis:
+  - Financial Daily Account Summary
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - actual_amount
+  - calendar_date
+  - fiscal_day
+  - fiscal_period
+  - fiscal_week_no
+  - gl_account
+  - gl_account_description
+  - org_name
+  - org_value
+  - prior_year_amount
+- entity: fiscal_day
+  apis:
+  - Calendar
+  field_count: 25
+  identifier_fields:
+  - fiscal_month_id
+  - fiscal_quarter_id
+  - fiscal_week_id
+  - fiscal_year_id
+  - fiscal_year_number
+  fields:
+  - calendar_date
+  - fiscal_day_of_month
+  - fiscal_day_of_quarter
+  - fiscal_day_of_week
+  - fiscal_day_of_year
+  - fiscal_max_week_in_month
+  - fiscal_month_abbr
+  - fiscal_month_id
+  - fiscal_month_name
+  - fiscal_month_of_quarter
+  - fiscal_month_of_year
+  - fiscal_period
+  - fiscal_period_week
+  - fiscal_quarter_id
+  - fiscal_quarter_name
+  - fiscal_quarter_of_year
+  - fiscal_week_day
+  - fiscal_week_id
+  - fiscal_week_of_month
+  - fiscal_week_of_quarter
+  - fiscal_week_of_year
+  - fiscal_year_id
+  - fiscal_year_month
+  - fiscal_year_name
+  - fiscal_year_number
+- entity: food_bank_items
+  apis:
+  - Service
+  field_count: 20
+  identifier_fields:
+  - food_bank_item_id
+  - location_id
+  - master_system_id
+  - production_department_id
+  - recipe_id
+  - serving_size_number
+  fields:
+  - actual_prep_amount
+  - batch
+  - begin_inventory
+  - comments
+  - ending_inventory
+  - food_bank_item_id
+  - location_id
+  - master_system_id
+  - par_max
+  - par_min
+  - planned_prep
+  - production_department_id
+  - production_notes
+  - recipe_id
+  - recipe_name
+  - recipe_type
+  - service_date
+  - serving_size_fraction
+  - serving_size_number
+  - serving_size_unit_of_measure
+- entity: food_waste
+  apis:
+  - Daily Food Waste Tracking
+  field_count: 10
+  identifier_fields:
+  - fiscal_day_id
+  - org_value
+  fields:
+  - fiscal_day
+  - fiscal_day_id
+  - fiscal_period
+  - fiscal_week_no
+  - org_name
+  - org_value
+  - waste_currency
+  - waste_days_compliant
+  - waste_days_required
+  - waste_weight
+- entity: gl_account_details
+  apis:
+  - Organization
+  field_count: 5
+  identifier_fields: []
+  fields:
+  - category_code
+  - gl_account_catergory
+  - gl_level
+  - long_description
+  - short_description
+- entity: gl_accounts
+  apis:
+  - Organization
+  field_count: 9
+  identifier_fields: []
+  fields:
+  - category
+  - class
+  - commodity
+  - family
+  - gl_acc_category
+  - gl_level
+  - offering
+  - segment
+  - status
+- entity: ingredients
+  apis:
+  - Product Recipe
+  - Service Recipe
+  field_count: 11
+  identifier_fields:
+  - ingredient_id
+  - sub_assembly_id
+  - unit_of_measure_id
+  fields:
+  - amount_needed
+  - ingredient_id
+  - ingredient_name
+  - ingredient_size_display
+  - is_lb_threshold
+  - ozw_per_tsp
+  - prep_method
+  - prep_tech
+  - sub_assembly_id
+  - unit_of_measure
+  - unit_of_measure_id
+- entity: insight
+  apis:
+  - Ask Marko
+  field_count: 1
+  identifier_fields: []
+  fields:
+  - text
+- entity: inventory
+  apis:
+  - Inventory
+  - Service Inventory
+  field_count: 9
+  identifier_fields:
+  - inventory_item_id
+  - inventory_item_storage_area_id
+  - location_id
+  fields:
+  - details
+  - enabled
+  - inventory_item_id
+  - inventory_item_name
+  - inventory_item_storage_area_id
+  - inventory_item_storage_area_name
+  - location_id
+  - pack_unit_size
+  - sort_order
+- entity: item_detail_spend
+  apis:
+  - GSC GPO
+  field_count: 35
+  identifier_fields:
+  - cust_id
+  - dist_id
+  - dist_invoice_id
+  - mfr_id
+  fields:
+  - accounting_date
+  - case_pack_literal
+  - cust_id
+  - cust_name
+  - cust_parent_id_aosd
+  - cust_parent_name_aosd
+  - cust_reservation_code
+  - dist_brand_name
+  - dist_case_pack_literal
+  - dist_id
+  - dist_invoice_dt
+  - dist_invoice_id
+  - dist_mfr_name
+  - dist_mfr_prod_num
+  - dist_name
+  - dist_prod_desc
+  - dist_prod_num
+  - dist_role_desc
+  - item_class
+  - item_commodity
+  - item_desc
+  - item_family
+  - item_num
+  - item_segment
+  - manufacturer_brand_name
+  - mfr_id
+  - mfr_name
+  - mfr_prod_name
+  - program_nm
+  - quantity
+  - size_indicator
+  - spend_date
+  - sum_spend
+  - unit_of_issue
+  - unit_of_issue_desc
+- entity: item_sales
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 6
+  identifier_fields: []
+  fields:
+  - first_order_time
+  - item_name
+  - item_sku
+  - last_order_time
+  - location
+  - quantity
+- entity: items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 11
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_items
+  - c_micros_items
+  - e_micros_items
+  - item_count
+  - mashgin_items
+  - org_name
+  - org_value
+  - s_micros_items
+  - source_system
+  - tapin2_items
+  - zippin_items
+- entity: labor_forecast
+  apis:
+  - Labor Daily
+  field_count: 33
+  identifier_fields:
+  - org_value
+  fields:
+  - actual_hours
+  - actual_revenue
+  - actual_transactions
+  - actual_wages
+  - allocated_hours
+  - allocated_hours_template
+  - allocated_wages
+  - allocated_wages_template
+  - allowable_hours
+  - allowable_wages
+  - calendar_date
+  - custom_count
+  - earned_hours
+  - earned_wages
+  - labor_cost_pct_adjusted
+  - labor_cost_pct_proj
+  - lst_day_completed_act
+  - lst_day_completed_proj
+  - lst_day_required_act
+  - lst_day_required_proj
+  - non_kronos_hours
+  - non_kronos_wages
+  - org_value
+  - plan_hours
+  - plan_wages
+  - planned_count
+  - projected_count
+  - projected_revenue
+  - projected_transactions
+  - scheduled_hours
+  - scheduled_wages
+  - taxes_and_benefits_rate
+  - wage_percent
+- entity: labor_summary
+  apis:
+  - Labor Daily
+  field_count: 33
+  identifier_fields:
+  - org_value
+  fields:
+  - actual_non_prod_hours
+  - actual_non_prod_wages
+  - actual_ot_hours
+  - actual_ot_wages
+  - actual_prod_hours
+  - actual_prod_wages
+  - add_edits
+  - calendar_date
+  - existing_edits
+  - fiscal_day
+  - fiscal_period
+  - fiscal_week_no
+  - late_hours
+  - late_wages
+  - org_name
+  - org_value
+  - punch_count
+  - scheduled_ot_hours
+  - scheduled_ot_wages
+  - scheduled_prod_hours
+  - scheduled_prod_wages
+  - short_lunch_hours
+  - short_lunch_wages
+  - unscheduled_non_prod_hours
+  - unscheduled_non_prod_wages
+  - unscheduled_ot_hours
+  - unscheduled_ot_wages
+  - unscheduled_prod_hours
+  - unscheduled_prod_wages
+  - very_early_hours
+  - very_early_wages
+  - very_late_hours
+  - very_late_wages
+- entity: line_of_business_address_details
+  apis:
+  - Line of Business Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: line_of_business_contacts_details
+  apis:
+  - Line of Business Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: lines_of_business
+  apis:
+  - Organization Hierarchy
+  field_count: 5
+  identifier_fields:
+  - line_of_business_id
+  fields:
+  - line_of_business
+  - line_of_business_id
+  - line_of_business_name
+  - status
+  - status_description
+- entity: location_address_details
+  apis:
+  - Location Core Details
+  field_count: 29
+  identifier_fields:
+  - org_value
+  - street_number
+  - timezone_id
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+  - street_name
+  - street_number
+  - timezone_id
+  - timezone_name
+- entity: location_contacts_details
+  apis:
+  - Location Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: location_core_details
+  apis:
+  - Location Core Details
+  field_count: 35
+  identifier_fields:
+  - calc_contract_type_id
+  - legacy_value
+  - org_value
+  - payroll_org_value
+  - profit_center_value
+  fields:
+  - bill_code
+  - bill_description
+  - calc_contract_type
+  - calc_contract_type_id
+  - concept_code
+  - concept_description
+  - country
+  - event_code
+  - event_description
+  - future_code
+  - future_description
+  - intercompany_code
+  - intercompany_description
+  - legacy_value
+  - operation_close_date
+  - operation_start_date
+  - org_name
+  - org_value
+  - payroll_org_value
+  - postal_code
+  - primary_flag
+  - profit_center_name
+  - profit_center_value
+  - public_name
+  - service_type_code
+  - service_type_description
+  - short_name
+  - status
+  - status_description
+  - tax_code
+  - tax_description
+  - timezone
+  - type_code
+  - type_description
+  - wfm_reference
+- entity: locations
+  apis:
+  - Organization Hierarchy
+  - Profile App
+  - Profile User
+  field_count: 13
+  identifier_fields:
+  - app_id
+  - location_id
+  - user_id
+  fields:
+  - app_id
+  - app_name
+  - location
+  - location_id
+  - location_name
+  - profit_center
+  - profit_center_name
+  - segment
+  - segment_category
+  - service_type
+  - status
+  - status_description
+  - user_id
+- entity: manager
+  apis:
+  - Labor Employee
+  field_count: 1
+  identifier_fields:
+  - manager_id
+  fields:
+  - manager_id
+- entity: manufacturer_item_pricing
+  apis:
+  - Service
+  field_count: 11
+  identifier_fields: []
+  fields:
+  - IPR_Description
+  - brand_name
+  - location_last_price_paid
+  - location_last_purchase_date
+  - manufacturer_item_average_price
+  - manufacturer_item_description
+  - unit1_description
+  - unit2_description
+  - unit2_in_unit1
+  - unit3_description
+  - unit3_in_unit2
+- entity: mashgin_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 22
+  identifier_fields:
+  - check_id
+  - customer_id
+  - device_id
+  - master_store_id
+  - store_id
+  fields:
+  - check_date_time
+  - check_id
+  - check_local_date_time
+  - check_status
+  - check_subtotal
+  - check_tax
+  - check_total
+  - customer_id
+  - customer_name
+  - device_id
+  - device_name
+  - discount_total
+  - last_update_date
+  - master_store_id
+  - number_of_items
+  - store_id
+  - store_name
+  - time_to_leave
+  - time_to_pay
+  - time_to_process
+  - time_to_ready
+  - time_total
+- entity: mashgin_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 16
+  identifier_fields:
+  - check_id
+  - customer_id
+  - device_id
+  - discount_id
+  - item_id
+  - store_id
+  fields:
+  - check_date_time
+  - check_id
+  - check_status
+  - customer_id
+  - customer_name
+  - device_id
+  - device_name
+  - discount_amount
+  - discount_id
+  - discount_name
+  - item_count
+  - item_id
+  - item_type
+  - last_discount_update_date
+  - store_id
+  - store_name
+- entity: mashgin_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 22
+  identifier_fields:
+  - check_id
+  - customer_id
+  - device_id
+  - item_id
+  - master_store_id
+  - numeric_id
+  - store_id
+  fields:
+  - check_date_time
+  - check_id
+  - check_local_date_time
+  - customer_id
+  - customer_name
+  - device_id
+  - device_name
+  - item_after_tax_price
+  - item_count
+  - item_id
+  - item_name
+  - item_price
+  - item_price_by_weight
+  - item_tax
+  - item_total_price
+  - item_type
+  - last_item_update_date
+  - master_store_id
+  - numeric_id
+  - reco_method
+  - store_id
+  - store_name
+- entity: mashgin_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 21
+  identifier_fields:
+  - check_id
+  - customer_id
+  - device_id
+  - master_store_id
+  - request_id
+  - store_id
+  - tender_type_id
+  fields:
+  - card_name
+  - card_type
+  - check_date_time
+  - check_id
+  - check_local_date_time
+  - customer_id
+  - customer_name
+  - device_id
+  - device_name
+  - last_tender_update_date
+  - master_store_id
+  - payment_amount
+  - payment_date_time
+  - payment_method
+  - payment_status
+  - payment_type
+  - request_id
+  - store_id
+  - store_name
+  - tender_type
+  - tender_type_id
+- entity: measure
+  apis:
+  - Service Weekly Overproduction
+  field_count: 7
+  identifier_fields:
+  - fiscal_week_id
+  - org_value
+  fields:
+  - actual_amount
+  - fiscal_period
+  - fiscal_week_id
+  - fiscal_week_no
+  - measure_name
+  - org_name
+  - org_value
+- entity: menu
+  apis:
+  - Service
+  - Service Menu Items
+  field_count: 11
+  identifier_fields:
+  - location_id
+  - meal_period_id
+  - service_area_id
+  - service_menu_id
+  fields:
+  - location
+  - location_id
+  - location_name
+  - meal_period_id
+  - meal_period_name
+  - reimbursable_tracking
+  - service_area_id
+  - service_area_name
+  - service_date
+  - service_menu_id
+  - sub_locations
+- entity: menu_items
+  apis:
+  - Service
+  - Service Menu Items
+  field_count: 34
+  identifier_fields:
+  - master_system_id
+  - production_area_id
+  - recipe_category_id
+  - recipe_id
+  - service_menu_item_id
+  - serving_size_fraction_id
+  - serving_size_number
+  - serving_size_uom_id
+  fields:
+  - acceptability_factor
+  - comments
+  - final_prep_temperature
+  - food_cost
+  - is_closed
+  - is_mto
+  - is_result_required
+  - is_temp_required
+  - leftover_count
+  - master_system_id
+  - on_hand_count
+  - planned_count
+  - prep_count
+  - production_area_id
+  - production_area_name
+  - recipe_category_description
+  - recipe_category_id
+  - recipe_id
+  - recipe_marketing_name
+  - recipe_name
+  - recipe_short_name
+  - service_menu_item_id
+  - serving_size_description
+  - serving_size_display
+  - serving_size_fraction_description
+  - serving_size_fraction_id
+  - serving_size_number
+  - serving_size_uom_id
+  - smi_row_no
+  - sold_count
+  - used_a_la_carte
+  - used_adult
+  - used_reimbursable
+  - waste_count
+- entity: menuitem
+  apis:
+  - Product
+  - Product Items
+  field_count: 7
+  identifier_fields:
+  - object_number
+  fields:
+  - barcode
+  - catalog
+  - item_name
+  - object_number
+  - price
+  - request_type
+  - slu
+- entity: nextep_checks
+  apis:
+  - POS Transactions
+  field_count: 22
+  identifier_fields:
+  - check_id
+  - check_location_id
+  - check_number
+  - original_check_id
+  fields:
+  - check_channel
+  - check_datetime
+  - check_id
+  - check_key
+  - check_location_id
+  - check_location_name
+  - check_number
+  - check_state
+  - check_timezone
+  - check_type
+  - discount_total
+  - is_refund
+  - is_void
+  - item_count
+  - last_updated_date
+  - original_check_id
+  - subtotal
+  - tax_1
+  - tax_2
+  - tax_3
+  - tax_4
+  - tax_total
+- entity: nextep_items
+  apis:
+  - POS Transactions
+  field_count: 18
+  identifier_fields:
+  - check_id
+  - check_location_id
+  - item_line_id
+  - item_major_category_id
+  - item_minor_category_id
+  - menu_item_id
+  - menu_item_parent_id
+  fields:
+  - check_datetime
+  - check_id
+  - check_key
+  - check_location_id
+  - check_location_name
+  - check_state
+  - check_timezone
+  - item_line_id
+  - item_major_category_id
+  - item_major_category_name
+  - item_minor_category_id
+  - item_minor_category_name
+  - menu_item_id
+  - menu_item_name
+  - menu_item_parent_id
+  - net_amount
+  - price
+  - quantity
+- entity: nextep_tenders
+  apis:
+  - POS Transactions
+  field_count: 19
+  identifier_fields:
+  - check_id
+  - check_location_id
+  - tender_id
+  fields:
+  - amount_charged
+  - card_name
+  - check_datetime
+  - check_id
+  - check_key
+  - check_location_id
+  - check_location_name
+  - check_state
+  - check_timezone
+  - is_card
+  - is_cash
+  - is_counter
+  - is_loyalty
+  - remaining_balance
+  - tender_datetime
+  - tender_id
+  - tender_name
+  - tender_type
+  - usage
+- entity: notifications
+  apis:
+  - Alerts
+  field_count: 3
+  identifier_fields: []
+  fields:
+  - alerts
+  - profit_center
+  - profit_center_name
+- entity: nutrition
+  apis:
+  - Product Recipe
+  - Service Recipe
+  - Service Recipes V2
+  - Service V3
+  field_count: 294
+  identifier_fields:
+  - location_id
+  - master_system_id
+  - recipe_id
+  - seriving_size_number
+  - service_area_id
+  - serving_size_fraction_id
+  - serving_size_number
+  - serving_size_uom_id
+  fields:
+  - '10:0'
+  - '12:0'
+  - '13:0'
+  - '14:0'
+  - '14:1'
+  - '15:0'
+  - '15:1'
+  - '16:0'
+  - 16:1_c
+  - 16:1_t
+  - 16:1_undifferentiated
+  - '17:0'
+  - '17:1'
+  - 18:1_c
+  - 18:1_t
+  - 18:1_t_not_further_defined
+  - 18:1_undifferentiated
+  - 18:2_CLAs
+  - 18:2_i
+  - 18:2_n-6_c,c
+  - 18:2_t,t
+  - 18:2_undifferentiated
+  - 18:3_n-3_c,c,c
+  - 18:3_n-6_c,c,c
+  - 18:3_undifferentiated
+  - 18:3i
+  - '18:4'
+  - '20:0'
+  - '20:1'
+  - 20:1_undifferentiated
+  - 20:2_n-6_c,c
+  - 20:3_n-3
+  - 20:3_n-6
+  - 20:3_undifferentiated
+  - 20:4_n-6
+  - 20:4_undifferentiated
+  - 20:5_n-3
+  - '21:5'
+  - '22:0'
+  - 22:1_c
+- entity: nutrition_updates
+  apis:
+  - Service Recipes V2
+  - Service V3
+  field_count: 3
+  identifier_fields:
+  - location_id
+  - service_area_id
+  fields:
+  - count
+  - location_id
+  - service_area_id
+- entity: operational_day
+  apis:
+  - Calendar
+  field_count: 26
+  identifier_fields:
+  - operational_month_id
+  - operational_quarter_id
+  - operational_week_id
+  - operational_year_id
+  - operational_year_number
+  fields:
+  - calendar_date
+  - operational_afs_period
+  - operational_day_of_month
+  - operational_day_of_quarter
+  - operational_day_of_week
+  - operational_day_of_year
+  - operational_max_week_in_month
+  - operational_month_abbr
+  - operational_month_id
+  - operational_month_name
+  - operational_month_of_quarter
+  - operational_month_of_year
+  - operational_period
+  - operational_period_week
+  - operational_quarter_id
+  - operational_quarter_name
+  - operational_quarter_of_year
+  - operational_week_day
+  - operational_week_id
+  - operational_week_of_month
+  - operational_week_of_quarter
+  - operational_week_of_year
+  - operational_year_id
+  - operational_year_month
+  - operational_year_name
+  - operational_year_number
+- entity: orders
+  apis:
+  - Catering
+  field_count: 5
+  identifier_fields:
+  - org_value
+  fields:
+  - order_count
+  - org_name
+  - org_value
+  - source_system
+  - suite_wizard_orders
+- entity: outputText
+  apis:
+  - Ask Marko
+  field_count: 1
+  identifier_fields: []
+  fields:
+  - text
+- entity: overtime_alerts
+  apis:
+  - Alerts
+  field_count: 13
+  identifier_fields:
+  - employee_id
+  - manager_id
+  fields:
+  - active
+  - employee_first_name
+  - employee_id
+  - employee_last_name
+  - manager_email
+  - manager_first_name
+  - manager_id
+  - manager_last_name
+  - overtime_date
+  - profit_center
+  - profit_center_name
+  - trigger_date
+  - update_date
+- entity: pack_unit_size
+  apis:
+  - Inventory
+  - Service Inventory
+  field_count: 6
+  identifier_fields: []
+  fields:
+  - inner_pack_size
+  - inner_pack_size_description
+  - pack_size
+  - pack_size_description
+  - purchase_size
+  - purchase_size_description
+- entity: performance_snapshot
+  apis:
+  - Operational Daily
+  field_count: 17
+  identifier_fields:
+  - org_value
+  fields:
+  - avg_check
+  - calendar_date
+  - cashless_pct
+  - child_org
+  - child_org_level
+  - child_org_name
+  - last_updated
+  - org_value
+  - parent_org
+  - parent_org_level
+  - parent_org_name
+  - productive_hours
+  - productive_wages
+  - source
+  - total_checks
+  - total_sales
+  - total_volume
+- entity: poBodyParam
+  apis:
+  - Product
+  field_count: 4
+  identifier_fields:
+  - po_number
+  fields:
+  - item_description
+  - item_seq
+  - po_number
+  - price
+- entity: po_number
+  apis:
+  - Product
+  field_count: 16
+  identifier_fields:
+  - po_number
+  - vendor_number
+  fields:
+  - account
+  - bill_code
+  - category
+  - concept
+  - event
+  - future
+  - line_type
+  - po_date
+  - po_line_item
+  - po_line_item_description
+  - po_number
+  - profit_center
+  - quantity
+  - unit_price
+  - vendor_number
+  - vendor_site_name
+- entity: point_of_sale_alerts
+  apis:
+  - Alerts
+  field_count: 15
+  identifier_fields:
+  - employee_id
+  fields:
+  - alert_description
+  - alert_name
+  - business_date
+  - display_name
+  - employee_id
+  - first_name
+  - last_name
+  - location_code
+  - location_name
+  - number_of_alerts
+  - profit_center
+  - profit_center_name
+  - service_type_description
+  - source_system
+  - update_date
+- entity: pos
+  apis:
+  - Product
+  field_count: 17
+  identifier_fields:
+  - po_line_number
+  - po_number
+  - vendor_number
+  fields:
+  - account
+  - attribute_category
+  - bill_code
+  - category
+  - concept
+  - event
+  - future
+  - item_seq
+  - line_description
+  - line_type
+  - po_line_number
+  - po_number
+  - profit_center
+  - service_type
+  - similarity_match
+  - vendor_number
+  - vendor_site_name
+- entity: pos_devices
+  apis:
+  - POS Transactions
+  field_count: 1
+  identifier_fields: []
+  fields:
+  - source_device
+- entity: pos_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - item_id
+  - item_pos_ref_id
+  - major_id
+  - minor_id
+  fields:
+  - item_id
+  - item_name
+  - item_pos_ref_id
+  - last_update_date
+  - major_id
+  - major_name
+  - minor_id
+  - minor_name
+- entity: pos_sales
+  apis:
+  - POS Daily Sales
+  field_count: 7
+  identifier_fields:
+  - org_value
+  fields:
+  - avg_check
+  - calendar_date
+  - org_name
+  - org_value
+  - total_checks
+  - total_sales
+  - total_volume
+- entity: postLogRequestBody
+  apis:
+  - Service
+  field_count: 4
+  identifier_fields:
+  - service_area_id
+  fields:
+  - date
+  - email
+  - log_type
+  - service_area_id
+- entity: postSiteRequestBody
+  apis:
+  - Service
+  field_count: 6
+  identifier_fields:
+  - device_serial_number
+  - site_id
+  fields:
+  - approval_email
+  - device_serial_number
+  - requestor_email
+  - requestor_name
+  - requestor_sp_guid
+  - site_id
+- entity: postUapRoleBody
+  apis:
+  - Security
+  field_count: 5
+  identifier_fields: []
+  fields:
+  - app_name
+  - appr_acct
+  - org_code
+  - role_name
+  - user_acct
+- entity: post_temp_events_body
+  apis:
+  - IoT
+  field_count: 5
+  identifier_fields: []
+  fields:
+  - device_ids
+  - end_date_time
+  - page
+  - size
+  - start_date_time
+- entity: prep_temperatures
+  apis:
+  - Service
+  field_count: 16
+  identifier_fields:
+  - food_item_id
+  - period_id
+  - service_area_id
+  - station_id
+  - temperature_id
+  - temperature_value
+  fields:
+  - corrective_action
+  - created_by
+  - creation_date
+  - food_item_id
+  - food_item_name
+  - is_bluetooth
+  - is_manual_food_item
+  - log_time
+  - no_item
+  - period_id
+  - prod_prep_temp
+  - service_area_id
+  - service_date
+  - station_id
+  - temperature_id
+  - temperature_value
+- entity: primary_attributes
+  apis:
+  - Product Recipe
+  - Service Recipe
+  field_count: 20
+  identifier_fields: []
+  fields:
+  - added_sugars
+  - calcium
+  - calories
+  - calories_from_fat
+  - carbohydrate
+  - cholesterol
+  - fiber
+  - iron
+  - monounsaturated_fat
+  - pct_calories_from_fat
+  - pct_calories_from_saturated_fat
+  - polyunsaturated_fat
+  - potassium
+  - protein
+  - saturated_fat
+  - sodium
+  - total_fat
+  - total_sugars
+  - trans_fat
+  - vitamin_d_(mcg)
+- entity: production_areas
+  apis:
+  - Service Production Areas
+  field_count: 10
+  identifier_fields:
+  - location_id
+  - production_area_id
+  - service_area_id
+  - site_id
+  fields:
+  - location_id
+  - location_name
+  - production_area_id
+  - production_area_name
+  - profit_center
+  - profit_center_name
+  - service_area_id
+  - service_area_name
+  - site_id
+  - site_name
+- entity: production_departments
+  apis:
+  - Service Production Departments
+  field_count: 12
+  identifier_fields:
+  - location_id
+  - production_area_id
+  - production_department_id
+  - service_area_id
+  - site_id
+  fields:
+  - location_id
+  - location_name
+  - production_area_id
+  - production_area_name
+  - production_department_id
+  - production_department_name
+  - profit_center
+  - profit_center_name
+  - service_area_id
+  - service_area_name
+  - site_id
+  - site_name
+- entity: profit_center_address_details
+  apis:
+  - Organization Profit Center Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: profit_center_contacts_details
+  apis:
+  - Organization Profit Center Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: profit_center_core_details
+  apis:
+  - Organization Profit Center Core Details
+  field_count: 17
+  identifier_fields:
+  - legacy_value
+  - org_value
+  fields:
+  - close_date
+  - contract_type
+  - contract_type_code
+  - country
+  - default_service_type
+  - default_service_type_code
+  - legacy_value
+  - line_of_service
+  - line_of_service_code
+  - on_site_date
+  - open_date
+  - operational_close_date
+  - org_name
+  - org_value
+  - public_name
+  - status
+  - status_description
+- entity: profit_center_financial_details
+  apis:
+  - Organization Profit Center Core Details
+  field_count: 66
+  identifier_fields:
+  - legacy_value
+  - org_value
+  fields:
+  - cbs_pc_type
+  - cbs_pc_type_code
+  - cbs_recycle
+  - cbs_recycle_code
+  - chart
+  - client_contact_email_address
+  - client_contact_fax
+  - client_contact_first_name
+  - client_contact_last_name
+  - client_contact_phone_business
+  - client_contact_phone_cell
+  - client_name
+  - client_temp
+  - close_date
+  - contract_qualifier
+  - contract_qualifier_code
+  - contract_type
+  - contract_type_code
+  - country
+  - default_service_type
+  - default_service_type_code
+  - fc_collection_method
+  - fc_collection_method_code
+  - fc_interest_eligible
+  - fc_interest_eligible_code
+  - fc_interest_rate
+  - fc_start_days
+  - incentive_part
+  - industry_sector
+  - industry_sector_code
+  - labor_type
+  - labor_type_code
+  - last_day_of_operation_date
+  - last_update_date
+  - legacy_value
+  - legal_entity
+  - legal_entity_code
+  - line_of_service
+  - line_of_service_code
+  - market_segment
+- entity: profit_center_payroll_details
+  apis:
+  - Organization Profit Center Core Details
+  field_count: 26
+  identifier_fields:
+  - org_value
+  - payroll_org_value
+  fields:
+  - biweekly_accr_flag
+  - org_value
+  - payroll_frequency_approved_flag
+  - payroll_frequency_hourly
+  - payroll_frequency_hourly_code
+  - payroll_frequency_salary
+  - payroll_frequency_salary_code
+  - payroll_group_hourly
+  - payroll_group_hourly_code
+  - payroll_legal_entity
+  - payroll_legal_entity_code
+  - payroll_org_value
+  - payroll_payday_hourly
+  - payroll_payday_hourly_code
+  - payroll_payday_salary
+  - payroll_payday_salary_code
+  - payroll_pers_flag
+  - payroll_sers_flag
+  - payroll_unique_identifier
+  - payroll_unique_identifier_code
+  - payroll_weekend_day_hourly
+  - payroll_weekend_day_hourly_code
+  - payroll_weekend_day_salary
+  - payroll_weekend_day_salary_code
+  - plm_profit_center
+  - plm_profit_center_code
+- entity: profit_centers
+  apis:
+  - Organization Hierarchy
+  - Profile App
+  - Profile User
+  field_count: 7
+  identifier_fields:
+  - profit_center_id
+  fields:
+  - profit_center
+  - profit_center_id
+  - profit_center_name
+  - segment
+  - segment_category
+  - status
+  - status_description
+- entity: purchase_order_details
+  apis:
+  - Inventory
+  field_count: 8
+  identifier_fields:
+  - line_number
+  - po_detail_id
+  - vendor_item_number
+  fields:
+  - ext_amount
+  - is_catch_weight
+  - line_number
+  - po_detail_id
+  - quantity
+  - unit_price
+  - uom
+  - vendor_item_number
+- entity: purchase_orders
+  apis:
+  - Inventory
+  - Vendor
+  field_count: 14
+  identifier_fields:
+  - location_id
+  - po_header_id
+  - po_number
+  - vendor_id
+  - vendor_number
+  fields:
+  - comments
+  - details
+  - location_id
+  - po_date
+  - po_header_id
+  - po_item_count
+  - po_number
+  - po_total_amount
+  - purchase_order_status_seq
+  - status
+  - total_amount
+  - vendor_id
+  - vendor_name
+  - vendor_number
+- entity: purchasing_order_alerts
+  apis:
+  - Alerts
+  field_count: 9
+  identifier_fields:
+  - order_id
+  fields:
+  - need_by_date
+  - order_id
+  - ordered_date
+  - preparer
+  - profit_center
+  - profit_center_name
+  - status
+  - time_updated
+  - update_date
+- entity: putConfigurationBody
+  apis:
+  - Inventory
+  field_count: 4
+  identifier_fields:
+  - inventory_item_id
+  - to_storage_area_id
+  fields:
+  - enabled
+  - inventory_item_id
+  - sort_order
+  - to_storage_area_id
+- entity: putCustomerCountBody
+  apis:
+  - Service
+  field_count: 8
+  identifier_fields:
+  - meal_period_id
+  - service_area_id
+  fields:
+  - a_la_carte
+  - adult
+  - customer_count
+  - employee_count
+  - meal_period_id
+  - reimbursable
+  - service_area_id
+  - service_date
+- entity: putDisabledUserLocationsBody
+  apis:
+  - Service
+  field_count: 3
+  identifier_fields:
+  - location_id
+  fields:
+  - enalbed
+  - location_id
+  - sp_guid
+- entity: putEquipmentTemperatureBody
+  apis:
+  - Service
+  field_count: 11
+  identifier_fields:
+  - equipment_id
+  - equipment_temperature_id
+  - equipment_temperature_value
+  - location_equipment_id
+  - service_area_id
+  - station_id
+  fields:
+  - corrective_action
+  - equipment_id
+  - equipment_temperature_id
+  - equipment_temperature_value
+  - initials
+  - is_bluetooth
+  - location_equipment_id
+  - log_Time
+  - service_area_id
+  - station_id
+  - temp_check_frequency
+- entity: putFoodBankItemsActivityBody
+  apis:
+  - Service
+  field_count: 7
+  identifier_fields:
+  - food_bank_item_id
+  fields:
+  - activity_date
+  - actual_prep_amount
+  - begin_inventory
+  - comments
+  - ending_inventory
+  - food_bank_item_id
+  - planned_prep
+- entity: putItemBody
+  apis:
+  - Inventory
+  - Service Inventory
+  field_count: 8
+  identifier_fields:
+  - actual_unit1_value
+  - actual_unit2_value
+  - actual_unit3_value
+  - fiscal_time_period_id
+  - inventory_item_id
+  fields:
+  - actual_unit1_value
+  - actual_unit2_value
+  - actual_unit3_value
+  - fiscal_time_period_id
+  - inner_pack_size
+  - inventory_item_id
+  - pack_size
+  - purchase_size
+- entity: putMenuItemsBody
+  apis:
+  - Service
+  field_count: 10
+  identifier_fields:
+  - master_system_id
+  - meal_period_id
+  - recipe_id
+  - service_area_id
+  - service_menu_id
+  - service_menu_item_id
+  - station_id
+  fields:
+  - future_cycle
+  - master_system_id
+  - meal_period_id
+  - recipe_id
+  - row_num
+  - service_area_id
+  - service_date
+  - service_menu_id
+  - service_menu_item_id
+  - station_id
+- entity: putPhotosBody
+  apis:
+  - Service
+  field_count: 5
+  identifier_fields:
+  - period_id
+  - photo_id
+  - service_area_id
+  - station_id
+  fields:
+  - period_id
+  - photo_id
+  - service_area_id
+  - station_id
+  - time_taken
+- entity: putPurchaseOrderBody
+  apis:
+  - Inventory
+  field_count: 4
+  identifier_fields:
+  - po_detail_id
+  - po_header_id
+  fields:
+  - is_catchweight
+  - po_detail_id
+  - po_header_id
+  - received_qty
+- entity: putResultsBody
+  apis:
+  - Service
+  field_count: 10
+  identifier_fields:
+  - service_menu_item_id
+  fields:
+  - comments
+  - leftover_count
+  - on_hand_count
+  - planned_count
+  - prep_count
+  - served_adult
+  - served_alacarte
+  - served_reimbursable
+  - service_menu_item_id
+  - waste_count
+- entity: putSitePinBody
+  apis:
+  - Service
+  field_count: 4
+  identifier_fields:
+  - site_id
+  fields:
+  - pin
+  - pin_required
+  - site_id
+  - sp_guid
+- entity: putSiteRequestBody
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - request_token
+  - status
+- entity: putWasteBody
+  apis:
+  - Service
+  field_count: 7
+  identifier_fields:
+  - service_area_id
+  - station_id
+  - waste_id
+  - waste_value
+  fields:
+  - service_area_id
+  - station_id
+  - waste_date
+  - waste_id
+  - waste_type
+  - waste_unit
+  - waste_value
+- entity: put_prep_temperatures_body
+  apis:
+  - Service
+  field_count: 13
+  identifier_fields:
+  - food_item_id
+  - period_id
+  - service_area_id
+  - station_id
+  - temperature_id
+  - temperature_value
+  fields:
+  - corrective_action
+  - food_item_id
+  - food_item_name
+  - is_bluetooth
+  - is_manual_food_item
+  - log_time
+  - no_item
+  - period_id
+  - prod_prep_temp
+  - service_area_id
+  - station_id
+  - temperature_id
+  - temperature_value
+- entity: put_site_journal_body
+  apis:
+  - Service
+  field_count: 9
+  identifier_fields:
+  - from_station_id
+  - journal_id
+  - service_area_id
+  - site_id
+  - to_station_id
+  fields:
+  - description
+  - from_station_id
+  - from_station_name
+  - journal_date
+  - journal_id
+  - service_area_id
+  - site_id
+  - to_station_id
+  - to_station_name
+- entity: put_temperature_cooling_body
+  apis:
+  - Service
+  field_count: 13
+  identifier_fields:
+  - cooldown_log_id
+  - food_item_id
+  - period_id
+  - service_area_id
+  - station_id
+  - temperature_value
+  fields:
+  - cooldown_initiated
+  - cooldown_log_id
+  - corrective_action
+  - food_item_id
+  - food_item_name
+  - initial_temp
+  - log_time
+  - period_id
+  - service_area_id
+  - start_time
+  - station_id
+  - temperature_value
+  - timer_period
+- entity: quickReplies
+  apis:
+  - Ask Marko
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - buttons
+  - text
+- entity: recipe
+  apis:
+  - Product Recipe
+  field_count: 7
+  identifier_fields:
+  - recipe_id
+  fields:
+  - assembly_instructions
+  - ingredients
+  - recipe_id
+  - recipe_name
+  - serving_size_display
+  - special_instructions
+  - uom_system
+- entity: recipe_decorations
+  apis:
+  - Recipe Decorations
+  field_count: 12
+  identifier_fields:
+  - master_system_id
+  - recipe_id
+  fields:
+  - is_alsr
+  - is_harvest_table
+  - is_mm2
+  - is_patient
+  - is_residential
+  - is_retail
+  - is_smi
+  - is_true_eats
+  - master_system_id
+  - recipe_id
+  - recipe_marketing_name
+  - recipe_name
+- entity: recipes
+  apis:
+  - Service Recipe
+  field_count: 14
+  identifier_fields:
+  - meal_period_id
+  - recipe_id
+  - service_area_id
+  - sub_location_id
+  fields:
+  - assembly_instructions
+  - ingredients
+  - meal_period
+  - meal_period_id
+  - recipe_id
+  - recipe_name
+  - service_area_id
+  - service_area_name
+  - service_date
+  - serving_size_display
+  - special_instructions
+  - sub_location_id
+  - sub_location_name
+  - uom_system
+- entity: recommendations
+  apis:
+  - Service
+  field_count: 4
+  identifier_fields:
+  - recipe_id
+  fields:
+  - rank
+  - recipe_id
+  - recipe_name
+  - recommendation_type
+- entity: region_address_details
+  apis:
+  - Region Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: region_contacts_details
+  apis:
+  - Region Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: regions
+  apis:
+  - Organization Hierarchy
+  - Profile User
+  field_count: 5
+  identifier_fields:
+  - region_id
+  fields:
+  - region
+  - region_id
+  - region_name
+  - status
+  - status_description
+- entity: request
+  apis:
+  - Product
+  - Product Items
+  field_count: 11
+  identifier_fields:
+  - csp_location_id
+  - location_type_id
+  - revenue_center_id
+  - source_id
+  - source_location_id
+  fields:
+  - contact_name
+  - contact_phone
+  - csp_location_id
+  - effective_date
+  - email
+  - location_code
+  - location_type_id
+  - menuitem
+  - revenue_center_id
+  - source_id
+  - source_location_id
+- entity: response
+  apis:
+  - Ask Marko
+  field_count: 4
+  identifier_fields: []
+  fields:
+  - attachment
+  - insight
+  - outputText
+  - quickReplies
+- entity: retail_items
+  apis:
+  - Product
+  - Product Items
+  field_count: 22
+  identifier_fields:
+  - brand_id
+  - catalog_id
+  - item_id
+  - major_id
+  - minor_id
+  - revenue_center_id
+  - source_id
+  - source_location_id
+  fields:
+  - barcode
+  - brand_id
+  - brand_name
+  - catalog_id
+  - catalog_name
+  - gl_account
+  - gl_account_description
+  - gl_category
+  - gl_category_description
+  - gl_concept
+  - gl_concept_description
+  - item_id
+  - item_name
+  - location_code
+  - location_name
+  - major_id
+  - major_name
+  - minor_id
+  - minor_name
+  - revenue_center_id
+  - source_id
+  - source_location_id
+- entity: revenue_snapshot
+  apis:
+  - Operational Daily
+  field_count: 17
+  identifier_fields:
+  - org_value
+  fields:
+  - avg_check
+  - calendar_date
+  - cashless_pct
+  - child_org
+  - child_org_level
+  - child_org_name
+  - last_updated
+  - org_value
+  - parent_org
+  - parent_org_level
+  - parent_org_name
+  - source
+  - source_code
+  - sub_source
+  - total_checks
+  - total_sales
+  - total_volume
+- entity: roles
+  apis:
+  - Profile User
+  field_count: 2
+  identifier_fields:
+  - role_level_number
+  fields:
+  - role_level
+  - role_level_number
+- entity: s_micros_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 36
+  identifier_fields:
+  - check_id
+  - check_number
+  - master_store_id
+  - pos_location_id
+  - store_id
+  - xfer_to_check_number
+  fields:
+  - check_close_business_date
+  - check_close_date_time
+  - check_id
+  - check_number
+  - check_open_business_date
+  - check_open_local_date_time
+  - check_ref
+  - check_subtotal
+  - check_tax
+  - check_total
+  - discount_total
+  - error_correct_total
+  - last_update_date
+  - manager_void_total
+  - master_store_id
+  - num_guests
+  - order_type_pos_ref
+  - pos_location_id
+  - return_total
+  - revenue_center_pos_ref
+  - service_charge_total
+  - store_id
+  - store_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - tax_exempt_total
+  - tip_total
+  - void_total
+  - xfer_status
+  - xfer_to_check_number
+- entity: s_micros_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 27
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - device_id
+  - item_id
+  - master_store_id
+  - store_id
+  fields:
+  - check_id
+  - check_item_business_date
+  - check_line_item_id
+  - check_open_date_time
+  - device_id
+  - do_not_show
+  - dsc_menu_item_pos_ref
+  - item_id
+  - item_name
+  - last_update_date
+  - line_count
+  - line_total
+  - master_store_id
+  - reference_info
+  - reference_info_2
+  - store_id
+  - store_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - trans_date_time
+  - void_flag
+- entity: s_micros_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 31
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - device_id
+  - item_id
+  - master_store_id
+  - store_id
+  fields:
+  - check_id
+  - check_item_business_date
+  - check_line_item_id
+  - check_open_local_date_time
+  - device_id
+  - family_group_name
+  - family_group_pos_ref
+  - item_id
+  - item_name
+  - last_update_date
+  - line_count
+  - line_total
+  - major_group_pos_name
+  - major_group_pos_ref
+  - master_pos_ref
+  - master_store_id
+  - price_level
+  - reference_info
+  - reference_info_2
+  - store_id
+  - store_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - trans_date_time
+  - void_flag
+- entity: s_micros_service_charges
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 21
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - device_id
+  - master_store_id
+  - store_id
+  fields:
+  - check_id
+  - check_item_business_date
+  - check_line_item_id
+  - check_open_date_time
+  - device_id
+  - last_update_date
+  - master_store_id
+  - reference_info
+  - reference_info_2
+  - store_id
+  - store_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - trans_date_time
+  - void_flag
+- entity: s_micros_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 24
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - device_id
+  - master_store_id
+  - store_id
+  fields:
+  - check_id
+  - check_item_business_date
+  - check_line_item_id
+  - check_open_date_time
+  - device_id
+  - last_update_date
+  - line_count
+  - line_total
+  - master_store_id
+  - reference_info
+  - reference_info_2
+  - store_id
+  - store_name
+  - tax_1_total
+  - tax_2_total
+  - tax_3_total
+  - tax_4_total
+  - tax_5_total
+  - tax_6_total
+  - tax_7_total
+  - tax_8_total
+  - tender_name
+  - trans_date_time
+  - void_flag
+- entity: sales_rank
+  apis:
+  - POS Daily Product Ranking
+  field_count: 7
+  identifier_fields: []
+  fields:
+  - calendar_date
+  - product
+  - product_department
+  - product_family
+  - rank
+  - total_items_sold
+  - total_sales
+- entity: scheduled_shifts
+  apis:
+  - Labor Schedule
+  field_count: 10
+  identifier_fields:
+  - employee_id
+  - manager_id
+  - shift_assignment_id
+  fields:
+  - employee_id
+  - employee_name
+  - manager_email
+  - manager_id
+  - manager_name
+  - shift_assignment_id
+  - shift_duration
+  - shift_end_time
+  - shift_segment
+  - shift_start_time
+- entity: secondary_attributes
+  apis:
+  - Product Recipe
+  - Service Recipe
+  field_count: 32
+  identifier_fields: []
+  fields:
+  - alpha_carotene
+  - ash
+  - beta_carotene
+  - biotin
+  - copper
+  - folacin_(folic_acid)
+  - folate_DFE
+  - folate_food
+  - folic_acid
+  - magnesium
+  - manganese
+  - niacin
+  - niacin_(mg_NE)
+  - pantothenic_acid
+  - pct_calories_from_carbohydrates
+  - pct_calories_from_protein
+  - phosphorous
+  - riboflavin_(B2)
+  - selenium
+  - thiamin_(B1)
+  - vitamin_a_(IU)
+  - vitamin_a_(RAE)
+  - vitamin_a_(RE)
+  - vitamin_b12
+  - vitamin_b6
+  - vitamin_c
+  - vitamin_d_(IU)
+  - vitamin_e_(A-tocopherol)
+  - vitamin_e_(IU)
+  - vitamin_k
+  - water
+  - zinc
+- entity: serviceCustomerCount
+  apis:
+  - Service
+  field_count: 7
+  identifier_fields: []
+  fields:
+  - actual_a_la_carte_count
+  - actual_adult_count
+  - actual_employees
+  - actual_patrons
+  - actual_reimbursable_count
+  - employee_tracking_flag
+  - reimbursable_tracking_flag
+- entity: serviceTemperatures
+  apis:
+  - Service
+  field_count: 13
+  identifier_fields:
+  - location_equipment_id
+  - service_area_id
+  - station_id
+  - temperature_id
+  - temperature_value
+  fields:
+  - corrective_action
+  - equipment_name
+  - equipment_type
+  - initials
+  - is_bluetooth
+  - location_equipment_id
+  - log_time
+  - service_area_id
+  - station_id
+  - station_name
+  - temp_check_frequency
+  - temperature_id
+  - temperature_value
+- entity: service_area_recipe_list
+  apis:
+  - Service
+  field_count: 7
+  identifier_fields:
+  - master_system_id
+  - recipe_id
+  fields:
+  - calories
+  - master_system_id
+  - recipe_alternate_name
+  - recipe_cost
+  - recipe_id
+  - recipe_name
+  - serving_size_display
+- entity: service_area_updates
+  apis:
+  - Service Areas V2
+  field_count: 2
+  identifier_fields:
+  - service_area_id
+  fields:
+  - last_update_date
+  - service_area_id
+- entity: service_areas
+  apis:
+  - Service Areas
+  - Service Areas V2
+  field_count: 6
+  identifier_fields:
+  - location_id
+  - service_area_id
+  fields:
+  - enabled
+  - location_id
+  - profit_center
+  - profit_center_name
+  - service_area_id
+  - service_area_name
+- entity: service_charges
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 8
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_service_charges
+  - c_micros_service_charges
+  - e_micros_service_charges
+  - org_name
+  - org_value
+  - s_micros_service_charges
+  - service_charge_count
+  - source_system
+- entity: service_equipment
+  apis:
+  - Service
+  field_count: 8
+  identifier_fields:
+  - equipment_id
+  - station_id
+  fields:
+  - equipment_description
+  - equipment_id
+  - equipment_type
+  - instructions
+  - station_id
+  - station_name
+  - temp_check_frequency
+  - thresholds
+- entity: service_feature
+  apis:
+  - Service
+  field_count: 4
+  identifier_fields:
+  - feature_id
+  fields:
+  - default_flag
+  - feature_id
+  - feature_name
+  - override_location_ids
+- entity: service_items
+  apis:
+  - Service
+  - Service Menu Items
+  field_count: 48
+  identifier_fields:
+  - location_id
+  - master_system_id
+  - meal_period_id
+  - production_area_id
+  - recipe_category_id
+  - recipe_id
+  - service_area_id
+  - service_menu_id
+  - service_menu_item_id
+  - serving_size_fraction_id
+  - serving_size_number
+  - serving_size_uom_id
+  fields:
+  - acceptability_factor
+  - comments
+  - food_cost
+  - is_closed
+  - is_mto
+  - is_result_required
+  - is_temp_required
+  - leftover_count
+  - location
+  - location_id
+  - location_name
+  - master_system_id
+  - meal_period
+  - meal_period_id
+  - on_hand_count
+  - planned_count
+  - prep_count
+  - production_area_id
+  - production_area_name
+  - recipe_category_description
+  - recipe_category_id
+  - recipe_id
+  - recipe_marketing_name
+  - recipe_name
+  - recipe_short_name
+  - reimbursable_tracking
+  - service_area_id
+  - service_area_name
+  - service_date
+  - service_menu_id
+  - service_menu_item_id
+  - serving_size_description
+  - serving_size_display
+  - serving_size_fraction_description
+  - serving_size_fraction_id
+  - serving_size_number
+  - serving_size_uom_id
+  - smi_row_no
+  - sold_count
+  - sub_location
+- entity: service_meal_periods
+  apis:
+  - Service Meal Periods
+  field_count: 10
+  identifier_fields:
+  - location_id
+  - meal_period_id
+  - service_area_id
+  - service_menu_id
+  - site_id
+  fields:
+  - location_id
+  - location_name
+  - meal_period
+  - meal_period_id
+  - service_area_id
+  - service_area_name
+  - service_date
+  - service_menu_id
+  - site_id
+  - site_name
+- entity: service_menu_items_updates
+  apis:
+  - Service
+  field_count: 3
+  identifier_fields:
+  - location_id
+  - service_area_id
+  fields:
+  - last_update_date
+  - location_id
+  - service_area_id
+- entity: service_menus
+  apis:
+  - Service
+  - Service Menu Items
+  - Service Menus
+  field_count: 9
+  identifier_fields:
+  - location_id
+  - meal_period_id
+  - service_area_id
+  - service_menu_id
+  fields:
+  - location_id
+  - location_name
+  - meal_period
+  - meal_period_id
+  - menu
+  - service_area_id
+  - service_area_name
+  - service_date
+  - service_menu_id
+- entity: service_photos
+  apis:
+  - Service
+  field_count: 5
+  identifier_fields:
+  - period_id
+  - photo_id
+  - service_area_id
+  - station_id
+  fields:
+  - period_id
+  - photo_id
+  - service_area_id
+  - station_id
+  - time_taken
+- entity: service_recipes
+  apis:
+  - Service Recipe
+  field_count: 1
+  identifier_fields: []
+  fields:
+  - recipe
+- entity: service_results
+  apis:
+  - Service Results
+  field_count: 6
+  identifier_fields: []
+  fields:
+  - comments
+  - leftover_count
+  - on_hand_count
+  - planned_count
+  - prep_count
+  - waste_count
+- entity: service_waste
+  apis:
+  - Service
+  field_count: 5
+  identifier_fields:
+  - station_id
+  - waste_id
+  - waste_value
+  fields:
+  - station_id
+  - waste_id
+  - waste_type
+  - waste_unit
+  - waste_value
+- entity: shift_segments
+  apis:
+  - Labor Schedule
+  field_count: 12
+  identifier_fields:
+  - segment_id
+  - segment_number
+  fields:
+  - department_name
+  - end_date_time
+  - job_name
+  - location_name
+  - org_path
+  - profit_center
+  - profit_center_name
+  - segment_id
+  - segment_number
+  - segment_type
+  - site_name
+  - start_date_time
+- entity: site_details
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields:
+  - site_id
+  fields:
+  - site_id
+  - source_system
+- entity: site_journal
+  apis:
+  - Service
+  field_count: 8
+  identifier_fields:
+  - from_station_id
+  - journal_id
+  - site_id
+  - to_station_id
+  fields:
+  - desecription
+  - from_station_id
+  - from_station_name
+  - journal_date
+  - journal_id
+  - site_id
+  - to_station_id
+  - to_station_name
+- entity: site_pin
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields: []
+  fields:
+  - pin
+  - pin_required
+- entity: sites
+  apis:
+  - Sites
+  field_count: 7
+  identifier_fields:
+  - site_id
+  fields:
+  - create_date
+  - last_update_date
+  - site
+  - site_enabled
+  - site_id
+  - site_name
+  - site_no
+- entity: skuBodyParam
+  apis:
+  - Product
+  - Product Items
+  field_count: 3
+  identifier_fields: []
+  fields:
+  - item_description
+  - msa
+  - price
+- entity: skus
+  apis:
+  - Product
+  - Product Items
+  field_count: 9
+  identifier_fields:
+  - category_id
+  fields:
+  - category_id
+  - gl_account
+  - item_description
+  - msa
+  - order_uom
+  - price_match
+  - short_description
+  - similarity_match
+  - supplier_sku
+- entity: storage_areas
+  apis:
+  - Inventory
+  - Service Inventory
+  - Service Recipes V2
+  field_count: 12
+  identifier_fields:
+  - location_id
+  - site_id
+  - storage_area_id
+  fields:
+  - description
+  - level1
+  - level2
+  - level3
+  - location_id
+  - site_id
+  - sort_order
+  - storage_area_id
+  - storage_area_level
+  - storage_area_name
+  - storage_area_order
+  - sub_storage
+- entity: sub_location_address_details
+  apis:
+  - Sub Location Core Details
+  field_count: 25
+  identifier_fields:
+  - org_value
+  fields:
+  - address_line_1
+  - address_line_2
+  - address_line_3
+  - address_line_4
+  - address_line_5
+  - address_type
+  - admin_area_level_3
+  - attn_line
+  - city_locality
+  - country
+  - country_code
+  - establishment
+  - formatted_address
+  - is_validated
+  - latitude
+  - longitude
+  - neighborhood
+  - org_address_status
+  - org_name
+  - org_type
+  - org_value
+  - postal_code
+  - postal_town
+  - source
+  - state_province
+- entity: sub_location_contacts_details
+  apis:
+  - Sub Location Core Details
+  field_count: 10
+  identifier_fields:
+  - org_value
+  fields:
+  - contact_type
+  - country
+  - first_name
+  - job_title
+  - last_name
+  - last_update_date
+  - org_contact_status
+  - org_name
+  - org_value
+  - primary_email
+- entity: sub_locations
+  apis:
+  - Organization Hierarchy
+  - Service
+  - Service Menu Items
+  - Sub Locations
+  field_count: 19
+  identifier_fields:
+  - location_id
+  - service_area_id
+  - site_id
+  - sub_location_id
+  - sub_location_type_id
+  fields:
+  - location
+  - location_id
+  - location_name
+  - menu_items
+  - profit_center
+  - profit_center_name
+  - service_area_enabled
+  - service_area_id
+  - service_area_name
+  - site
+  - site_id
+  - status
+  - status_description
+  - sub_location
+  - sub_location_enabled
+  - sub_location_id
+  - sub_location_name
+  - sub_location_type
+  - sub_location_type_id
+- entity: sub_storage
+  apis:
+  - Service Inventory
+  field_count: 5
+  identifier_fields:
+  - storage_area_id
+  fields:
+  - sort_order
+  - storage_area_id
+  - storage_area_level
+  - storage_area_name
+  - sub_storage
+- entity: sub_storage_1
+  apis:
+  - Service Inventory
+  field_count: 4
+  identifier_fields:
+  - storage_area_id
+  fields:
+  - sort_order
+  - storage_area_id
+  - storage_area_level
+  - storage_area_name
+- entity: suite_wizard_order_details
+  apis:
+  - Catering
+  field_count: 23
+  identifier_fields:
+  - customer_id
+  - order_detail_id
+  - order_id
+  - suite_number
+  fields:
+  - category_description
+  - customer_id
+  - customer_name
+  - event_date
+  - event_description
+  - event_subcatergory_description
+  - event_type
+  - gl_code
+  - gl_code_description
+  - gl_code_percent_of_item
+  - last_update_date
+  - order_amount
+  - order_detail_id
+  - order_id
+  - order_num
+  - order_status
+  - order_total_at_closing
+  - order_type
+  - quantity
+  - suite_number
+  - title
+  - total_price
+  - unit_price
+- entity: supplier_items
+  apis:
+  - Product
+  - Product Items
+  field_count: 30
+  identifier_fields:
+  - manufacturer_part_number
+  - product_master_id
+  fields:
+  - additional_description
+  - average_weight_in_pounds
+  - brand
+  - category_long_description
+  - category_short_description
+  - creation_date
+  - gtin
+  - harmonized_category
+  - is_delete_marked
+  - item_base_unit_of_measure
+  - item_city
+  - item_postal_code
+  - item_state
+  - last_updated_date
+  - manufacturer_name
+  - manufacturer_part_number
+  - msa
+  - order_unit_of_measure
+  - pack_quantity
+  - pack_size
+  - price
+  - price_by_pound
+  - product_master_description
+  - product_master_id
+  - product_master_source
+  - stock_status
+  - storage_code
+  - supplier_item_description
+  - supplier_sku
+  - upload_date
+- entity: supplier_receipt_detail_items
+  apis:
+  - Product
+  field_count: 22
+  identifier_fields:
+  - manufacturer_part_number
+  - mdg_item_category_id
+  fields:
+  - account_category
+  - base_unit_of_measurement
+  - brand
+  - country_legal_entity
+  - discount_amount
+  - freight_amount
+  - item_description
+  - item_quantity
+  - line_type
+  - manufacturer_name
+  - manufacturer_part_number
+  - mdg_item_category_id
+  - pack_quantity
+  - pack_size
+  - purchase_unit_of_measure
+  - service_type
+  - summary_account
+  - supplier_sku
+  - tax_amount
+  - unit_amount
+  - unit_cost
+  - user_email_address
+- entity: supplier_receipt_details
+  apis:
+  - Product
+  field_count: 20
+  identifier_fields:
+  - doc_id
+  - doc_number
+  - memo_number
+  - po_number
+  fields:
+  - currency_code
+  - delivery_date
+  - doc_amount
+  - doc_creation_date
+  - doc_date
+  - doc_description
+  - doc_id
+  - doc_number
+  - doc_type
+  - inventory_flag
+  - items
+  - last_updated_datetime
+  - location
+  - location_short_name
+  - memo_number
+  - msa
+  - po_number
+  - profit_center
+  - supplier_credit_memo
+  - vendor_name
+- entity: supplier_receipts
+  apis:
+  - Product
+  - Product Items
+  field_count: 40
+  identifier_fields:
+  - doc_id
+  - doc_number
+  - manufacturer_part_number
+  - mdg_item_category_id
+  - memo_number
+  - po_number
+  fields:
+  - account_category
+  - base_unit_of_measurement
+  - brand
+  - country_legal_entity
+  - currency_code
+  - delivery_date
+  - discount_amount
+  - doc_amount
+  - doc_creation_date
+  - doc_date
+  - doc_description
+  - doc_id
+  - doc_number
+  - doc_type
+  - freight_amount
+  - item_description
+  - item_quantity
+  - last_updated_datetime
+  - line_type
+  - location
+  - location_short_name
+  - manufacturer_name
+  - manufacturer_part_number
+  - mdg_item_category_id
+  - memo_number
+  - msa
+  - pack_quantity
+  - pack_size
+  - po_number
+  - profit_center
+  - purchase_unit_of_measure
+  - service_type
+  - summary_account
+  - supplier_credit_memo
+  - supplier_sku
+  - tax_amount
+  - unit_amount
+  - unit_cost
+  - user_email_address
+  - vendor_name
+- entity: suppliers
+  apis:
+  - Organization
+  - Organization Suppliers
+  field_count: 12
+  identifier_fields:
+  - customer_number
+  fields:
+  - assignment_start_date
+  - customer_number
+  - enablement_type
+  - harmonized_category
+  - inventory
+  - location
+  - location_name
+  - msa
+  - short_description
+  - supplier_display_name
+  - vendor_name
+  - vendor_site_cd
+- entity: survey_response
+  apis:
+  - Growth
+  field_count: 9
+  identifier_fields:
+  - measure_value
+  fields:
+  - country
+  - location
+  - location_name
+  - measure_value
+  - profit_center
+  - profit_center_name
+  - response_date
+  - survey_group
+  - survey_type
+- entity: systopia_checks
+  apis:
+  - POS Transactions
+  field_count: 14
+  identifier_fields:
+  - check_id
+  - check_number
+  - location_number
+  - source_system_id
+  fields:
+  - check_id
+  - check_number
+  - created_datetime
+  - discount_total
+  - employee
+  - last_updated_datetime
+  - location_number
+  - service_charge_total
+  - source_system_id
+  - subtotal
+  - tax_total
+  - total_amount
+  - transaction_datetime
+  - void_total
+- entity: tapin2_adjustments
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 61
+  identifier_fields:
+  - aramark_fulfillment_device_id
+  - check_id
+  - check_status_id
+  - delivery_method_id
+  - device_id
+  - event_id
+  - fulfillment_device_id
+  - location_id
+  - service_id
+  - site_id
+  - tab_id
+  fields:
+  - aramark_fulfillment_device_id
+  - aramark_fulfillment_device_title
+  - base_utc_offset
+  - check_date_utc
+  - check_id
+  - check_local_datetime
+  - check_status
+  - check_status_id
+  - claimed_date
+  - delivery_date
+  - delivery_method
+  - delivery_method_id
+  - device
+  - device_id
+  - discount_code
+  - discount_deducted
+  - discount_gross
+  - discount_net
+  - event_id
+  - fee_added_deducted
+  - fee_added_gross
+  - fee_added_net
+  - fee_exists
+  - fee_flat
+  - fee_included
+  - fee_included_deducted
+  - fee_included_gross
+  - fee_included_net
+  - fee_percentage
+  - fulfillment_device_id
+  - last_updated_date
+  - location_id
+  - location_name
+  - out_date
+  - prep_date
+  - print_date
+  - sale_date
+  - schedule_date
+  - service_id
+  - service_title
+- entity: tapin2_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 61
+  identifier_fields:
+  - aramark_fulfillment_device_id
+  - check_id
+  - check_status_id
+  - delivery_method_id
+  - device_id
+  - event_id
+  - fulfillment_device_id
+  - location_id
+  - service_id
+  - site_id
+  - tab_id
+  fields:
+  - aramark_fulfillment_device_id
+  - aramark_fulfillment_device_title
+  - base_utc_offset
+  - check_date_utc
+  - check_id
+  - check_local_datetime
+  - check_status
+  - check_status_id
+  - claimed_date
+  - delivery_date
+  - delivery_method
+  - delivery_method_id
+  - device
+  - device_id
+  - discount_code
+  - discount_deducted
+  - discount_gross
+  - discount_net
+  - event_id
+  - fee_added_deducted
+  - fee_added_gross
+  - fee_added_net
+  - fee_exists
+  - fee_flat
+  - fee_included
+  - fee_included_deducted
+  - fee_included_gross
+  - fee_included_net
+  - fee_percentage
+  - fulfillment_device_id
+  - last_updated_date
+  - location_id
+  - location_name
+  - out_date
+  - prep_date
+  - print_date
+  - sale_date
+  - schedule_date
+  - service_id
+  - service_title
+- entity: tapin2_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 26
+  identifier_fields:
+  - check_id
+  - check_line_item_id
+  - event_id
+  - item_id
+  - location_id
+  - site_id
+  - tab_id
+  fields:
+  - base_utc_offset
+  - check_date_utc
+  - check_id
+  - check_id2
+  - check_line_item_id
+  - check_local_datetime
+  - commission
+  - discount
+  - discount_code
+  - event_id
+  - item_id
+  - item_name
+  - location_id
+  - location_name
+  - price_per
+  - quantity
+  - site_id
+  - site_name
+  - status
+  - sub_total
+  - tab_id
+  - tax_added
+  - tax_included
+  - timezone
+  - total
+  - transaction_type
+- entity: tapin2_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 24
+  identifier_fields:
+  - check_id
+  - credit_card_type_id
+  - event_id
+  - location_id
+  - site_id
+  - tab_id
+  - tender_id
+  - tender_type_id
+  - transaction_id
+  fields:
+  - amount
+  - base_utc_offset
+  - check_date_utc
+  - check_id
+  - check_id2
+  - check_local_datetime
+  - credit_card_type
+  - credit_card_type_id
+  - event_id
+  - last_updated_date
+  - location_id
+  - location_name
+  - site_id
+  - site_name
+  - tab_id
+  - tender_date
+  - tender_id
+  - tender_total
+  - tender_type
+  - tender_type_id
+  - timezone
+  - tip
+  - transaction_id
+  - transaction_type
+- entity: taxes
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 6
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_taxes
+  - c_micros_taxes
+  - org_name
+  - org_value
+  - source_system
+  - tax_count
+- entity: temperature_cooling
+  apis:
+  - Service
+  field_count: 13
+  identifier_fields:
+  - cooldown_log_id
+  - food_item_id
+  - period_id
+  - service_area_id
+  - station_id
+  - temperature_value
+  fields:
+  - cooldown_initiated
+  - cooldown_log_id
+  - corrective_action
+  - food_item_id
+  - food_item_name
+  - initial_temp
+  - log_time
+  - period_id
+  - service_area_id
+  - start_time
+  - station_id
+  - temperature_value
+  - timer_period
+- entity: temperature_events
+  apis:
+  - IoT
+  field_count: 19
+  identifier_fields:
+  - device_id
+  - event_id
+  - location_org_value
+  fields:
+  - asset_key
+  - asset_temp_event_f_key
+  - created_by
+  - created_datetime
+  - device_id
+  - device_name
+  - event_date
+  - event_datetime
+  - event_datetime_15min_bucket
+  - event_datetime_5min_bucket
+  - event_datetime_hr_bucket
+  - event_datetime_utc
+  - event_id
+  - humidity
+  - last_updated_by
+  - last_updated_datetime
+  - location_org_value
+  - temp_c
+  - temp_f
+- entity: tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 11
+  identifier_fields:
+  - org_value
+  fields:
+  - bypass_tenders
+  - c_micros_tenders
+  - e_micros_tenders
+  - mashgin_tenders
+  - org_name
+  - org_value
+  - s_micros_tenders
+  - source_system
+  - tapin2_tenders
+  - tender_count
+  - zippin_tenders
+- entity: timecard
+  apis:
+  - Labor Schedule
+  field_count: 7
+  identifier_fields:
+  - employee_id
+  fields:
+  - date
+  - employee_id
+  - employee_name
+  - in_punch
+  - in_punch_exception
+  - out_punch
+  - out_punch_exception
+- entity: units_of_measure
+  apis:
+  - Units of Measure
+  field_count: 10
+  identifier_fields:
+  - uom_id
+  fields:
+  - description
+  - grams_factor
+  - metric_flag
+  - ml_factor
+  - ozw_factor
+  - standard_flag
+  - tsp_factor
+  - uom_cut_flag
+  - uom_id
+  - uom_type
+- entity: user_disabled_locations
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields:
+  - location_id
+  fields:
+  - is_disabled
+  - location_id
+- entity: user_hierarchy
+  apis:
+  - Profile User
+  field_count: 14
+  identifier_fields: []
+  fields:
+  - business_unit
+  - business_unit_name
+  - company
+  - company_name
+  - country_code
+  - district
+  - district_name
+  - division
+  - division_name
+  - email
+  - line_of_business
+  - line_of_business_name
+  - region
+  - region_name
+- entity: user_sites
+  apis:
+  - Service
+  field_count: 2
+  identifier_fields:
+  - site_id
+  fields:
+  - site_id
+  - site_name
+- entity: volume_rank
+  apis:
+  - POS Daily Product Ranking
+  field_count: 7
+  identifier_fields: []
+  fields:
+  - calendar_date
+  - product
+  - product_department
+  - product_family
+  - rank
+  - total_items_sold
+  - total_sales
+- entity: zippin_adjustments
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 14
+  identifier_fields:
+  - adjustment_reference_id
+  - check_id
+  - store_id
+  - t_store_id
+  fields:
+  - adjustment_amount
+  - adjustment_back_to_card
+  - adjustment_date
+  - adjustment_reference_id
+  - adjustment_type
+  - check_datetime
+  - check_id
+  - entry_timestamp
+  - payment_brand
+  - payment_mode
+  - status
+  - store_id
+  - store_timezone
+  - t_store_id
+- entity: zippin_checks
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 26
+  identifier_fields:
+  - check_id
+  - loyalty_membership_id
+  - store_id
+  - t_store_id
+  fields:
+  - check_billed_datetime
+  - check_id
+  - check_order_datetime
+  - declined_amount
+  - discount
+  - entry_timestamp
+  - error_code
+  - error_message
+  - exit_timestamp
+  - gross_amount
+  - gross_tax
+  - last_updated_date
+  - loyalty
+  - loyalty_membership_id
+  - loyalty_membership_provider
+  - payment_gateway_name
+  - received_amount
+  - received_tax
+  - refund_amount
+  - refund_back_to_card
+  - shopper_token
+  - status
+  - store_id
+  - store_timezone
+  - t_store_id
+  - total_items
+- entity: zippin_discounts
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 12
+  identifier_fields:
+  - check_id
+  - store_id
+  - t_store_id
+  fields:
+  - check_datetime
+  - check_id
+  - discount_amount
+  - discount_code
+  - entry_timestamp
+  - name
+  - sku
+  - status
+  - store_id
+  - store_timezone
+  - t_store_id
+  - type
+- entity: zippin_items
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 19
+  identifier_fields:
+  - check_id
+  - store_id
+  - t_store_id
+  fields:
+  - category_code
+  - category_name
+  - check_datetime
+  - check_id
+  - discount
+  - entry_timestamp
+  - gross_amount
+  - gross_tax
+  - loyalty
+  - name
+  - quantity
+  - sku
+  - status
+  - store_id
+  - store_timezone
+  - t_store_id
+  - tax_rate
+  - type
+  - unit_price
+- entity: zippin_tenders
+  apis:
+  - POS Transactions
+  - Point of Sale
+  field_count: 17
+  identifier_fields:
+  - check_id
+  - store_id
+  - t_store_id
+  - tender_reference_id
+  fields:
+  - check_datetime
+  - check_id
+  - entry_timestamp
+  - error_code
+  - error_message
+  - status
+  - store_id
+  - store_timezone
+  - t_store_id
+  - tender_amount
+  - tender_back_to_card
+  - tender_brand
+  - tender_date
+  - tender_gateway_name
+  - tender_mode
+  - tender_reference_id
+  - type
+relationships:
+- from: notifications
+  to: alerts
+  type: has_many
+  via: alerts
+  api: Alerts
+- from: quickReplies
+  to: buttons
+  type: has_many
+  via: buttons
+  api: Ask Marko
+- from: attachment
+  to: content
+  type: has_many
+  via: content
+  api: Ask Marko
+- from: response
+  to: outputText
+  type: has_many
+  via: outputText
+  api: Ask Marko
+- from: response
+  to: attachment
+  type: has_many
+  via: attachment
+  api: Ask Marko
+- from: response
+  to: insight
+  type: has_many
+  via: insight
+  api: Ask Marko
+- from: response
+  to: quickReplies
+  type: has_many
+  via: quickReplies
+  api: Ask Marko
+- from: orders
+  to: suite_wizard_order_details
+  type: has_many
+  via: suite_wizard_orders
+  api: Catering
+- from: purchase_orders
+  to: purchase_order_details
+  type: has_many
+  via: details
+  api: Inventory
+- from: inventory
+  to: pack_unit_size
+  type: has_one
+  via: pack_unit_size
+  api: Inventory
+- from: inventory
+  to: details
+  type: has_one
+  via: details
+  api: Inventory
+- from: scheduled_shifts
+  to: shift_segments
+  type: has_many
+  via: shift_segment
+  api: Labor Schedule
+- from: financial_organizations
+  to: sub_locations
+  type: has_many
+  via: sub_locations
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: locations
+  type: has_many
+  via: locations
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: profit_centers
+  type: has_many
+  via: profit_centers
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: districts
+  type: has_many
+  via: districts
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: regions
+  type: has_many
+  via: regions
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: lines_of_business
+  type: has_many
+  via: lines_of_business
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: business_units
+  type: has_many
+  via: business_units
+  api: Organization Hierarchy
+- from: financial_organizations
+  to: divisions
+  type: has_many
+  via: divisions
+  api: Organization Hierarchy
+- from: checks
+  to: mashgin_checks
+  type: has_many
+  via: mashgin_checks
+  api: Point of Sale
+- from: checks
+  to: s_micros_checks
+  type: has_many
+  via: s_micros_checks
+  api: Point of Sale
+- from: checks
+  to: e_micros_checks
+  type: has_many
+  via: e_micros_checks
+  api: Point of Sale
+- from: checks
+  to: c_micros_checks
+  type: has_many
+  via: c_micros_checks
+  api: Point of Sale
+- from: checks
+  to: bypass_checks
+  type: has_many
+  via: bypass_checks
+  api: Point of Sale
+- from: checks
+  to: zippin_checks
+  type: has_many
+  via: zippin_checks
+  api: Point of Sale
+- from: checks
+  to: tapin2_checks
+  type: has_many
+  via: tapin2_checks
+  api: Point of Sale
+- from: items
+  to: mashgin_items
+  type: has_many
+  via: mashgin_items
+  api: Point of Sale
+- from: items
+  to: s_micros_items
+  type: has_many
+  via: s_micros_items
+  api: Point of Sale
+- from: items
+  to: e_micros_items
+  type: has_many
+  via: e_micros_items
+  api: Point of Sale
+- from: items
+  to: c_micros_items
+  type: has_many
+  via: c_micros_items
+  api: Point of Sale
+- from: items
+  to: bypass_items
+  type: has_many
+  via: bypass_items
+  api: Point of Sale
+- from: items
+  to: zippin_items
+  type: has_many
+  via: zippin_items
+  api: Point of Sale
+- from: items
+  to: tapin2_items
+  type: has_many
+  via: tapin2_items
+  api: Point of Sale
+- from: tenders
+  to: mashgin_tenders
+  type: has_many
+  via: mashgin_tenders
+  api: Point of Sale
+- from: tenders
+  to: s_micros_tenders
+  type: has_many
+  via: s_micros_tenders
+  api: Point of Sale
+- from: tenders
+  to: e_micros_tenders
+  type: has_many
+  via: e_micros_tenders
+  api: Point of Sale
+- from: tenders
+  to: c_micros_tenders
+  type: has_many
+  via: c_micros_tenders
+  api: Point of Sale
+- from: tenders
+  to: bypass_tenders
+  type: has_many
+  via: bypass_tenders
+  api: Point of Sale
+- from: tenders
+  to: zippin_tenders
+  type: has_many
+  via: zippin_tenders
+  api: Point of Sale
+- from: tenders
+  to: tapin2_tenders
+  type: has_many
+  via: tapin2_tenders
+  api: Point of Sale
+- from: discounts
+  to: mashgin_discounts
+  type: has_many
+  via: mashgin_discounts
+  api: Point of Sale
+- from: discounts
+  to: s_micros_discounts
+  type: has_many
+  via: s_micros_discounts
+  api: Point of Sale
+- from: discounts
+  to: e_micros_discounts
+  type: has_many
+  via: e_micros_discounts
+  api: Point of Sale
+- from: discounts
+  to: c_micros_discounts
+  type: has_many
+  via: c_micros_discounts
+  api: Point of Sale
+- from: discounts
+  to: bypass_discounts
+  type: has_many
+  via: bypass_discounts
+  api: Point of Sale
+- from: discounts
+  to: zippin_discounts
+  type: has_many
+  via: zippin_discounts
+  api: Point of Sale
+- from: service_charges
+  to: s_micros_service_charges
+  type: has_many
+  via: s_micros_service_charges
+  api: Point of Sale
+- from: service_charges
+  to: e_micros_service_charges
+  type: has_many
+  via: e_micros_service_charges
+  api: Point of Sale
+- from: service_charges
+  to: c_micros_service_charges
+  type: has_many
+  via: c_micros_service_charges
+  api: Point of Sale
+- from: service_charges
+  to: bypass_service_charges
+  type: has_many
+  via: bypass_service_charges
+  api: Point of Sale
+- from: taxes
+  to: c_micros_taxes
+  type: has_many
+  via: c_micros_taxes
+  api: Point of Sale
+- from: taxes
+  to: bypass_taxes
+  type: has_many
+  via: bypass_taxes
+  api: Point of Sale
+- from: adjustments
+  to: bypass_adjustments
+  type: has_many
+  via: bypass_adjustments
+  api: Point of Sale
+- from: adjustments
+  to: zippin_adjustments
+  type: has_many
+  via: zippin_adjustments
+  api: Point of Sale
+- from: adjustments
+  to: tapin2_adjustments
+  type: has_many
+  via: tapin2_adjustments
+  api: Point of Sale
+- from: checks
+  to: nextep_checks
+  type: has_many
+  via: nextep_checks
+  api: POS Transactions
+- from: checks
+  to: systopia_checks
+  type: has_many
+  via: systopia_checks
+  api: POS Transactions
+- from: check_line_items
+  to: bypass_line_item_checks
+  type: has_many
+  via: bypass_checks
+  api: POS Transactions
+- from: bypass_line_item_checks
+  to: bypass_line_items
+  type: has_many
+  via: line_items
+  api: POS Transactions
+- from: bypass_line_items
+  to: bypass_check_line_item_addons
+  type: has_many
+  via: addons
+  api: POS Transactions
+- from: request
+  to: menuitem
+  type: has_many
+  via: menuitem
+  api: Product
+- from: supplier_receipt_details
+  to: supplier_receipt_detail_items
+  type: has_many
+  via: items
+  api: Product
+- from: recipe
+  to: ingredients
+  type: has_many
+  via: ingredients
+  api: Product Recipe
+- from: nutrition
+  to: allergen_attributes
+  type: has_many
+  via: allergen_attributes
+  api: Product Recipe
+- from: nutrition
+  to: dietary_attributes
+  type: has_many
+  via: dietary_attributes
+  api: Product Recipe
+- from: nutrition
+  to: HFL_attributes
+  type: has_many
+  via: HFL_attributes
+  api: Product Recipe
+- from: nutrition
+  to: primary_attributes
+  type: has_many
+  via: primary_attributes
+  api: Product Recipe
+- from: nutrition
+  to: secondary_attributes
+  type: has_many
+  via: secondary_attributes
+  api: Product Recipe
+- from: service_menus
+  to: menu
+  type: has_many
+  via: menu
+  api: Service
+- from: menu
+  to: sub_locations
+  type: has_many
+  via: sub_locations
+  api: Service
+- from: sub_locations
+  to: menu_items
+  type: has_many
+  via: menu_items
+  api: Service
+- from: storage_areas
+  to: sub_storage
+  type: has_many
+  via: sub_storage
+  api: Service Inventory
+- from: sub_storage
+  to: sub_storage_1
+  type: has_many
+  via: sub_storage
+  api: Service Inventory
+- from: service_recipes
+  to: recipes
+  type: has_many
+  via: recipe
+  api: Service Recipe
+- from: recipes
+  to: ingredients
+  type: has_many
+  via: ingredients
+  api: Service Recipe

@@ -64,13 +64,19 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aramark is a Fortune 500 company providing food, facilities, and uniform services. The Marko platform provides a data and AI API with 70+ services for real-time insights across organizational, point-of-sale, product, and revenue data.
+
+Aramark is a Fortune 500 food, facilities and uniform services company. Its Marko platform is a data and AI layer over Aramark operations, published as 60 documented REST APIs on an Apigee gateway at marko.aramark.net and catalogued on the Marko Developer Portal. The surface spans the full Aramark organization hierarchy (division, region, district, line of business, business unit, client, location, sub location, profit center), point-of-sale transactions and daily sales, labor scheduling and daily labor, inventory and purchasing, product, recipe and nutrition data, service execution, food waste and IoT temperature monitoring. Aramark publishes every OpenAPI document itself, in JSON and YAML, in the public aramarkservicesinc/markoapis GitHub repository, and renders each one in an in-page RapiDoc console. Access is gated: you register an application, choose API products, and a per-application apikey is issued on approval.
 
 **APIs.json:** [https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml)
 
 ## Scope
 
 - **Type:** Index
+- **APIs profiled:** 60
+- **Documented operations:** 216 across 191 paths
+- **Contract source:** Aramark publishes every OpenAPI itself at [github.com/aramarkservicesinc/markoapis](https://github.com/aramarkservicesinc/markoapis) and renders each one on its own portal page. All 60 specs in `openapi/` are verbatim harvests; `openapi/_original/` holds the untouched bytes.
+- **Production gateway:** `https://marko.aramark.net` (Apigee). Probed 2026-09-04: 43 of the 60 documented production base paths answered HTTP 401 `steps.oauth.v2.FailedToResolveAPIKey` (proxy live, key required); 17 answered HTTP 404 `ApplicationNotFound` (documented but not routed in production) — see `lifecycle/aramark-lifecycle.yml`.
+- **Authentication:** `apikey` request header, issued per registered application after portal approval.
 
 ## Tags
 
@@ -78,56 +84,150 @@ Aramark is a Fortune 500 company providing food, facilities, and uniform service
 - Facilities Management
 - Uniform Services
 - Data Platform
+- Point of Sale
+- Labor
+- Inventory
+- Recipes and Nutrition
+- Organization Hierarchy
 - Fortune 500
+- Apigee
+- Hospitality
 
 ## Timestamps
 
 - **Created:** 2026-03-26
-- **Modified:** 2026-04-19
+- **Modified:** 2026-09-04
 
 ## APIs
 
-### Aramark Marko API
+| API | Docs | Production base | Ops |
+|---|---|---|---|
+| Aramark Marko Alerts | [docs](https://marko-developers.aramark.net/doc/alerts) | `https://marko.aramark.net/v1/alerts` | 4 |
+| Aramark Marko Ask Marko | [docs](https://marko-developers.aramark.net/doc/ask-marko) | `https://marko.aramark.net/v1/ask` | 1 |
+| Aramark Marko Business Unit Core Details | [docs](https://marko-developers.aramark.net/doc/business-unit-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Calendar | [docs](https://marko-developers.aramark.net/doc/calendar) | `https://marko.aramark.net/v1` | 3 |
+| Aramark Marko Catering | [docs](https://marko-developers.aramark.net/doc/catering) | `https://marko.aramark.net/v1/catering` | 1 |
+| Aramark Marko Daily Food Waste Tracking | [docs](https://marko-developers.aramark.net/doc/daily-food-waste-tracking) | `https://marko.aramark.net/v1/service/daily` | 2 |
+| Aramark Marko District Core Details | [docs](https://marko-developers.aramark.net/doc/district-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Division Core Details | [docs](https://marko-developers.aramark.net/doc/division-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Financial Daily Account Summary | [docs](https://marko-developers.aramark.net/doc/financial-daily-account-summary) | `https://marko.aramark.net/v1/financial/daily` | 1 |
+| Aramark Marko Growth | [docs](https://marko-developers.aramark.net/doc/growth) | `https://marko.aramark.net/v1/growth` | 1 |
+| Aramark Marko GSC GPO | [docs](https://marko-developers.aramark.net/doc/gsc-gpo-0) | `https://marko.aramark.net/v1/gsc_gpo` | 1 |
+| Aramark Marko Inventory | [docs](https://marko-developers.aramark.net/doc/inventory) | `https://marko.aramark.net/v1/inventory` | 6 |
+| Aramark Marko IoT | [docs](https://marko-developers.aramark.net/doc/iot) | `https://marko.aramark.net/v1/iot` | 2 |
+| Aramark Marko Labor Daily | [docs](https://marko-developers.aramark.net/doc/labor-daily) | `https://marko.aramark.net/v1/labor/daily` | 4 |
+| Aramark Marko Labor Employee | [docs](https://marko-developers.aramark.net/doc/labor-employee) | `https://marko.aramark.net/v1/labor/employee` | 4 |
+| Aramark Marko Labor Manager Employees | [docs](https://marko-developers.aramark.net/doc/labor-manager-employees) | `https://marko.aramark.net/v1/labor/manager` | 1 |
+| Aramark Marko Labor Schedule | [docs](https://marko-developers.aramark.net/doc/labor-schedule) | `https://marko.aramark.net/v1/labor/schedule` | 2 |
+| Aramark Marko Line of Business Core Details | [docs](https://marko-developers.aramark.net/doc/line-business-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Location Core Details | [docs](https://marko-developers.aramark.net/doc/location-core-details) | `https://marko.aramark.net/v1/organization` | 6 |
+| Aramark Marko Marko Users | [docs](https://marko-developers.aramark.net/doc/marko-users) | `https://marko.aramark.net/v1/marko` |  |
+| Aramark Marko Operational Daily | [docs](https://marko-developers.aramark.net/doc/operational-daily) | `https://marko.aramark.net/v1/operational/daily` | 2 |
+| Aramark Marko Organization | [docs](https://marko-developers.aramark.net/doc/organization) | `https://marko.aramark.net/v1` | 3 |
+| Aramark Marko Organization Brands | [docs](https://marko-developers.aramark.net/doc/organization-brands) | `https://marko.aramark.net/v1/organization` | 1 |
+| Aramark Marko Organization Clients | [docs](https://marko-developers.aramark.net/doc/organization-clients) | `https://marko.aramark.net/v1/organization` | 1 |
+| Aramark Marko Organization Hierarchy | [docs](https://marko-developers.aramark.net/doc/organization-hierarchy) | `https://marko.aramark.net/v1/organization/hierarchy` | 1 |
+| Aramark Marko Organization Hierarchy V2 | [docs](https://marko-developers.aramark.net/doc/organization-hierarchy-v2) | `https://marko.aramark.net/v2/organization` | 1 |
+| Aramark Marko Organization Profit Center Core Details | [docs](https://marko-developers.aramark.net/doc/organization-profit-center-core-details) | `https://marko.aramark.net/v1/organization` | 10 |
+| Aramark Marko Organization Suppliers | [docs](https://marko-developers.aramark.net/doc/organization-suppliers) | `https://qa-marko.aramark.net/v1/organization` | 1 |
+| Aramark Marko Point of Sale | [docs](https://marko-developers.aramark.net/doc/point-sale) | `https://marko.aramark.net/v1/pos` | 9 |
+| Aramark Marko POS Daily Product Ranking | [docs](https://marko-developers.aramark.net/doc/pos-daily-product-ranking) | `https://marko.aramark.net/v1/pos/daily/product` | 2 |
+| Aramark Marko POS Daily Sales | [docs](https://marko-developers.aramark.net/doc/pos-daily-sales) | `https://marko.aramark.net/v1/pos/daily` | 2 |
+| Aramark Marko POS Items | [docs](https://marko-developers.aramark.net/doc/pos-items) | `https://marko.aramark.net/v1/pos` | 1 |
+| Aramark Marko POS Transactions | [docs](https://marko-developers.aramark.net/doc/pos-transactions) | `https://marko.aramark.net/v1/pos` | 11 |
+| Aramark Marko Product | [docs](https://marko-developers.aramark.net/doc/product) | `https://qa-marko.aramark.net/v1` | 9 |
+| Aramark Marko Product Recipe | [docs](https://marko-developers.aramark.net/doc/product-recipe) | `https://marko.aramark.net/v1/product/recipe` | 2 |
+| Aramark Marko Product Items | [docs](https://marko-developers.aramark.net/doc/product-retail-items) | `https://qa-marko.aramark.net/v1/product` | 6 |
+| Aramark Marko Profile App | [docs](https://marko-developers.aramark.net/doc/profile-app) | `https://marko.aramark.net/v1/profile/app` | 2 |
+| Aramark Marko Profile User | [docs](https://marko-developers.aramark.net/doc/profile-user) | `https://marko.aramark.net/v1/profile/user` | 7 |
+| Aramark Marko Recipe Decorations | [docs](https://marko-developers.aramark.net/doc/recipe-decorations) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Region Core Details | [docs](https://marko-developers.aramark.net/doc/region-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Security | [docs](https://marko-developers.aramark.net/doc/security) | `https://marko.aramark.net/v1/security` | 2 |
+| Aramark Marko Service | [docs](https://marko-developers.aramark.net/doc/service) | `https://marko.aramark.net/v1/service` | 39 |
+| Aramark Marko Service Areas | [docs](https://marko-developers.aramark.net/doc/service-areas) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Service Areas V2 | [docs](https://marko-developers.aramark.net/doc/service-areas-v2) | `https://marko.aramark.net/v2` | 2 |
+| Aramark Marko Service Inventory | [docs](https://marko-developers.aramark.net/doc/service-inventory) | `https://marko.aramark.net/v1/service` | 3 |
+| Aramark Marko Service Meal Periods | [docs](https://marko-developers.aramark.net/doc/service-meal-periods) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Service Menu Items | [docs](https://marko-developers.aramark.net/doc/service-menu-items) | `https://marko.aramark.net/v1/service_menu_items` | 2 |
+| Aramark Marko Service Menus | [docs](https://marko-developers.aramark.net/doc/service-menus) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Service Production Areas | [docs](https://marko-developers.aramark.net/doc/service-production-areas) | `https://marko.aramark.net/v1/service` | 1 |
+| Aramark Marko Service Production Departments | [docs](https://marko-developers.aramark.net/doc/service-production-departments) | `https://marko.aramark.net/v1/service` | 1 |
+| Aramark Marko Service Recipe | [docs](https://marko-developers.aramark.net/doc/service-recipe) | `https://marko.aramark.net/v1/service` | 2 |
+| Aramark Marko Service Recipes V2 | [docs](https://marko-developers.aramark.net/doc/service-recipes-v2) | `https://marko.aramark.net/v2/service/recipe` | 2 |
+| Aramark Marko Service Results | [docs](https://marko-developers.aramark.net/doc/service-results) | `https://marko.aramark.net/v1/service` | 2 |
+| Aramark Marko Service V3 | [docs](https://marko-developers.aramark.net/doc/service-v3) | `https://marko.aramark.net/v3/service` | 2 |
+| Aramark Marko Service Weekly Overproduction | [docs](https://marko-developers.aramark.net/doc/service-weekly-overproduction) | `https://marko.aramark.net/v1/service/weekly` | 2 |
+| Aramark Marko Sites | [docs](https://marko-developers.aramark.net/doc/sites) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Sub Location Core Details | [docs](https://marko-developers.aramark.net/doc/sub-location-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
+| Aramark Marko Sub Locations | [docs](https://marko-developers.aramark.net/doc/sub-locations) | `https://marko.aramark.net/v1` | 1 |
+| Aramark Marko Units of Measure | [docs](https://marko-developers.aramark.net/doc/units-measure) | `https://marko.aramark.net/v1/recipe` | 1 |
+| Aramark Marko Vendor | [docs](https://marko-developers.aramark.net/doc/vendor) | `https://qa-marko.aramark.net/v1` | 1 |
 
-Marko is Aramark's data and AI platform providing fast, frictionless access to Aramark's robust data universe with 70+ services designed to provide realtime insights and streamline business processes. The API catalog includes services for Organization, Point of Sale, Product, Profit Centers, Revenue Snapshot, Security, and Service management.
+## Artifacts
 
-- **Human URL:** [https://marko-developers.aramark.net/](https://marko-developers.aramark.net/)
-- **Base URL:** `https://www.marko.aramark.net/v1`
-
-#### Tags
-
-- Data Platform
-- Facilities Management
-- Food Services
-- Point of Sale
-- Revenue Analytics
-- Organization Management
-
-#### Properties
-
-- [Portal](https://marko-developers.aramark.net/)
-- [Documentation](https://marko-developers.aramark.net/catalog)
-- [F A Q](https://marko-developers.aramark.net/faqs)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/openapi/marko-api.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/marko-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/marko-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+| Artifact | Method | What it records |
+|---|---|---|
+| `openapi/` (60 + `_original/`) | searched | Verbatim first-party OpenAPI 3.0/3.0.1 and Swagger 2.0 contracts. |
+| `overlays/` (60) | generated | OpenAPI Overlay 1.0.0 adding the production server each contract names in prose but omits from `servers[]`, plus the harvest and probe record. |
+| `authentication/` | searched | apikey header scheme, the portal approval flow, and the live 401 that proves enforcement. |
+| `conventions/` | derived | Response envelope, `bypass-cache`, pagination, idempotency (`none`) and reversibility (`documented`). |
+| `errors/` | derived | Two distinct error envelopes — the Apigee fault and the in-200 `status` field. |
+| `data-model/` | derived | 222 entities, 76 relationships, and the `org_value` pivot the whole platform turns on. |
+| `lifecycle/` | probed | URI versioning across v1/v2/v3, no deprecation policy, and the production availability probe. |
+| `conformance/` | derived | What the contracts do and do not conform to; no domain standard is declared and none exists to declare. |
+| `sandbox/` | searched | The in-page RapiDoc console and the published qa/dev hosts. |
+| `skills/` (4) | generated | Packaged Agent Skills grounded in real operationIds. |
+| `llms/` | generated | llms.txt for the whole platform. |
+| `well-known/` | probed | Every `/.well-known/` path on five hosts — all 404. No pointer is emitted for an absence. |
+| `mcp/` | derived | A candidate tool list only. Aramark ships no MCP server, so this is wired as `X-MCPServerCandidate`, not `MCPServer`. |
+| `packages/` | searched | No first-party SDK exists in any registry — an honest zero. |
+| `plans/`, `rate-limits/` | searched | Nothing published. Recorded as `plan_count: 0` and `limit_count: 0` with the URLs that were checked. |
+| `security/` | probed | TLS, HSTS, SPF and DMARC across three hosts. No security.txt, no bug bounty, no trust center. |
 
 ## Common Properties
 
-- [LinkedIn](https://www.linkedin.com/company/aramark)
+- [DeveloperPortal](https://marko-developers.aramark.net/)
 - [Portal](https://marko-developers.aramark.net/)
 - [Documentation](https://marko-developers.aramark.net/catalog)
-- [GitHub Organization](https://github.com/aramarkservicesinc)
-- [F A Q](https://marko-developers.aramark.net/faqs)
-- [Sign Up](https://marko-developers.aramark.net/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml)
+- [APIReference](https://marko-developers.aramark.net/catalog)
+- [GettingStarted](https://marko-developers.aramark.net/faqs)
+- [FAQ](https://marko-developers.aramark.net/faqs)
+- [SignUp](https://marko-developers.aramark.net/user/register)
+- [Login](https://marko-developers.aramark.net/user/login)
+- [Blog](https://marko-developers.aramark.net/blog)
+- [GitHubOrganization](https://github.com/aramarkservicesinc)
+- [SourceCode](https://github.com/aramarkservicesinc/markoapis)
+- [Support](https://www.aramark.com/contact-us)
+- [TermsOfService](https://www.aramark.com/terms-conditions)
+- [PrivacyPolicy](https://www.aramark.com/privacy-policy)
+- [LinkedIn](https://www.linkedin.com/company/aramark)
+- [Website](https://www.aramark.com/)
+- [AgenticAccess](agentic-access/aramark-agentic-access.yml)
+- [DomainSecurity](security/aramark-domain-security.yml)
+- [Authentication](authentication/aramark-authentication.yml)
+- [APIKeys](authentication/aramark-authentication.yml)
+- [Conventions](conventions/aramark-conventions.yml)
+- [ErrorCatalog](errors/aramark-problem-types.yml)
+- [DataModel](data-model/aramark-data-model.yml)
+- [Lifecycle](lifecycle/aramark-lifecycle.yml)
+- [Conformance](conformance/aramark-conformance.yml)
+- [Sandbox](sandbox/aramark-sandbox.yml)
+- [Console](sandbox/aramark-sandbox.yml)
+- [Packages](packages/aramark-packages.yml)
+- [X-MCPServerCandidate](mcp/aramark-mcp.yml)
+- [AgentSkill](skills/_index.yml)
+- [LLMsTxt](llms/aramark-llms.txt)
+- [RateLimits](rate-limits/aramark-rate-limits.yml)
+- [Plans](plans/aramark-plans-pricing.yml)
+- [FinOps](finops/aramark-finops.yml)
+- [Examples](examples/)
+- [SpectralRules](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml)
 - [Vocabulary](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/vocabulary/aramark-vocabulary.yaml)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [JSONLD](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld)
+- [Overlay](overlays/)
 
 ## Maintainers
 
 **FN:** Kin Lane
+
 **Email:** kin@apievangelist.com

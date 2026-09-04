@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Aramark Marko Daily Food Waste Tracking
+  version: 1.0.0
+extends: openapi/aramark-daily-food-waste-tracking-openapi.json
+x-generated: '2026-09-04'
+x-method: generated
+x-source: openapi/_original/ verbatim harvest + live production probe 2026-09-04
+actions:
+- target: $
+  description: Add the production server the contract names in its own info.description but omits from servers[].
+    Every published Marko spec lists only qa-marko and dev-marko.
+  update:
+    servers:
+    - url: https://marko.aramark.net/v1/service/daily
+      description: Production (declared in info.description; API Evangelist probe of this base path returned HTTP
+        401 on 2026-09-04)
+- target: $.info
+  description: Record where this contract was harvested from and how it was verified.
+  update:
+    x-apievangelist:
+      harvested: '2026-09-04'
+      source: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/food-waste.json
+      documentation: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+      production_probe:
+        url: https://marko.aramark.net/v1/service/daily/food_waste
+        status: 401
+        result: live — Apigee proxy deployed, apikey required

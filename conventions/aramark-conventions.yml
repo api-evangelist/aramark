@@ -1,0 +1,114 @@
+generated: '2026-09-04'
+method: derived
+source: openapi/ (60 Marko OpenAPI documents) + https://marko-developers.aramark.net/faqs + live probes
+  of https://marko.aramark.net
+authentication:
+  style: api-key-header
+  header: apikey
+  note: Every request carries an apikey header. Keys are issued per registered application after an approval
+    step; the FAQ states the request "will be submitted for approval" before a key is generated. No OAuth,
+    no bearer token, no mTLS.
+  docs: https://marko-developers.aramark.net/faqs
+response_envelope:
+  shape:
+    status: ENUM 'Success', 'Error' or 'Not Found'
+    count: number of records
+    <collection>: array of resources
+  content_type: application/json
+  note: Uniform across the platform. Because status can read Error or Not Found inside an HTTP 200, an
+    agent that branches only on the status code will silently treat a failure as a success.
+pagination:
+  style: page-and-size
+  params:
+  - page
+  - size
+  response_fields:
+  - count
+  coverage: partial
+  note: page/size query parameters appear on the higher-volume collections (POS transactions, items).
+    Most Marko operations expose no paging parameters at all and return the whole collection with a count.
+caching:
+  header: bypass-cache
+  values:
+  - 'true'
+  - 'false'
+  note: 'A first-party request header, documented as a parameter on 9 operations and used in every FAQ
+    code sample. Sending bypass-cache: true forces a read past the gateway cache. This is an unusual and
+    genuinely useful agent control: it is the difference between a cached figure and a live one.'
+testing_header:
+  header: smoke
+  note: A smoke header appears as a declared parameter on POS operations; used by Aramark smoke tests.
+    Not documented in prose.
+idempotency:
+  coverage: none
+  mechanism: null
+  header: null
+  scope: []
+  note: No Idempotency-Key header, no client-supplied request identifier, and no replay-protection language
+    anywhere in the 60 specs or on the portal. 41 of 216 operations mutate state (16 POST, 18 PUT, 7 DELETE)
+    with no documented protection against a retried write. The PUT-shaped writes (putCustomerCount, putMenuItems,
+    putResultsWaste, putEquipmentTemperature) are naturally idempotent by HTTP semantics, but that is
+    an inference from the verb, not a provider commitment, so coverage is recorded as none.
+reversibility:
+  grade: documented
+  note: 'A reversal path exists for part of the write surface and no window is stated anywhere, so this
+    grades documented rather than verified. Never assume a retention window for these: none is published.'
+  surfaces:
+  - write: postUserProfile / postUserDevice / postUserProfileSet / postUserProfileSetValue
+    reversal: deleteUserProfile / deleteUserDevice / deleteUserProfileSet / deleteUserProfileSetValue
+    window: null
+    api: Marko Users
+    source: openapi/aramark-marko-users-openapi.json
+  - write: postUAPRole
+    reversal: deleteUAPRole
+    window: null
+    api: Security
+    source: openapi/aramark-security-openapi.json
+  - write: putResultsWaste
+    reversal: deleteResultsWaste
+    window: null
+    api: Service
+    source: openapi/aramark-service-openapi.json
+  - write: putPhotos
+    reversal: deletePhotos
+    window: null
+    api: Service
+    source: openapi/aramark-service-openapi.json
+  - write: putCustomerCount / putEquipmentTemperature / putMenuItems / putTemperaturePrep / putTemperatureCooling
+      / putSiteJournal / putSitePin / putServiceResult
+    reversal: null
+    window: null
+    api: Service
+    note: Operational readings and journal writes. No cancel, void, reverse or restore operation is published
+      for any of them; the only correction path is another write.
+  - write: putPurchaseOrders / putInventoryItems / putConfiguration
+    reversal: null
+    window: null
+    api: Inventory
+    note: No documented reversal.
+  - write: postSiteRequest
+    reversal: null
+    window: null
+    api: Service
+    note: putSiteRequest updates a request but no cancellation operation is published.
+dry_run_mode:
+  supported: false
+  note: No dry-run, preview or validate-only mode. The nearest thing is the smoke header on POS operations,
+    which is a provider-side test flag, not a consumer-facing rehearsal.
+versioning:
+  style: uri-path
+  see: lifecycle/aramark-lifecycle.yml
+request_id_tracing:
+  supported: false
+  note: No request-id or correlation header documented on request or response.
+rate_limit_signaling:
+  documented: false
+  see: rate-limits/aramark-rate-limits.yml
+errors:
+  see: errors/aramark-problem-types.yml
+  rfc9457: false
+cross_links:
+- errors/aramark-problem-types.yml
+- lifecycle/aramark-lifecycle.yml
+- authentication/aramark-authentication.yml
+- rate-limits/aramark-rate-limits.yml

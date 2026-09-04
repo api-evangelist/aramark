@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Aramark Marko Product
+  version: 1.0.0
+extends: openapi/aramark-product-openapi.json
+x-generated: '2026-09-04'
+x-method: generated
+x-source: openapi/_original/ verbatim harvest + live production probe 2026-09-04
+actions:
+- target: $.info
+  description: Record where this contract was harvested from and how it was verified.
+  update:
+    x-apievangelist:
+      harvested: '2026-09-04'
+      source: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product.json
+      documentation: https://marko-developers.aramark.net/doc/product
+      production_probe:
+        url: https://marko.aramark.net/v1/product/retail/items/TESTVALUE
+        status: 404
+        result: not routed — Apigee returned ApplicationNotFound for this documented production path

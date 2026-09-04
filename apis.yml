@@ -1,206 +1,1382 @@
 aid: aramark
-url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml
-apis:
-- aid: aramark:aramark-organization-api
-  name: Aramark Organization API
-  description: Organization hierarchy and location management
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Organization
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-organization-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-- aid: aramark:aramark-point-of-sale-api
-  name: Aramark Point of Sale API
-  description: Point of sale transaction data
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Point-of-Sale
-  tags_raw:
-  - Point of Sale
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-point-of-sale-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-- aid: aramark:aramark-product-api
-  name: Aramark Product API
-  description: Product and menu catalog data
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Product
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-product-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-- aid: aramark:aramark-profit-centers-api
-  name: Aramark Profit Centers API
-  description: Profit center and financial unit management
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Profit Centers
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-profit-centers-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-- aid: aramark:aramark-revenue-api
-  name: Aramark Revenue API
-  description: Revenue snapshot and financial analytics
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Revenue
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-revenue-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-- aid: aramark:aramark-service-api
-  name: Aramark Service API
-  description: Service management and tracking
-  humanURL: https://marko-developers.aramark.net/
-  baseURL: https://www.marko.aramark.net/v1
-  tags:
-  - Service
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-service-api-openapi.yml
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-description: >-
-  Aramark is a Fortune 500 company providing food, facilities, and uniform services. The Marko platform provides a data and AI API with 70+ services for real-time insights across organizational, point-of-sale,
-  product, and revenue data.
 name: Aramark
+url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml
 type: Index
+description: 'Aramark is a Fortune 500 food, facilities and uniform services company. Its Marko platform is a data and AI
+  layer over Aramark operations, published as 60 documented REST APIs on an Apigee gateway at marko.aramark.net and catalogued
+  on the Marko Developer Portal. The surface spans the full Aramark organization hierarchy (division, region, district, line
+  of business, business unit, client, location, sub location, profit center), point-of-sale transactions and daily sales,
+  labor scheduling and daily labor, inventory and purchasing, product, recipe and nutrition data, service execution, food
+  waste and IoT temperature monitoring. Aramark publishes every OpenAPI document itself, in JSON and YAML, in the public aramarkservicesinc/markoapis
+  GitHub repository, and renders each one in an in-page RapiDoc console. Access is gated: you register an application, choose
+  API products, and a per-application apikey is issued on approval.'
+tags:
+- Food Services
+- Facilities Management
+- Uniform Services
+- Data Platform
+- Point of Sale
+- Labor
+- Inventory
+- Recipes and Nutrition
+- Organization Hierarchy
+- Fortune 500
+- Apigee
+- Hospitality
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+created: '2026-03-26'
+modified: '2026-09-04'
+specificationVersion: '0.23'
 deliveryModel:
   model: saas
   open_source: false
   commercial: true
-  callable_host: false
+  callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: medium
+  confidence: high
   source:
   - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
+  - probe
+  generated: '2026-09-04'
+  method: probed
 accessModel:
-  pricing: enterprise
-  onboarding: unknown
+  pricing: unpublished
+  onboarding: registration-plus-approval
   trial: false
-  try_now: false
-  public: false
-  label: Enterprise
-  confidence: medium
+  try_now: true
+  public: true
+  label: Public docs, approval-gated keys
+  confidence: high
   source:
   - plans
   - authentication
-  - security
-  generated: '2026-09-03'
-  method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
-tags:
-  - Food Services
-  - Facilities Management
-  - Uniform Services
-  - Data Platform
-  - Fortune 500
-created: '2026-03-26'
-modified: '2026-04-19'
-specificationVersion: '0.23'
-common:
-  - type: AgenticAccess
-    url: agentic-access/aramark-agentic-access.yml
-  - type: DomainSecurity
-    url: security/aramark-domain-security.yml
-  - type: Authentication
-    url: authentication/aramark-authentication.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/aramark
+  - sandbox
+  generated: '2026-09-04'
+  method: searched
+apis:
+- aid: aramark:aramark-marko-alerts
+  name: Aramark Marko Alerts
+  description: This API will return Alert Notifications.
+  humanURL: https://marko-developers.aramark.net/doc/alerts
+  baseURL: https://marko.aramark.net/v1/alerts
+  tags:
+  - Alerts
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-alerts-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/alerts
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/alerts
   - type: Portal
     url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-ask-marko
+  name: Aramark Marko Ask Marko
+  description: This API will return messages from the Ask Marko Chat Bot
+  humanURL: https://marko-developers.aramark.net/doc/ask-marko
+  baseURL: https://marko.aramark.net/v1/ask
+  tags:
+  - Chatbot
+  - AI
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-ask-marko-openapi.json
   - type: Documentation
-    url: https://marko-developers.aramark.net/catalog
-  - type: GitHubOrganization
-    url: https://github.com/aramarkservicesinc
-  - type: FAQ
-    url: https://marko-developers.aramark.net/faqs
-  - type: Signup
+    url: https://marko-developers.aramark.net/doc/ask-marko
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/ask-marko
+  - type: Portal
     url: https://marko-developers.aramark.net/
-  - type: Features
-    data:
-    - name: Real-Time Data
-      description: Access real-time operational data across Aramark facilities for immediate decision-making.
-    - name: Organization Services
-      description: APIs for managing Aramark organizational hierarchy, locations, and reporting structures.
-    - name: Point of Sale Integration
-      description: Real-time POS transaction data for sales analysis and reconciliation.
-    - name: Revenue Analytics
-      description: Revenue snapshot and financial performance data across profit centers.
-    - name: Product Catalog
-      description: Product and menu data services for food and beverage offerings.
-    - name: Facilities Management
-      description: Data services for facilities operations, service tracking, and management reporting.
-  - type: UseCases
-    data:
-    - name: Business Intelligence
-      description: Integrate Aramark operational data into BI tools for management reporting and performance analysis.
-    - name: POS Reconciliation
-      description: Automate reconciliation of point-of-sale transactions across multiple Aramark locations.
-    - name: Revenue Reporting
-      description: Build dashboards for real-time revenue tracking across profit centers and business units.
-    - name: Supply Chain Optimization
-      description: Use product and service data to optimize supply chain and inventory management.
-    - name: Operational Analytics
-      description: Analyze service delivery performance and operational efficiency across Aramark facilities.
-  - type: Integrations
-    data:
-    - name: Tableau
-      description: Connect Marko API data to Tableau for visual analytics and reporting.
-    - name: Power BI
-      description: Integrate Aramark operational data with Microsoft Power BI dashboards.
-    - name: Salesforce
-      description: Sync Aramark organizational and service data with Salesforce CRM.
-    - name: SAP
-      description: Connect Marko revenue and profit center data with SAP ERP systems.
-  - type: SpectralRules
-    url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml
-  - type: Vocabulary
-    url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/vocabulary/aramark-vocabulary.yaml
-  - type: JSONLD
-    url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/ask-marko.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-business-unit-core-details
+  name: Aramark Marko Business Unit Core Details
+  description: This is a collection of Business Unit Details
+  humanURL: https://marko-developers.aramark.net/doc/business-unit-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Business Units
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-business-unit-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/business-unit-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/business-unit-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_bsu_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-calendar
+  name: Aramark Marko Calendar
+  description: 'Given a day or date range this API has methods to list: * fiscal day attributes * operational day attributes'
+  humanURL: https://marko-developers.aramark.net/doc/calendar
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Calendar
+  - Fiscal
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-calendar-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/calendar
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/calendar
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/calendar.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-catering
+  name: Aramark Marko Catering
+  description: This is a collection of APIs to provide Catering Information
+  humanURL: https://marko-developers.aramark.net/doc/catering
+  baseURL: https://marko.aramark.net/v1/catering
+  tags:
+  - Catering
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-catering-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/catering
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/catering
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/catering.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-daily-food-waste-tracking
+  name: Aramark Marko Daily Food Waste Tracking
+  description: Information about food waste is provided either as a summary or filtered by org_value.
+  humanURL: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+  baseURL: https://marko.aramark.net/v1/service/daily
+  tags:
+  - Food Waste
+  - Sustainability
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-daily-food-waste-tracking-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/food-waste.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-district-core-details
+  name: Aramark Marko District Core Details
+  description: This is a collection of District Details
+  humanURL: https://marko-developers.aramark.net/doc/district-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Districts
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-district-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/district-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/district-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_dst_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-division-core-details
+  name: Aramark Marko Division Core Details
+  description: This is a collection of Division Details
+  humanURL: https://marko-developers.aramark.net/doc/division-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Divisions
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-division-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/division-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/division-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_div_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-financial-daily-account-summary
+  name: Aramark Marko Financial Daily Account Summary
+  description: This API will return Daily Financial data from Aramark's GFF Application
+  humanURL: https://marko-developers.aramark.net/doc/financial-daily-account-summary
+  baseURL: https://marko.aramark.net/v1/financial/daily
+  tags:
+  - Financial
+  - Accounting
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-financial-daily-account-summary-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/financial-daily-accountsummary.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-growth
+  name: Aramark Marko Growth
+  description: This API will return data related to different Growth metrics
+  humanURL: https://marko-developers.aramark.net/doc/growth
+  baseURL: https://marko.aramark.net/v1/growth
+  tags:
+  - Growth
+  - Voice of Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-growth-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/growth
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/growth
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/growth.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-gsc-gpo-0
+  name: Aramark Marko GSC GPO
+  description: This is a collection of APIs to support GSC GPO
+  humanURL: https://marko-developers.aramark.net/doc/gsc-gpo-0
+  baseURL: https://marko.aramark.net/v1/gsc_gpo
+  tags:
+  - Purchasing
+  - Spend
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-gsc-gpo-0-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/gsc_gpo_ext.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-inventory
+  name: Aramark Marko Inventory
+  description: This API will return a collection of Service Inventory Data Location.
+  humanURL: https://marko-developers.aramark.net/doc/inventory
+  baseURL: https://marko.aramark.net/v1/inventory
+  tags:
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-inventory-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/inventory
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/inventory
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/inventory.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-iot
+  name: Aramark Marko IoT
+  description: This API will return a collection of IoT Data.
+  humanURL: https://marko-developers.aramark.net/doc/iot
+  baseURL: https://marko.aramark.net/v1/iot
+  tags:
+  - IoT
+  - Temperature
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-iot-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/iot
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/iot
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/iot.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-labor-daily
+  name: Aramark Marko Labor Daily
+  description: This API will return Daily Labor Metrics data from Aramark's labor management systems.
+  humanURL: https://marko-developers.aramark.net/doc/labor-daily
+  baseURL: https://marko.aramark.net/v1/labor/daily
+  tags:
+  - Labor
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-labor-daily-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-daily
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-daily
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-daily.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-labor-employee
+  name: Aramark Marko Labor Employee
+  description: This API will return Employee information
+  humanURL: https://marko-developers.aramark.net/doc/labor-employee
+  baseURL: https://marko.aramark.net/v1/labor/employee
+  tags:
+  - Labor
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-labor-employee-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-employee
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-employee
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-employee.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-labor-manager-employees
+  name: Aramark Marko Labor Manager Employees
+  description: This API will return a list of information for employees who report to a manager.
+  humanURL: https://marko-developers.aramark.net/doc/labor-manager-employees
+  baseURL: https://marko.aramark.net/v1/labor/manager
+  tags:
+  - Labor
+  - Managers
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-labor-manager-employees-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-manager-employees
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-manager-employees
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-manager.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-labor-schedule
+  name: Aramark Marko Labor Schedule
+  description: This API will return Employee Scheduled Shift information
+  humanURL: https://marko-developers.aramark.net/doc/labor-schedule
+  baseURL: https://marko.aramark.net/v1/labor/schedule
+  tags:
+  - Labor
+  - Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-labor-schedule-openapi.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-schedule
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-schedule
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/labor-schedule.yaml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-line-business-core-details
+  name: Aramark Marko Line of Business Core Details
+  description: This is a collection of Line of Business Details
+  humanURL: https://marko-developers.aramark.net/doc/line-business-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Line of Business
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-line-business-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/line-business-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/line-business-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_lob_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-location-core-details
+  name: Aramark Marko Location Core Details
+  description: This is a collection of Location Details
+  humanURL: https://marko-developers.aramark.net/doc/location-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-location-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/location-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/location-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_loc_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-marko-users
+  name: Aramark Marko Marko Users
+  description: '''This API will return, update, or delete Marko User data'''
+  humanURL: https://marko-developers.aramark.net/doc/marko-users
+  baseURL: https://marko.aramark.net/v1/marko
+  tags:
+  - Users
+  - Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-marko-users-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/marko-users
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/marko-users
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/marko-users.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-operational-daily
+  name: Aramark Marko Operational Daily
+  description: This API will return intra-day operational data.
+  humanURL: https://marko-developers.aramark.net/doc/operational-daily
+  baseURL: https://marko.aramark.net/v1/operational/daily
+  tags:
+  - Operations
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-operational-daily-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/operational-daily
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/operational-daily
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/operational-daily.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization
+  name: Aramark Marko Organization
+  description: This API will return a collection of Organization Data.
+  humanURL: https://marko-developers.aramark.net/doc/organization
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-brands
+  name: Aramark Marko Organization Brands
+  description: This API will return organization brand information.
+  humanURL: https://marko-developers.aramark.net/doc/organization-brands
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Brands
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-brands-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-brands
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-brands
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-brands.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-clients
+  name: Aramark Marko Organization Clients
+  description: This is a collection of Client Details Organization Clients API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/organization-clients
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-clients-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-clients
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-clients
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_client_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-hierarchy
+  name: Aramark Marko Organization Hierarchy
+  description: This API will return Hierarchy Nodes Organization Hierarchy API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/organization-hierarchy
+  baseURL: https://marko.aramark.net/v1/organization/hierarchy
+  tags:
+  - Organization
+  - Hierarchy
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-hierarchy-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-hierarchy-financial.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-hierarchy-v2
+  name: Aramark Marko Organization Hierarchy V2
+  description: This is a collection of Financial Hierarchy APIs in the Organization domain
+  humanURL: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
+  baseURL: https://marko.aramark.net/v2/organization
+  tags:
+  - Organization
+  - Hierarchy
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-hierarchy-v2-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_hierarchy_v2.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-profit-center-core-details
+  name: Aramark Marko Organization Profit Center Core Details
+  description: This is a collection of Profit Center Details
+  humanURL: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Profit Centers
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-profit-center-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_pc_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-organization-suppliers
+  name: Aramark Marko Organization Suppliers
+  description: This API will return Organizational Supplier information
+  humanURL: https://marko-developers.aramark.net/doc/organization-suppliers
+  baseURL: https://qa-marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Suppliers
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-organization-suppliers-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-suppliers
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-suppliers
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/supplier.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath /v1/organization.
+    Unlike the other 58 Marko contracts its info.description does not state a production base endpoint, so the published testing
+    host is carried verbatim rather than a production host being inferred. The equivalent production path was probed on 2026-09-04
+    and answered from the Apigee production gateway.
+- aid: aramark:aramark-marko-point-sale
+  name: Aramark Marko Point of Sale
+  description: This API will return Point of Sale Data Point of Sale API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/point-sale
+  baseURL: https://marko.aramark.net/v1/pos
+  tags:
+  - Point of Sale
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-point-sale-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/point-sale
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/point-sale
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-pos-daily-product-ranking
+  name: Aramark Marko POS Daily Product Ranking
+  description: This API will return POS Daily Product Ranking by Sales or Volume data fromi Aramark's Enterprise POS.
+  humanURL: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
+  baseURL: https://marko.aramark.net/v1/pos/daily/product
+  tags:
+  - Point of Sale
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-pos-daily-product-ranking-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-product.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-pos-daily-sales
+  name: Aramark Marko POS Daily Sales
+  description: This API will return POS Daily Sales data from Aramark's Enterprise POS
+  humanURL: https://marko-developers.aramark.net/doc/pos-daily-sales
+  baseURL: https://marko.aramark.net/v1/pos/daily
+  tags:
+  - Point of Sale
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-pos-daily-sales-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-daily-sales
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-daily-sales
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-sales.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-pos-items
+  name: Aramark Marko POS Items
+  description: This API will return POS Item Data POS Items API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/pos-items
+  baseURL: https://marko.aramark.net/v1/pos
+  tags:
+  - Point of Sale
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-pos-items-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-items
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-items.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-pos-transactions
+  name: Aramark Marko POS Transactions
+  description: This API will return Point of Sale Data POS Transactions API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/pos-transactions
+  baseURL: https://marko.aramark.net/v1/pos
+  tags:
+  - Point of Sale
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-pos-transactions-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-transactions
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-transactions
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-transactions.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-product
+  name: Aramark Marko Product
+  description: Returns Product data Product API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/product
+  baseURL: https://qa-marko.aramark.net/v1
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-product-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-product-recipe
+  name: Aramark Marko Product Recipe
+  description: Master data for individual recipes, ingredients and nutrition.
+  humanURL: https://marko-developers.aramark.net/doc/product-recipe
+  baseURL: https://marko.aramark.net/v1/product/recipe
+  tags:
+  - Product
+  - Recipes
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-product-recipe-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product-recipe
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product-recipe
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product-recipe.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-product-retail-items
+  name: Aramark Marko Product Items
+  description: Returns Item data Product Items API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/product-retail-items
+  baseURL: https://qa-marko.aramark.net/v1/product
+  tags:
+  - Product
+  - Retail
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-product-retail-items-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product-retail-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product-retail-items
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/items.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath /v1/product. Unlike
+    the other 58 Marko contracts its info.description does not state a production base endpoint, so the published testing
+    host is carried verbatim rather than a production host being inferred. The equivalent production path was probed on 2026-09-04
+    and answered from the Apigee production gateway.
+- aid: aramark:aramark-marko-profile-app
+  name: Aramark Marko Profile App
+  description: This API maps Profit Centers or Locations to a user.
+  humanURL: https://marko-developers.aramark.net/doc/profile-app
+  baseURL: https://marko.aramark.net/v1/profile/app
+  tags:
+  - Profiles
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-profile-app-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/profile-app
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/profile-app
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-app.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-profile-user
+  name: Aramark Marko Profile User
+  description: These APIs will return a collection of organizations based on a user's profile security
+  humanURL: https://marko-developers.aramark.net/doc/profile-user
+  baseURL: https://marko.aramark.net/v1/profile/user
+  tags:
+  - Profiles
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-profile-user-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/profile-user
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/profile-user
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-user.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-recipe-decorations
+  name: Aramark Marko Recipe Decorations
+  description: This API will return a collection of Recipes for decoration application.
+  humanURL: https://marko-developers.aramark.net/doc/recipe-decorations
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Recipes
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-recipe-decorations-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/recipe-decorations
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/recipe-decorations
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/recipe-decorations.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-region-core-details
+  name: Aramark Marko Region Core Details
+  description: This is a collection of Region Details Region Core Details API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/region-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Regions
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-region-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/region-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/region-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_reg_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-security
+  name: Aramark Marko Security
+  description: This API allows modification of Security for specific applications.
+  humanURL: https://marko-developers.aramark.net/doc/security
+  baseURL: https://marko.aramark.net/v1/security
+  tags:
+  - Security
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-security-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/security
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/security
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/security.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service
+  name: Aramark Marko Service
+  description: This API will return a collection of Service Data.
+  humanURL: https://marko-developers.aramark.net/doc/service
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-areas
+  name: Aramark Marko Service Areas
+  description: This API will return a collection of Service Areas by Site
+  humanURL: https://marko-developers.aramark.net/doc/service-areas
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Service
+  - Service Areas
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-areas-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-areas
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-areas
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-areas.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-areas-v2
+  name: Aramark Marko Service Areas V2
+  description: This API will return a collection of Service Data.
+  humanURL: https://marko-developers.aramark.net/doc/service-areas-v2
+  baseURL: https://marko.aramark.net/v2
+  tags:
+  - Service
+  - Service Areas
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-areas-v2-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-areas-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-areas-v2
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_areas_v2.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-inventory
+  name: Aramark Marko Service Inventory
+  description: This API will return a collection of Service Inventory Data Location.
+  humanURL: https://marko-developers.aramark.net/doc/service-inventory
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  - Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-inventory-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-inventory
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-inventory
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_inventory.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-meal-periods
+  name: Aramark Marko Service Meal Periods
+  description: This API will return a collection of Service Meal Periods for a specific Location or Service Area and Service
+    Date.
+  humanURL: https://marko-developers.aramark.net/doc/service-meal-periods
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Service
+  - Meal Periods
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-meal-periods-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-meal-periods
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-meal-periods
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-meal-periods.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-menu-items
+  name: Aramark Marko Service Menu Items
+  description: This API will return a collection of Menu Items for a specific Location, Service Date and Meal Period.
+  humanURL: https://marko-developers.aramark.net/doc/service-menu-items
+  baseURL: https://marko.aramark.net/v1/service_menu_items
+  tags:
+  - Service
+  - Menus
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-menu-items-openapi.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-menu-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-menu-items
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-menu-items.yaml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-menus
+  name: Aramark Marko Service Menus
+  description: This API will return a collection of Service Menus for a specific Location, Service Date Range and Meal Period.
+  humanURL: https://marko-developers.aramark.net/doc/service-menus
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Service
+  - Menus
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-menus-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-menus
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-menus
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-menus.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-production-areas
+  name: Aramark Marko Service Production Areas
+  description: This API will return a collection of Service Production Areas by Site
+  humanURL: https://marko-developers.aramark.net/doc/service-production-areas
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  - Production
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-production-areas-openapi.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-production-areas
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-production-areas
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-areas.yaml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-production-departments
+  name: Aramark Marko Service Production Departments
+  description: This API will return a collection of Service Production Departments by Production Area
+  humanURL: https://marko-developers.aramark.net/doc/service-production-departments
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  - Production
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-production-departments-openapi.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-production-departments
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-production-departments
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-departments.yaml
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-recipe
+  name: Aramark Marko Service Recipe
+  description: This API will return a collection of Service Recipes for Menu Items and the nutrition data for a specific Location,
+    Service Date and Meal Period.
+  humanURL: https://marko-developers.aramark.net/doc/service-recipe
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  - Recipes
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-recipe-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-recipe
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-recipe
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-recipe.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-recipes-v2
+  name: Aramark Marko Service Recipes V2
+  description: This API will return a collection of Service Recipe Data.
+  humanURL: https://marko-developers.aramark.net/doc/service-recipes-v2
+  baseURL: https://marko.aramark.net/v2/service/recipe
+  tags:
+  - Service
+  - Recipes
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-recipes-v2-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-recipes-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-recipes-v2
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_recipe_v2.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-results
+  name: Aramark Marko Service Results
+  description: This API will update a Menu Item service results for a specific menu item id
+  humanURL: https://marko-developers.aramark.net/doc/service-results
+  baseURL: https://marko.aramark.net/v1/service
+  tags:
+  - Service
+  - Results
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-results-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-results
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-results
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-results.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-v3
+  name: Aramark Marko Service V3
+  description: This API will return a collection of Service Data.
+  humanURL: https://marko-developers.aramark.net/doc/service-v3
+  baseURL: https://marko.aramark.net/v3/service
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-v3-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-v3
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-v3
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/servicev3.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-service-weekly-overproduction
+  name: Aramark Marko Service Weekly Overproduction
+  description: This API will return Weekly Overproduction Data
+  humanURL: https://marko-developers.aramark.net/doc/service-weekly-overproduction
+  baseURL: https://marko.aramark.net/v1/service/weekly
+  tags:
+  - Service
+  - Overproduction
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-service-weekly-overproduction-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-weekly-overproduction.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-sites
+  name: Aramark Marko Sites
+  description: This API will return a sites collection from either CSP or MDG environments. Sites is a container to group
+    Aramark Profit Centers.
+  humanURL: https://marko-developers.aramark.net/doc/sites
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-sites-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sites
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sites
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sites.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-sub-location-core-details
+  name: Aramark Marko Sub Location Core Details
+  description: This is a collection of Sub Location Details
+  humanURL: https://marko-developers.aramark.net/doc/sub-location-core-details
+  baseURL: https://marko.aramark.net/v1/organization
+  tags:
+  - Organization
+  - Sub Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-sub-location-core-details-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sub-location-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sub-location-core-details
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_sl_details.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-sub-locations
+  name: Aramark Marko Sub Locations
+  description: This API will return a collection of Sub Locations from either CSP or MDG environment. Sub Locations were originally
+    known as Stations in PRIMA Web; they are a level below location in a Service or Production environment.
+  humanURL: https://marko-developers.aramark.net/doc/sub-locations
+  baseURL: https://marko.aramark.net/v1
+  tags:
+  - Organization
+  - Sub Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-sub-locations-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sub-locations
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sub-locations
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sub-locations.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-units-measure
+  name: Aramark Marko Units of Measure
+  description: This API will return a collection of Prima Units of Measure for menu items and recipes
+  humanURL: https://marko-developers.aramark.net/doc/units-measure
+  baseURL: https://marko.aramark.net/v1/recipe
+  tags:
+  - Recipes
+  - Units of Measure
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-units-measure-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/units-measure
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/units-measure
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/units-of-measure.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+- aid: aramark:aramark-marko-vendor
+  name: Aramark Marko Vendor
+  description: Returns Vendor data Vendor API from the Aramark Marko data and AI platform.
+  humanURL: https://marko-developers.aramark.net/doc/vendor
+  baseURL: https://qa-marko.aramark.net/v1
+  tags:
+  - Vendor
+  - Purchasing
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-vendor-openapi.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/vendor
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/vendor
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/vendor.json
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
+common:
+- type: DeveloperPortal
+  url: https://marko-developers.aramark.net/
+- type: Portal
+  url: https://marko-developers.aramark.net/
+- type: Documentation
+  url: https://marko-developers.aramark.net/catalog
+- type: APIReference
+  url: https://marko-developers.aramark.net/catalog
+- type: GettingStarted
+  url: https://marko-developers.aramark.net/faqs
+- type: FAQ
+  url: https://marko-developers.aramark.net/faqs
+- type: SignUp
+  url: https://marko-developers.aramark.net/user/register
+- type: Login
+  url: https://marko-developers.aramark.net/user/login
+- type: Blog
+  url: https://marko-developers.aramark.net/blog
+- type: GitHubOrganization
+  url: https://github.com/aramarkservicesinc
+- type: SourceCode
+  url: https://github.com/aramarkservicesinc/markoapis
+- type: Support
+  url: https://www.aramark.com/contact-us
+- type: TermsOfService
+  url: https://www.aramark.com/terms-conditions
+- type: PrivacyPolicy
+  url: https://www.aramark.com/privacy-policy
+- type: LinkedIn
+  url: https://www.linkedin.com/company/aramark
+- type: Website
+  url: https://www.aramark.com/
+- type: AgenticAccess
+  url: agentic-access/aramark-agentic-access.yml
+- type: DomainSecurity
+  url: security/aramark-domain-security.yml
+- type: Authentication
+  url: authentication/aramark-authentication.yml
+- type: APIKeys
+  url: authentication/aramark-authentication.yml
+- type: Conventions
+  url: conventions/aramark-conventions.yml
+- type: ErrorCatalog
+  url: errors/aramark-problem-types.yml
+- type: DataModel
+  url: data-model/aramark-data-model.yml
+- type: Lifecycle
+  url: lifecycle/aramark-lifecycle.yml
+- type: Conformance
+  url: conformance/aramark-conformance.yml
+- type: Sandbox
+  url: sandbox/aramark-sandbox.yml
+- type: Console
+  url: sandbox/aramark-sandbox.yml
+- type: Packages
+  url: packages/aramark-packages.yml
+- type: X-MCPServerCandidate
+  url: mcp/aramark-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/aramark-llms.txt
+- type: RateLimits
+  url: rate-limits/aramark-rate-limits.yml
+- type: Plans
+  url: plans/aramark-plans-pricing.yml
+- type: FinOps
+  url: finops/aramark-finops.yml
+- type: Examples
+  url: examples/
+- type: SpectralRules
+  url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml
+- type: Vocabulary
+  url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/vocabulary/aramark-vocabulary.yaml
+- type: JSONLD
+  url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld
+- type: Overlay
+  url: overlays/
+- type: Features
+  data:
+  - name: Real-Time Data
+    description: Access real-time operational data across Aramark facilities for immediate decision-making.
+  - name: Organization Services
+    description: APIs for managing Aramark organizational hierarchy, locations, and reporting structures.
+  - name: Point of Sale Integration
+    description: Real-time POS transaction data for sales analysis and reconciliation.
+  - name: Revenue Analytics
+    description: Revenue snapshot and financial performance data across profit centers.
+  - name: Product Catalog
+    description: Product and menu data services for food and beverage offerings.
+  - name: Facilities Management
+    description: Data services for facilities operations, service tracking, and management reporting.
+- type: UseCases
+  data:
+  - name: Business Intelligence
+    description: Integrate Aramark operational data into BI tools for management reporting and performance analysis.
+  - name: POS Reconciliation
+    description: Automate reconciliation of point-of-sale transactions across multiple Aramark locations.
+  - name: Revenue Reporting
+    description: Build dashboards for real-time revenue tracking across profit centers and business units.
+  - name: Supply Chain Optimization
+    description: Use product and service data to optimize supply chain and inventory management.
+  - name: Operational Analytics
+    description: Analyze service delivery performance and operational efficiency across Aramark facilities.
+- type: Integrations
+  data:
+  - name: Tableau
+    description: Connect Marko API data to Tableau for visual analytics and reporting.
+  - name: Power BI
+    description: Integrate Aramark operational data with Microsoft Power BI dashboards.
+  - name: Salesforce
+    description: Sync Aramark organizational and service data with Salesforce CRM.
+  - name: SAP
+    description: Connect Marko revenue and profit center data with SAP ERP systems.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 195
+  pass: local-v3

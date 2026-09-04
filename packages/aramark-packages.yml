@@ -1,0 +1,20 @@
+generated: '2026-09-04'
+method: searched
+source: npm registry search, PyPI, github.com/aramarkservicesinc, marko-developers.aramark.net/faqs
+summary:
+  package_count: 0
+  official_count: 0
+note: No first-party Aramark/Marko client library exists in any public registry. npm registry search for
+  'aramark' returns nothing, PyPI has no marko-api package, and the aramarkservicesinc GitHub organization
+  contains exactly one repository (markoapis, the OpenAPI spec repo). The portal FAQ ships raw HTTP code
+  samples in JavaScript, jQuery, C#, Python and cURL instead of an SDK.
+packages: []
+code_samples:
+  documented_at: https://marko-developers.aramark.net/faqs
+  languages:
+  - JavaScript (XMLHttpRequest)
+  - JavaScript (jQuery AJAX)
+  - C# (RestSharp)
+  - Python (requests)
+  - cURL
+  note: Copy-paste HTTP snippets published on the FAQ page, not distributed packages.

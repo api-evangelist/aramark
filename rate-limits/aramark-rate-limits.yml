@@ -4,11 +4,9 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Aramark
 providerId: aramark
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: searched
+modified: '2026-09-04'
+reconciled: true
 tags:
 - Food Services
 - Facilities Management
@@ -18,28 +16,33 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Aramark does not publish concrete rate-limit numbers, throttling thresholds, or response-header
-  conventions. This artifact records the gap; see notes for research findings.
-notes: No public rate-limit or quota numbers documented on the Marko developer portal.
+description: Aramark publishes no rate limits for the Marko platform. Searched the developer portal, the FAQ
+  page, all 60 published OpenAPI documents and the markoapis repository; no limit, quota, burst, window or
+  throttling threshold is stated anywhere.
+notes: No X-RateLimit-*, RateLimit-* or Retry-After header is documented on any of the 216 operations, and
+  no 429 response is declared in any of the 60 contracts (the only declared 4xx codes across the platform are
+  400, 401, 404 and 405). The platform runs on Apigee Edge, which supports quota and spike-arrest policies,
+  so limits very likely exist at the gateway — they are simply not disclosed to consumers, and an agent has
+  no runtime signal to back off on. Recorded as an honest zero.
 sources:
-- https://www.aramark.com
-- https://marko-developers.aramark.net/
+- https://marko-developers.aramark.net/catalog
+- https://marko-developers.aramark.net/faqs
+- https://github.com/aramarkservicesinc/markoapis
+- https://marko.aramark.net/v1/profit_centers (live probe, 2026-09-04, HTTP 401)
 responseCodes:
   throttled: 429
-limits:
-- name: Per-contract limits
-  scope: account
-  metric: varies
-  limit: see provider integration agreement
-  notes: No public rate-limit numbers; throughput is governed by individual customer or partner contracts.
+limits: []
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header
-    that may be returned, even though the provider does not publish formal retry semantics.
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header that
+    may be returned, even though the provider does not publish formal retry semantics.
 - name: Contract-Scoped Limits
-  description: Quotas, burst, and concurrency ceilings are governed by the individual customer or partner
-    contract rather than a public policy. Coordinate with the provider to confirm thresholds before scaling
-    traffic.
+  description: Quotas, burst, and concurrency ceilings are governed by the individual customer or partner contract
+    rather than a public policy. Coordinate with the provider to confirm thresholds before scaling traffic.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+generated: '2026-09-04'
+source: https://marko-developers.aramark.net/catalog
+limit_count: 0
+headers: []

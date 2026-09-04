@@ -7,50 +7,26 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   authentication/aramark-authentication.yml:
-    method: derived
+    method: searched
     evidence: declared in the artifact
-  collections/aramark-organization-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-organization-api
-  collections/aramark-organization-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-organization-api
-  collections/aramark-point-of-sale-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-point-of-sale-api
-  collections/aramark-point-of-sale-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-point-of-sale-api
-  collections/aramark-product-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-product-api
-  collections/aramark-product-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-product-api
-  collections/aramark-profit-centers-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-profit-centers-api
-  collections/aramark-profit-centers-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-profit-centers-api
-  collections/aramark-revenue-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-revenue-api
-  collections/aramark-revenue-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-revenue-api
-  collections/aramark-service-api.opencollection.json:
-    method: derived
-    evidence: openapi/aramark-service-api
-  collections/aramark-service-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aramark-service-api
   collections/marko-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/marko-api.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  conformance/aramark-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/aramark-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/aramark-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/aramark-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/marko-api-error-response-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -174,67 +150,7 @@ artifacts:
   json-structure/marko-api-service-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T094130.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T182523.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-26T223651.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T083119.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T190208.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T115055.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T170848.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T172558.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T192327.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T200725.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T133250.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T151044.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T162206.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T202106.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163141.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163302.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T171935.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T113057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T161012.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-04T083143.yml:
+  kin/checks-2026-09-04T062714.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-05T153418.yml:
@@ -321,26 +237,419 @@ artifacts:
   kin/score-2026-08-28T221322.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/aramark-organization-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/aramark-point-of-sale-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/aramark-product-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/aramark-profit-centers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/aramark-revenue-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/aramark-service-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  plans/aramark-plans-pricing.yml:
+  kin/score-2026-08-29T213958.yml:
     method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-29T230545.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T203505.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T220315.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-31T223420.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T063623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T210448.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T222808.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T224043.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T161828.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T174231.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T062714.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/aramark-lifecycle.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/aramark-llms.txt:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  mcp/aramark-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
+  openapi/aramark-alerts-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-ask-marko-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-business-unit-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-calendar-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-catering-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-daily-food-waste-tracking-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-district-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-division-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-financial-daily-account-summary-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-growth-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-gsc-gpo-0-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-inventory-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-iot-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-labor-daily-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-labor-employee-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-labor-manager-employees-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-labor-schedule-openapi.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-line-business-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-location-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-marko-users-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-operational-daily-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-brands-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-clients-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-hierarchy-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-hierarchy-v2-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-profit-center-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-organization-suppliers-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-point-sale-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-pos-daily-product-ranking-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-pos-daily-sales-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-pos-items-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-pos-transactions-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-product-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-product-recipe-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-product-retail-items-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-profile-app-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-profile-user-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-recipe-decorations-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-region-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-security-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-areas-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-areas-v2-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-inventory-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-meal-periods-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-menu-items-openapi.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-menus-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-production-areas-openapi.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-production-departments-openapi.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-recipe-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-recipes-v2-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-results-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-v3-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-service-weekly-overproduction-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-sites-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-sub-location-core-details-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-sub-locations-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-units-measure-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aramark-vendor-openapi.json:
+    method: unknown
+    evidence: no authorship recorded
+  overlays/aramark-alerts-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-ask-marko-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-business-unit-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-calendar-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-catering-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-daily-food-waste-tracking-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-district-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-division-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-financial-daily-account-summary-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-growth-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-gsc-gpo-0-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-inventory-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-iot-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-labor-daily-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-labor-employee-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-labor-manager-employees-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-labor-schedule-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-line-business-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-location-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-marko-users-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-operational-daily-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-brands-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-clients-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-hierarchy-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-hierarchy-v2-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-profit-center-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-organization-suppliers-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-point-sale-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-pos-daily-product-ranking-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-pos-daily-sales-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-pos-items-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-pos-transactions-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-product-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-product-recipe-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-product-retail-items-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-profile-app-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-profile-user-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-recipe-decorations-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-region-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-security-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-areas-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-areas-v2-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-inventory-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-meal-periods-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-menu-items-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-menus-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-production-areas-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-production-departments-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-recipe-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-recipes-v2-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-results-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-v3-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-service-weekly-overproduction-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-sites-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-sub-location-core-details-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-sub-locations-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-units-measure-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  overlays/aramark-vendor-overlay.yaml:
+    method: generated
+    evidence: declared in the artifact
+  packages/aramark-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  plans/aramark-plans-pricing.yml:
+    method: searched
     evidence: declared in the artifact
   press/2026-05-25-01-aramark-news.md:
     method: unknown
@@ -358,13 +667,16 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   rate-limits/aramark-rate-limits.yml:
-    method: generated
+    method: searched
     evidence: declared in the artifact
   rules/aramark-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/aramark-spectral-rules.yml:
     method: generated
+    evidence: declared in the artifact
+  sandbox/aramark-sandbox.yml:
+    method: searched
     evidence: declared in the artifact
   search/2026-05-25-01-aramarks-new-hospitality-iq-defines-the-company-in.md:
     method: unknown
@@ -384,6 +696,24 @@ artifacts:
   security/aramark-domain-security.yml:
     method: unknown
     evidence: no authorship recorded
+  skills/_index.yml:
+    method: generated
+    evidence: declared in the artifact
+  skills/aramark-daily-operations-snapshot.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/aramark-pos-transaction-reconciliation.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/aramark-record-service-execution.md:
+    method: generated
+    evidence: declared in the artifact
+  skills/aramark-resolve-org-scope.md:
+    method: generated
+    evidence: declared in the artifact
   vocabulary/aramark-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/aramark-well-known.yml:
     method: unknown
     evidence: no authorship recorded

@@ -4,45 +4,39 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Aramark
 providerId: aramark
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+method: searched
+modified: '2026-09-04'
+reconciled: true
 tags:
 - Food Services
 - Facilities Management
 - Uniform Services
 - Data Platform
 - Fortune 500
-description: Aramark does not publish a public API plans / pricing page. This artifact records the absence
-  of a self-serve commercial surface; see notes for research findings.
-notes: Aramark's Marko developer portal exposes a 70+ service catalog but does not publish pricing, plan
-  tiers, or commercial terms. Access appears to be partner/internal — pricing, if any, is negotiated rather
-  than self-serve.
+description: 'Aramark publishes no plans, tiers or pricing for the Marko platform. There is no commercial surface
+  at all: no price page, no free tier, no metered rate, no contact-sales pricing form.'
+notes: 'The Marko Developer Portal is an access-controlled program rather than a product for sale. The FAQ
+  states the model plainly: you create an account, register the application that will consume the APIs, choose
+  the API Products you want, and the request is submitted for approval — a key is generated only on approval.
+  Nothing on the portal, the catalog or aramark.com attaches a price to that. Marko reads as an internal and
+  partner data platform published on public infrastructure, not a commercial API product.'
 sources:
+- https://marko-developers.aramark.net/faqs
+- https://marko-developers.aramark.net/catalog
+- https://marko-developers.aramark.net/user/register
 - https://www.aramark.com
-- https://marko-developers.aramark.net/
-plans:
-- id: aramark-contact-sales
-  name: Contact Sales
-  type: enterprise
-  description: No published self-serve plan. Commercial access is arranged directly with the provider;
-    quotas and pricing are governed by individual customer agreements.
-  entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
-    geo: global
-    unit: 1
-    price: contact sales
-    userMultiplied: false
-  elements:
-  - name: Negotiated Commercial Terms
-  - name: Partner Onboarding
+plans: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+generated: '2026-09-04'
+source: https://marko-developers.aramark.net/faqs
+plan_count: 0
+access_model:
+  self_serve_signup: true
+  signup_url: https://marko-developers.aramark.net/user/register
+  approval_required: true
+  approval_evidence: https://marko-developers.aramark.net/faqs
+  credential: per-application apikey
+  free_tier: null
+  pricing_published: false

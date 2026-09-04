@@ -1,0 +1,740 @@
+generated: '2026-09-04'
+method: derived
+source: openapi/ (60 first-party Marko OpenAPI documents harvested from github.com/aramarkservicesinc/markoapis)
+status: candidate
+note: 'Aramark publishes no MCP server. This is a DERIVED candidate tool list showing what an MCP server
+  over the Marko platform would expose; it is not something Aramark ships and no endpoint exists. Searched:
+  marko-developers.aramark.net, the markoapis GitHub repo, and every /.well-known/ path on all five Marko
+  hosts — no MCP manifest, no tools/list surface, no OAuth discovery document.'
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+summary:
+  candidate_tool_count: 120
+  source_operation_count: 216
+  source_api_count: 60
+tools:
+- name: getProfitCenterAlerts
+  api: Alerts
+  method: GET
+  path: /profit_centers
+  description: Profit center alerts
+  source_spec: openapi/aramark-alerts-openapi.json
+- name: getDailyLaborOvertimeByOrgValue
+  api: Alerts
+  method: GET
+  path: /labor/overtime/{org_value}
+  description: Labor overtime alerts
+  source_spec: openapi/aramark-alerts-openapi.json
+- name: getPuchasingAlertsByOrgValue
+  api: Alerts
+  method: GET
+  path: /purchasing/order/{org_value}
+  description: Purchasing alerts
+  source_spec: openapi/aramark-alerts-openapi.json
+- name: postAskMarko
+  api: Ask Marko
+  method: POST
+  path: /marko
+  description: Ask Marko chat bot
+  source_spec: openapi/aramark-ask-marko-openapi.json
+- name: getBusinessUnitDetailsAddressByOrgValue
+  api: Business Unit Core Details
+  method: GET
+  path: /business_unit/addresses/{org_value}
+  description: Returns a collection of Business Unit Address Attributes for One Business Unit
+  source_spec: openapi/aramark-business-unit-core-details-openapi.json
+- name: getBusinessUnitDetailsAddress
+  api: Business Unit Core Details
+  method: GET
+  path: /business_unit/addresses
+  description: Returns a collection of Business Unit Address Attributes
+  source_spec: openapi/aramark-business-unit-core-details-openapi.json
+- name: getBusinessUnitDetailsContactByOrgValue
+  api: Business Unit Core Details
+  method: GET
+  path: /business_unit/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One Business Unit
+  source_spec: openapi/aramark-business-unit-core-details-openapi.json
+- name: getCalendarDay
+  api: Calendar
+  method: GET
+  path: /calendar/day
+  description: Calendar dates for fiscal params
+  source_spec: openapi/aramark-calendar-openapi.json
+- name: getFiscalDay
+  api: Calendar
+  method: GET
+  path: /fiscal/day
+  description: Fiscal day attributes
+  source_spec: openapi/aramark-calendar-openapi.json
+- name: getOperationalDay
+  api: Calendar
+  method: GET
+  path: /operational/day
+  description: Operational day attributes
+  source_spec: openapi/aramark-calendar-openapi.json
+- name: getCateringOrderDetails
+  api: Catering
+  method: GET
+  path: /order/details/{org_value}
+  description: Gets Catering Order Details
+  source_spec: openapi/aramark-catering-openapi.json
+- name: getDailyFoodWaste
+  api: Daily Food Waste Tracking
+  method: GET
+  path: /food_waste
+  description: Daily Service Food Waste
+  source_spec: openapi/aramark-daily-food-waste-tracking-openapi.json
+- name: getDailyFoodWasteByOrgValue
+  api: Daily Food Waste Tracking
+  method: GET
+  path: /food_waste/{org_value}
+  description: Amount of food waste per business organization
+  source_spec: openapi/aramark-daily-food-waste-tracking-openapi.json
+- name: getDistrictDetailsAddressByOrgValue
+  api: District Core Details
+  method: GET
+  path: /district/addresses/{org_value}
+  description: Returns a collection of District Address Attributes for One District
+  source_spec: openapi/aramark-district-core-details-openapi.json
+- name: getDistrictDetailsAddress
+  api: District Core Details
+  method: GET
+  path: /district/addresses
+  description: Returns a collection of District Address Attributes
+  source_spec: openapi/aramark-district-core-details-openapi.json
+- name: getDistrictDetailsContactByOrgValue
+  api: District Core Details
+  method: GET
+  path: /district/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One District
+  source_spec: openapi/aramark-district-core-details-openapi.json
+- name: getDivisionDetailsAddressByOrgValue
+  api: Division Core Details
+  method: GET
+  path: /division/addresses/{org_value}
+  description: Returns a collection of Division Address Attributes for One Division
+  source_spec: openapi/aramark-division-core-details-openapi.json
+- name: getDivisionDetailsAddress
+  api: Division Core Details
+  method: GET
+  path: /division/addresses
+  description: Returns a collection of Division Address Attributes
+  source_spec: openapi/aramark-division-core-details-openapi.json
+- name: getDivisionDetailsContactByOrgValue
+  api: Division Core Details
+  method: GET
+  path: /division/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One Division
+  source_spec: openapi/aramark-division-core-details-openapi.json
+- name: getFinancialSummaryByOrgValue
+  api: Financial Daily Account Summary
+  method: GET
+  path: /account_summary/{org_value}
+  description: GFF daily summary
+  source_spec: openapi/aramark-financial-daily-account-summary-openapi.json
+- name: getVOCResults
+  api: Growth
+  method: GET
+  path: /voc/results/{org_value}
+  description: Voice of Consumer survey
+  source_spec: openapi/aramark-growth-openapi.json
+- name: getClientItemDetailSpend
+  api: GSC GPO
+  method: GET
+  path: /spend/item_detail
+  description: Gets Client Item Detail Spend Data
+  source_spec: openapi/aramark-gsc-gpo-0-openapi.json
+- name: getInventoryStorage
+  api: Inventory
+  method: GET
+  path: /storage_areas
+  description: Inventory Storage Areas
+  source_spec: openapi/aramark-inventory-openapi.json
+- name: getPurchaseOrders
+  api: Inventory
+  method: GET
+  path: /purchase_orders
+  description: Inventory Purchase Orders
+  source_spec: openapi/aramark-inventory-openapi.json
+- name: putPurchaseOrders
+  api: Inventory
+  method: PUT
+  path: /purchase_orders
+  description: Update an Purchase Orders
+  source_spec: openapi/aramark-inventory-openapi.json
+- name: getTemperatureEvents
+  api: IoT
+  method: POST
+  path: /events/temperature
+  description: Get Temperature Events within 24 hour date range
+  source_spec: openapi/aramark-iot-openapi.json
+- name: getTemperatureEventsByOrgValue
+  api: IoT
+  method: POST
+  path: /events/temperature/{org_value}
+  description: Get Temperature Events by Location within 24 hour date range
+  source_spec: openapi/aramark-iot-openapi.json
+- name: getDailyLaborSummary
+  api: Labor Daily
+  method: GET
+  path: /summary/{org_value}
+  description: Labor daily summary
+  source_spec: openapi/aramark-labor-daily-openapi.json
+- name: getDailyEmployeeSummaryByOrgValue
+  api: Labor Daily
+  method: GET
+  path: /employee/summary/{org_value}
+  description: Employee daily summary
+  source_spec: openapi/aramark-labor-daily-openapi.json
+- name: getDailyEmployeeScheduleByOrgValue
+  api: Labor Daily
+  method: GET
+  path: /employee/schedule/{org_value}
+  description: Employee daily schedule
+  source_spec: openapi/aramark-labor-daily-openapi.json
+- name: getEmployeeAccrual
+  api: Labor Employee
+  method: GET
+  path: /accrual
+  description: Accrual balance for employee
+  source_spec: openapi/aramark-labor-employee-openapi.json
+- name: getEmployeeManager
+  api: Labor Employee
+  method: GET
+  path: /manager
+  description: Manager id of employee
+  source_spec: openapi/aramark-labor-employee-openapi.json
+- name: getEmployeeDetails
+  api: Labor Employee
+  method: GET
+  path: /details/{org_value}
+  description: Employee detail information
+  source_spec: openapi/aramark-labor-employee-openapi.json
+- name: getManagerEmployees
+  api: Labor Manager Employees
+  method: GET
+  path: /employeees
+  description: Returns employee information from manager id
+  source_spec: openapi/aramark-labor-manager-employees-openapi.json
+- name: getScheduledShifts
+  api: Labor Schedule
+  method: GET
+  path: /employee/shifts
+  description: Scheduled shift information for employee
+  source_spec: openapi/aramark-labor-schedule-openapi.yaml
+- name: getTimecard
+  api: Labor Schedule
+  method: GET
+  path: /employee/timecard
+  description: Timecard information for employee
+  source_spec: openapi/aramark-labor-schedule-openapi.yaml
+- name: getLineOfBusinessDetailsAddressByOrgValue
+  api: Line of Business Core Details
+  method: GET
+  path: /line_of_business/addresses/{org_value}
+  description: Returns a collection of Line of Business Address Attributes for One Line of Business
+  source_spec: openapi/aramark-line-business-core-details-openapi.json
+- name: getLineOfBusinessDetailsAddress
+  api: Line of Business Core Details
+  method: GET
+  path: /line_of_business/addresses
+  description: Returns a collection of Line of Business Address Attributes
+  source_spec: openapi/aramark-line-business-core-details-openapi.json
+- name: getLineOfBusinessDetailsContactByOrgValue
+  api: Line of Business Core Details
+  method: GET
+  path: /line_of_business/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One Line of Business
+  source_spec: openapi/aramark-line-business-core-details-openapi.json
+- name: getLocationDetailsCoreByOrgValue
+  api: Location Core Details
+  method: GET
+  path: /location/core/{org_value}
+  description: Returns a collection of Location Core Attributes for One Location
+  source_spec: openapi/aramark-location-core-details-openapi.json
+- name: getLocationDetailsCore
+  api: Location Core Details
+  method: GET
+  path: /location/core
+  description: Returns a collection of Location Core Attributes
+  source_spec: openapi/aramark-location-core-details-openapi.json
+- name: getLocationDetailsAddressByOrgValue
+  api: Location Core Details
+  method: GET
+  path: /location/addresses/{org_value}
+  description: Returns a collection of Location Address Attributes for One Location
+  source_spec: openapi/aramark-location-core-details-openapi.json
+- name: getAllMarkoUsers
+  api: Marko Users
+  method: GET
+  path: /users
+  description: Get all Users
+  source_spec: openapi/aramark-marko-users-openapi.json
+- name: postUser
+  api: Marko Users
+  method: POST
+  path: /users
+  description: Create User
+  source_spec: openapi/aramark-marko-users-openapi.json
+- name: getUserProfiles
+  api: Marko Users
+  method: GET
+  path: /user/profile
+  description: Get User Profiles
+  source_spec: openapi/aramark-marko-users-openapi.json
+- name: getPerformanceSnapshotByOrgValue
+  api: Operational Daily
+  method: GET
+  path: /performance/snapshot/{org_value}
+  description: Intra-day performance
+  source_spec: openapi/aramark-operational-daily-openapi.json
+- name: getRevenueSnapshot
+  api: Operational Daily
+  method: GET
+  path: /revenue/snapshot/{org_value}
+  description: Intra-day revenue
+  source_spec: openapi/aramark-operational-daily-openapi.json
+- name: getGLAccount
+  api: Organization
+  method: GET
+  path: /organization/gl_account
+  description: Get GL Account Data
+  source_spec: openapi/aramark-organization-openapi.json
+- name: getGLAccountDetails
+  api: Organization
+  method: GET
+  path: /organization/gl_account/details
+  description: Get GL Account Detail Data
+  source_spec: openapi/aramark-organization-openapi.json
+- name: getSuppliers
+  api: Organization
+  method: GET
+  path: /organization/suppliers
+  description: Get Supplier Data
+  source_spec: openapi/aramark-organization-openapi.json
+- name: getOrganizationBrand
+  api: Organization Brands
+  method: GET
+  path: /brands
+  description: Organization brand information
+  source_spec: openapi/aramark-organization-brands-openapi.json
+- name: getOrganizationClients
+  api: Organization Clients
+  method: GET
+  path: /clients
+  description: Returns a collection of Client Attributes
+  source_spec: openapi/aramark-organization-clients-openapi.json
+- name: getFinancialHierarchy
+  api: Organization Hierarchy
+  method: GET
+  path: /financial/{org_value}
+  description: Financial hierarchy nodes
+  source_spec: openapi/aramark-organization-hierarchy-openapi.json
+- name: getFinancialFlatHierarchyV2
+  api: Organization Hierarchy V2
+  method: GET
+  path: /hierarchy/flat/financial/{org_value}
+  description: Returns Financial Hierarchy data with new and legacy Org Values in a flattened structure
+  source_spec: openapi/aramark-organization-hierarchy-v2-openapi.json
+- name: getProfitCenterDetailsCoreByOrgValue
+  api: Organization Profit Center Core Details
+  method: GET
+  path: /profit_center/core/{org_value}
+  description: Returns a collection of Profit Center Core Attributes for One Profit Center
+  source_spec: openapi/aramark-organization-profit-center-core-details-openapi.json
+- name: getProfitCenterDetailsCore
+  api: Organization Profit Center Core Details
+  method: GET
+  path: /profit_center/core
+  description: Returns a collection of Profit Center Core Attributes
+  source_spec: openapi/aramark-organization-profit-center-core-details-openapi.json
+- name: getProfitCenterDetailsAddressByOrgValue
+  api: Organization Profit Center Core Details
+  method: GET
+  path: /profit_center/addresses/{org_value}
+  description: Returns a collection of Profit Center Address Attributes for One Profit Center
+  source_spec: openapi/aramark-organization-profit-center-core-details-openapi.json
+- name: getOrganizationSupplier
+  api: Organization Suppliers
+  method: GET
+  path: /suppliers/{org_value}
+  description: Return a collection of Organizational Supplier information
+  source_spec: openapi/aramark-organization-suppliers-openapi.json
+- name: getRealTimeItemSales
+  api: Point of Sale
+  method: GET
+  path: /real_time/item_sales/{org_value}
+  description: POS Real Time Item Sales
+  source_spec: openapi/aramark-point-sale-openapi.json
+- name: getTransactionChecks
+  api: Point of Sale
+  method: GET
+  path: /transactions/checks/{org_value}
+  description: POS Transaction Checks
+  source_spec: openapi/aramark-point-sale-openapi.json
+- name: getTransactionItems
+  api: Point of Sale
+  method: GET
+  path: /transactions/items/{org_value}
+  description: POS Transaction Items
+  source_spec: openapi/aramark-point-sale-openapi.json
+- name: getDailySalesRank
+  api: POS Daily Product Ranking
+  method: GET
+  path: /sales_rank/{org_value}
+  description: POS product rankings by sales
+  source_spec: openapi/aramark-pos-daily-product-ranking-openapi.json
+- name: getDailyVolumeRank
+  api: POS Daily Product Ranking
+  method: GET
+  path: /volume_rank/{org_value}
+  description: POS product rankings by volume
+  source_spec: openapi/aramark-pos-daily-product-ranking-openapi.json
+- name: getDailySalesByOrgValue
+  api: POS Daily Sales
+  method: GET
+  path: /sales/{org_value}
+  description: Pos daily sales
+  source_spec: openapi/aramark-pos-daily-sales-openapi.json
+- name: getDailySelfServiceSalesByOrgValue
+  api: POS Daily Sales
+  method: GET
+  path: /self_service/{org_value}
+  description: POS daily self service
+  source_spec: openapi/aramark-pos-daily-sales-openapi.json
+- name: getPOSItems
+  api: POS Items
+  method: GET
+  path: /items
+  description: Point of Sale Items
+  source_spec: openapi/aramark-pos-items-openapi.json
+- name: getPOSDevices
+  api: POS Transactions
+  method: GET
+  path: /devices
+  description: POS Device Data
+  source_spec: openapi/aramark-pos-transactions-openapi.json
+- name: getRealTimeItemSales
+  api: POS Transactions
+  method: GET
+  path: /real_time/item_sales/{org_value}
+  description: POS Real Time Item Sales
+  source_spec: openapi/aramark-pos-transactions-openapi.json
+- name: getTransactionChecks
+  api: POS Transactions
+  method: GET
+  path: /transactions/checks/{org_value}
+  description: POS Transaction Checks
+  source_spec: openapi/aramark-pos-transactions-openapi.json
+- name: getRetailItems
+  api: Product
+  method: GET
+  path: /product/retail/items/{org_value}
+  description: getRetailItems
+  source_spec: openapi/aramark-product-openapi.json
+- name: postRetailItems
+  api: Product
+  method: POST
+  path: /product/retail/items
+  description: postRetailItems
+  source_spec: openapi/aramark-product-openapi.json
+- name: getSupplierItemsbyLocation
+  api: Product
+  method: GET
+  path: /product/supplier/items/{org_value}
+  description: getSupplierItemsbyLocation
+  source_spec: openapi/aramark-product-openapi.json
+- name: getMasterRecipes
+  api: Product Recipe
+  method: GET
+  path: /
+  description: Ingredients for a recipe
+  source_spec: openapi/aramark-product-recipe-openapi.json
+- name: getMasterRecipeNutrition
+  api: Product Recipe
+  method: GET
+  path: /nutrition
+  description: Nutritional data
+  source_spec: openapi/aramark-product-recipe-openapi.json
+- name: getRetailItems
+  api: Product Items
+  method: GET
+  path: /retail/items/{org_value}
+  description: getRetailItems
+  source_spec: openapi/aramark-product-retail-items-openapi.json
+- name: postRetailItems
+  api: Product Items
+  method: POST
+  path: /retail/items
+  description: postRetailItems
+  source_spec: openapi/aramark-product-retail-items-openapi.json
+- name: getSupplierItemsbyLocation
+  api: Product Items
+  method: GET
+  path: /supplier/items/{org_value}
+  description: getSupplierItemsbyLocation
+  source_spec: openapi/aramark-product-retail-items-openapi.json
+- name: getMyAppProfitCenters
+  api: Profile App
+  method: GET
+  path: /my_profit_centers
+  description: Map profit centers to user
+  source_spec: openapi/aramark-profile-app-openapi.json
+- name: getMyAppLocations
+  api: Profile App
+  method: GET
+  path: /my_locations
+  description: Map locations to user
+  source_spec: openapi/aramark-profile-app-openapi.json
+- name: getMyRole
+  api: Profile User
+  method: GET
+  path: /my_role
+  description: User roles
+  source_spec: openapi/aramark-profile-user-openapi.json
+- name: getMyHierarchy
+  api: Profile User
+  method: GET
+  path: /my_hierarchy
+  description: User Hierarchy
+  source_spec: openapi/aramark-profile-user-openapi.json
+- name: getMyProfitCenters
+  api: Profile User
+  method: GET
+  path: /my_profit_centers
+  description: User profit centers
+  source_spec: openapi/aramark-profile-user-openapi.json
+- name: getRecipeDecorations
+  api: Recipe Decorations
+  method: GET
+  path: /recipe_decorations
+  description: Recipes for decoration base
+  source_spec: openapi/aramark-recipe-decorations-openapi.json
+- name: getRegionDetailsAddressByOrgValue
+  api: Region Core Details
+  method: GET
+  path: /region/addresses/{org_value}
+  description: Returns a collection of Region Address Attributes for One Region
+  source_spec: openapi/aramark-region-core-details-openapi.json
+- name: getRegionDetailsAddress
+  api: Region Core Details
+  method: GET
+  path: /region/addresses
+  description: Returns a collection of Region Address Attributes
+  source_spec: openapi/aramark-region-core-details-openapi.json
+- name: getRegionDetailsContactByOrgValue
+  api: Region Core Details
+  method: GET
+  path: /region/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One Region
+  source_spec: openapi/aramark-region-core-details-openapi.json
+- name: postUAPRole
+  api: Security
+  method: POST
+  path: /uap/role
+  description: Add UAP Role
+  source_spec: openapi/aramark-security-openapi.json
+- name: deleteUAPRole
+  api: Security
+  method: DELETE
+  path: /uap/role
+  description: Remove UAP Role
+  source_spec: openapi/aramark-security-openapi.json
+- name: getCustomerCount
+  api: Service
+  method: GET
+  path: /customer/count
+  description: Get Customer Count for a Service Area
+  source_spec: openapi/aramark-service-openapi.json
+- name: putCustomerCount
+  api: Service
+  method: PUT
+  path: /customer/count
+  description: Update Customer Count for a Service Area
+  source_spec: openapi/aramark-service-openapi.json
+- name: getDeviceSites
+  api: Service
+  method: GET
+  path: /device/sites
+  description: Get Sites for a Device
+  source_spec: openapi/aramark-service-openapi.json
+- name: getServiceAreas
+  api: Service Areas
+  method: GET
+  path: /service_areas
+  description: Service areas by site ID
+  source_spec: openapi/aramark-service-areas-openapi.json
+- name: getServiceAreasV2
+  api: Service Areas V2
+  method: GET
+  path: /service_areas
+  description: Service Areas
+  source_spec: openapi/aramark-service-areas-v2-openapi.json
+- name: getServiceAreasWithUpdatesV2
+  api: Service Areas V2
+  method: GET
+  path: /service_areas/updates
+  description: Service Areas with Updates
+  source_spec: openapi/aramark-service-areas-v2-openapi.json
+- name: getInventoryStorage
+  api: Service Inventory
+  method: GET
+  path: /inventory/storage
+  description: Inventory Storage Areas
+  source_spec: openapi/aramark-service-inventory-openapi.json
+- name: getInventoryItems
+  api: Service Inventory
+  method: GET
+  path: /inventory/items
+  description: Inventory Items for a specific Location
+  source_spec: openapi/aramark-service-inventory-openapi.json
+- name: putInventoryItems
+  api: Service Inventory
+  method: PUT
+  path: /inventory/items
+  description: Update an Inventory Item for a specific Location
+  source_spec: openapi/aramark-service-inventory-openapi.json
+- name: getServiceMealPeriods
+  api: Service Meal Periods
+  method: GET
+  path: /service_meal_periods
+  description: Return Service Meal Periods
+  source_spec: openapi/aramark-service-meal-periods-openapi.json
+- name: getServiceMenuItems
+  api: Service Menu Items
+  method: GET
+  path: /
+  description: Menu items for a service menu
+  source_spec: openapi/aramark-service-menu-items-openapi.yaml
+- name: getServiceMenuItemsFlat
+  api: Service Menu Items
+  method: GET
+  path: /flat
+  description: Choose fields returned in flat response object
+  source_spec: openapi/aramark-service-menu-items-openapi.yaml
+- name: getServiceMenus
+  api: Service Menus
+  method: GET
+  path: /service_menus
+  description: Return a collection of Service Menus
+  source_spec: openapi/aramark-service-menus-openapi.json
+- name: getServiceProductionAreas
+  api: Service Production Areas
+  method: GET
+  path: /production_areas
+  description: Service production areas from site ID
+  source_spec: openapi/aramark-service-production-areas-openapi.yaml
+- name: getServiceProductionDepartments
+  api: Service Production Departments
+  method: GET
+  path: /production_departments
+  description: Returns production department from service area
+  source_spec: openapi/aramark-service-production-departments-openapi.yaml
+- name: getServiceRecipes
+  api: Service Recipe
+  method: GET
+  path: /recipes
+  description: Recipes and ingredients
+  source_spec: openapi/aramark-service-recipe-openapi.json
+- name: getServiceRecipeNutrition
+  api: Service Recipe
+  method: GET
+  path: /recipe/nutrition
+  description: Nutritional data for service menu
+  source_spec: openapi/aramark-service-recipe-openapi.json
+- name: getServiceRecipeNutritionV2
+  api: Service Recipes V2
+  method: GET
+  path: /nutrition
+  description: Service Recipe Nutrition
+  source_spec: openapi/aramark-service-recipes-v2-openapi.json
+- name: getServiceRecipeNutritionUpdates
+  api: Service Recipes V2
+  method: GET
+  path: /nutrition/update
+  description: Service Recipe Nutrition Updates
+  source_spec: openapi/aramark-service-recipes-v2-openapi.json
+- name: getServiceResults
+  api: Service Results
+  method: GET
+  path: /results/{service_menu_item_id}
+  description: Menu item from menu item id
+  source_spec: openapi/aramark-service-results-openapi.json
+- name: putServiceResults
+  api: Service Results
+  method: PUT
+  path: /results/{service_menu_item_id}
+  description: Update service results for a menu id
+  source_spec: openapi/aramark-service-results-openapi.json
+- name: getServiceRecipeNutritionV3
+  api: Service V3
+  method: GET
+  path: /recipe/nutrition
+  description: Service Recipe Nutrition
+  source_spec: openapi/aramark-service-v3-openapi.json
+- name: getServiceRecipeNutritionUpdatesV3
+  api: Service V3
+  method: GET
+  path: /recipe/nutrition/update
+  description: Service Recipe Nutrition Updates
+  source_spec: openapi/aramark-service-v3-openapi.json
+- name: getWeeklyOverproduction
+  api: Service Weekly Overproduction
+  method: GET
+  path: /overproduction
+  description: Weekly overproduction for rolling weeks
+  source_spec: openapi/aramark-service-weekly-overproduction-openapi.json
+- name: getWeeklyOverproductionByOrgValue
+  api: Service Weekly Overproduction
+  method: GET
+  path: /overproduction/{org_value}
+  description: Weekly overproduction for rolling weeks by org
+  source_spec: openapi/aramark-service-weekly-overproduction-openapi.json
+- name: getSites
+  api: Sites
+  method: GET
+  path: /sites
+  description: Return a collection of sites
+  source_spec: openapi/aramark-sites-openapi.json
+- name: getSubLocationDetailsAddressByOrgValue
+  api: Sub Location Core Details
+  method: GET
+  path: /sub_location/addresses/{org_value}
+  description: Returns a collection of Sub Location Address Attributes for One Sub Location
+  source_spec: openapi/aramark-sub-location-core-details-openapi.json
+- name: getSubLocationDetailsAddress
+  api: Sub Location Core Details
+  method: GET
+  path: /sub_location/addresses
+  description: Returns a collection of Sub Location Address Attributes
+  source_spec: openapi/aramark-sub-location-core-details-openapi.json
+- name: getSubLocationDetailsContactByOrgValue
+  api: Sub Location Core Details
+  method: GET
+  path: /sub_location/contacts/{org_value}
+  description: Returns a collection of Contact Attributes for One Sub Location
+  source_spec: openapi/aramark-sub-location-core-details-openapi.json
+- name: getSubLocations
+  api: Sub Locations
+  method: GET
+  path: /sub_locations
+  description: Return Sub Locations
+  source_spec: openapi/aramark-sub-locations-openapi.json
+- name: getUnitsOfMeasure
+  api: Units of Measure
+  method: GET
+  path: /units_of_measure
+  description: Units of measure
+  source_spec: openapi/aramark-units-measure-openapi.json
+- name: getVendorPurchaseOrders
+  api: Vendor
+  method: GET
+  path: /vendor/purchase_orders
+  description: getVendorPurchaseOrders
+  source_spec: openapi/aramark-vendor-openapi.json

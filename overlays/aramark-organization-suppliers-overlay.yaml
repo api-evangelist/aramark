@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Aramark Marko Organization Suppliers
+  version: 1.0.0
+extends: openapi/aramark-organization-suppliers-openapi.json
+x-generated: '2026-09-04'
+x-method: generated
+x-source: openapi/_original/ verbatim harvest + live production probe 2026-09-04
+actions:
+- target: $.info
+  description: Record where this contract was harvested from and how it was verified.
+  update:
+    x-apievangelist:
+      harvested: '2026-09-04'
+      source: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/supplier.json
+      documentation: https://marko-developers.aramark.net/doc/organization-suppliers
+      production_probe:
+        url: https://marko.aramark.net/v1/organization/suppliers/TESTVALUE
+        status: 401
+        result: live — Apigee proxy deployed, apikey required

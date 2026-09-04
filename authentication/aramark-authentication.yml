@@ -1,16 +1,108 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/marko-api.yml
+generated: '2026-09-04'
+method: searched
+source: openapi/aramark-alerts-openapi.json, openapi/aramark-ask-marko-openapi.json, openapi/aramark-business-unit-core-details-openapi.json,
+  openapi/aramark-calendar-openapi.json, openapi/aramark-catering-openapi.json, openapi/aramark-daily-food-waste-tracking-openapi.json,
+  openapi/aramark-district-core-details-openapi.json, openapi/aramark-division-core-details-openapi.json, openapi/aramark-financial-daily-account-summary-openapi.json,
+  openapi/aramark-growth-openapi.json, openapi/aramark-gsc-gpo-0-openapi.json, openapi/aramark-inventory-openapi.json
+  ...
 summary:
   types:
   - apiKey
   api_key_in:
   - header
+  oauth2: false
+  openid_connect: false
+  mutual_tls: false
 schemes:
 - name: apiKey
   type: apiKey
   in: header
-  parameter: apiKey
-  description: API key for Marko platform authentication, obtained from the developer portal.
+  parameter: apikey
+  description: This HTTP Header variable will verify permissions.
   sources:
-  - openapi/marko-api.yml
+  - openapi/aramark-alerts-openapi.json
+  - openapi/aramark-ask-marko-openapi.json
+  - openapi/aramark-business-unit-core-details-openapi.json
+  - openapi/aramark-calendar-openapi.json
+  - openapi/aramark-catering-openapi.json
+  - openapi/aramark-daily-food-waste-tracking-openapi.json
+  - openapi/aramark-district-core-details-openapi.json
+  - openapi/aramark-division-core-details-openapi.json
+  - openapi/aramark-financial-daily-account-summary-openapi.json
+  - openapi/aramark-growth-openapi.json
+  - openapi/aramark-gsc-gpo-0-openapi.json
+  - openapi/aramark-inventory-openapi.json
+  - openapi/aramark-iot-openapi.json
+  - openapi/aramark-labor-daily-openapi.json
+  - openapi/aramark-labor-employee-openapi.json
+  - openapi/aramark-labor-manager-employees-openapi.json
+  - openapi/aramark-labor-schedule-openapi.yaml
+  - openapi/aramark-line-business-core-details-openapi.json
+  - openapi/aramark-location-core-details-openapi.json
+  - openapi/aramark-marko-users-openapi.json
+  - openapi/aramark-operational-daily-openapi.json
+  - openapi/aramark-organization-clients-openapi.json
+  - openapi/aramark-organization-hierarchy-openapi.json
+  - openapi/aramark-organization-hierarchy-v2-openapi.json
+  - openapi/aramark-organization-openapi.json
+  - openapi/aramark-organization-profit-center-core-details-openapi.json
+  - openapi/aramark-point-sale-openapi.json
+  - openapi/aramark-pos-daily-product-ranking-openapi.json
+  - openapi/aramark-pos-daily-sales-openapi.json
+  - openapi/aramark-pos-transactions-openapi.json
+  - openapi/aramark-product-openapi.json
+  - openapi/aramark-product-recipe-openapi.json
+  - openapi/aramark-product-retail-items-openapi.json
+  - openapi/aramark-profile-app-openapi.json
+  - openapi/aramark-profile-user-openapi.json
+  - openapi/aramark-recipe-decorations-openapi.json
+  - openapi/aramark-region-core-details-openapi.json
+  - openapi/aramark-security-openapi.json
+  - openapi/aramark-service-areas-openapi.json
+  - openapi/aramark-service-areas-v2-openapi.json
+  - openapi/aramark-service-inventory-openapi.json
+  - openapi/aramark-service-meal-periods-openapi.json
+  - openapi/aramark-service-menu-items-openapi.yaml
+  - openapi/aramark-service-menus-openapi.json
+  - openapi/aramark-service-openapi.json
+  - openapi/aramark-service-production-areas-openapi.yaml
+  - openapi/aramark-service-production-departments-openapi.yaml
+  - openapi/aramark-service-recipe-openapi.json
+  - openapi/aramark-service-recipes-v2-openapi.json
+  - openapi/aramark-service-results-openapi.json
+  - openapi/aramark-service-v3-openapi.json
+  - openapi/aramark-service-weekly-overproduction-openapi.json
+  - openapi/aramark-sites-openapi.json
+  - openapi/aramark-sub-location-core-details-openapi.json
+  - openapi/aramark-units-measure-openapi.json
+  - openapi/aramark-vendor-openapi.json
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: apiKey
+  description: This HTTP Header variable will verify permissions.
+  sources:
+  - openapi/aramark-organization-brands-openapi.json
+docs: https://marko-developers.aramark.net/faqs
+access_flow:
+  steps:
+  - Create an account on the Marko Developer Portal (https://marko-developers.aramark.net/user/register)
+  - Register the application that will consume the APIs
+  - Choose the API Products you want that application to reach
+  - The request is submitted for approval
+  - On approval an application API key is generated
+  source: https://marko-developers.aramark.net/faqs
+  note: 'Quoted from the portal FAQ: "In order to use a Marko API you must first create an account and register
+    your application that will be consuming the APIs. This process will create an Application API Key that must
+    be used with every request to the API." and "Upon approval your API Key will be generated." Entitlement is per
+    API product, which is why an unentitled call to a live proxy returns the same 401 as a missing key.'
+runtime_evidence:
+  url: https://marko.aramark.net/v1/profit_centers?search=US%20Bank%20Stadium
+  date: '2026-09-04'
+  http_status: 401
+  body: '{"fault":{"faultstring":"Failed to resolve API Key variable request.header.apikey","detail":{"errorcode":"steps.oauth.v2.FailedToResolveAPIKey"}}}'
+  note: Confirms the apikey header is enforced at the Apigee gateway in production.
+note: Two securityScheme spellings appear across the 60 published contracts — the header parameter is written apikey
+  in 57 of them and apiKey in 3 (Organization Brands, Organization Suppliers, Product Retail Items). HTTP header
+  names are case-insensitive so both work, but the inconsistency is real and a strict client generator will emit
+  two different constants.

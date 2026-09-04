@@ -1,0 +1,33 @@
+generated: '2026-09-04'
+method: searched
+source: https://marko-developers.aramark.net/catalog (RapiDoc console on every /doc/ page) + info.description
+  of all 60 Marko OpenAPI documents
+summary:
+  published: true
+  console: true
+  test_environments: 2
+  test_credentials_published: false
+console:
+  type: in-page API console
+  engine: RapiDoc
+  label: Try
+  note: 'Every one of the 60 API documentation pages renders its OpenAPI in a RapiDoc component with allow-server-selection
+    enabled, so a signed-in developer can pick a server and fire a real request from the docs page. Example:
+    https://marko-developers.aramark.net/doc/organization'
+environments:
+- name: production
+  host: https://marko.aramark.net
+  note: Stated per-API in each spec info.description as "the base endpoint URL for this API in production".
+- name: testing
+  host: https://qa-marko.aramark.net
+  note: Named in every spec description as the testing server, and carried in servers[] of the published
+    contracts.
+- name: development
+  host: https://dev-marko.aramark.net
+  note: Named in every spec description as the development server, and carried in servers[] of the published
+    contracts.
+note: Aramark publishes named test and development hosts and an in-page console, but no test API key,
+  no fixture data and no self-serve test credential. Access to any environment still requires a registered
+  application and an approved key, so the sandbox is reachable only after the approval gate. No test values
+  of any kind are published, and none are invented here.
+test_values: []
