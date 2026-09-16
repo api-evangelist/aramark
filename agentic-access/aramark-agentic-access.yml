@@ -1,17 +1,1082 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/marko-api.yml
+source: openapi/aramark-accruals-api-openapi.yml, openapi/aramark-address-api-openapi.yml, openapi/aramark-alerts-api-openapi.yml,
+  openapi/aramark-anet-api-openapi.yml, openapi/aramark-ask-api-openapi.yml, openapi/aramark-brand-api-openapi.yml,
+  openapi/aramark-calendar-day-api-openapi.yml, openapi/aramark-clients-api-openapi.yml, openapi/aramark-configuration-api-openapi.yml,
+  openapi/aramark-contact-api-openapi.yml, openapi/aramark-core-api-openapi.yml, openapi/aramark-customer-api-openapi.yml,
+  openapi/aramark-daily-sales-api-openapi.yml, openapi/aramark-details-api-openapi.yml, openapi/aramark-device-api-openapi.yml,
+  openapi/aramark-districts-api-openapi.yml, openapi/aramark-employee-api-openapi.yml, openapi/aramark-employee-daily-schedule-api-openapi.yml,
+  openapi/aramark-employee-daily-summary-api-openapi.yml, openapi/aramark-equipment-api-openapi.yml,
+  openapi/aramark-events-api-openapi.yml, openapi/aramark-feature-api-openapi.yml, openapi/aramark-financial-api-openapi.yml,
+  openapi/aramark-fiscal-day-api-openapi.yml, openapi/aramark-food-bank-api-openapi.yml, openapi/aramark-gl-accounts-api-openapi.yml,
+  openapi/aramark-hierarchy-api-openapi.yml, openapi/aramark-item-api-openapi.yml, openapi/aramark-items-api-openapi.yml,
+  openapi/aramark-labor-api-openapi.yml, openapi/aramark-labor-daily-forecast-api-openapi.yml,
+  openapi/aramark-labor-daily-summary-api-openapi.yml, openapi/aramark-locations-api-openapi.yml,
+  openapi/aramark-log-api-openapi.yml, openapi/aramark-manager-api-openapi.yml, openapi/aramark-manufacturer-items-api-openapi.yml,
+  openapi/aramark-menu-items-api-openapi.yml, openapi/aramark-nutrition-api-openapi.yml, openapi/aramark-operational-day-api-openapi.yml,
+  openapi/aramark-order-api-openapi.yml, openapi/aramark-organization-api-openapi.yml, openapi/aramark-payroll-api-openapi.yml,
+  openapi/aramark-performance-api-openapi.yml, openapi/aramark-photos-api-openapi.yml, openapi/aramark-po-api-openapi.yml,
+  openapi/aramark-point-of-sale-api-openapi.yml, openapi/aramark-product-api-openapi.yml, openapi/aramark-production-areas-api-openapi.yml,
+  openapi/aramark-production-departments-api-openapi.yml, openapi/aramark-profile-api-openapi.yml,
+  openapi/aramark-profit-centers-api-openapi.yml, openapi/aramark-purchase-orders-api-openapi.yml,
+  openapi/aramark-purchasing-api-openapi.yml, openapi/aramark-realtime-api-openapi.yml, openapi/aramark-recipe-api-openapi.yml,
+  openapi/aramark-recipe-decorations-api-openapi.yml, openapi/aramark-recipe-nutrition-api-openapi.yml,
+  openapi/aramark-recipes-api-openapi.yml, openapi/aramark-regions-api-openapi.yml, openapi/aramark-results-api-openapi.yml,
+  openapi/aramark-retail-api-openapi.yml, openapi/aramark-revenue-api-openapi.yml, openapi/aramark-role-api-openapi.yml,
+  openapi/aramark-sales-ranking-api-openapi.yml, openapi/aramark-schedule-api-openapi.yml, openapi/aramark-self-service-api-openapi.yml,
+  openapi/aramark-service-api-openapi.yml, openapi/aramark-service-area-api-openapi.yml, openapi/aramark-service-daily-food-waste-api-openapi.yml,
+  openapi/aramark-service-meal-periods-api-openapi.yml, openapi/aramark-service-menu-items-api-openapi.yml,
+  openapi/aramark-service-menus-api-openapi.yml, openapi/aramark-service-recipe-nutrition-api-openapi.yml,
+  openapi/aramark-service-recipes-api-openapi.yml, openapi/aramark-set-api-openapi.yml, openapi/aramark-site-api-openapi.yml,
+  openapi/aramark-sites-api-openapi.yml, openapi/aramark-sku-api-openapi.yml, openapi/aramark-spend-api-openapi.yml,
+  openapi/aramark-status-api-openapi.yml, openapi/aramark-storage-api-openapi.yml, openapi/aramark-sub-locations-api-openapi.yml,
+  openapi/aramark-supplier-api-openapi.yml, openapi/aramark-suppliers-api-openapi.yml, openapi/aramark-temperature-api-openapi.yml,
+  openapi/aramark-transactions-api-openapi.yml, openapi/aramark-uap-api-openapi.yml, openapi/aramark-units-of-measure-api-openapi.yml,
+  openapi/aramark-user-api-openapi.yml, openapi/aramark-voc-api-openapi.yml, openapi/aramark-volume-ranking-api-openapi.yml,
+  openapi/aramark-weekly-overproduction-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 6
+  operations: 208
   by_action_class:
-    connected: 6
+    connected: 167
+    acting: 41
   by_consequence:
-    read: 6
-  human_in_the_loop_required: 0
+    read: 167
+    write: 39
+    physical: 1
+    safety-critical: 1
+  human_in_the_loop_required: 1
 operations:
+- path: /accrual
+  method: get
+  operationId: getEmployeeAccrual
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /business_unit/addresses/{org_value}
+  method: get
+  operationId: getBusinessUnitDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /business_unit/addresses
+  method: get
+  operationId: getBusinessUnitDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /district/addresses/{org_value}
+  method: get
+  operationId: getDistrictDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /district/addresses
+  method: get
+  operationId: getDistrictDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /division/addresses/{org_value}
+  method: get
+  operationId: getDivisionDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /division/addresses
+  method: get
+  operationId: getDivisionDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /line_of_business/addresses/{org_value}
+  method: get
+  operationId: getLineOfBusinessDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /line_of_business/addresses
+  method: get
+  operationId: getLineOfBusinessDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/addresses/{org_value}
+  method: get
+  operationId: getLocationDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/addresses
+  method: get
+  operationId: getLocationDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/addresses/{org_value}
+  method: get
+  operationId: getProfitCenterDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/addresses
+  method: get
+  operationId: getProfitCenterDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /region/addresses/{org_value}
+  method: get
+  operationId: getRegionDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /region/addresses
+  method: get
+  operationId: getRegionDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sub_location/addresses/{org_value}
+  method: get
+  operationId: getSubLocationDetailsAddressByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sub_location/addresses
+  method: get
+  operationId: getSubLocationDetailsAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_centers
+  method: get
+  operationId: getProfitCenterAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /anet/users
+  method: get
+  operationId: getAnetUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /marko
+  method: post
+  operationId: postAskMarko
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /brands
+  method: get
+  operationId: getOrganizationBrand
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /calendar/day
+  method: get
+  operationId: getCalendarDay
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clients
+  method: get
+  operationId: getOrganizationClients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /my_clients
+  method: get
+  operationId: getMyClients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /configuration
+  method: put
+  operationId: putConfiguration
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /business_unit/contacts/{org_value}
+  method: get
+  operationId: getBusinessUnitDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /business_unit/contacts
+  method: get
+  operationId: getBusinessUnitDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /district/contacts/{org_value}
+  method: get
+  operationId: getDistrictDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /district/contacts
+  method: get
+  operationId: getDistrictDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /division/contacts/{org_value}
+  method: get
+  operationId: getDivisionDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /division/contacts
+  method: get
+  operationId: getDivisionDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /line_of_business/contacts/{org_value}
+  method: get
+  operationId: getLineOfBusinessDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /line_of_business/contacts
+  method: get
+  operationId: getLineOfBusinessDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/contacts/{org_value}
+  method: get
+  operationId: getLocationDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/contacts
+  method: get
+  operationId: getLocationDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/contacts/{org_value}
+  method: get
+  operationId: getProfitCenterDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/contacts
+  method: get
+  operationId: getProfitCenterDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /region/contacts/{org_value}
+  method: get
+  operationId: getRegionDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /region/contacts
+  method: get
+  operationId: getRegionDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sub_location/contacts/{org_value}
+  method: get
+  operationId: getSubLocationDetailsContactByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sub_location/contacts
+  method: get
+  operationId: getSubLocationDetailsContact
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/core/{org_value}
+  method: get
+  operationId: getLocationDetailsCoreByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /location/core
+  method: get
+  operationId: getLocationDetailsCore
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/core/{org_value}
+  method: get
+  operationId: getProfitCenterDetailsCoreByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/core
+  method: get
+  operationId: getProfitCenterDetailsCore
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customer/count
+  method: get
+  operationId: getCustomerCount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /customer/count
+  method: put
+  operationId: putCustomerCount
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sales/{org_value}
+  method: get
+  operationId: getDailySalesByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /details/{org_value}
+  method: get
+  operationId: getEmployeeDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/device
+  method: get
+  operationId: getUserDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/device
+  method: post
+  operationId: postUserDevice
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/device
+  method: delete
+  operationId: deleteUserDevice
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /devices
+  method: get
+  operationId: getPOSDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/sites
+  method: get
+  operationId: getDeviceSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /my_districts
+  method: get
+  operationId: getMyDistricts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employeees
+  method: get
+  operationId: getManagerEmployees
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employee/schedule/{org_value}
+  method: get
+  operationId: getDailyEmployeeScheduleByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employee/summary/{org_value}
+  method: get
+  operationId: getDailyEmployeeSummaryByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /equipment
+  method: get
+  operationId: getEquipment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /equipment/temperature
+  method: put
+  operationId: putEquipmentTemperature
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /events/temperature
+  method: post
+  operationId: getTemperatureEvents
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /events/temperature/{org_value}
+  method: post
+  operationId: getTemperatureEventsByOrgValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /features
+  method: get
+  operationId: getFeatures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /financial/{org_value}
+  method: get
+  operationId: getFinancialHierarchy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/financial/{org_value}
+  method: get
+  operationId: getProfitCenterDetailsFinancialByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/financial
+  method: get
+  operationId: getProfitCenterDetailsFinancial
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /fiscal/day
+  method: get
+  operationId: getFiscalDay
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food_bank_items
+  method: get
+  operationId: getFoodBankItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food_bank_items/activity
+  method: put
+  operationId: putFoodBankItemsActivity
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /organization/gl_account
+  method: get
+  operationId: getGLAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organization/gl_account/details
+  method: get
+  operationId: getGLAccountDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /hierarchy/flat/financial/{org_value}
+  method: get
+  operationId: getFinancialFlatHierarchyV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /my_hierarchy
+  method: get
+  operationId: getMyHierarchy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /items
+  method: get
+  operationId: getPOSItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /items
+  method: get
+  operationId: getInventoryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /items
+  method: put
+  operationId: putInventoryItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /inventory/items
+  method: get
+  operationId: getInventoryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /inventory/items
+  method: put
+  operationId: putInventoryItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /labor/overtime/{org_value}
+  method: get
+  operationId: getDailyLaborOvertimeByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /forecast/{org_value}
+  method: get
+  operationId: getDailyLaborForecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /summary/{org_value}
+  method: get
+  operationId: getDailyLaborSummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /my_locations
+  method: get
+  operationId: getMyLocations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /log/request
+  method: post
+  operationId: postLogRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /manager
+  method: get
+  operationId: getEmployeeManager
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /manufacturer_item/pricing
+  method: get
+  operationId: getManufacturerItemPricing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /menu_items
+  method: get
+  operationId: getMenuItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /menu_items
+  method: put
+  operationId: putMenuItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /menu_items/flat
+  method: get
+  operationId: getMenuItemsFlat
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /menu_items/updates
+  method: get
+  operationId: getMenuItemsUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /nutrition
+  method: get
+  operationId: getServiceRecipeNutritionV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /nutrition/update
+  method: get
+  operationId: getServiceRecipeNutritionUpdates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipe/nutrition
+  method: get
+  operationId: getServiceRecipeNutritionV3
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipe/nutrition/update
+  method: get
+  operationId: getServiceRecipeNutritionUpdatesV3
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /operational/day
+  method: get
+  operationId: getOperationalDay
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /order/details/{org_value}
+  method: get
+  operationId: getCateringOrderDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /organization
   method: get
   operationId: getOrganization
@@ -22,9 +1087,117 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /service
+- path: /profit_center/payroll/{org_value}
   method: get
-  operationId: getService
+  operationId: getProfitCenterDetailsPayrollByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /profit_center/payroll
+  method: get
+  operationId: getProfitCenterDetailsPayroll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /performance/snapshot/{org_value}
+  method: get
+  operationId: getPerformanceSnapshotByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /photos
+  method: get
+  operationId: getPhotos
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /photos
+  method: put
+  operationId: putPhotos
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /photos
+  method: delete
+  operationId: deletePhotos
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /product/po/lookup
+  method: post
+  operationId: postPOLookup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /product/po/number
+  method: get
+  operationId: getPONumbers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pos/{org_value}
+  method: get
+  operationId: getPOSAlertsByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /point-of-sale
+  method: get
+  operationId: getPointOfSale
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -42,9 +1215,345 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /production_areas
+  method: get
+  operationId: getServiceProductionAreas
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /production_departments
+  method: get
+  operationId: getServiceProductionDepartments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/profile
+  method: get
+  operationId: getUserProfiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/profile
+  method: post
+  operationId: postUserProfile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/profile
+  method: delete
+  operationId: deleteUserProfile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /my_profit_centers
+  method: get
+  operationId: getMyProfitCenters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /profit-centers
   method: get
   operationId: getProfitCenters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /purchase_orders
+  method: get
+  operationId: getPurchaseOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /purchase_orders
+  method: put
+  operationId: putPurchaseOrders
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /vendor/purchase_orders
+  method: get
+  operationId: getVendorPurchaseOrders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /purchasing/order/{org_value}
+  method: get
+  operationId: getPuchasingAlertsByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /real_time/item_sales/{org_value}
+  method: get
+  operationId: getRealTimeItemSales
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipe/swaps
+  method: get
+  operationId: getRecipeSwaps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipe_decorations
+  method: get
+  operationId: getRecipeDecorations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /nutrition
+  method: get
+  operationId: getMasterRecipeNutrition
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: get
+  operationId: getMasterRecipes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /my_regions
+  method: get
+  operationId: getMyRegions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /account_summary/{org_value}
+  method: get
+  operationId: getFinancialSummaryByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /result
+  method: put
+  operationId: putServiceResult
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /results/waste
+  method: get
+  operationId: getWasteResults
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /results/waste
+  method: put
+  operationId: putResultsWaste
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /results/waste
+  method: delete
+  operationId: deleteResultsWaste
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /results/{service_menu_item_id}
+  method: get
+  operationId: getServiceResults
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /results/{service_menu_item_id}
+  method: put
+  operationId: putServiceResults
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /product/retail/items/{org_value}
+  method: get
+  operationId: getRetailItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/retail/items
+  method: post
+  operationId: postRetailItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /retail/items/{org_value}
+  method: get
+  operationId: getRetailItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /retail/items
+  method: post
+  operationId: postRetailItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /revenue/snapshot/{org_value}
+  method: get
+  operationId: getRevenueSnapshot
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -62,9 +1571,805 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /point-of-sale
+- path: /my_role
   method: get
-  operationId: getPointOfSale
+  operationId: getMyRole
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sales_rank/{org_value}
+  method: get
+  operationId: getDailySalesRank
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employee/shifts
+  method: get
+  operationId: getScheduledShifts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /employee/timecard
+  method: get
+  operationId: getTimecard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /self_service/{org_value}
+  method: get
+  operationId: getDailySelfServiceSalesByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service
+  method: get
+  operationId: getService
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service_areas
+  method: get
+  operationId: getServiceAreasV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service_areas/updates
+  method: get
+  operationId: getServiceAreasWithUpdatesV2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service_area/recipe_list
+  method: get
+  operationId: getServiceAreaRecipeList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food_waste
+  method: get
+  operationId: getDailyFoodWaste
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food_waste/{org_value}
+  method: get
+  operationId: getDailyFoodWasteByOrgValue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service_meal_periods
+  method: get
+  operationId: getServiceMealPeriods
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: get
+  operationId: getServiceMenuItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /flat
+  method: get
+  operationId: getServiceMenuItemsFlat
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /service_menus
+  method: get
+  operationId: getServiceMenus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipe/nutrition
+  method: get
+  operationId: getServiceRecipeNutrition
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /recipes
+  method: get
+  operationId: getServiceRecipes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/set
+  method: get
+  operationId: getUserProfileSet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/set
+  method: post
+  operationId: postUserProfileSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/set
+  method: delete
+  operationId: deleteUserProfileSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/set/value
+  method: post
+  operationId: postUserProfileSetValue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/set/value
+  method: delete
+  operationId: deleteUserProfileSet Value
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /site/request
+  method: post
+  operationId: postSiteRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /site/request
+  method: put
+  operationId: putSiteRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /site/journal
+  method: get
+  operationId: getSiteJournal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /site/journal
+  method: put
+  operationId: putSiteJournal
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /site/pin
+  method: get
+  operationId: getSitePin
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /site/pin
+  method: put
+  operationId: putSitePin
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /site/details
+  method: get
+  operationId: getFeatures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sites
+  method: get
+  operationId: getSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/sku/lookup
+  method: post
+  operationId: postSKULookup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /sku/lookup
+  method: post
+  operationId: postSKULookup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /spend/item_detail
+  method: get
+  operationId: getClientItemDetailSpend
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /status
+  method: get
+  operationId: getEmployeeStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /storage_areas
+  method: get
+  operationId: getInventoryStorage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /inventory/storage
+  method: get
+  operationId: getInventoryStorage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sub_locations
+  method: get
+  operationId: getFeatures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /suppliers/{org_value}
+  method: get
+  operationId: getOrganizationSupplier
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/supplier/items/{org_value}
+  method: get
+  operationId: getSupplierItemsbyLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/supplier/items
+  method: get
+  operationId: getSupplierItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/supplier/receipts/{org_value}
+  method: get
+  operationId: getSupplierReceipts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /product/supplier/receipt/details/{org_value}
+  method: get
+  operationId: getSupplierReceiptDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /supplier/items/{org_value}
+  method: get
+  operationId: getSupplierItemsbyLocation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /supplier/items
+  method: get
+  operationId: getSupplierItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /supplier/receipts/{org_value}
+  method: get
+  operationId: getSupplierReceipts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organization/suppliers
+  method: get
+  operationId: getSuppliers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /temperature/prep
+  method: get
+  operationId: getTemperaturePrep
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /temperature/prep
+  method: put
+  operationId: putTemperaturePrep
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /temperature/cooling
+  method: get
+  operationId: getTemperatureCooling
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /temperature/cooling
+  method: put
+  operationId: putTemperatureCooling
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /temperatures
+  method: get
+  operationId: getServiceTemperatures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/checks/{org_value}
+  method: get
+  operationId: getTransactionChecks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/check/line_items/{org_value}
+  method: get
+  operationId: getTransactionCheckLineItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/items/{org_value}
+  method: get
+  operationId: getTransactionItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/tenders/{org_value}
+  method: get
+  operationId: getTransactionTenders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/discounts/{org_value}
+  method: get
+  operationId: getTransactionDiscounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/service_charges/{org_value}
+  method: get
+  operationId: getTransactionServiceCharges
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/taxes/{org_value}
+  method: get
+  operationId: getTransactionTaxes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transactions/adjustments/{org_value}
+  method: get
+  operationId: getTransactionAdjustments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /uap/role
+  method: post
+  operationId: postUAPRole
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /uap/role
+  method: delete
+  operationId: deleteUAPRole
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /units_of_measure
+  method: get
+  operationId: getUnitsOfMeasure
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users
+  method: get
+  operationId: getAllMarkoUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users
+  method: post
+  operationId: postUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/sites
+  method: get
+  operationId: getUserSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/locations/disabled
+  method: get
+  operationId: getDisabledUserServiceLocations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/locations/disabled
+  method: put
+  operationId: putUserDisabledLocations
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /voc/results/{org_value}
+  method: get
+  operationId: getVOCResults
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /volume_rank/{org_value}
+  method: get
+  operationId: getDailyVolumeRank
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /overproduction
+  method: get
+  operationId: getWeeklyOverproduction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /overproduction/{org_value}
+  method: get
+  operationId: getWeeklyOverproductionByOrgValue
   x-agentic-access:
     action-class: connected
     consequence: read
