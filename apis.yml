@@ -2,15 +2,30 @@ aid: aramark
 name: Aramark
 url: https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml
 type: Index
-description: 'Aramark is a Fortune 500 food, facilities and uniform services company. Its Marko platform is a data and AI
-  layer over Aramark operations, published as 60 documented REST APIs on an Apigee gateway at marko.aramark.net and catalogued
-  on the Marko Developer Portal. The surface spans the full Aramark organization hierarchy (division, region, district, line
-  of business, business unit, client, location, sub location, profit center), point-of-sale transactions and daily sales,
-  labor scheduling and daily labor, inventory and purchasing, product, recipe and nutrition data, service execution, food
-  waste and IoT temperature monitoring. Aramark publishes every OpenAPI document itself, in JSON and YAML, in the public aramarkservicesinc/markoapis
-  GitHub repository, and renders each one in an in-page RapiDoc console. Access is gated: you register an application, choose
-  API products, and a per-application apikey is issued on approval.'
+description: 'Aramark is a Fortune 500 food, facilities and uniform services company. Its Marko platform
+  is a data and AI layer over Aramark operations, published as 60 documented REST APIs on an Apigee gateway
+  at marko.aramark.net and catalogued on the Marko Developer Portal. The surface spans the full Aramark
+  organization hierarchy (division, region, district, line of business, business unit, client, location,
+  sub location, profit center), point-of-sale transactions and daily sales, labor scheduling and daily
+  labor, inventory and purchasing, product, recipe and nutrition data, service execution, food waste and
+  IoT temperature monitoring. Aramark publishes every OpenAPI document itself, in JSON and YAML, in the
+  public aramarkservicesinc/markoapis GitHub repository, and renders each one in an in-page RapiDoc console.
+  Access is gated: you register an application, choose API products, and a per-application apikey is issued
+  on approval.'
 tags:
+- Food Services
+- Facilities Management
+- Uniform Services
+- Data Platform
+- Point-of-Sale
+- Labor
+- Inventory
+- Recipes and Nutrition
+- Organization Hierarchy
+- Fortune 500
+- Apigee
+- Hospitality
+tags_raw:
 - Food Services
 - Facilities Management
 - Uniform Services
@@ -25,7 +40,7 @@ tags:
 - Hospitality
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 created: '2026-03-26'
-modified: '2026-09-04'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 deliveryModel:
   model: saas
@@ -61,6 +76,9 @@ apis:
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
   - Alerts
+  - Notification
+  tags_raw:
+  - Alerts
   - Notifications
   properties:
   - type: OpenAPI
@@ -80,6 +98,9 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/ask-marko
   baseURL: https://marko.aramark.net/v1/ask
   tags:
+  - Chatbots
+  - Artificial Intelligence
+  tags_raw:
   - Chatbot
   - AI
   properties:
@@ -116,7 +137,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-calendar
   name: Aramark Marko Calendar
-  description: 'Given a day or date range this API has methods to list: * fiscal day attributes * operational day attributes'
+  description: 'Given a day or date range this API has methods to list: * fiscal day attributes * operational
+    day attributes'
   humanURL: https://marko-developers.aramark.net/doc/calendar
   baseURL: https://marko.aramark.net/v1
   tags:
@@ -140,6 +162,9 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/catering
   baseURL: https://marko.aramark.net/v1/catering
   tags:
+  - Catering
+  - Order
+  tags_raw:
   - Catering
   - Orders
   properties:
@@ -433,11 +458,14 @@ apis:
     url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_loc_details.json
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-marko-users
-  name: Aramark Marko Marko Users
+  name: Aramark Marko Users
   description: '''This API will return, update, or delete Marko User data'''
   humanURL: https://marko-developers.aramark.net/doc/marko-users
   baseURL: https://marko.aramark.net/v1/marko
   tags:
+  - User
+  - Profiles
+  tags_raw:
   - Users
   - Profiles
   properties:
@@ -458,6 +486,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/operational-daily
   baseURL: https://marko.aramark.net/v1/operational/daily
   tags:
+  - Analytics
+  tags_raw:
   - Operations
   - Analytics
   properties:
@@ -513,7 +543,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-organization-clients
   name: Aramark Marko Organization Clients
-  description: This is a collection of Client Details Organization Clients API from the Aramark Marko data and AI platform.
+  description: This is a collection of Client Details Organization Clients API from the Aramark Marko
+    data and AI platform.
   humanURL: https://marko-developers.aramark.net/doc/organization-clients
   baseURL: https://marko.aramark.net/v1/organization
   tags:
@@ -533,7 +564,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-organization-hierarchy
   name: Aramark Marko Organization Hierarchy
-  description: This API will return Hierarchy Nodes Organization Hierarchy API from the Aramark Marko data and AI platform.
+  description: This API will return Hierarchy Nodes Organization Hierarchy API from the Aramark Marko
+    data and AI platform.
   humanURL: https://marko-developers.aramark.net/doc/organization-hierarchy
   baseURL: https://marko.aramark.net/v1/organization/hierarchy
   tags:
@@ -611,16 +643,20 @@ apis:
   - type: SourceCode
     url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/supplier.json
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
-  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath /v1/organization.
-    Unlike the other 58 Marko contracts its info.description does not state a production base endpoint, so the published testing
-    host is carried verbatim rather than a production host being inferred. The equivalent production path was probed on 2026-09-04
-    and answered from the Apigee production gateway.
+  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath
+    /v1/organization. Unlike the other 58 Marko contracts its info.description does not state a production
+    base endpoint, so the published testing host is carried verbatim rather than a production host being
+    inferred. The equivalent production path was probed on 2026-09-04 and answered from the Apigee production
+    gateway.
 - aid: aramark:aramark-marko-point-sale
   name: Aramark Marko Point of Sale
-  description: This API will return Point of Sale Data Point of Sale API from the Aramark Marko data and AI platform.
+  description: This API will return Point of Sale Data Point of Sale API from the Aramark Marko data and
+    AI platform.
   humanURL: https://marko-developers.aramark.net/doc/point-sale
   baseURL: https://marko.aramark.net/v1/pos
   tags:
+  - Point-of-Sale
+  tags_raw:
   - Point of Sale
   properties:
   - type: OpenAPI
@@ -636,10 +672,14 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-pos-daily-product-ranking
   name: Aramark Marko POS Daily Product Ranking
-  description: This API will return POS Daily Product Ranking by Sales or Volume data fromi Aramark's Enterprise POS.
+  description: This API will return POS Daily Product Ranking by Sales or Volume data fromi Aramark's
+    Enterprise POS.
   humanURL: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
   baseURL: https://marko.aramark.net/v1/pos/daily/product
   tags:
+  - Point-of-Sale
+  - Analytics
+  tags_raw:
   - Point of Sale
   - Analytics
   properties:
@@ -660,6 +700,9 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/pos-daily-sales
   baseURL: https://marko.aramark.net/v1/pos/daily
   tags:
+  - Point-of-Sale
+  - Sales
+  tags_raw:
   - Point of Sale
   - Sales
   properties:
@@ -680,6 +723,9 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/pos-items
   baseURL: https://marko.aramark.net/v1/pos
   tags:
+  - Point-of-Sale
+  - Item
+  tags_raw:
   - Point of Sale
   - Items
   properties:
@@ -696,10 +742,14 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-pos-transactions
   name: Aramark Marko POS Transactions
-  description: This API will return Point of Sale Data POS Transactions API from the Aramark Marko data and AI platform.
+  description: This API will return Point of Sale Data POS Transactions API from the Aramark Marko data
+    and AI platform.
   humanURL: https://marko-developers.aramark.net/doc/pos-transactions
   baseURL: https://marko.aramark.net/v1/pos
   tags:
+  - Point-of-Sale
+  - Transaction
+  tags_raw:
   - Point of Sale
   - Transactions
   properties:
@@ -773,16 +823,20 @@ apis:
   - type: SourceCode
     url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/items.json
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
-  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath /v1/product. Unlike
-    the other 58 Marko contracts its info.description does not state a production base endpoint, so the published testing
-    host is carried verbatim rather than a production host being inferred. The equivalent production path was probed on 2026-09-04
-    and answered from the Apigee production gateway.
+  x-base-url-note: This contract is Swagger 2.0 and declares only host qa-marko.aramark.net with basePath
+    /v1/product. Unlike the other 58 Marko contracts its info.description does not state a production
+    base endpoint, so the published testing host is carried verbatim rather than a production host being
+    inferred. The equivalent production path was probed on 2026-09-04 and answered from the Apigee production
+    gateway.
 - aid: aramark:aramark-marko-profile-app
   name: Aramark Marko Profile App
   description: This API maps Profit Centers or Locations to a user.
   humanURL: https://marko-developers.aramark.net/doc/profile-app
   baseURL: https://marko.aramark.net/v1/profile/app
   tags:
+  - Profiles
+  - Application
+  tags_raw:
   - Profiles
   - Applications
   properties:
@@ -803,6 +857,9 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/profile-user
   baseURL: https://marko.aramark.net/v1/profile/user
   tags:
+  - Profiles
+  - User
+  tags_raw:
   - Profiles
   - Users
   properties:
@@ -838,7 +895,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-region-core-details
   name: Aramark Marko Region Core Details
-  description: This is a collection of Region Details Region Core Details API from the Aramark Marko data and AI platform.
+  description: This is a collection of Region Details Region Core Details API from the Aramark Marko data
+    and AI platform.
   humanURL: https://marko-developers.aramark.net/doc/region-core-details
   baseURL: https://marko.aramark.net/v1/organization
   tags:
@@ -957,8 +1015,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-service-meal-periods
   name: Aramark Marko Service Meal Periods
-  description: This API will return a collection of Service Meal Periods for a specific Location or Service Area and Service
-    Date.
+  description: This API will return a collection of Service Meal Periods for a specific Location or Service
+    Area and Service Date.
   humanURL: https://marko-developers.aramark.net/doc/service-meal-periods
   baseURL: https://marko.aramark.net/v1
   tags:
@@ -978,7 +1036,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-service-menu-items
   name: Aramark Marko Service Menu Items
-  description: This API will return a collection of Menu Items for a specific Location, Service Date and Meal Period.
+  description: This API will return a collection of Menu Items for a specific Location, Service Date and
+    Meal Period.
   humanURL: https://marko-developers.aramark.net/doc/service-menu-items
   baseURL: https://marko.aramark.net/v1/service_menu_items
   tags:
@@ -998,7 +1057,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-service-menus
   name: Aramark Marko Service Menus
-  description: This API will return a collection of Service Menus for a specific Location, Service Date Range and Meal Period.
+  description: This API will return a collection of Service Menus for a specific Location, Service Date
+    Range and Meal Period.
   humanURL: https://marko-developers.aramark.net/doc/service-menus
   baseURL: https://marko.aramark.net/v1
   tags:
@@ -1058,8 +1118,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-service-recipe
   name: Aramark Marko Service Recipe
-  description: This API will return a collection of Service Recipes for Menu Items and the nutrition data for a specific Location,
-    Service Date and Meal Period.
+  description: This API will return a collection of Service Recipes for Menu Items and the nutrition data
+    for a specific Location, Service Date and Meal Period.
   humanURL: https://marko-developers.aramark.net/doc/service-recipe
   baseURL: https://marko.aramark.net/v1/service
   tags:
@@ -1158,8 +1218,8 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-sites
   name: Aramark Marko Sites
-  description: This API will return a sites collection from either CSP or MDG environments. Sites is a container to group
-    Aramark Profit Centers.
+  description: This API will return a sites collection from either CSP or MDG environments. Sites is a
+    container to group Aramark Profit Centers.
   humanURL: https://marko-developers.aramark.net/doc/sites
   baseURL: https://marko.aramark.net/v1
   tags:
@@ -1198,8 +1258,9 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/aramark.png
 - aid: aramark:aramark-marko-sub-locations
   name: Aramark Marko Sub Locations
-  description: This API will return a collection of Sub Locations from either CSP or MDG environment. Sub Locations were originally
-    known as Stations in PRIMA Web; they are a level below location in a Service or Production environment.
+  description: This API will return a collection of Sub Locations from either CSP or MDG environment.
+    Sub Locations were originally known as Stations in PRIMA Web; they are a level below location in a
+    Service or Production environment.
   humanURL: https://marko-developers.aramark.net/doc/sub-locations
   baseURL: https://marko.aramark.net/v1
   tags:
@@ -1353,7 +1414,8 @@ common:
 - type: UseCases
   data:
   - name: Business Intelligence
-    description: Integrate Aramark operational data into BI tools for management reporting and performance analysis.
+    description: Integrate Aramark operational data into BI tools for management reporting and performance
+      analysis.
   - name: POS Reconciliation
     description: Automate reconciliation of point-of-sale transactions across multiple Aramark locations.
   - name: Revenue Reporting
