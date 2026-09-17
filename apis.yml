@@ -22861,436 +22861,6 @@ apis:
   - type: SourceCode
     url: >-
       https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/vendor.json
-- aid: aramark:aramark-real-time-api
-  name: Aramark Real Time API
-  description: Get POS Real Time Data
-  humanURL: https://marko-developers.aramark.net/doc/alerts
-  baseURL: https://marko.aramark.net/v1/alerts
-  tags:
-  - Real Time
-  properties:
-  - type: OpenAPI
-    url: openapi/aramark-real-time-api-openapi.yml
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/alerts
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/alerts
-  - type: Portal
-    url: https://marko-developers.aramark.net/
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/ask-marko
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/ask-marko
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/ask-marko.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/business-unit-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/business-unit-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_bsu_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/calendar
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/calendar
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/calendar.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/catering
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/catering
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/catering.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/food-waste.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/district-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/district-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_dst_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/division-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/division-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_div_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/financial-daily-accountsummary.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/growth
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/growth
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/growth.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/gsc_gpo_ext.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/inventory
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/inventory
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/inventory.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/iot
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/iot
-  - type: SourceCode
-    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/iot.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/labor-daily
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/labor-daily
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-daily.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/labor-employee
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/labor-employee
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-employee.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/labor-manager-employees
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/labor-manager-employees
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-manager.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/labor-schedule
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/labor-schedule
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/labor-schedule.yaml
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/line-business-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/line-business-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_lob_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/location-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/location-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_loc_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/marko-users
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/marko-users
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/marko-users.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/operational-daily
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/operational-daily
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/operational-daily.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-brands
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-brands
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-brands.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-clients
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-clients
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_client_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-hierarchy
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-hierarchy
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-hierarchy-financial.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_hierarchy_v2.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_pc_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/organization-suppliers
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/organization-suppliers
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/supplier.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/point-sale
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/point-sale
-  - type: SourceCode
-    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-product.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/pos-daily-sales
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/pos-daily-sales
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-sales.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/pos-items
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/pos-items
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-items.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/pos-transactions
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/pos-transactions
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-transactions.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/product
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/product
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/product-recipe
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/product-recipe
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product-recipe.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/product-retail-items
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/product-retail-items
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/items.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/profile-app
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/profile-app
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-app.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/profile-user
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/profile-user
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-user.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/recipe-decorations
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/recipe-decorations
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/recipe-decorations.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/region-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/region-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_reg_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/security
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/security
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/security.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-areas
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-areas
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-areas.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-areas-v2
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-areas-v2
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_areas_v2.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-inventory
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-inventory
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_inventory.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-meal-periods
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-meal-periods
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-meal-periods.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-menu-items
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-menu-items
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-menu-items.yaml
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-menus
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-menus
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-menus.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-production-areas
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-production-areas
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-areas.yaml
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-production-departments
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-production-departments
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-departments.yaml
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-recipe
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-recipe
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-recipe.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-recipes-v2
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-recipes-v2
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_recipe_v2.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-results
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-results
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-results.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-v3
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-v3
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/servicev3.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-weekly-overproduction.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/sites
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/sites
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sites.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/sub-location-core-details
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/sub-location-core-details
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_sl_details.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/sub-locations
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/sub-locations
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sub-locations.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/units-measure
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/units-measure
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/units-of-measure.json
-  - type: Documentation
-    url: https://marko-developers.aramark.net/doc/vendor
-  - type: APIReference
-    url: https://marko-developers.aramark.net/doc/vendor
-  - type: SourceCode
-    url: >-
-      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/vendor.json
 - aid: aramark:aramark-recipe-api
   name: Aramark Recipe API
   description: A collection of Recipe data
@@ -39215,6 +38785,436 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aramark-weekly-overproduction-api-openapi.yml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/alerts
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/alerts
+  - type: Portal
+    url: https://marko-developers.aramark.net/
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/ask-marko
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/ask-marko
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/ask-marko.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/business-unit-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/business-unit-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_bsu_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/calendar
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/calendar
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/calendar.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/catering
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/catering
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/catering.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/daily-food-waste-tracking
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/food-waste.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/district-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/district-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_dst_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/division-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/division-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_div_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/financial-daily-account-summary
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/financial-daily-accountsummary.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/growth
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/growth
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/growth.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/gsc-gpo-0
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/gsc_gpo_ext.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/inventory
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/inventory
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/inventory.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/iot
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/iot
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/iot.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-daily
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-daily
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-daily.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-employee
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-employee
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-employee.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-manager-employees
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-manager-employees
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/labor-manager.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/labor-schedule
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/labor-schedule
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/labor-schedule.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/line-business-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/line-business-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_lob_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/location-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/location-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_loc_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/marko-users
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/marko-users
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/marko-users.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/operational-daily
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/operational-daily
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/operational-daily.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-brands
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-brands
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-brands.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-clients
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-clients
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_client_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization-hierarchy-financial.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-hierarchy-v2
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_hierarchy_v2.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-profit-center-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organizarion_pc_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/organization-suppliers
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/organization-suppliers
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/supplier.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/point-sale
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/point-sale
+  - type: SourceCode
+    url: https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-daily-product-ranking
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-product.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-daily-sales
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-daily-sales
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-daily-sales.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-items
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-items.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/pos-transactions
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/pos-transactions
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/pos-transactions.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product-recipe
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product-recipe
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/product-recipe.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/product-retail-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/product-retail-items
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/items.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/profile-app
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/profile-app
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-app.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/profile-user
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/profile-user
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/profile-user.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/recipe-decorations
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/recipe-decorations
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/recipe-decorations.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/region-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/region-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_reg_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/security
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/security
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/security.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-areas
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-areas
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-areas.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-areas-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-areas-v2
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_areas_v2.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-inventory
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-inventory
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_inventory.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-meal-periods
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-meal-periods
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-meal-periods.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-menu-items
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-menu-items
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-menu-items.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-menus
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-menus
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-menus.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-production-areas
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-production-areas
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-areas.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-production-departments
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-production-departments
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/yaml/service-production-departments.yaml
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-recipe
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-recipe
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-recipe.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-recipes-v2
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-recipes-v2
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service_recipe_v2.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-results
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-results
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-results.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-v3
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-v3
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/servicev3.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/service-weekly-overproduction
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/service-weekly-overproduction.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sites
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sites
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sites.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sub-location-core-details
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sub-location-core-details
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_sl_details.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/sub-locations
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/sub-locations
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/sub-locations.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/units-measure
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/units-measure
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/units-of-measure.json
+  - type: Documentation
+    url: https://marko-developers.aramark.net/doc/vendor
+  - type: APIReference
+    url: https://marko-developers.aramark.net/doc/vendor
+  - type: SourceCode
+    url: >-
+      https://raw.githubusercontent.com/aramarkservicesinc/markoapis/refs/heads/master/oas3/json/vendor.json
+- aid: aramark:aramark-realtime-api
+  name: Aramark Realtime API
+  description: Get POS Real Time Data
+  humanURL: https://marko-developers.aramark.net/doc/alerts
+  baseURL: https://marko.aramark.net/v1/alerts
+  tags:
+  - Realtime
+  properties:
+  - type: OpenAPI
+    url: openapi/aramark-realtime-api-openapi.yml
   - type: Documentation
     url: https://marko-developers.aramark.net/doc/alerts
   - type: APIReference
