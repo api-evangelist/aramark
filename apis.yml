@@ -13,7 +13,7 @@ description: 'Aramark is a Fortune 500 food, facilities and uniform services com
   Access is gated: you register an application, choose API products, and a per-application apikey is issued
   on approval.'
 tags:
-- Food Services
+- Food Service
 - Facilities Management
 - Uniform Services
 - Data Platform
@@ -2225,6 +2225,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Brands
+  tags_raw:
   - Brand
   properties:
   - type: OpenAPI
@@ -4805,6 +4807,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -8676,6 +8680,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -12116,6 +12122,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -13837,6 +13845,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -14697,6 +14707,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Managers
+  tags_raw:
   - Manager
   properties:
   - type: OpenAPI
@@ -15557,6 +15569,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - menu-items
+  tags_raw:
   - Menu Items
   properties:
   - type: OpenAPI
@@ -19427,6 +19441,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Point-of-Sale
+  tags_raw:
   - Point of Sale
   properties:
   - type: OpenAPI
@@ -21147,6 +21163,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI
@@ -27598,6 +27616,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Self-Service
+  tags_raw:
   - Self Service
   properties:
   - type: OpenAPI
@@ -28028,6 +28048,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
@@ -36201,6 +36223,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
@@ -39211,6 +39235,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Real-Time
+  tags_raw:
   - Realtime
   properties:
   - type: OpenAPI
