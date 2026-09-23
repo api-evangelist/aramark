@@ -1,0 +1,115 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Sub Locations API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Sub Locations
+  description: A Collectin of Sub Location data
+paths:
+  /sub_locations:
+    get:
+      summary: Get Sub Locations
+      description: Returns a collection of Sub Locations
+      operationId: getFeatures
+      tags:
+      - Sub Locations
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Sub Locations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  service_features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_feature'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    service_feature:
+      type: object
+      properties:
+        feature_id:
+          type: number
+          description: ID of the Feature
+        feature_name:
+          type: string
+          description: Name of the Feature
+        default_flag:
+          type: string
+          description: Default Flag of the Feature
+        override_location_ids:
+          type: string
+          description: Override Location IDs of the Feature
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

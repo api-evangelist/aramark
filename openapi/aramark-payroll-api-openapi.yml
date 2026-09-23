@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  description: 'This is a collection of Profit Center Details
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/organization`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Profit Center Details Payroll API
+servers:
+- url: https://qa-marko.aramark.net/v1/organization
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/organization
+security:
+- apiKey: []
+tags:
+- name: Payroll
+paths:
+  /profit_center/payroll/{org_value}:
+    get:
+      operationId: getProfitCenterDetailsPayrollByOrgValue
+      tags:
+      - Payroll
+      summary: Returns a collection of Profit Center Payroll Attributes for One Profit Center
+      description: '!This endpoint is in production'
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/formatParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Collection of Profit Center Payroll Attributes
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                  profit_center_payroll_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/profit_center_payroll_details'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /profit_center/payroll:
+    get:
+      operationId: getProfitCenterDetailsPayroll
+      tags:
+      - Payroll
+      summary: Returns a collection of Profit Center Payroll Attributes
+      description: '!This endpoint is in production'
+      parameters:
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/formatParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Collection of Profit Center Payroll Attributes
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                  profit_center_payroll_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/profit_center_payroll_details'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      required: true
+      description: provide business organization code in URL to filter data set
+      schema:
+        type: string
+    formatParam:
+      in: query
+      name: format
+      required: false
+      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
+      schema:
+        type: string
+  schemas:
+    profit_center_payroll_details:
+      type: object
+      properties:
+        org_value:
+          type: string
+          description: Aramark Organization code
+        payroll_org_value:
+          type: string
+          description: Payroll Organization code
+        plm_profit_center_code:
+          type: string
+          description: PLM code for the Profit Center
+        plm_profit_center:
+          type: string
+          description: Description of the PLM Profit Center
+        payroll_legal_entity_code:
+          type: string
+          description: Code for the payroll legal entity of the Profit Center
+        payroll_legal_entity:
+          type: string
+          description: Description of the payroll legal entity of the Profit Center
+        biweekly_accr_flag:
+          type: string
+          description: Flag to indicate biweekly accrual status
+        payroll_sers_flag:
+          type: string
+          description: Flag to indicate SERS
+        payroll_pers_flag:
+          type: string
+          description: Flag to indicate PERS
+        payroll_frequency_hourly_code:
+          type: string
+          description: Code for the payroll hourly frequency for the Profit Center
+        payroll_frequency_hourly:
+          type: string
+          description: Description of the payroll hourly frequency for the Profit Center
+        payroll_weekend_day_hourly_code:
+          type: string
+          description: Code for the payroll hourly week ending day for the Profit Center
+        payroll_weekend_day_hourly:
+          type: string
+          description: Description of the payroll hourly week ending day for the Profit Center
+        payroll_payday_hourly_code:
+          type: string
+          description: Code for the payroll hourly payday for the Profit Center
+        payroll_payday_hourly:
+          type: string
+          description: Description of the payroll hourly payday for the Profit Center
+        payroll_group_hourly_code:
+          type: string
+          description: Code for the payroll hourly group for the Profit Center
+        payroll_group_hourly:
+          type: string
+          description: Description of the payroll hourly group for the Profit Center
+        payroll_frequency_salary_code:
+          type: string
+          description: Code for the payroll salaried frequency for the Profit Center
+        payroll_frequency_salary:
+          type: string
+          description: Description of the payroll salaried frequency for the Profit Center
+        payroll_weekend_day_salary_code:
+          type: string
+          description: Code for the payroll salaried week ending day for the Profit Center
+        payroll_weekend_day_salary:
+          type: string
+          description: Description of the payroll salaried week ending day for the Profit Center
+        payroll_frequency_approved_flag:
+          type: string
+          description: Flag to indicated payroll frequency approved status
+        payroll_payday_salary_code:
+          type: string
+          description: Code for the payroll salaried payday for the Profit Center
+        payroll_payday_salary:
+          type: string
+          description: Description for the payroll salaried payday for the Profit Center
+        payroll_unique_identifier_code:
+          type: string
+          description: Code for the payroll unique identifier for the Profit Center
+        payroll_unique_identifier:
+          type: string
+          description: Description for the payroll unique identifier for the Profit Center
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

@@ -1,0 +1,84 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Inventory Data Location.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/inventory`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Inventory Configuration API
+servers:
+- url: https://qa-marko.aramark.net/v1/inventory
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/inventory
+  description: Development server
+tags:
+- name: Configuration
+  description: A collection of Configuration data endpoints
+paths:
+  /configuration:
+    put:
+      summary: Update Inventory Configuration
+      description: Allows updates to Inventory Configuration
+      operationId: putConfiguration
+      tags:
+      - Configuration
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the configuration that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putConfigurationBody'
+      responses:
+        '201':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    putConfigurationBody:
+      type: object
+      properties:
+        inventory_item_id:
+          type: number
+        to_storage_area_id:
+          type: number
+        sort_order:
+          type: number
+        enabled:
+          type: boolean
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

@@ -1,0 +1,1077 @@
+openapi: 3.2.0
+info:
+  title: Aramark Nutrition API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Nutrition across 2 of this provider''s published API definitions: aramark-service-recipes-v2-openapi.json, aramark-service-v3-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v2/service/recipe
+  description: Testing server
+- url: https://dev-marko.aramark.net/v2/service/recipe
+  description: Development server
+- url: https://qa-marko.aramark.net/v3/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v3/service
+  description: Development server
+tags:
+- name: Nutrition
+  description: A collection of Nutrition Data
+paths:
+  /nutrition:
+    get:
+      summary: Service Recipe Nutrition
+      description: Returns a Service Recipe Nutrition Data
+      operationId: getServiceRecipeNutritionV2
+      tags:
+      - Nutrition
+      parameters:
+      - $ref: '#/components/parameters/locationIdNoReqParam'
+      - $ref: '#/components/parameters/serviceAreaIdNoReqParam'
+      - $ref: '#/components/parameters/recipeIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/lastModifiedDateNoReqParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Service Recipe Nutrition Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  nutrition:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/nutrition'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v2/service/recipe
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v2/service/recipe
+      description: Development server
+  /nutrition/update:
+    get:
+      summary: Service Recipe Nutrition Updates
+      description: Returns Service Recipes with Nutrition Data Updates
+      operationId: getServiceRecipeNutritionUpdates
+      tags:
+      - Nutrition
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/lastModifiedDateParam'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  nutrition_updates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/nutrition_updates'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v2/service/recipe
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v2/service/recipe
+      description: Development server
+  /recipe/nutrition:
+    get:
+      summary: Service Recipe Nutrition
+      description: Returns a Service Recipe Nutrition Data
+      operationId: getServiceRecipeNutritionV3
+      tags:
+      - Nutrition
+      parameters:
+      - $ref: '#/components/parameters/locationIdNoReqParam'
+      - $ref: '#/components/parameters/serviceAreaIdNoReqParam'
+      - $ref: '#/components/parameters/recipeIdParam'
+      - $ref: '#/components/parameters/lastModifiedDateNoReqParam_2'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Service Recipe Nutrition Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  nutrition:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/nutrition_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v3/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v3/service
+      description: Development server
+  /recipe/nutrition/update:
+    get:
+      summary: Service Recipe Nutrition Updates
+      description: Returns Service Recipes with Nutrition Data Updates
+      operationId: getServiceRecipeNutritionUpdatesV3
+      tags:
+      - Nutrition
+      parameters:
+      - $ref: '#/components/parameters/lastModifiedDateParam_2'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  nutrition_updates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/nutrition_updates_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v3/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v3/service
+      description: Development server
+components:
+  parameters:
+    lastModifiedDateNoReqParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: false
+      schema:
+        type: string
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+    serviceAreaIdNoReqParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area. Must pass Location ID or Service Area ID
+      required: false
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    lastModifiedDateParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: true
+      schema:
+        type: string
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the location. Must pass Location ID or Service Area ID
+      required: false
+      schema:
+        type: number
+    lastModifiedDateNoReqParam_2:
+      name: last_update_date
+      in: query
+      description: Last Update Date of the data
+      required: false
+      schema:
+        type: string
+    lastModifiedDateParam_2:
+      name: last_update_date
+      in: query
+      description: Last Modified Date of the data
+      required: true
+      schema:
+        type: string
+  schemas:
+    nutrition:
+      type: object
+      properties:
+        added_sugars:
+          type: number
+          description: Added Sugar for the recipe
+        ash:
+          type: number
+          description: Ash for the recipe
+        baked_not_fried:
+          type: string
+          description: Baked Not Fried status of the recipe
+        biotin:
+          type: number
+          description: Biotin of the recipe
+        calcium:
+          type: number
+          description: Calcium of the recipe
+        calcium_100:
+          type: number
+          description: Calcium 100 of the recipe
+        calcium_calc:
+          type: number
+          description: Calcium Calc of the recipe
+        calories:
+          type: number
+          description: Calories of the recipe
+        calories_from_fat:
+          type: number
+          description: Calories From Fat of the recipe
+        calories_100:
+          type: number
+          description: Calories 100 of the recipe
+        calories_300:
+          type: number
+          description: Calories 300 of the recipe
+        calories_500:
+          type: number
+          description: Calories 500 of the recipe
+        calories_from_carbs_perc:
+          type: number
+          description: Calories From Carbs Percent of the recipe
+        calories_from_far_perc:
+          type: number
+          description: Calories From Fat Percent of the recipe
+        calories_from_sat_fat_perc:
+          type: number
+          description: Calories From Saturated Far Percent of the recipe
+        carbohydrate:
+          type: number
+          description: Carbohydrate of the recipe
+        carb_15:
+          type: number
+          description: Carb 15 of the recipe
+        carbs_calc:
+          type: number
+          description: Carbs Calc of the recipe
+        alpha_carotene:
+          type: number
+          description: Alpha Carotene of the recipe
+        beta_carotene:
+          type: number
+          description: Beta Carotene of the recipe
+        cholesterol:
+          type: number
+          description: Cholesterol of the recipe
+        copper:
+          type: number
+          description: Copper of the recipe
+        creation_date:
+          type: string
+          description: Creation Date of the recipe
+        fat_0:
+          type: number
+          description: Fat 0 of the recipe
+        fat_10:
+          type: number
+          description: Fat 10 of the recipe
+        fat_3:
+          type: number
+          description: Fat 3 of the recipe
+        fat_5:
+          type: number
+          description: Fat 5 of the recipe
+        fiber:
+          type: number
+          description: Fiber of the recipe
+        folacin_folic_acid:
+          type: number
+          description: Folacin Folic Acid of the recipe
+        folate_dfe:
+          type: number
+          description: Folate DFE of the recipe
+        folate_food:
+          type: number
+          description: Folate Food of the recipe
+        folic_acid:
+          type: number
+          description: Folic Acid of the recipe
+        iron:
+          type: number
+          description: Iron of the recipe
+        just4u_entree:
+          type: string
+          description: Just 4 U Entree status of the recipe
+        just4u_side:
+          type: string
+          description: Just 4 U Side status of the recipe
+        last_update_date:
+          type: string
+          description: Last Update Date of the recipe
+        locally_grown:
+          type: string
+          description: Locally Grown status of the recipe
+        magnesium:
+          type: number
+          description: Magnesium of the recipe
+        manganese:
+          type: number
+          description: Manganese of the recipe
+        master_system_id:
+          type: string
+          description: Master System ID of the recipe
+        monounsaturated_fat:
+          type: number
+          description: Monounsaturated Fat of the recipe
+        niacin:
+          type: number
+          description: Niacin of the recipe
+        niacin_ne_mg:
+          type: number
+          description: Niacin NE mg of the recipe
+        no_sugar_added:
+          type: string
+          description: No Sugar Added status of the recipe
+        organic:
+          type: string
+          description: Organic status of the recipe
+        location_id:
+          type: string
+          description: Location ID of the recipe
+        pantothenic_acid:
+          type: number
+          description: Pantothenic Acid of the recipe
+        pct_calories_from_carbohydrates:
+          type: number
+          description: Percent Calories from Carbohydrates of the recipe
+        pct_calories_from_fat:
+          type: number
+          description: Percent Calories from Fat of the recipe
+        pct_calories_from_protein:
+          type: number
+          description: Percent Calories from Protein of the recipe
+        pct_calories_from_saturated_fat:
+          type: number
+          description: Percent Calories from Saturated Fat
+        phosphorous:
+          type: number
+          description: Phosphorous of the recipe
+        plus_calcium:
+          type: number
+          description: Plus Calcium of the recipe
+        plus_calories:
+          type: number
+          description: Plus Calories of the recipe
+        plus_fiber:
+          type: number
+          description: Plus Fiber of the recipe
+        plus_protein:
+          type: number
+          description: Plus Protein of the recipe
+        polyunsaturated_fat:
+          type: number
+          description: Polyunsaturated Fat of the recipe
+        potassium:
+          type: number
+          description: Potassium of the recipe
+        protein:
+          type: number
+          description: Protein of the recipe
+        recipe_id:
+          type: string
+          description: Recipe ID of the recipe
+        recipe_seq:
+          type: number
+          description: Recipe Sequence of the recipe
+        riboflavin_b2:
+          type: number
+          description: Riboflavin B2 of the recipe
+        saturated_fat:
+          type: number
+          description: Saturated Fat of the recipe
+        selenium:
+          type: number
+          description: Selenium of the recipe
+        service_area_id:
+          type: string
+          description: Service Area ID of the recipe
+        serving_size_fraction_id:
+          type: string
+          description: Serving Size Fraction ID of the recipe
+        serving_size_number:
+          type: number
+          description: Serving Size Number of the recipe
+        serving_size_uom_id:
+          type: string
+          description: Serving Size Unit of Measure ID of the recipe
+        sodium:
+          type: number
+          description: Sodium of the recipe
+        sodium_140:
+          type: number
+          description: Sodium 140 of the recipe
+        sodium_400:
+          type: number
+          description: Sodium 400 of the recipe
+        sodium_600:
+          type: number
+          description: Sodium 600 of the recipe
+        steamed:
+          type: string
+          description: Steamed status of the recipe
+        thiamin_b1:
+          type: number
+          description: Thiamin B1 of the recipe
+        total_fat:
+          type: number
+          description: Total Fat of the recipe
+        total_sugars:
+          type: number
+          description: Total Sugars of the recipe
+        trans_fat:
+          type: number
+          description: Trans Fat of the recipe
+        vegan:
+          type: string
+          description: Vegan status of the recipe
+        vegetarian:
+          type: string
+          description: Vegetarian status of the recipe
+        very_veggie:
+          type: string
+          description: Very Veggie status of the recipe
+        vitamin_a_iu:
+          type: number
+          description: Vitamin A IU of the recipe
+        vitamin_a_rae:
+          type: number
+          description: Vitamin A RAE of the recipe
+        vitamin_a_re:
+          type: number
+          description: Vitamin A RE of the recipe
+        vitamin_b12:
+          type: number
+          description: Vitamin B12 of the recipe
+        vitamin_b6:
+          type: number
+          description: Vitamin B6 of the recipe
+        vitamin_c:
+          type: number
+          description: Vitamin C of the recipe
+        vitamin_d:
+          type: number
+          description: Vitamin D of the recipe
+        vitamin_d_mcg:
+          type: number
+          description: Vitamin D mcg of the recipe
+        vitamin_e:
+          type: number
+          description: Vitamin E of the recipe
+        vitamin_e_iu:
+          type: number
+          description: Vitamin E IU of the recipe
+        vitamin_k:
+          type: number
+          description: Vitamin K of the recipe
+        water:
+          type: number
+          description: Water of the recipe
+        whole_grains:
+          type: number
+          description: Whole Grains of the recipe
+        zero_trans_fat:
+          type: string
+          description: Zero Trans Fat status of the recipe
+        zinc:
+          type: number
+          description: Zinc of the recipe
+    nutrition_updates:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: Location ID
+        service_area_id:
+          type: number
+          description: Service Area ID
+        count:
+          type: number
+          description: Number of Updates
+    nutrition_2:
+      type: object
+      properties:
+        location_id:
+          type: number
+        service_area_id:
+          type: number
+        recipe_id:
+          type: string
+        master_system_id:
+          type: number
+        recipe_name:
+          type: string
+        marketing_name:
+          type: string
+        marketing_descriptoin:
+          type: string
+        seriving_size_number:
+          type: number
+        serving_size_fraction_id:
+          type: string
+        recipe_fraction_descrtion:
+          type: string
+        serving_size_uom_id:
+          type: string
+        serving_size_uom_description:
+          type: string
+        serving_size_default:
+          type: boolean
+        protein:
+          type: number
+        total_fat:
+          type: number
+        carbohydrate:
+          type: number
+        ash:
+          type: number
+        calories:
+          type: number
+        starch:
+          type: number
+        sucrose:
+          type: number
+        glucose:
+          type: number
+        fructose:
+          type: number
+        lactose:
+          type: number
+        maltose:
+          type: number
+        alcohol:
+          type: number
+        water:
+          type: number
+        adjusted_protein:
+          type: number
+        caffeine:
+          type: number
+        theobromine:
+          type: number
+        energy:
+          type: number
+        total_sugars:
+          type: number
+        galactose:
+          type: number
+        fiber:
+          type: number
+        calcium:
+          type: number
+        iron:
+          type: number
+        magnesium:
+          type: number
+        phosphorous:
+          type: number
+        potassium:
+          type: number
+        sodium:
+          type: number
+        zinc:
+          type: number
+        copper:
+          type: number
+        manganese:
+          type: number
+        selenium:
+          type: number
+        vitamin_a_iu:
+          type: number
+        retinol:
+          type: number
+        vitamin_a_rae:
+          type: number
+        carotene_beta:
+          type: number
+        carotene_alpha:
+          type: number
+        vitamin_e_a-tocopherol:
+          type: number
+        vitamin_d_iu:
+          type: number
+        crypoxanthin_beta:
+          type: number
+        lycopene:
+          type: number
+        lutein+zeaxanthin:
+          type: number
+        tocopherol_beta:
+          type: number
+        tocopherol_gamma:
+          type: number
+        tocopherol_delta:
+          type: number
+        vitamin_c:
+          type: number
+        thiamin_b1:
+          type: number
+        robiflavin_b2:
+          type: number
+        niacin:
+          type: number
+        pantothenic_acid:
+          type: number
+        vitamin_b-6:
+          type: number
+        folacin_folic_acid:
+          type: number
+        vitamin_b-12:
+          type: number
+        vitamin_k:
+          type: number
+        folic_acid:
+          type: number
+        folate_food:
+          type: number
+        folate_dfe:
+          type: number
+        tryptophan:
+          type: number
+        threonine:
+          type: number
+        isoleucine:
+          type: number
+        leucine:
+          type: number
+        lysine:
+          type: number
+        methionine:
+          type: number
+        cystine:
+          type: number
+        phenylalanine:
+          type: number
+        tyrosine:
+          type: number
+        valine:
+          type: number
+        arginine:
+          type: number
+        histidine:
+          type: number
+        alanine:
+          type: number
+        aspartic_acid:
+          type: number
+        glutamic_acid:
+          type: number
+        glycine:
+          type: number
+        proline:
+          type: number
+        serine:
+          type: number
+        hydroxyproline:
+          type: number
+        vitamin_e_added:
+          type: number
+        vitamin_b-12_added:
+          type: number
+        cholesterol:
+          type: number
+        trans_fat:
+          type: number
+        saturated_fat:
+          type: number
+        '4:0':
+          type: number
+        '6:0':
+          type: number
+        '10:0':
+          type: number
+        '8:0':
+          type: number
+        '12:0':
+          type: number
+        '14:0':
+          type: number
+        '16:0':
+          type: number
+        oleic_acid:
+          type: number
+        '20:0':
+          type: number
+        18:1_undifferentiated:
+          type: number
+        18:2_undifferentiated:
+          type: number
+        18:3_undifferentiated:
+          type: number
+        20:4_undifferentiated:
+          type: number
+        22:6_n-3:
+          type: number
+        '22:0':
+          type: number
+        '14:1':
+          type: number
+        16:1_undifferentiated:
+          type: number
+        '18:4':
+          type: number
+        '20:1':
+          type: number
+        20:5_n-3:
+          type: number
+        20:1_undifferentiated:
+          type: number
+        22:5_n-3:
+          type: number
+        phytosterols:
+          type: number
+        stigmasterol:
+          type: number
+        campesterol:
+          type: number
+        beta_sitosterol:
+          type: number
+        monounsaturated_fat:
+          type: number
+        polyunsaturated_fat:
+          type: number
+        '15:0':
+          type: number
+        '17:0':
+          type: number
+        '24:0':
+          type: number
+        16:1_t:
+          type: number
+        18:1_t:
+          type: number
+        22:1_t:
+          type: number
+        18:1_t_not_further_defined:
+          type: number
+        18:2_i:
+          type: number
+        18:2_t,t:
+          type: number
+        18:2_CLAs:
+          type: number
+        24:1_c:
+          type: number
+        20:2_n-6_c,c:
+          type: number
+        16:1_c:
+          type: number
+        18:1_c:
+          type: number
+        18:2_n-6_c,c:
+          type: number
+        22:1_c:
+          type: number
+        18:3_n-6_c,c,c:
+          type: number
+        '17:1':
+          type: number
+        20:3_undifferentiated:
+          type: number
+        fatty_acids_trans-monoenoic:
+          type: number
+        fatty_acids_trans-polyenoic:
+          type: number
+        '13:0':
+          type: number
+        '15:1':
+          type: number
+        18:3_n-3_c,c,c:
+          type: number
+        20:3_n-6:
+          type: number
+        20:4_n-6:
+          type: number
+        18:3i:
+          type: number
+        '21:5':
+          type: number
+        '22:4':
+          type: number
+        calories_from_fat:
+          type: number
+        calories_from_alcohol:
+          type: number
+        calorires_from_carbohydrates:
+          type: number
+        calories_from_protein:
+          type: number
+        fluoride:
+          type: number
+        choline:
+          type: number
+        betaine:
+          type: number
+        20:3_n-3:
+          type: number
+        vitamin_a_re:
+          type: number
+        percent_calories_from_protein:
+          type: number
+        percent_calories_from_fat:
+          type: number
+        percent_calories_from_saturated_fat:
+          type: number
+        percent_calories_from_carbohydrates:
+          type: number
+        chromium:
+          type: number
+        biotine:
+          type: number
+        molybdenum:
+          type: number
+        local_cf:
+          type: number
+        regional_cf:
+          type: number
+        menaquinone-4:
+          type: number
+        dihydrophylloquinone:
+          type: number
+        added_sugars:
+          type: number
+        vitamin_d_mcg:
+          type: number
+        niacin_mg_ne:
+          type: number
+        potassium_%drv:
+          type: number
+        vitamin_e_iu:
+          type: number
+        chlorine_cl:
+          type: number
+        iodine_i:
+          type: number
+        calories_from_sugar:
+          type: number
+        calories_from_added_sugar:
+          type: number
+        percent_calories_from_sugar:
+          type: number
+        percent_calories_from_added_sugar:
+          type: number
+        sat_fat_and_trans_total:
+          type: number
+        calories_from_fat_percent:
+          type: number
+        calories_from_sat_fat_percent:
+          type: number
+        calories_from_carbs_percent:
+          type: number
+        calories_100:
+          type: string
+        calories_300:
+          type: string
+        calories_500:
+          type: string
+        sodium_600:
+          type: string
+        sodium_400:
+          type: string
+        sodium_140:
+          type: string
+        plus_calories:
+          type: string
+        plus_protein:
+          type: string
+        plus_fiber:
+          type: string
+        plus_calcium:
+          type: string
+        cool_food_meal:
+          type: string
+        plant_forward:
+          type: string
+        eat_well:
+          type: string
+        eat_well_sides:
+          type: string
+        eat_well_soups:
+          type: string
+        eat_well_snacks:
+          type: string
+        whole_grain:
+          type: string
+        e2e_protein:
+          type: string
+        e2e_carbohydrate:
+          type: string
+        e2e_color:
+          type: string
+        contains_shellfish:
+          type: string
+        contains_peanuts:
+          type: string
+        contains_tree_nuts:
+          type: string
+        contains_milk:
+          type: string
+        contains_wheat:
+          type: string
+        contains_soy:
+          type: string
+        contains_eggs:
+          type: string
+        contains_fish:
+          type: string
+        nut_info_verified:
+          type: string
+        contains_msg:
+          type: string
+        contains_hfcs:
+          type: string
+        contains_mustard:
+          type: string
+        contains_celery:
+          type: string
+        contains_sesame:
+          type: string
+        contains_artificial_colors_dyes:
+          type: string
+        non_gmo_claim:
+          type: string
+        contains_gluten:
+          type: string
+        contains_barley:
+          type: string
+        contains_oats:
+          type: string
+        contains_rye:
+          type: string
+        contains_triticale:
+          type: string
+        contains_sulfites_gt10ppm:
+          type: string
+        contains_honey:
+          type: string
+        contains_carmine_coloring:
+          type: string
+        contains_l_cysteine:
+          type: string
+        contains_animal_enzymes:
+          type: string
+        contains_animal_flavorings:
+          type: string
+        contains_animal_gelatin:
+          type: string
+        contains_animal_vitamins_minerals:
+          type: string
+        contains_pork:
+          type: string
+        contains_artificial_flavorings:
+          type: string
+        contains_artificial_preservatives:
+          type: string
+        contains_artificial_sweeteners:
+          type: string
+        contains_hydrogenated_oils:
+          type: string
+        organic:
+          type: string
+        natural:
+          type: string
+        no_antibiotic:
+          type: string
+        domestic:
+          type: string
+        clean_label:
+          type: string
+        vegan:
+          type: string
+        vegetarian:
+          type: string
+        kosher:
+          type: string
+        halal:
+          type: string
+        ingredient_statement:
+          type: string
+        allergen_statement_not_available:
+          type: string
+        creation_date:
+          type: string
+        last_update_date:
+          type: string
+    nutrition_updates_2:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: Location ID
+        service_area_id:
+          type: number
+          description: Service Area ID
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-service-recipes-v2-openapi.json
+- aramark-service-v3-openapi.json

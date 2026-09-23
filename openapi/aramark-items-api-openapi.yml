@@ -1,0 +1,386 @@
+openapi: 3.2.0
+info:
+  title: Aramark Items API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Items across 2 of this provider''s published API definitions: aramark-inventory-openapi.json, aramark-service-inventory-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/inventory
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/inventory
+  description: Development server
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Items
+  description: Get or Update Inventory Items
+paths:
+  /items:
+    get:
+      summary: Inventory Items for a specific Location
+      description: Returns a collection of Inventory Item data for a specific location
+      operationId: getInventoryItems
+      tags:
+      - Items
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/includeDisabledParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: List all Inventory Items information for a location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  inventory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/inventory'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update an Inventory Items
+      description: Allows updates to Inventory Items
+      operationId: putInventoryItems
+      tags:
+      - Items
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Item that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putItemBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/inventory
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/inventory
+      description: Development server
+  /inventory/items:
+    get:
+      summary: Inventory Items for a specific Location
+      description: 'Returns a collection of Inventory Item data for a specific location
+
+        !This endpoint is in development'
+      operationId: getInventoryItems
+      tags:
+      - Items
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: List all Inventory Items information for a location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  inventory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/inventory_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update an Inventory Item for a specific Location
+      description: 'Allows updates to an Inventory Item for a specific Location
+
+        !This endpoint is in development'
+      operationId: putInventoryItems
+      tags:
+      - Items
+      parameters:
+      - $ref: '#/components/parameters/inventoryItemIdParam'
+      requestBody:
+        description: Details for the Item that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putItemBody_2'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+components:
+  schemas:
+    pack_unit_size:
+      type: object
+      properties:
+        purchase_size_description:
+          type: string
+          description: Description of the Purchase Size of the Item Pack
+        purchase_size:
+          type: number
+          description: Purchase Size of the Item Pack
+        pack_size_description:
+          type: string
+          description: Description of the Pack Size of the Item
+        pack_size:
+          type: number
+          description: Pack Size of the Item
+        inner_pack_size_description:
+          type: string
+          description: Description of the Inner Pack Size of the Item
+        inner_pack_size:
+          type: number
+          description: Inner Pack Size of the Item
+    putItemBody:
+      type: object
+      properties:
+        inventory_item_id:
+          type: number
+          description: Inventory Item ID
+        actual_unit1_value:
+          type: number
+          description: Actual Unit1 Value for the Item
+        actual_unit2_value:
+          type: number
+          description: Actual Unit2 Value for the Item
+        actual_unit3_value:
+          type: number
+          description: Actual Unit3 Value for the Item
+        fiscal_time_period_id:
+          type: number
+          description: Fiscal Period ID in which the Item is being updated
+    details:
+      type: object
+      properties:
+        unit_purchase_description:
+          type: string
+          description: Description of the Purchase Unit of the Item
+        beginning_units:
+          type: number
+          description: Number of Beginning Units of the Item
+        received_units:
+          type: number
+          description: Number of Received Units of the Item
+        catch_weight_flag:
+          type: string
+          description: Flag to indicate whether or not catch weight is applicable for this Item
+        transfer_in_quantity:
+          type: number
+          description: Number of Units Transferred In for the Item
+        transfer_out_quantity:
+          type: number
+          description: Number of Units Transferred Out for the Item
+        fiscal_time_period_id:
+          type: number
+          description: ID of the Fiscal Period for the Item
+        last_purchase_date:
+          type: string
+        vendor_item_description:
+          type: string
+        vendor_item_number:
+          type: string
+        vendor_name:
+          type: string
+    inventory:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: ID of the Location
+        inventory_item_storage_area_name:
+          type: string
+          description: Name of the Storage Area for the Item
+        inventory_item_storage_area_id:
+          type: number
+          description: ID of the Storage Area for the Item
+        inventory_item_name:
+          type: string
+          description: Name of the Item
+        inventory_item_id:
+          description: ID of the Item
+        sort_order:
+          type: number
+        enabled:
+          type: boolean
+        pack_unit_size:
+          $ref: '#/components/schemas/pack_unit_size'
+        details:
+          $ref: '#/components/schemas/details'
+    putItemBody_2:
+      type: object
+      properties:
+        purchase_size:
+          type: number
+          description: Purchase Size for the Item
+        pack_size:
+          type: number
+          description: Pack Size for the Item
+        inner_pack_size:
+          type: number
+          description: Inner Pack Size for the Item
+        fiscal_time_period_id:
+          type: number
+          description: Fiscal Period ID in which the Item is being updated
+    details_2:
+      type: object
+      properties:
+        unit_purchase_description:
+          type: string
+          description: Description of the Purchase Unit of the Item
+        beginning_units:
+          type: number
+          description: Number of Beginning Units of the Item
+        received_units:
+          type: number
+          description: Number of Received Units of the Item
+        catch_weight_flag:
+          type: string
+          description: Flag to indicate whether or not catch weight is applicable for this Item
+        transfer_in_quantity:
+          type: number
+          description: Number of Units Transferred In for the Item
+        transfer_out_quantity:
+          type: number
+          description: Number of Units Transferred Out for the Item
+        fiscal_time_period_id:
+          type: number
+          description: ID of the Fiscal Period for the Item
+    inventory_2:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: ID of the Location
+        inventory_item_storage_area_name:
+          type: string
+          description: Name of the Storage Area for the Item
+        inventory_item_storage_area_id:
+          type: number
+          description: ID of the Storage Area for the Item
+        inventory_item_name:
+          type: string
+          description: Name of the Item
+        inventory_item_id:
+          type: number
+          description: ID of the Item
+        pack_unit_size:
+          $ref: '#/components/schemas/pack_unit_size'
+        details:
+          $ref: '#/components/schemas/details_2'
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+    includeDisabledParam:
+      name: include_disabled
+      in: query
+      description: Flag to determine if disabled Items should be included in results
+      required: false
+      schema:
+        type: boolean
+        default: false
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+    inventoryItemIdParam:
+      name: inventory_item_id
+      in: path
+      description: ID of the Inventory Item to be udpated
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-inventory-openapi.json
+- aramark-service-inventory-openapi.json

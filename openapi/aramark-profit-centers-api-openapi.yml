@@ -1,0 +1,257 @@
+openapi: 3.2.0
+info:
+  title: Aramark Profit Centers API
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Profit Centers across 2 of this provider''s published API definitions: aramark-profile-user-openapi.json, marko-api.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/profile/user
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/profile/user
+  description: Development server
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Profit Centers
+  description: This API will return a list of Aramark Profit Centers to which a user is mapped
+paths:
+  /my_profit_centers:
+    get:
+      summary: User profit centers
+      description: 'Return a collection of Profit Centers to which a user is mapped
+
+
+        !This endpoint is in production'
+      operationId: getMyProfitCenters
+      parameters:
+      - $ref: '#/components/parameters/userIdParam'
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/segmentCategoryParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      tags:
+      - Profit Centers
+      responses:
+        '200':
+          description: List Profit Center to which a User is mapped.
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: string
+                    description: Page number of result set
+                    default: '1'
+                  size:
+                    type: string
+                    description: Number of records returned with the result set
+                    default: '50'
+                  profit_centers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/profit_centers'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/profile/user
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/profile/user
+      description: Development server
+  /profit-centers:
+    get:
+      operationId: getProfitCenters
+      summary: Aramark Get Profit Centers
+      description: Retrieve profit center and financial unit data from the Aramark Marko platform.
+      tags:
+      - Profit Centers
+      parameters:
+      - name: parentId
+        in: query
+        description: Filter by parent profit center
+        schema:
+          type: string
+        example: PC-REGION-NE
+      responses:
+        '200':
+          description: Profit center data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfitCenterResponse'
+              examples:
+                GetProfitCenters200Example:
+                  summary: Default getProfitCenters 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: PC-001
+                      name: Campus Center Dining
+                      code: NE-CC-001
+                      parentId: PC-REGION-NE
+                      active: true
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    servers:
+    - url: https://www.marko.aramark.net/v1
+      description: Marko API Production Server
+components:
+  parameters:
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    segmentCategoryParam:
+      name: segment_category
+      in: query
+      description: Identifier of different financial groupings
+      required: false
+      schema:
+        type: string
+        enum:
+        - OPERATIONAL
+        - OVERHEAD
+        - NVD
+        - LOST
+        - ALL
+        - ALL_CLOSED
+        default: OPERATIONAL
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      name: page
+      in: query
+      description: Page number of result set
+      required: false
+      schema:
+        type: string
+        default: 1
+    searchParam:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+  schemas:
+    profit_centers:
+      type: object
+      properties:
+        profit_center:
+          type: string
+          description: Unique code for a Profit Center, sourced by BIC or MDG
+        profit_center_name:
+          type: string
+          description: Profit Center name
+        segment_category:
+          type: string
+          description: category of segmentation
+        segment:
+          type: string
+          description: detailed segmentation group
+    ProfitCenter:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Profit center identifier
+          example: PC-001
+        name:
+          type: string
+          description: Profit center name
+          example: Campus Center Dining
+        code:
+          type: string
+          description: Profit center code
+          example: NE-CC-001
+        parentId:
+          type: string
+          description: Parent profit center identifier
+          example: PC-REGION-NE
+        active:
+          type: boolean
+          description: Whether the profit center is active
+          example: true
+    ProfitCenterResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfitCenter'
+        count:
+          type: integer
+          description: Total record count
+          example: 20
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-profile-user-openapi.json
+- marko-api.yml

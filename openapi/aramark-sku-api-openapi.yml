@@ -1,0 +1,163 @@
+openapi: 3.2.0
+info:
+  title: Aramark SKU API
+  version: 1.0.0
+  description: 'Operations tagged SKU across 2 of this provider''s published API definitions: aramark-product-openapi.json, aramark-product-retail-items-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1
+- url: https://dev-marko.aramark.net/v1
+- url: https://qa-marko.aramark.net/v1/product
+tags:
+- name: Sku
+  description: Returns SKU data
+paths:
+  /product/sku/lookup:
+    post:
+      tags:
+      - Sku
+      description: Submit a request to lookup SKUs
+      operationId: postSKULookup
+      requestBody:
+        description: Parameters used to identify SKU lookup
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/skuBodyParam'
+        required: true
+      responses:
+        '200':
+          description: SKU lookup submitted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records returned in request
+                  skus:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/skus'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      x-codegen-request-body-name: body
+      summary: Post SKU lookup
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+  /sku/lookup:
+    post:
+      tags:
+      - Sku
+      description: Submit a request to lookup SKUs
+      operationId: postSKULookup
+      parameters:
+      - $ref: '#/components/parameters/skuBodyParam'
+      responses:
+        '200':
+          description: SKU lookup submitted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records returned in request
+                  skus:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/skus_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      summary: Post SKU lookup
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1/product
+components:
+  schemas:
+    skus:
+      type: object
+      properties:
+        msa:
+          type: string
+        item_description:
+          type: string
+        price_match:
+          type: string
+        order_uom:
+          type: string
+        category_id:
+          type: string
+        short_description:
+          type: string
+        gl_account:
+          type: string
+        similarity_match:
+          type: string
+        supplier_sku:
+          type: string
+    skuBodyParam:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA of the Item to lookup
+        item_description:
+          type: string
+          description: Description of the Item
+        price:
+          type: number
+          description: Price of the Item
+    skus_2:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA of the Item to lookup
+        item_description:
+          type: string
+          description: Description of the Item
+        supplier_sku:
+          type: string
+          description: Supplier SKU for the item
+        order_uom:
+          type: string
+          description: Unit of Measure for the order
+        category_id:
+          type: string
+          description: Category ID for the item
+        similarity_match:
+          type: string
+          description: null
+  parameters:
+    skuBodyParam:
+      in: body
+      name: body
+      description: Parameters used to identify SKU lookup
+      required: true
+      schema:
+        $ref: '#/components/schemas/skuBodyParam'
+  securitySchemes:
+    apikey:
+      type: apiKey
+      description: This HTTP Header variable will verify security
+      name: apikey
+      in: header
+x-refined-from:
+- aramark-product-openapi.json
+- aramark-product-retail-items-openapi.json

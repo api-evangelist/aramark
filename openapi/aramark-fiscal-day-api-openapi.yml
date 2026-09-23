@@ -1,0 +1,204 @@
+openapi: 3.2.0
+info:
+  description: 'Given a day or date range this API has methods to list:
+
+    * fiscal day attributes
+
+    * operational day attributes
+
+
+    You can return return the _calendar dates_ for given fiscal day attributes:
+
+
+    * fiscal year
+
+    * fiscal month
+
+    * week of a fiscal month
+
+    * day of the week in a fiscal month
+
+
+    **The Aramark Fiscal Year**
+
+
+    * The first month of the fiscal year is October
+
+    * Fiscal months rarely begin on the first day of their correspoinding calendar month.'
+  version: 1.0.0-oas3
+  title: Calendar Fiscal Day API
+servers:
+- url: https://qa-marko.aramark.net/v1
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Fiscal Day
+paths:
+  /fiscal/day:
+    get:
+      operationId: getFiscalDay
+      summary: Fiscal day attributes
+      description: 'Return fiscal day attributes for given calendar dates
+
+
+        !This endpoint is in qa testing'
+      parameters:
+      - $ref: '#/components/parameters/startDateParam'
+      - $ref: '#/components/parameters/endDateParam'
+      - $ref: '#/components/parameters/fieldsParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      tags:
+      - Fiscal Day
+      responses:
+        '200':
+          description: List of fiscal day information
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  fiscal_day:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/fiscal_day'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    fieldsParam:
+      in: query
+      name: fields
+      description: Comma separated list of output parameters used to limit the output model.
+      required: false
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar date end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    fiscal_day:
+      type: object
+      properties:
+        calendar_date:
+          type: string
+          description: Timestamp of calendar date to corresponding fiscal day
+        fiscal_day_of_year:
+          type: number
+          description: numeric value of fiscal day of year
+        fiscal_day_of_month:
+          type: number
+          description: numeric value of fiscal day of month
+        fiscal_day_of_quarter:
+          type: number
+          description: numeric value of fiscal day of quarter
+        fiscal_day_of_week:
+          type: number
+          description: numeric value of fiscal day of week
+        fiscal_max_week_in_month:
+          type: number
+          description: maximum number of weeks in fiscal month
+        fiscal_month_abbr:
+          type: string
+          description: three letter abbreviation for fiscal month
+        fiscal_month_id:
+          type: number
+          description: unique id for the fiscal month
+        fiscal_month_name:
+          type: string
+          description: name of the fiscal month
+        fiscal_month_of_year:
+          type: number
+          description: numeric value of fiscal month of year
+        fiscal_month_of_quarter:
+          type: number
+          description: numeric value of fiscal month of quarter
+        fiscal_period:
+          type: string
+          description: name of the fiscal period
+        fiscal_period_week:
+          type: string
+          description: fiscal period and week
+        fiscal_quarter_id:
+          type: number
+          description: unique id for the fiscal quarter
+        fiscal_quarter_name:
+          type: string
+          description: name of the fiscal quarter
+        fiscal_quarter_of_year:
+          type: number
+          description: numeric value of the fiscal quarter of year
+        fiscal_week_day:
+          type: string
+          description: fiscal period, week and day
+        fiscal_week_id:
+          type: number
+          description: unique id of fiscal week
+        fiscal_week_of_month:
+          type: number
+          description: numeric value of the fiscal week of month
+        fiscal_week_of_quarter:
+          type: number
+          description: numeric value of the fiscal week of quarter
+        fiscal_week_of_year:
+          type: number
+          description: numeric value of the fiscal week of year
+        fiscal_year_id:
+          type: number
+          description: unique id of the fiscal year
+        fiscal_year_month:
+          type: number
+          description: fiscal year and month
+        fiscal_year_name:
+          type: string
+          description: name of the fiscal year
+        fiscal_year_number:
+          type: string
+          description: numeric value of the fiscal year
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

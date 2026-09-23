@@ -1,7 +1,9 @@
 ---
 title: Aramark Enters Hyperscale AI Data Center Market With ...
 url: https://www.businesswire.com/news/home/20260422461426/en/Aramark-Enters-Hyperscale-AI-Data-Center-Market-With-Launch-of-New-Integrated-Hospitality-Platform-Multi-Year-Engagement-with-Top-Global-Hyperscaler-Underway
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aramark" press release artificial intelligence'
 position: 4
 source: serpapi-google

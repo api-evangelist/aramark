@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  description: 'These APIs will return a collection of organizations based on a user''s profile security
+
+
+    __The base endpoint URL for this API in production is:__ `https://marko.aramark.net/v1/profile/user`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Profile Districts API
+servers:
+- url: https://qa-marko.aramark.net/v1/profile/user
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/profile/user
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Districts
+  description: This API will return a list of Aramark Districts to which a user is mapped
+paths:
+  /my_districts:
+    get:
+      summary: User districts
+      description: 'Return a collection of districts to which a user is mapped
+
+
+        !This endpoint is in production'
+      operationId: getMyDistricts
+      parameters:
+      - $ref: '#/components/parameters/userIdParam'
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      tags:
+      - Districts
+      responses:
+        '200':
+          description: List Districts to which a User is mapped.
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: string
+                    description: Page number of result set
+                    default: '1'
+                  size:
+                    type: string
+                    description: Number of records returned with the result set
+                    default: '50'
+                  districts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/districts'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      name: page
+      in: query
+      description: Page number of result set
+      required: false
+      schema:
+        type: string
+        default: 1
+    searchParam:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+  schemas:
+    districts:
+      type: object
+      properties:
+        district:
+          type: string
+          description: Unique code for a Disctrict, sourced by BIC or MDG
+        district_name:
+          type: string
+          description: District name
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

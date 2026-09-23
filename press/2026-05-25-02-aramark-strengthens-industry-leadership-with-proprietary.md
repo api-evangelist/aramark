@@ -1,7 +1,9 @@
 ---
 title: Aramark Strengthens Industry Leadership with Proprietary ...
 url: https://www.aramark.com/newsroom/news/2025/october/aramark-strengthens-industry-leadership-with-proprietary-new-ai-
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aramark" press release artificial intelligence'
 position: 2
 source: serpapi-google

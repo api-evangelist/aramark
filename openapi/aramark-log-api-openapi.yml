@@ -1,0 +1,88 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Log API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Log
+  description: A collection of Log requests
+paths:
+  /log/request:
+    post:
+      summary: Create Log Request
+      description: Allows Log Request
+      operationId: postLogRequest
+      tags:
+      - Log
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Log data being requestd
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postLogRequestBody'
+      responses:
+        '200':
+          description: Status of the Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+  schemas:
+    postLogRequestBody:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+          description: Service Area Id of the Log data
+        date:
+          type: string
+          description: Date of the Log data
+        log_type:
+          type: string
+          description: Type of Log data. Acceptable value - 'waste' or 'journal'
+        email:
+          type: string
+          description: Email for the Log data request
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

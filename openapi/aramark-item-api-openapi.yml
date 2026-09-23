@@ -1,0 +1,119 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return Point of Sale Data
+
+
+    __The base endpoint URL for this API in production is:__ `https://marko.aramark.net/v1/pos`.'
+  version: 1.0.0-oas3
+  title: Point of Sale Item API
+servers:
+- url: https://dev-marko.aramark.net/v1/pos
+- url: https://qa-marko.aramark.net/v1/pos
+tags:
+- name: Item
+  description: Get POS Item Data
+paths:
+  /items:
+    get:
+      summary: POS Items
+      description: Return POS Items by Source System
+      operationId: getPOSItems
+      tags:
+      - Item
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Provides the POS Item data by POS System
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  pos_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/pos_items'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return. Default 50
+      required: false
+      schema:
+        type: string
+    sourceSystemParam:
+      in: query
+      name: source_system
+      description: "Name of the POS System:\n * `BYPS` - Bypass\n * `MASH` - Mashgin\n * `SMCS` - S&E Micros\n * `EMCS` - Enterprise Micros\n * `CMCS` - Cloud Micros\n * `ZIPP` - Zippin\n * `TAP2` - Tapin2\n * `NXTP` - Nextep\n * `SYTP` - Systopia\n"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set. Default 1
+      required: false
+      schema:
+        type: number
+  schemas:
+    pos_items:
+      type: object
+      properties:
+        item_id:
+          type: number
+          description: ID for the item
+        item_name:
+          type: string
+          description: Name of the Item
+        major_id:
+          type: number
+          description: Menu Item major group ID
+        major_name:
+          type: string
+          description: Menu Item major group name
+        minor_id:
+          type: number
+          description: Menu Item minor group ID
+        minor_name:
+          type: string
+          description: Menu Item minor group name
+        item_pos_ref_id:
+          type: number
+          description: Local ID of the Item
+        last_update_date:
+          type: string
+          description: Date and Time the Item data was updated
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

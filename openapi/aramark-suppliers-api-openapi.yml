@@ -1,0 +1,170 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Organization Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Organization Suppliers API
+servers:
+- url: https://qa-marko.aramark.net/v1
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1
+  description: Development server
+tags:
+- name: Suppliers
+  description: A collection of Suppliers Data
+paths:
+  /organization/suppliers:
+    get:
+      summary: Get Supplier Data
+      operationId: getSuppliers
+      tags:
+      - Suppliers
+      parameters:
+      - $ref: '#/components/parameters/orgValuePathParam'
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/enablementTypeParam'
+      - $ref: '#/components/parameters/enabledOnlyParam'
+      - $ref: '#/components/parameters/msaParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: GL Account Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  gl_accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/suppliers'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    enabledOnlyParam:
+      name: enabled_only
+      in: query
+      description: Flag used to determine if Enabled or not
+      required: false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
+    msaParam:
+      in: query
+      name: msa
+      description: MSA of the data to be returned
+      required: false
+      schema:
+        type: number
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    orgValuePathParam:
+      in: path
+      name: org_value
+      description: Org Value for data to be returned
+      required: true
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page of the result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    enablementTypeParam:
+      name: enablement_type
+      in: query
+      description: User to filter records by Enablement Type. Multiple entries allowed in a comma separated list
+      required: false
+      schema:
+        type: string
+        enum:
+        - DIRECT BILL
+        - ERCV
+        - PROGRAM - INVOICE ONLY
+        - PUNCHOUT
+        - ADOPTED
+    searchParam:
+      name: search
+      in: query
+      description: Search value
+      required: false
+      schema:
+        type: string
+  schemas:
+    suppliers:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA of the supplier
+        vendor_name:
+          type: string
+          description: Name of the supplier
+        supplier_display_name:
+          type: string
+          description: Conactinated string of MSA and Vendor Name
+        location:
+          type: string
+          description: Aramark Location Code
+        location_name:
+          type: string
+          description: Name of Aramark Location
+        customer_number:
+          type: string
+          description: Number of the Customer
+        enablement_type:
+          type: string
+          description: Enablement Type of the Supplier
+        assignment_start_date:
+          type: string
+          description: Start Date of the Assignment of the Supplier
+        harmonized_category:
+          type: string
+        inventory:
+          type: string
+        short_description:
+          type: string
+        vendor_site_cd:
+          type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

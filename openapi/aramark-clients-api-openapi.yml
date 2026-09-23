@@ -1,0 +1,265 @@
+openapi: 3.2.0
+info:
+  title: Aramark Clients API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Clients across 2 of this provider''s published API definitions: aramark-organization-clients-openapi.json, aramark-profile-user-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/organization
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/organization
+- url: https://qa-marko.aramark.net/v1/profile/user
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/profile/user
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Clients
+paths:
+  /clients:
+    get:
+      operationId: getOrganizationClients
+      tags:
+      - Clients
+      summary: Returns a collection of Client Attributes
+      description: '!This endpoint is in production'
+      parameters:
+      - $ref: '#/components/parameters/profitCenterParam'
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/formatParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Collection of Client Attributes
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                  clients:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/clients'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/organization
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/organization
+  /my_clients:
+    get:
+      summary: User clients
+      description: 'Return a collection of Clients to which a user is mapped
+
+
+        !This endpoint is in development'
+      operationId: getMyClients
+      parameters:
+      - $ref: '#/components/parameters/userIdParam'
+      - $ref: '#/components/parameters/searchParam_2'
+      - $ref: '#/components/parameters/segmentCategoryParam'
+      - $ref: '#/components/parameters/pageParam_2'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam_2'
+      tags:
+      - Clients
+      responses:
+        '200':
+          description: List all Clients.
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: string
+                    description: Page number of result set
+                    default: '1'
+                  size:
+                    type: string
+                    description: Number of records returned with the result set
+                    default: '50'
+                  clients:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/clients_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/profile/user
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/profile/user
+      description: Development server
+components:
+  parameters:
+    formatParam:
+      in: query
+      name: format
+      required: false
+      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    profitCenterParam:
+      in: query
+      name: org_value
+      description: Provide profit center code to filter data set
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Client.  Will match against Name and Value or Client or Profit Center or Client Family.  Maximum length of 20 characters.
+      schema:
+        type: string
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
+    segmentCategoryParam:
+      name: segment_category
+      in: query
+      description: Identifier of different financial groupings
+      required: false
+      schema:
+        type: string
+        enum:
+        - OPERATIONAL
+        - OVERHEAD
+        - NVD
+        - LOST
+        - ALL
+        - ALL_CLOSED
+        default: OPERATIONAL
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam_2:
+      name: page
+      in: query
+      description: Page number of result set
+      required: false
+      schema:
+        type: string
+        default: 1
+    searchParam_2:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+  schemas:
+    clients:
+      type: object
+      properties:
+        org_source:
+          type: string
+          description: Country code for the client
+        profit_center:
+          type: string
+          description: Profit Center value for the client
+        profit_center_name:
+          type: string
+          description: Profit Center name for the client
+        client_code:
+          type: string
+          description: Client Code for the client
+        client_name:
+          type: string
+          description: Name of the client
+        client_family_code:
+          type: string
+          description: Family Code for the client
+        client_family_name:
+          type: string
+          description: Name of the client family
+        global_family_code:
+          type: string
+          description: Global family code for the client
+        global_family_name:
+          type: string
+          description: Global family name for the client
+    clients_2:
+      type: object
+      properties:
+        client:
+          type: string
+          description: Unique code for a Clients, sourced by BIC or MDG
+        client_name:
+          type: string
+          description: Client name
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.
+x-refined-from:
+- aramark-organization-clients-openapi.json
+- aramark-profile-user-openapi.json

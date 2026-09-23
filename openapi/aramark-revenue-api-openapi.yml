@@ -1,0 +1,308 @@
+openapi: 3.2.0
+info:
+  title: Aramark Revenue API
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Revenue across 2 of this provider''s published API definitions: aramark-operational-daily-openapi.json, marko-api.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://dev-marko.aramark.net/v1/operational/daily
+  description: Development server
+- url: https://qa-marko.aramark.net/v1/operational/daily
+  description: Testing server
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Revenue
+  description: Get Revenue Metrics
+paths:
+  /revenue/snapshot/{org_value}:
+    get:
+      summary: Intra-day revenue
+      description: 'Returns snapshot of intra-day revenue
+
+
+        !This endpoint is in production'
+      operationId: getRevenueSnapshot
+      tags:
+      - Revenue
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/startDateParam'
+      - $ref: '#/components/parameters/endDateParam'
+      - $ref: '#/components/parameters/rollupParam'
+      - $ref: '#/components/parameters/posParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides the service results for a specific unit of measure
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                  pos_sales:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/revenue_snapshot'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://dev-marko.aramark.net/v1/operational/daily
+      description: Development server
+    - url: https://qa-marko.aramark.net/v1/operational/daily
+      description: Testing server
+  /revenue-snapshot:
+    get:
+      operationId: getRevenueSnapshot
+      summary: Aramark Get Revenue Snapshot
+      description: Retrieve revenue snapshot and financial performance data from the Aramark Marko platform.
+      tags:
+      - Revenue
+      parameters:
+      - name: profitCenterId
+        in: query
+        description: Filter by profit center
+        schema:
+          type: string
+        example: PC-001
+      - name: startDate
+        in: query
+        description: Start date for revenue period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-01'
+      - name: endDate
+        in: query
+        description: End date for revenue period (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-19'
+      responses:
+        '200':
+          description: Revenue snapshot data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueSnapshotResponse'
+              examples:
+                GetRevenueSnapshot200Example:
+                  summary: Default getRevenueSnapshot 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - profitCenterId: PC-001
+                      period: 2026-04
+                      totalRevenue: 125430.5
+                      transactionCount: 3215
+                      averageTicket: 39.02
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    servers:
+    - url: https://www.marko.aramark.net/v1
+      description: Marko API Production Server
+components:
+  parameters:
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
+
+        '
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    rollupParam:
+      in: query
+      name: rollup
+      description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: Y
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    posParam:
+      in: query
+      name: pos
+      required: false
+      description: Flag used to determine whether or not output will display an aggregate of POS system or not.
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: Y
+  schemas:
+    revenue_snapshot:
+      type: object
+      properties:
+        calendar_date:
+          type: string
+          description: Date or transactional rollup
+        org_value:
+          type: string
+          description: Aramark Organization code for rollup
+        parent_org:
+          type: string
+          description: Code for Parent Organization
+        parent_org_name:
+          type: string
+          description: Name of Parent Organization
+        parent_org_level:
+          type: number
+          description: Level of Parent Organization in Hierarchy
+        child_org:
+          type: string
+          description: Code of Child Organization. Only applicable when rollup="N"
+        child_org_name:
+          type: string
+          description: Name of Child Organization. Only applicable when rollup="N"
+        child_org_level:
+          type: number
+          description: Level of Child Organization in Hierarchy. Only applicable when rollup="N"
+        source:
+          type: string
+          description: Name of Point of Sale Source System. Only applicable when pos="Y"
+        source_code:
+          type: string
+          description: Code used for downstream APIs for Source System. Only applicable when pos="Y"
+        sub_source:
+          type: string
+          description: Name of Point of Sale Sub Source System. Only applicable when pos="Y"
+        total_sales:
+          type: number
+          description: Sales subtotal (without tax)
+        total_volume:
+          type: number
+          description: Number of Items sold
+        total_checks:
+          type: number
+          description: Total number of checks
+        avg_check:
+          type: number
+          description: Total Sales / Number of Checks
+        cashless_pct:
+          type: number
+          description: Percentage of cashless sales in relation to total sales
+        last_updated:
+          type: string
+          description: Time at which the data was last refreshed
+    RevenueSnapshot:
+      type: object
+      properties:
+        profitCenterId:
+          type: string
+          description: Profit center identifier
+          example: PC-001
+        period:
+          type: string
+          description: Revenue period (YYYY-MM)
+          example: 2026-04
+        totalRevenue:
+          type: number
+          description: Total revenue for the period in USD
+          example: 125430.5
+        transactionCount:
+          type: integer
+          description: Number of transactions in the period
+          example: 3215
+        averageTicket:
+          type: number
+          description: Average transaction value in USD
+          example: 39.02
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    RevenueSnapshotResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueSnapshot'
+        count:
+          type: integer
+          description: Total record count
+          example: 12
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+    apiKey:
+      type: apiKey
+      in: header
+      name: apiKey
+      description: API key for Marko platform authentication, obtained from the developer portal.
+x-refined-from:
+- aramark-operational-daily-openapi.json
+- marko-api.yml

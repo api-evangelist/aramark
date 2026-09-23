@@ -1,0 +1,181 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of IoT Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/iot`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: IoT Events API
+servers:
+- url: https://qa-marko.aramark.net/v1/iot
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/iot
+  description: Development server
+tags:
+- name: Events
+  description: A collection of Event data
+paths:
+  /events/temperature:
+    post:
+      summary: Get Temperature Events within 24 hour date range
+      description: Returns a collection of Temperature Events
+      operationId: getTemperatureEvents
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/bypassCacheParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_temp_events_body'
+      responses:
+        '200':
+          description: Lists Temperature Events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  page:
+                    type: number
+                  size:
+                    type: number
+                  temperature_events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/temperature_events'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /events/temperature/{org_value}:
+    post:
+      summary: Get Temperature Events by Location within 24 hour date range
+      description: Returns a collection of Temperature Events
+      operationId: getTemperatureEventsByOrgValue
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/post_temp_events_body'
+      responses:
+        '200':
+          description: Lists Temperature Events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  page:
+                    type: number
+                  size:
+                    type: number
+                  temperature_events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/temperature_events'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    orgValueParam:
+      name: org_value
+      in: path
+      description: Location Code of the Device
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    post_temp_events_body:
+      type: object
+      properties:
+        start_date_time:
+          type: string
+        end_date_time:
+          type: string
+        page:
+          type: number
+        size:
+          type: number
+        device_ids:
+          type: object
+    temperature_events:
+      type: object
+      properties:
+        device_id:
+          type: string
+        device_name:
+          type: string
+        location_org_value:
+          type: string
+        event_id:
+          type: string
+        event_date:
+          type: string
+        event_datetime:
+          type: string
+        event_datetime_utc:
+          type: string
+        temp_f:
+          type: number
+        temp_c:
+          type: number
+        humidity:
+          type: number
+        asset_key:
+          type: number
+        asset_temp_event_f_key:
+          type: number
+        event_datetime_5min_bucket:
+          type: string
+        event_datetime_15min_bucket:
+          type: string
+        event_datetime_hr_bucket:
+          type: string
+        created_by:
+          type: string
+        created_datetime:
+          type: string
+        last_updated_by:
+          type: string
+        last_updated_datetime:
+          type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

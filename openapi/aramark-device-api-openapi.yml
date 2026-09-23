@@ -1,0 +1,373 @@
+openapi: 3.2.0
+info:
+  title: Aramark Device API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Device across 3 of this provider''s published API definitions: aramark-marko-users-openapi.json, aramark-pos-transactions-openapi.json, aramark-service-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://dev-marko.aramark.net/v1/marko
+  description: Development server
+- url: https://dev-marko.aramark.net/v1/pos
+- url: https://qa-marko.aramark.net/v1/pos
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Device
+  description: Gets, Updates, Creates or Removes Marko Profile Device information
+paths:
+  /user/device:
+    get:
+      summary: Get User Devices
+      description: 'Returns Marko User Devices
+
+
+        !This endpoint is in development'
+      operationId: getUserDevices
+      tags:
+      - Device
+      parameters:
+      - $ref: '#/components/parameters/deviceIdParamFalse'
+      - $ref: '#/components/parameters/userIdParamFalse'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides a list of User Devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  device_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    post:
+      summary: Create User Device
+      description: 'Create marko user device
+
+
+        !This endpoint is in development'
+      tags:
+      - Device
+      operationId: postUserDevice
+      parameters:
+      - $ref: '#/components/parameters/deviceIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Creates a User Device
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  device_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    delete:
+      summary: Remove user device
+      description: 'Remove Marko user device
+
+
+        !This endpoint is in development'
+      tags:
+      - Device
+      operationId: deleteUserDevice
+      parameters:
+      - $ref: '#/components/parameters/deviceIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+    servers:
+    - url: https://dev-marko.aramark.net/v1/marko
+      description: Development server
+  /devices:
+    get:
+      summary: POS Device Data
+      description: Returns POS Device Data by Source System
+      operationId: getPOSDevices
+      tags:
+      - Device
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemDevicesParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam_2'
+      responses:
+        '200':
+          description: Provides the Transaction Check data by POS System
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: number
+                    description: Number of records returned
+                    default: 50
+                    example: 50
+                  page:
+                    type: number
+                    default: 1
+                    example: 1
+                  size:
+                    type: number
+                    default: 50
+                    example: 50
+                  pos_devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/pos_devices'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://dev-marko.aramark.net/v1/pos
+    - url: https://qa-marko.aramark.net/v1/pos
+  /device/sites:
+    get:
+      summary: Get Sites for a Device
+      description: Returns a collection of Sites for a Device
+      operationId: getDeviceSites
+      tags:
+      - Device
+      parameters:
+      - $ref: '#/components/parameters/deviceSerialNumberParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam_3'
+      - $ref: '#/components/parameters/smokeParam_2'
+      responses:
+        '200':
+          description: Lists Device Sites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  device_sites:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/device_sites'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+components:
+  parameters:
+    userIdParamFalse:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: false
+      schema:
+        type: string
+    deviceIdParamFalse:
+      in: query
+      name: device_id
+      description: Unique identifier of a user Device. Used for returning specific device, otherwise returns all devices
+      required: false
+      schema:
+        type: string
+    deviceIdParamTrue:
+      in: query
+      name: device_id
+      description: Unique identifier of a user Device. Used for returning specific device, otherwise returns all devices
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return. Default 50
+      required: false
+      schema:
+        type: string
+    sourceSystemDevicesParam:
+      in: query
+      name: source_system
+      description: "Name of the POS System:\n * `CMCS` - Cloud Micros\n"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set. Default 1
+      required: false
+      schema:
+        type: number
+    deviceSerialNumberParam:
+      name: device_serial_number
+      in: query
+      description: Serial Number of the Device
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam_3:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    Device:
+      type: object
+      properties:
+        device_id:
+          type: string
+          description: Unique identifier of a device
+        device_number:
+          type: string
+          description: number for a device
+        phone_number:
+          type: string
+          description: phone number associated with a device
+        profile_id:
+          type: string
+          description: Unique identifier of a profile
+        valid:
+          type: string
+          description: boolean determining validity of device
+        create_date:
+          type: string
+          description: date that profile was created
+        update_date:
+          type: string
+          description: date that profile was last updated
+    pos_devices:
+      type: object
+      properties:
+        source_device:
+          type: object
+    device_sites:
+      type: object
+      properties:
+        site_id:
+          type: number
+          description: ID for the Site
+        site_name:
+          type: string
+          description: Name of the Site
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.
+x-refined-from:
+- aramark-marko-users-openapi.json
+- aramark-pos-transactions-openapi.json
+- aramark-service-openapi.json

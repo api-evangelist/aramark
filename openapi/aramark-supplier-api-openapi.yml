@@ -1,0 +1,1007 @@
+openapi: 3.2.0
+info:
+  title: Aramark Supplier API
+  version: 1.0.0
+  description: 'Operations tagged Supplier across 3 of this provider''s published API definitions: aramark-organization-suppliers-openapi.json, aramark-product-openapi.json, aramark-product-retail-items-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/organization
+- url: https://qa-marko.aramark.net/v1
+- url: https://dev-marko.aramark.net/v1
+- url: https://qa-marko.aramark.net/v1/product
+tags:
+- name: Supplier
+  description: This API will return a list of Organizational Supplier information
+paths:
+  /suppliers/{org_value}:
+    get:
+      summary: Return a collection of Organizational Supplier information
+      operationId: getOrganizationSupplier
+      parameters:
+      - in: path
+        name: org_value
+        description: Location Code to have Suppliers returned for
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: search
+        description: Used to search for a supplier against Name or MSA
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: enablement_type
+        description: User to filter records by Supplier Enablement Type. Multiple entries allowed in a comma separated list
+        required: false
+        schema:
+          type: string
+          enum:
+          - DIRECT BILL
+          - ERCV
+          - PROGRAM - INVOICE ONLY
+          - PUNCHOUT
+          - ADOPTED
+      - in: query
+        name: enabled_only
+        description: Flag used to determine if the Supplier is Enabled or not
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          default: true
+      - name: page
+        in: query
+        description: Page number of result set
+        required: false
+        schema:
+          type: string
+          default: 1
+      - name: size
+        in: query
+        description: Number of records to be returned in each page of result set
+        schema:
+          type: string
+          default: 50
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          default: false
+      - name: apikey
+        in: header
+        description: This HTTP Header variable will verify permissions.
+        schema:
+          type: string
+      - name: smoke
+        in: header
+        description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+        schema:
+          type: string
+          default: false
+      tags:
+      - Supplier
+      responses:
+        '200':
+          description: List of supplier information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  suppliers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/suppliers'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/organization
+  /product/supplier/items/{org_value}:
+    get:
+      tags:
+      - Supplier
+      description: Returns location level data for supplier items
+      operationId: getSupplierItemsbyLocation
+      parameters:
+      - name: org_value
+        in: path
+        description: Aramark Location code; Required if MSA not provided
+        required: true
+        schema:
+          type: string
+      - name: msa
+        in: query
+        description: MSA of item
+        required: true
+        schema:
+          type: string
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: Lists Supplier Item details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_items'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get supplier itemsby location
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+  /product/supplier/items:
+    get:
+      tags:
+      - Supplier
+      description: Returns location level data for supplier items
+      operationId: getSupplierItems
+      parameters:
+      - name: msa
+        in: query
+        description: MSA of item
+        required: true
+        schema:
+          type: string
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: Lists Supplier Item details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_items'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get supplier items
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+  /product/supplier/receipts/{org_value}:
+    get:
+      tags:
+      - Supplier
+      description: Returns location level data for supplier receipts
+      operationId: getSupplierReceipts
+      parameters:
+      - name: org_value
+        in: path
+        description: Aramark Location code
+        required: true
+        schema:
+          type: string
+      - name: start_date_time
+        in: query
+        description: Used to specify the starting date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+        required: true
+        schema:
+          type: string
+      - name: end_date_time
+        in: query
+        description: Used to specify the ending date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+        required: true
+        schema:
+          type: string
+      - name: msa
+        in: query
+        description: List of MSAs by which to filter. Limited to 25 comma separated values
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Used to specify the type of Receipt
+        schema:
+          type: string
+          enum:
+          - ALL
+          - PO
+          - NON-PO
+          - PO-INV
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: Lists Supplier Receipt details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_receipts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_receipts'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get supplier receipts
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+  /product/supplier/receipt/details/{org_value}:
+    get:
+      tags:
+      - Supplier
+      description: Returns location level data for supplier receipts
+      operationId: getSupplierReceiptDetails
+      parameters:
+      - name: org_value
+        in: path
+        description: Aramark Location code
+        required: true
+        schema:
+          type: string
+      - name: start_date_time
+        in: query
+        description: Used to specify the starting date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+        required: true
+        schema:
+          type: string
+      - name: end_date_time
+        in: query
+        description: Used to specify the ending date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+        required: true
+        schema:
+          type: string
+      - name: msa
+        in: query
+        description: List of MSAs by which to filter. Limited to 25 comma separated values
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Used to specify the type of Receipt
+        schema:
+          type: string
+          enum:
+          - ALL
+          - PO
+          - NON-PO
+          - PO-INV
+      - name: inventory
+        in: query
+        description: Used to specify inventory flag filter
+        schema:
+          type: string
+          enum:
+          - Y
+          - N
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: Lists Supplier Receipt details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_receipts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_receipt_details'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get supplier receipt details
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+  /supplier/items/{org_value}:
+    get:
+      description: Returns location level data for supplier items
+      operationId: getSupplierItemsbyLocation
+      tags:
+      - Supplier
+      parameters:
+      - $ref: '#/components/parameters/orgValueConditionalParam'
+      - $ref: '#/components/parameters/msaConditionalParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Supplier Item details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_items'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      summary: Get supplier itemsby location
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1/product
+  /supplier/items:
+    get:
+      description: Returns location level data for supplier items
+      operationId: getSupplierItems
+      tags:
+      - Supplier
+      parameters:
+      - $ref: '#/components/parameters/msaConditionalParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Supplier Item details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_items'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      summary: Get supplier items
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1/product
+  /supplier/receipts/{org_value}:
+    get:
+      description: Returns location level data for supplier receipts
+      operationId: getSupplierReceipts
+      tags:
+      - Supplier
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/startDateTimeParam'
+      - $ref: '#/components/parameters/endDateTimeParam'
+      - $ref: '#/components/parameters/msaParam'
+      - $ref: '#/components/parameters/typeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Supplier Receipt details by Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  supplier_receipts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supplier_receipts'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      summary: Get supplier receipts
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1/product
+components:
+  schemas:
+    suppliers:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA of the supplier
+        vendor_name:
+          type: string
+          description: Name of the supplier
+        supplier_display_name:
+          type: string
+          description: Conactinated string of MSA and Vendor Name
+        location:
+          type: string
+          description: Aramark Location Code
+        location_name:
+          type: string
+          description: Name of Aramark Location
+        customer_number:
+          type: string
+          description: Number of the Customer
+        enablement_type:
+          type: string
+          description: Enablement Type of the Supplier
+        assignment_start_date:
+          type: string
+          description: Start Date of the Assignment of the Supplier
+    supplier_items:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA number of the Item
+        supplier_sku:
+          type: string
+          description: Supplier SKU of the Item
+        supplier_item_description:
+          type: string
+          description: Supplier Item Description of the Item
+        manufacturer_part_number:
+          type: string
+          description: Part Number of the Item
+        manufacturer_name:
+          type: string
+          description: Manufacturer Name of the Item
+        price:
+          type: string
+          description: Price of the Item
+        brand:
+          type: string
+          description: Brand of the Item
+        order_unit_of_measure:
+          type: string
+          description: Order Unit of Measure of the Item
+        item_base_unit_of_measure:
+          type: string
+          description: Item Unit of Measure of the Item
+        pack_size:
+          type: number
+          description: Pack Size of the Item
+        pack_quantity:
+          type: number
+          description: Pack Quantity of the Item
+        harmonized_category:
+          type: string
+          description: Harmonized Category of the Item
+        is_delete_marked:
+          type: string
+          description: Flag to deteremine delete status of the Item
+        product_master_id:
+          type: string
+          description: Product Master ID of the Item
+        product_master_description:
+          type: string
+          description: Product Master Description of the Item
+        product_master_source:
+          type: string
+          description: Product Master Source of the Item
+        gtin:
+          type: string
+          description: GTIN of the Item
+        category_short_description:
+          type: string
+          description: Category Short Description of the Item
+        category_long_description:
+          type: string
+          description: Category Long Description of the Item
+        item_city:
+          type: string
+          description: City of the Item
+        item_state:
+          type: string
+          description: State of the Item
+        item_postal_code:
+          type: string
+          description: Postal Code of the Item
+        stock_status:
+          type: string
+          description: Stock Status of the Item
+        additional_description:
+          type: string
+          description: Additional Description of the Item
+        storage_code:
+          type: string
+          description: Storage Code of the Item
+        price_by_pound:
+          type: string
+          description: Price By Pound of the Item
+        average_weight_in_pounds:
+          type: string
+          description: Average Weight in Pounds of the Item
+        upload_date:
+          type: string
+          description: Upload Date of the item
+        creation_date:
+          type: string
+          description: Create Date of the Item
+        last_updated_date:
+          type: string
+          description: Last Updated Date of the Item
+    supplier_receipt_details:
+      type: object
+      properties:
+        doc_id:
+          type: string
+          description: Doc ID of the Receipt
+        doc_number:
+          type: string
+          description: Doc Number of the Receipt
+        supplier_credit_memo:
+          type: string
+          description: Supplier Credit Memo of the Receipt
+        memo_number:
+          type: string
+          description: Memo Number of the Receipt
+        doc_type:
+          type: string
+          description: Doc Type of the Receipt
+        currency_code:
+          type: string
+          description: Currency Code of the Receipt
+        profit_center:
+          type: string
+          description: Aramark Profit Center Value
+        location:
+          type: string
+          description: Aramark Location Value
+        location_short_name:
+          type: string
+          description: Shortened name of the Location
+        msa:
+          type: string
+          description: MSA number of the Receipt
+        inventory_flag:
+          type: string
+        vendor_name:
+          type: string
+          description: Name of the Vendor of the Receipt
+        doc_date:
+          type: string
+          description: Doc Date of the Receipt
+        doc_amount:
+          type: number
+          description: Doc Amount of the Receipt
+        doc_creation_date:
+          type: string
+          description: Doc Creation Date of the Receipt
+        doc_description:
+          type: string
+          description: Doc Description of the Receipt
+        po_number:
+          type: string
+          description: PO Number of the Receipt
+        delivery_date:
+          type: string
+          description: Delivery Date of the Receipt
+        last_updated_datetime:
+          type: string
+          description: Last Updated Date of the Receipt
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/supplier_receipt_detail_items'
+    supplier_receipt_detail_items:
+      type: object
+      properties:
+        line_type:
+          type: string
+          description: Line Type of the Receipt
+        supplier_sku:
+          type: string
+          description: Supplier SKU of the Receipt
+        purchase_unit_of_measure:
+          type: string
+          description: Purchase Unit of Measure of the Receipt
+        item_description:
+          type: string
+          description: Item Description of the Receipt
+        item_quantity:
+          type: number
+          description: Item Quantity of the Receipt
+        unit_cost:
+          type: number
+          description: Unit Cost of the Receipt
+        unit_amount:
+          type: number
+          description: Unit Amount of the Receipt
+        tax_amount:
+          type: number
+          description: Tax Amount of the Receipt
+        freight_amount:
+          type: number
+          description: Freight Amount of the Receipt
+        discount_amount:
+          type: number
+          description: Discount Amount of the Receipt
+        country_legal_entity:
+          type: string
+          description: Country Legal Entity of the Receipt
+        service_type:
+          type: string
+          description: Service Type of the Receipt
+        summary_account:
+          type: string
+          description: Summary Account of the Receipt
+        account_category:
+          type: string
+          description: Account Category of the Receipt
+        user_email_address:
+          type: string
+          description: User Email Address of the Receipt
+        manufacturer_name:
+          type: string
+          description: Manufacturer Name of the Receipt
+        manufacturer_part_number:
+          type: string
+          description: Manufacturer Part Number of the Receipt
+        brand:
+          type: string
+          description: Brand of the Receipt
+        base_unit_of_measurement:
+          type: string
+          description: Base Unit of Measurement of the Receipt
+        pack_size:
+          type: string
+          description: Pack Size of the Receipt
+        pack_quantity:
+          type: string
+          description: Pack Quantity of the Receipt
+        mdg_item_category_id:
+          type: string
+          description: MDG Item Category ID of the Receipt
+    supplier_receipts:
+      type: object
+      properties:
+        line_type:
+          type: string
+          description: Line Type of the Receipt
+        currency_code:
+          type: string
+          description: Currency Code of the Receipt
+        profit_center:
+          type: string
+          description: Aramark Profit Center Value
+        location:
+          type: string
+          description: Aramark Location Value
+        location_short_name:
+          type: string
+          description: Shortened name of the Location
+        msa:
+          type: string
+          description: MSA number of the Receipt
+        vendor_name:
+          type: string
+          description: Name of the Vendor of the Receipt
+        doc_id:
+          type: string
+          description: Doc ID of the Receipt
+        doc_number:
+          type: string
+          description: Doc Number of the Receipt
+        supplier_credit_memo:
+          type: string
+          description: Supplier Credit Memo of the Receipt
+        memo_number:
+          type: string
+          description: Memo Number of the Receipt
+        doc_type:
+          type: string
+          description: Doc Type of the Receipt
+        doc_date:
+          type: string
+          description: Doc Date of the Receipt
+        doc_amount:
+          type: number
+          description: Doc Amount of the Receipt
+        doc_creation_date:
+          type: string
+          description: Doc Creation Date of the Receipt
+        doc_description:
+          type: string
+          description: Doc Description of the Receipt
+        po_number:
+          type: string
+          description: PO Number of the Receipt
+        delivery_date:
+          type: string
+          description: Delivery Date of the Receipt
+        supplier_sku:
+          type: string
+          description: Supplier SKU of the Receipt
+        purchase_unit_of_measure:
+          type: string
+          description: Purchase Unit of Measure of the Receipt
+        item_description:
+          type: string
+          description: Item Description of the Receipt
+        item_quantity:
+          type: number
+          description: Item Quantity of the Receipt
+        unit_cost:
+          type: number
+          description: Unit Cost of the Receipt
+        unit_amount:
+          type: number
+          description: Unit Amount of the Receipt
+        tax_amount:
+          type: number
+          description: Tax Amount of the Receipt
+        freight_amount:
+          type: number
+          description: Freight Amount of the Receipt
+        discount_amount:
+          type: number
+          description: Discount Amount of the Receipt
+        country_legal_entity:
+          type: string
+          description: Country Legal Entity of the Receipt
+        service_type:
+          type: string
+          description: Service Type of the Receipt
+        summary_account:
+          type: string
+          description: Summary Account of the Receipt
+        account_category:
+          type: string
+          description: Account Category of the Receipt
+        user_email_address:
+          type: string
+          description: User Email Address of the Receipt
+        manufacturer_name:
+          type: string
+          description: Manufacturer Name of the Receipt
+        manufacturer_part_number:
+          type: string
+          description: Manufacturer Part Number of the Receipt
+        brand:
+          type: string
+          description: Brand of the Receipt
+        base_unit_of_measurement:
+          type: string
+          description: Base Unit of Measurement of the Receipt
+        pack_size:
+          type: string
+          description: Pack Size of the Receipt
+        pack_quantity:
+          type: string
+          description: Pack Quantity of the Receipt
+        mdg_item_category_id:
+          type: string
+          description: MDG Item Category ID of the Receipt
+        last_updated_datetime:
+          type: string
+          description: Last Updated Date of the Receipt
+  parameters:
+    startDateTimeParam:
+      name: start_date_time
+      in: query
+      description: Used to specify the starting date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code
+      required: true
+      schema:
+        type: string
+    msaParam:
+      name: msa
+      in: query
+      description: List of MSAs by which to filter. Limited to 25 comma separated values
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    msaConditionalParam:
+      name: msa
+      in: query
+      description: MSA of item
+      required: true
+      schema:
+        type: string
+    orgValueConditionalParam:
+      in: path
+      name: org_value
+      description: Aramark Location code; Required if MSA not provided
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    endDateTimeParam:
+      name: end_date_time
+      in: query
+      description: Used to specify the ending date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+      required: true
+      schema:
+        type: string
+    typeParam:
+      name: type
+      in: query
+      description: Used to specify the type of Receipt
+      required: false
+      schema:
+        type: string
+        enum:
+        - ALL
+        - PO
+        - NON-PO
+        - PO-INV
+  securitySchemes:
+    apikey:
+      type: apiKey
+      description: This HTTP Header variable will verify security
+      name: apikey
+      in: header
+x-refined-from:
+- aramark-organization-suppliers-openapi.json
+- aramark-product-openapi.json
+- aramark-product-retail-items-openapi.json

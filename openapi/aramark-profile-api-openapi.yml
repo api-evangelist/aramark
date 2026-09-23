@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  description: '''This API will return, update, or delete Marko User data''
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/marko`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Marko Profile API
+servers:
+- url: https://dev-marko.aramark.net/v1/marko
+  description: Development server
+tags:
+- name: Profile
+  description: Gets, Updates, Creates or Removes Marko Profile information
+paths:
+  /user/profile:
+    get:
+      summary: Get User Profiles
+      description: 'Returns Marko User Profiles
+
+
+        !This endpoint is in development'
+      operationId: getUserProfiles
+      tags:
+      - Profile
+      parameters:
+      - $ref: '#/components/parameters/profileIdParamFalse'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides a list of Profiles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  profile_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    post:
+      summary: Create User Profile
+      description: 'Creates Marko User Profile
+
+
+        !This endpoint is in development'
+      tags:
+      - Profile
+      operationId: postUserProfile
+      parameters:
+      - $ref: '#/components/parameters/profileIdParamFalse'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: User Profile
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  profile_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Profile'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    delete:
+      summary: Remove profile
+      description: 'Remove Marko user profile
+
+
+        !This endpoint is in development'
+      tags:
+      - Profile
+      operationId: deleteUserProfile
+      parameters:
+      - $ref: '#/components/parameters/profileIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    profileIdParamTrue:
+      in: query
+      name: profile_id
+      description: Unique identifier of a user Profile
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    profileIdParamFalse:
+      in: query
+      name: profile_id
+      description: Unique identifier of a user Profile
+      required: false
+      schema:
+        type: string
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique identifier of a user
+        first_name:
+          type: string
+          description: user first name
+        last_name:
+          type: string
+          description: user last name
+        name:
+          type: string
+          description: user name
+        email:
+          type: string
+          description: email address of a user
+        cell_number:
+          type: string
+          description: cell phone number of a user
+        valid:
+          type: string
+          description: boolean determining validity of device
+        create_date:
+          type: string
+          description: date that profile was created
+        update_date:
+          type: string
+          description: date that profile was last updated
+    Profile:
+      type: object
+      properties:
+        profile_id:
+          type: string
+          description: Unique identifier of a profile
+        profile_name:
+          type: string
+          description: name of a profile
+        profile_type:
+          type: string
+          description: type of profile
+        user_id:
+          type: string
+          description: Unique identifier of a user associated with profile
+        valid:
+          type: string
+          description: boolean determining validity of profile
+        create_date:
+          type: string
+          description: date that profile was created
+        update_date:
+          type: string
+          description: date that profile was last updated
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

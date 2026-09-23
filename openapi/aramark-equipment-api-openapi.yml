@@ -1,0 +1,172 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Equipment API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Equipment
+  description: A collection of Equipment data
+paths:
+  /equipment:
+    get:
+      summary: Get Equipment for a Location or Service Area
+      description: Returns a collection of Features for a Location or Service Area. service_area_id or location_id is required
+      operationId: getEquipment
+      tags:
+      - Equipment
+      parameters:
+      - $ref: '#/components/parameters/locationIdNoReqParam'
+      - $ref: '#/components/parameters/serviceAreaIdNoReqParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Lists Equipment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  equipment:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_equipment'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /equipment/temperature:
+    put:
+      summary: Update Equipment Temperature
+      description: Allows updates to Equipment Temperature
+      operationId: putEquipmentTemperature
+      tags:
+      - Equipment
+      requestBody:
+        description: Details for the Equipment Temperature that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putEquipmentTemperatureBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    service_equipment:
+      type: object
+      properties:
+        equipment_id:
+          type: number
+        equipment_description:
+          type: string
+        equipment_type:
+          type: string
+        station_id:
+          type: number
+        station_name:
+          type: string
+        instructions:
+          type: string
+        temp_check_frequency:
+          type: number
+        thresholds:
+          type: string
+    putEquipmentTemperatureBody:
+      type: object
+      properties:
+        equipment_temperature_id:
+          type: string
+        equipment_temperature_value:
+          type: number
+        location_equipment_id:
+          type: number
+        equipment_id:
+          type: number
+        service_area_id:
+          type: number
+        station_id:
+          type: number
+        log_Time:
+          type: string
+        corrective_action:
+          type: string
+        is_bluetooth:
+          type: boolean
+        initials:
+          type: string
+        temp_check_frequency:
+          type: number
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdNoReqParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: false
+      schema:
+        type: number
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: false
+      schema:
+        type: number
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

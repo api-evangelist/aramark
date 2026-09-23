@@ -1,0 +1,129 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return Point of Sale Data
+
+
+    __The base endpoint URL for this API in production is:__ `https://marko.aramark.net/v1/pos`.'
+  version: 1.0.0-oas3
+  title: Point of Sale Real Time API
+servers:
+- url: https://dev-marko.aramark.net/v1/pos
+- url: https://qa-marko.aramark.net/v1/pos
+tags:
+- name: Realtime
+  description: Get POS Real Time Data
+paths:
+  /real_time/item_sales/{org_value}:
+    get:
+      summary: POS Real Time Item Sales
+      description: Returns POS Real Time Sales Data
+      operationId: getRealTimeItemSales
+      tags:
+      - Realtime
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/sourceSystemRealTimeParam'
+      - $ref: '#/components/parameters/startDateTimeParam'
+      - $ref: '#/components/parameters/endDateTimeParam'
+      - $ref: '#/components/parameters/skusParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Provides the Transaction Check data by POS System
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  item_sales:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/item_sales'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH24:mm"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code
+      required: true
+      schema:
+        type: string
+    skusParam:
+      in: query
+      name: skus
+      description: Comma separated list of Item SKUs
+      required: true
+      schema:
+        type: string
+    sourceSystemRealTimeParam:
+      in: query
+      name: source_system
+      description: "Name of the POS System:\n * `BYPS` - Bypass\n"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    endDateTimeParam:
+      in: query
+      name: end_date_time
+      description: Calendar end date and time for transactions. "MM/dd/yyyy HH24:mm"
+      required: true
+      schema:
+        type: string
+  schemas:
+    item_sales:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the Item Sales
+        item_sku:
+          type: string
+          description: SKU of the Item
+        item_name:
+          type: string
+          description: Name of the Item
+        quantity:
+          type: number
+          description: Number Items Sold
+        first_order_time:
+          type: string
+          description: Time of the First Item Sold
+        last_order_time:
+          type: string
+          description: Time of the Last Item Sold
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

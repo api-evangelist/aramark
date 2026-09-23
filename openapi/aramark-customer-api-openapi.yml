@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Customer API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Customer
+  description: A collection of Customer data
+paths:
+  /customer/count:
+    get:
+      summary: Get Customer Count for a Service Area
+      description: Returns a collection of Customer Counts for a Service Area
+      operationId: getCustomerCount
+      tags:
+      - Customer
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/serviceDateReqParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Lists Customer Count
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  customer_count:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/serviceCustomerCount'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Customer Count for a Service Area
+      description: Allows updates to Customer Count for a Service Area
+      operationId: putCustomerCount
+      tags:
+      - Customer
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Customer Count that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putCustomerCountBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    serviceDateReqParam:
+      name: service_date
+      in: query
+      description: Service Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+  schemas:
+    putCustomerCountBody:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+        meal_period_id:
+          type: number
+        service_date:
+          type: string
+        customer_count:
+          type: number
+        employee_count:
+          type: number
+        reimbursable:
+          type: number
+        a_la_carte:
+          type: number
+        adult:
+          type: number
+    serviceCustomerCount:
+      type: object
+      properties:
+        actual_patrons:
+          type: number
+        actual_employees:
+          type: number
+        actual_reimbursable_count:
+          type: number
+        actual_a_la_carte_count:
+          type: number
+        actual_adult_count:
+          type: number
+        employee_tracking_flag:
+          type: boolean
+        reimbursable_tracking_flag:
+          type: boolean
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

@@ -1,0 +1,249 @@
+openapi: 3.2.0
+info:
+  description: '''This API will return, update, or delete Marko User data''
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/marko`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Marko Set API
+servers:
+- url: https://dev-marko.aramark.net/v1/marko
+  description: Development server
+tags:
+- name: Set
+  description: Gets, Updates, Creates or Removes Marko Profile Set information
+paths:
+  /user/set:
+    get:
+      summary: Get user set
+      description: 'Returns Marko user profile set
+
+
+        !This endpoint is in development'
+      operationId: getUserProfileSet
+      tags:
+      - Set
+      parameters:
+      - $ref: '#/components/parameters/setIdParamFalse'
+      - $ref: '#/components/parameters/userIdParamFalse'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  set_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Set'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    post:
+      summary: Create user set
+      description: 'Create Marko user profile
+
+
+        !This endpoint is in development'
+      tags:
+      - Set
+      operationId: postUserProfileSet
+      parameters:
+      - $ref: '#/components/parameters/setIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  set_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Set'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    delete:
+      summary: Remove user set
+      description: 'Remove Marko user set
+
+
+        !This endpoint is in development'
+      tags:
+      - Set
+      operationId: deleteUserProfileSet
+      parameters:
+      - $ref: '#/components/parameters/setIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+  /user/set/value:
+    post:
+      summary: Create User Set Value
+      description: 'Creates Marko user set value
+
+
+        !This endpoint is in development'
+      tags:
+      - Set
+      operationId: postUserProfileSetValue
+      parameters:
+      - $ref: '#/components/parameters/setIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Create a new Set Value
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  set_values:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Set'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+    delete:
+      summary: Remove user set value
+      description: 'Remove Marko user set value
+
+
+        !This endpoint is in development'
+      tags:
+      - Set
+      operationId: deleteUserProfileSet Value
+      parameters:
+      - $ref: '#/components/parameters/setIdParamTrue'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+components:
+  schemas:
+    Set:
+      type: object
+      properties:
+        set_id:
+          type: string
+          description: Unique identifier of a set
+        set_name:
+          type: string
+          description: name of a set
+        profile_id:
+          type: string
+          description: Unique identifier of a profile
+        status:
+          type: string
+          description: ENUM describing what action needs to be taken on set
+        create_date:
+          type: string
+          description: date that profile was created
+        update_date:
+          type: string
+          description: date that profile was last updated
+  parameters:
+    userIdParamFalse:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: false
+      schema:
+        type: string
+    setIdParamTrue:
+      in: query
+      name: set_id
+      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
+      required: true
+      schema:
+        type: string
+    setIdParamFalse:
+      in: query
+      name: set_id
+      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

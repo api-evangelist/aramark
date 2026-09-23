@@ -1,0 +1,142 @@
+openapi: 3.2.0
+info:
+  description: '''This API will return, update, or delete Marko User data''
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/marko`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Marko Anet API
+servers:
+- url: https://dev-marko.aramark.net/v1/marko
+  description: Development server
+tags:
+- name: Anet
+  description: Gets the current list of ANET Users
+paths:
+  /anet/users:
+    get:
+      summary: Get Anet users
+      description: 'Returns list of ANET Users
+
+
+        !This endpoint is in production'
+      operationId: getAnetUsers
+      tags:
+      - Anet
+      parameters:
+      - $ref: '#/components/parameters/employeeIdParam'
+      - $ref: '#/components/parameters/emailParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides a list of ANET Users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                    example: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                    example: '1'
+                  device_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Anet_User'
+        '404':
+          description: Not Found
+        '405':
+          description: Method Not Allowed
+components:
+  parameters:
+    emailParam:
+      name: email
+      in: query
+      description: email address of the employee
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return.
+      required: false
+      schema:
+        type: string
+        default: 50
+    employeeIdParam:
+      name: employee_id
+      in: query
+      description: unique ID of the employee
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      required: false
+      schema:
+        type: number
+        default: 1
+  schemas:
+    Anet_User:
+      type: object
+      properties:
+        guid:
+          type: string
+          description: global user identifier for a user
+        upn:
+          type: string
+          description: universal person name for a user
+        email:
+          type: string
+          description: email address of a user
+        first_name:
+          type: string
+          description: first name of a user
+        last_name:
+          type: string
+          description: last name of a user
+        display_name:
+          type: string
+          description: display name for a user
+        employee_id:
+          type: string
+          description: unique ID of the employee
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

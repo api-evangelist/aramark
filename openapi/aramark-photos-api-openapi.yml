@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Photos API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Photos
+  description: A collection of Photo data
+paths:
+  /photos:
+    get:
+      summary: Get Photos by Service Area
+      description: Returns a collection of Photo results for a specific service area
+      operationId: getPhotos
+      tags:
+      - Photos
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: List all Photos for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  photos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_photos'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Photos
+      description: Allows updates to Photos
+      operationId: putPhotos
+      tags:
+      - Photos
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Photos that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putPhotosBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    delete:
+      summary: Delete Photos
+      description: Allows deletes to Photos
+      operationId: deletePhotos
+      tags:
+      - Photos
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Waste that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deletePhotosBody'
+      responses:
+        '200':
+          description: Status of the Delete Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Delete Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    service_photos:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+          description: Service Area ID of the Photo
+        station_id:
+          type: number
+          description: Station ID of the Photo
+        period_id:
+          type: number
+          description: Period ID of the Photo
+        photo_id:
+          type: string
+          description: ID of the photo
+        time_taken:
+          type: string
+          description: Time the Photo was taken
+    putPhotosBody:
+      type: object
+      properties:
+        photo_id:
+          type: string
+          description: ID of the photo
+        time_taken:
+          type: string
+          description: Time the Photo was taken
+        station_id:
+          type: number
+          description: Station ID of the Photo
+        period_id:
+          type: number
+          description: Period ID of the Photo
+        service_area_id:
+          type: number
+          description: Service Area ID of the Photo
+    deletePhotosBody:
+      type: object
+      properties:
+        photo_id:
+          type: string
+          description: ID of the Photo
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

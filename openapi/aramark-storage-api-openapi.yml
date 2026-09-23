@@ -1,0 +1,229 @@
+openapi: 3.2.0
+info:
+  title: Aramark Storage API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Storage across 2 of this provider''s published API definitions: aramark-inventory-openapi.json, aramark-service-inventory-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/inventory
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/inventory
+  description: Development server
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Storage
+  description: A collection of Storage Areas for a Location
+paths:
+  /storage_areas:
+    get:
+      summary: Inventory Storage Areas
+      description: Returns a Hierarchal collection of Inventory Storage Areas for a specific location
+      operationId: getInventoryStorage
+      tags:
+      - Storage
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: All Inventory Storage Areas for a specific Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  storage_areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/storage_areas'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/inventory
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/inventory
+      description: Development server
+  /inventory/storage:
+    get:
+      summary: Inventory Storage Areas
+      description: 'Returns a Hierarchal collection of Inventory Storage Areas for a specific location
+
+        !This endpoint is in development'
+      operationId: getInventoryStorage
+      tags:
+      - Storage
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: All Inventory Storage Areas for a specific Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  storage_areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/storage_areas_2'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+components:
+  schemas:
+    storage_areas:
+      type: object
+      properties:
+        storage_area_id:
+          type: number
+          description: ID of the Storage Area
+        site_id:
+          type: number
+          description: Site ID for the Storage Area
+        description:
+          type: string
+          description: Name of the Storage Area
+        location_id:
+          type: number
+          description: Location ID for the Storage Area
+        storage_area_order:
+          type: number
+          description: Sort Order of the Storage Area
+        storage_area_level:
+          type: number
+          description: Level of the Storage Area
+        level1:
+          type: number
+          description: Level 1 Storage Area ID
+        level2:
+          type: number
+          description: Level 2 Storage Area ID
+        level3:
+          type: number
+          description: Level 3 Storage Area ID
+    storage_areas_2:
+      type: object
+      properties:
+        storage_area_id:
+          type: number
+          description: ID of the Storage Area
+        storage_area_name:
+          type: string
+          description: Name of the Storage Area
+        storage_area_level:
+          type: number
+          description: Level of the Storage Area
+        sort_order:
+          type: number
+          description: Sort Order of the Storage Area
+        sub_storage:
+          type: array
+          items:
+            $ref: '#/components/schemas/sub_storage'
+    sub_storage_1:
+      type: object
+      properties:
+        storage_area_id:
+          type: number
+          description: ID of the Storage Area
+        storage_area_name:
+          type: string
+          description: Name of the Storage Area
+        storage_area_level:
+          type: number
+          description: Level of the Storage Area
+        sort_order:
+          type: number
+          description: Sort Order of the Storage Area
+    sub_storage:
+      type: object
+      properties:
+        storage_area_id:
+          type: number
+          description: ID of the Storage Area
+        storage_area_name:
+          type: string
+          description: Name of the Storage Area
+        storage_area_level:
+          type: number
+          description: Level of the Storage Area
+        sort_order:
+          type: number
+          description: Sort Order of the Storage Area
+        sub_storage:
+          type: array
+          items:
+            $ref: '#/components/schemas/sub_storage_1'
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-inventory-openapi.json
+- aramark-service-inventory-openapi.json

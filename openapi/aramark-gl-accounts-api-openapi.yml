@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Organization Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Organization GL Accounts API
+servers:
+- url: https://qa-marko.aramark.net/v1
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1
+  description: Development server
+tags:
+- name: GL Accounts
+  description: A collection of GL Account Data
+paths:
+  /organization/gl_account:
+    get:
+      summary: Get GL Account Data
+      operationId: getGLAccount
+      tags:
+      - GL Accounts
+      parameters:
+      - $ref: '#/components/parameters/orgValuePathParam'
+      - $ref: '#/components/parameters/levelParam'
+      - $ref: '#/components/parameters/hierarchyParam'
+      - $ref: '#/components/parameters/valueParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: GL Account Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  gl_accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/gl_accounts'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /organization/gl_account/details:
+    get:
+      summary: Get GL Account Detail Data
+      operationId: getGLAccountDetails
+      tags:
+      - GL Accounts
+      parameters:
+      - $ref: '#/components/parameters/orgValuePathParam'
+      - $ref: '#/components/parameters/searchDetailsParam'
+      - $ref: '#/components/parameters/valueReqParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: GL Account Detail Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  gl_account_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/gl_account_details'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    searchDetailsParam:
+      in: query
+      name: search
+      description: field to search against
+      required: true
+      schema:
+        type: string
+        enum:
+        - category
+        - gl_account
+        - category_code
+    valueReqParam:
+      name: value
+      in: query
+      description: Value to search
+      required: true
+      schema:
+        type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
+    levelParam:
+      name: level
+      in: query
+      description: Level against which search will be done
+      required: true
+      schema:
+        type: number
+        enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    hierarchyParam:
+      name: hierarchy
+      in: query
+      description: Hierarchy of account
+      required: false
+      schema:
+        type: string
+        enum:
+        - segment
+        - family
+        - class
+        - commodity
+        - offering
+    orgValuePathParam:
+      in: path
+      name: org_value
+      description: Org Value for data to be returned
+      required: true
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page of the result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    valueParam:
+      name: value
+      in: query
+      description: Value
+      required: false
+      schema:
+        type: string
+  schemas:
+    gl_accounts:
+      type: object
+      properties:
+        category:
+          type: string
+        segment:
+          type: string
+        family:
+          type: string
+        class:
+          type: string
+        commodity:
+          type: string
+        offering:
+          type: string
+        status:
+          type: string
+        gl_level:
+          type: string
+        gl_acc_category:
+          type: string
+    gl_account_details:
+      type: object
+      properties:
+        long_description:
+          type: string
+        short_description:
+          type: string
+        gl_account_catergory:
+          type: string
+        gl_level:
+          type: string
+        category_code:
+          type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

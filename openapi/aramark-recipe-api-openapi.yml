@@ -1,0 +1,135 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Recipe API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Recipe
+  description: A collection of Recipe data
+paths:
+  /recipe/swaps:
+    get:
+      summary: Get Recipe Swap Recommendations for a Recipe
+      description: Returns a collection of Recipe Swap Recommendations
+      operationId: getRecipeSwaps
+      tags:
+      - Recipe
+      parameters:
+      - $ref: '#/components/parameters/recipeIdParam'
+      - $ref: '#/components/parameters/masterSystemIdParam'
+      - $ref: '#/components/parameters/serviceChannelIdParam'
+      - $ref: '#/components/parameters/typeParam'
+      - $ref: '#/components/parameters/rankHighParam'
+      - $ref: '#/components/parameters/rankLowParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Lists Features
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  recommendations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/recommendations'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    recommendations:
+      type: object
+      properties:
+        recipe_id:
+          type: string
+        recipe_name:
+          type: string
+        rank:
+          type: number
+        recommendation_type:
+          type: string
+  parameters:
+    serviceChannelIdParam:
+      name: service_channel_id
+      in: query
+      description: Service Channel ID of the Recipe
+      required: true
+      schema:
+        type: string
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
+      required: true
+      schema:
+        type: string
+    rankLowParam:
+      name: rank_low
+      in: query
+      description: Lowest ranked swap match to return
+      required: false
+      schema:
+        type: number
+        default: 1
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Master System ID of the Recipe
+      required: true
+      schema:
+        type: string
+    rankHighParam:
+      name: rank_high
+      in: query
+      description: Highest ranked swap match to return
+      required: false
+      schema:
+        type: number
+        default: 5
+    typeParam:
+      name: type
+      in: query
+      description: Type of the Recipe
+      required: false
+      schema:
+        type: string
+        enum:
+        - Similar Recipe Name
+        - Similar Ingredients
+        - Similar Nutritional Values
+        - Similar AI Attributes
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

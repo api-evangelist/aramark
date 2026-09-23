@@ -1,0 +1,296 @@
+openapi: 3.2.0
+info:
+  title: Aramark Purchase Orders API
+  version: '1.0'
+  description: 'Operations tagged Purchase Orders across 2 of this provider''s published API definitions: aramark-inventory-openapi.json, aramark-vendor-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/inventory
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/inventory
+  description: Development server
+- url: https://qa-marko.aramark.net/v1
+- url: https://dev-marko.aramark.net/v1
+tags:
+- name: Purchase Orders
+  description: A collection of Purchase Order data
+paths:
+  /purchase_orders:
+    get:
+      summary: Inventory Purchase Orders
+      description: Returns a Hierarchal collection of Purchase Order header and details for a specific location
+      operationId: getPurchaseOrders
+      tags:
+      - Purchase Orders
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: All Purcahase Orders for a specific Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  purchase_orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/purchase_orders'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update an Purchase Orders
+      description: Allows updates to Purchase Orders
+      operationId: putPurchaseOrders
+      tags:
+      - Purchase Orders
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Purchase Order that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putPurchaseOrderBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/inventory
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/inventory
+      description: Development server
+  /vendor/purchase_orders:
+    get:
+      tags:
+      - Purchase Orders
+      description: Returns Purchase Order data for a Vendor
+      operationId: getVendorPurchaseOrders
+      parameters:
+      - name: vendor_name
+        in: query
+        description: Search name of vendor. vendor_name or po_number is required
+        schema:
+          type: string
+      - name: po_number
+        in: query
+        description: Search po_number. vendor_name or po_number is required
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: Page of result set. Default to 1.
+        required: false
+        schema:
+          type: number
+          default: 1
+      - name: size
+        in: query
+        description: Size of result set. Default to 50.
+        required: false
+        schema:
+          type: number
+          default: 50
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: List of purchase orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  purchase_orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/purchase_orders_2'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get vendor purchase orders
+      x-summary-source: derived
+    servers:
+    - url: https://qa-marko.aramark.net/v1
+    - url: https://dev-marko.aramark.net/v1
+components:
+  schemas:
+    purchase_orders:
+      type: object
+      properties:
+        po_header_id:
+          type: number
+          description: Purchase Order Header ID
+        po_number:
+          type: string
+          description: Number of the Purchase Order
+        po_date:
+          type: string
+          description: Date of the Purchase Order
+        location_id:
+          type: number
+          description: Location ID for the Purchase Order
+        vendor_id:
+          type: number
+          description: Vendor ID for the Purchase Order
+        vendor_name:
+          type: string
+          description: Name of the Vendor for the Purchase Order
+        total_amount:
+          type: number
+          description: Total amount of the Purchase Order
+        purchase_order_status_seq:
+          type: number
+          description: Purchase Order status sequence
+        status:
+          type: string
+          description: Purchase Order status
+        comments:
+          type: string
+          description: Comments on the Purchase Order
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/purchase_order_details'
+    purchase_order_details:
+      type: object
+      properties:
+        po_detail_id:
+          type: number
+          description: Purchase Order Detail ID
+        line_number:
+          type: number
+          description: Line Number of the Purchase Order Detail
+        quantity:
+          type: number
+          description: Quantity of the Purchase Order Detail
+        unit_price:
+          type: number
+          description: Unit Price of the Purchase Order Detail
+        ext_amount:
+          type: number
+          description: Ext Amount of the Purchase Order Detail
+        uom:
+          type: string
+          description: Unit of the Measure of the Purhcase Order Detail
+        is_catch_weight:
+          type: number
+          description: Is Catch Weight of the Purchase Order Detail
+        vendor_item_number:
+          type: string
+          description: Vendor Item Number for the Purchase Order Detail
+    putPurchaseOrderBody:
+      type: object
+      properties:
+        po_header_id:
+          type: number
+        po_detail_id:
+          type: number
+        received_qty:
+          type: number
+        is_catchweight:
+          type: boolean
+    purchase_orders_2:
+      type: object
+      properties:
+        vendor_name:
+          type: string
+        vendor_number:
+          type: string
+        po_number:
+          type: string
+        po_date:
+          type: string
+        po_total_amount:
+          type: number
+        po_item_count:
+          type: number
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-inventory-openapi.json
+- aramark-vendor-openapi.json

@@ -1,0 +1,428 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Site API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Site
+  description: A collectin of Site data
+paths:
+  /site/request:
+    post:
+      summary: Create Site Request
+      description: Allows Site Request
+      operationId: postSiteRequest
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Waste that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSiteRequestBody'
+      responses:
+        '200':
+          description: Status of the Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Site Request
+      description: Allows updates to a Site Request
+      operationId: putSiteRequest
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Waste that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSiteRequestBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /site/journal:
+    get:
+      summary: Get Site Journal
+      description: Returns a collection of Site Journals for a Service Area
+      operationId: getSiteJournal
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/dateParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Site Journal data for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  site_journal:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/site_journal'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Site Journal
+      description: Allows updates to Site Journals
+      operationId: putSiteJournal
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Prep Temperature that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/put_site_journal_body'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /site/pin:
+    get:
+      summary: Get Site Pin
+      description: Returns a collection of Site Pins
+      operationId: getSitePin
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/siteIdRequiredParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Pin data for a Site
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  site_pin:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/site_pin'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Pin
+      description: Allows updates to Site Pin
+      operationId: putSitePin
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Pin that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putSitePinBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /site/details:
+    get:
+      summary: Get Details for a Site
+      description: Returns a collection of Details for a Site.
+      operationId: getFeatures
+      tags:
+      - Site
+      parameters:
+      - $ref: '#/components/parameters/siteIdRequiredParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Site Details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  site_details:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/site_details'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    site_journal:
+      type: object
+      properties:
+        desecription:
+          type: string
+          description: Description of the Journal
+        journal_id:
+          type: string
+          description: ID of the Journal
+        journal_date:
+          type: string
+          description: Date of the Journal
+        from_station_id:
+          type: number
+          description: ID of the From Station for the Journal
+        from_station_name:
+          type: string
+          description: Name of the From Station for the Journal
+        to_station_id:
+          type: number
+          description: ID of the To Station for the Journal
+        to_station_name:
+          type: number
+          description: Name of the To Station for the Journal
+        site_id:
+          type: number
+          description: Site ID of the Journal
+    site_details:
+      type: object
+      properties:
+        site_id:
+          type: number
+          description: ID of the Site
+        source_system:
+          type: string
+          description: Source System used at the Site
+    putSiteRequestBody:
+      type: object
+      properties:
+        request_token:
+          type: number
+          description: Request Token of the Site Request
+        status:
+          type: string
+          description: Status of the Request
+    site_pin:
+      type: object
+      properties:
+        pin:
+          type: number
+        pin_required:
+          type: string
+    postSiteRequestBody:
+      type: object
+      properties:
+        approval_email:
+          type: string
+          description: Email of the approver of the site request
+        site_id:
+          type: number
+          description: ID of the Site for the request
+        requestor_email:
+          type: string
+          description: Email of the requestor
+        requestor_name:
+          type: string
+          description: Name of the requestor
+        requestor_sp_guid:
+          type: string
+          description: sp GUID of the requestor for the Site. Either requestor_sp_guid or device_serial_number MUST be included
+        device_serial_number:
+          type: string
+          description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
+    putSitePinBody:
+      type: object
+      properties:
+        site_id:
+          type: number
+        pin:
+          type: string
+        sp_guid:
+          type: string
+        pin_required:
+          type: boolean
+    put_site_journal_body:
+      type: object
+      properties:
+        journal_id:
+          type: string
+          description: ID of the Journal
+        description:
+          type: string
+          description: Description of the Journal
+        journal_date:
+          type: string
+          description: Date of the Journal entry
+        from_station_id:
+          type: number
+          description: ID of the From Station for the Journal
+        from_station_name:
+          type: string
+          description: Name of the From Station for the Journal
+        to_station_id:
+          type: number
+          description: ID of the To Station for the Journal
+        to_station_name:
+          type: number
+          description: Name of the To Station for the Journal
+        site_id:
+          type: number
+          description: Site ID of the Journal
+        service_area_id:
+          type: number
+          description: Service Area ID of the Journal
+  parameters:
+    siteIdRequiredParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: true
+      schema:
+        type: number
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

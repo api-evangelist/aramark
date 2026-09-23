@@ -1,0 +1,283 @@
+openapi: 3.2.0
+info:
+  title: Aramark Point of Sale API
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Point of Sale across 2 of this provider''s published API definitions: aramark-alerts-openapi.json, marko-api.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/alerts
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/alerts
+  description: Development server
+- url: https://www.marko.aramark.net/v1
+  description: Marko API Production Server
+security:
+- apiKey: []
+tags:
+- name: Point Of Sale
+  description: Gets POS Alert details
+paths:
+  /pos/{org_value}:
+    get:
+      summary: POS alerts
+      description: 'Returns Point of Sale Alerts
+
+
+        !This endpoint is in QA'
+      operationId: getPOSAlertsByOrgValue
+      tags:
+      - Point Of Sale
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/startDateParam'
+      - $ref: '#/components/parameters/endDateParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides the point of sale alerts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                  count:
+                    type: integer
+                    escription: Number of records being returned
+                  point_of_sale_alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/point_of_sale_alerts'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/alerts
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/alerts
+      description: Development server
+  /point-of-sale:
+    get:
+      operationId: getPointOfSale
+      summary: Aramark Get Point of Sale Data
+      description: Retrieve point of sale transaction data from the Aramark Marko platform.
+      tags:
+      - Point Of Sale
+      parameters:
+      - name: locationId
+        in: query
+        description: Filter by location identifier
+        schema:
+          type: string
+        example: LOC-001
+      - name: startDate
+        in: query
+        description: Start date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-01'
+      - name: endDate
+        in: query
+        description: End date (YYYY-MM-DD)
+        schema:
+          type: string
+          format: date
+        example: '2026-04-19'
+      responses:
+        '200':
+          description: Point of sale data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POSResponse'
+              examples:
+                GetPointOfSale200Example:
+                  summary: Default getPointOfSale 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - transactionId: TXN-001
+                      locationId: LOC-001
+                      amount: 12.5
+                      items: 2
+                      timestamp: '2026-04-19T12:30:00Z'
+                    count: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - apiKey: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    servers:
+    - url: https://www.marko.aramark.net/v1
+      description: Marko API Production Server
+components:
+  parameters:
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: provide business organization code in URL to filter data set
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar date end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: false
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP header variable will route the API call to
+
+        the Integration testing environment. Only applicable in QA.
+
+        '
+      schema:
+        type: string
+        default: false
+  schemas:
+    point_of_sale_alerts:
+      type: object
+      properties:
+        profit_center:
+          type: string
+          description: Aramark Organization code for rollup
+        profit_center_name:
+          type: string
+          description: Name of Aramark Organization rollup
+        location_code:
+          type: string
+          description: Location Code for rollup
+        location_name:
+          type: string
+          description: Name of Aramark location
+        source_system:
+          type: string
+          description: Name of the POS system
+        business_date:
+          type: string
+          description: Date the alert was generated
+        employee_id:
+          type: number
+          description: Employee ID of the employee
+        first_name:
+          type: string
+          description: First name of the employee
+        last_name:
+          type: string
+          description: Last name of the employee
+        alert_description:
+          type: string
+          description: Description of the alert generated by the employee
+        alert_name:
+          type: string
+          description: Name of the alert generated by the employee
+        display_name:
+          type: string
+          description: Name of the alert generated by the employee for display purposes
+        number_of_alerts:
+          type: number
+          description: Total number of alerts for the employee
+        service_type_description:
+          type: string
+          description: Description of the type of service at the location
+        update_date:
+          type: string
+          description: Date and Time of the most recent refresh of data
+    POSResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/POSTransaction'
+        count:
+          type: integer
+          description: Total record count
+          example: 100
+    POSTransaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction identifier
+          example: TXN-001
+        locationId:
+          type: string
+          description: Location identifier
+          example: LOC-001
+        amount:
+          type: number
+          description: Transaction amount in USD
+          example: 12.5
+        items:
+          type: integer
+          description: Number of items in the transaction
+          example: 2
+        timestamp:
+          type: string
+          format: date-time
+          description: Transaction timestamp (ISO 8601)
+          example: '2026-04-19T12:30:00Z'
+        paymentMethod:
+          type: string
+          description: Payment method used
+          enum:
+          - CREDIT
+          - DEBIT
+          - CASH
+          - MEAL_PLAN
+          - MOBILE
+          example: MEAL_PLAN
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.
+x-refined-from:
+- aramark-alerts-openapi.json
+- marko-api.yml

@@ -1,7 +1,9 @@
 ---
 title: Hospitality IQ
 url: https://www.aramark.com/about-us/enterprise-solutions/innovations/hospitalityiq
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Aramark" press release artificial intelligence'
 position: 3
 source: serpapi-google

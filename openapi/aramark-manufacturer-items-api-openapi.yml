@@ -1,0 +1,140 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Manufacturer Items API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Manufacturer Items
+  description: A collection of Manufacturer Items
+paths:
+  /manufacturer_item/pricing:
+    get:
+      summary: Get Pricing for Manufacturer Items for a Location
+      description: Returns a collection of Manufacturer Item Pricing for a Location.
+      operationId: getManufacturerItemPricing
+      tags:
+      - Manufacturer Items
+      parameters:
+      - $ref: '#/components/parameters/mfgItemSequenceParam'
+      - $ref: '#/components/parameters/locationOrgValueParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: List of Manufacturer Item Pricing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Not Found' or 'Error'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  manufacturer_item_pricing:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/manufacturer_item_pricing'
+components:
+  parameters:
+    locationOrgValueParam:
+      name: location_org_value
+      in: query
+      description: Location Org Value
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    mfgItemSequenceParam:
+      name: mfg_item_seqs
+      in: query
+      description: Comma seperated list of Manufacture Item Sequence values
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    manufacturer_item_pricing:
+      type: object
+      properties:
+        manufacturer_item_description:
+          type: string
+          description: Description of the Manufacturer Item
+        brand_name:
+          type: string
+          description: Brand Name of the Manufacturer Item
+        IPR_Description:
+          type: string
+          description: IPR Description of the Manufacturer Item
+        manufacturer_item_average_price:
+          type: number
+          description: Unit 1 Price of the Manufacturer Item
+        unit1_description:
+          type: string
+          description: Unit 1 Description of the Manufacturer Item
+        unit2_description:
+          type: string
+          description: Unit 2 Description of the Manufacturer Item
+        unit3_description:
+          type: string
+          description: Unit 3 Description of the Manufacturer Item
+        unit2_in_unit1:
+          type: number
+          description: Unit 2 in Unit 1 Manufacturer Item
+        unit3_in_unit2:
+          type: number
+          description: Unit 3 in Unit 2 Manufacturer Item
+        location_last_price_paid:
+          type: number
+          description: Last Price Paid for the Manufacturer Item
+        location_last_purchase_date:
+          type: string
+          description: Last Purcahse Date for the Manufacturer Item
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

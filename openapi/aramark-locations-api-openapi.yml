@@ -1,0 +1,186 @@
+openapi: 3.2.0
+info:
+  description: 'These APIs will return a collection of organizations based on a user''s profile security
+
+
+    __The base endpoint URL for this API in production is:__ `https://marko.aramark.net/v1/profile/user`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Profile Locations API
+servers:
+- url: https://qa-marko.aramark.net/v1/profile/user
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/profile/user
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Locations
+  description: This API will return a list of Aramark Locations to which a user is mapped for a specific App
+paths:
+  /my_locations:
+    get:
+      summary: User Locations
+      description: 'Return a collection of Locations to which a user is mapped for a specific App
+
+
+        !This endpoint is in development'
+      operationId: getMyLocations
+      parameters:
+      - $ref: '#/components/parameters/userIdParam'
+      - $ref: '#/components/parameters/appParam'
+      - $ref: '#/components/parameters/searchParam'
+      - $ref: '#/components/parameters/segmentCategoryParam'
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      tags:
+      - Locations
+      responses:
+        '200':
+          description: List User Locations mappings for a specific app
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success' or 'Error'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  page:
+                    type: string
+                    description: Page number of result set
+                    default: '1'
+                  size:
+                    type: string
+                    description: Number of records returned with the result set
+                    default: '50'
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/locations'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    segmentCategoryParam:
+      name: segment_category
+      in: query
+      description: Identifier of different financial groupings
+      required: false
+      schema:
+        type: string
+        enum:
+        - OPERATIONAL
+        - OVERHEAD
+        - NVD
+        - LOST
+        - ALL
+        - ALL_CLOSED
+        default: OPERATIONAL
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      name: page
+      in: query
+      description: Page number of result set
+      required: false
+      schema:
+        type: string
+        default: 1
+    appParam:
+      name: app
+      in: query
+      description: App to get user mappings for
+      required: true
+      schema:
+        type: string
+        enum:
+        - MySecurity
+        - marketPro
+        default: MySecurity
+    searchParam:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+  schemas:
+    locations:
+      type: object
+      properties:
+        app_id:
+          type: number
+          description: ID of the App the Location mappings apply to
+        app_name:
+          type: string
+          description: Name of the App the Location mappings apply to
+        location:
+          type: string
+          description: Unique code for a Location
+        location_name:
+          type: string
+          description: Location name
+        profit_center:
+          type: string
+          description: Unique code for a Profit Center, sourced by BIC or MDG
+        profit_center_name:
+          type: string
+          description: Profit Center name
+        user_id:
+          type: string
+          description: ID of the User the Location mappings apply to
+        segment_category:
+          type: string
+          description: Category of Segmentation for the Profit Center
+        service_type:
+          type: string
+          description: Type of Service for the Location
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

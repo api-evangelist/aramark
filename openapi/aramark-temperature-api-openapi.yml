@@ -1,0 +1,495 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Temperature API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Temperature
+  description: A collection of Temperature data
+paths:
+  /temperature/prep:
+    get:
+      summary: Prep Temperatures
+      description: Returns a collection of Prep Temperatures for a Service Area
+      operationId: getTemperaturePrep
+      tags:
+      - Temperature
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/logDateParam'
+      - $ref: '#/components/parameters/serviceDateParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Prep Temperature data for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  prep_temperatures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/prep_temperatures'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Prep Temperature
+      description: Allows updates to Prep Temperatures
+      operationId: putTemperaturePrep
+      tags:
+      - Temperature
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Prep Temperature that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/put_prep_temperatures_body'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /temperature/cooling:
+    get:
+      summary: Temperatures Cooldown
+      description: Returns a collection of Temperature Cooldown for a Service Area
+      operationId: getTemperatureCooling
+      tags:
+      - Temperature
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/logDateParam'
+      - $ref: '#/components/parameters/serviceDateParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists Temperature Cooling data for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  temperature_cooling:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/temperature_cooling'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Temperature Cooldown
+      description: Allows updates to Temperatures Cooling
+      operationId: putTemperatureCooling
+      tags:
+      - Temperature
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Temperature Cooling that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/put_temperature_cooling_body'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /temperatures:
+    get:
+      summary: Temperatures
+      description: Returns a collection of Temperatures for a Service Area or Location. Must include location_id or service_area_id
+      operationId: getServiceTemperatures
+      tags:
+      - Temperature
+      parameters:
+      - $ref: '#/components/parameters/locationIdNoReqParam'
+      - $ref: '#/components/parameters/serviceAreaIdNoReqParam'
+      - $ref: '#/components/parameters/logDateReqParam'
+      - $ref: '#/components/parameters/endLogDateParam'
+      - $ref: '#/components/parameters/equipmentTypeParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Lists Temperatures data for a Service Area or Location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  service_temperatures:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/serviceTemperatures'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    put_temperature_cooling_body:
+      type: object
+      properties:
+        cooldown_log_id:
+          type: string
+          description: ID of the Cooldown log
+        temperature_value:
+          type: number
+          description: Value of the Temperature
+        cooldown_initiated:
+          type: boolean
+          description: Flag to determine cooldown initiated
+        corrective_action:
+          type: string
+          description: Corrective Action of the cooldown log
+        initial_temp:
+          type: number
+          description: Initial Temp of the item
+        start_time:
+          type: string
+          description: Time of the Initial Temp
+        timer_period:
+          type: number
+          description: Timer Period of the Cooldown
+        log_time:
+          type: string
+          description: Log Time of the Temperature
+        food_item_name:
+          type: string
+          description: Name of the Food Item
+        food_item_id:
+          type: number
+          description: ID of the Food Item
+        period_id:
+          type: number
+          description: ID of the period
+        service_area_id:
+          type: number
+          description: Service Area ID of the Cooldown log
+        station_id:
+          type: number
+          description: Station Id of the Temperature
+    prep_temperatures:
+      type: object
+      properties:
+        temperature_id:
+          type: string
+          description: ID of the Temperature
+        temperature_value:
+          type: number
+          description: Value of the Temperature
+        service_date:
+          type: string
+          description: Service Data of the Temperature
+        food_item_id:
+          type: string
+          description: ID of the Food Item
+        food_item_name:
+          type: string
+          description: Name of the Food Item
+        is_manual_food_item:
+          type: boolean
+          description: Flag determining if the Food Item is manual
+        log_time:
+          type: string
+          description: Log Time of the Temperature
+        no_item:
+          type: boolean
+          description: Flag determining No Item
+        period_id:
+          type: number
+          description: ID of the period
+        prod_prep_temp:
+          type: boolean
+          description: Flag determining Prod Prep Temp
+        service_area_id:
+          type: number
+          description: Service Area Id of the Temperature
+        station_id:
+          type: number
+          description: Station Id of the Temperature
+        is_bluetooth:
+          type: boolean
+          description: Flag determining is bluetooth
+        corrective_action:
+          type: string
+          description: Corrective Action
+        created_by:
+          type: string
+          description: User who created the Temperature
+        creation_date:
+          type: string
+          description: Creation Date of the Temperature
+    put_prep_temperatures_body:
+      type: object
+      properties:
+        temperature_id:
+          type: string
+          description: ID of the Temperature
+        temperature_value:
+          type: number
+          description: Value of the Temperature
+        food_item_id:
+          type: string
+          description: ID of the Food Item
+        food_item_name:
+          type: string
+          description: Name of the Food Item
+        is_manual_food_item:
+          type: boolean
+          description: Flag determining if the Food Item is manual
+        log_time:
+          type: string
+          description: Log Time of the Temperature
+        no_item:
+          type: boolean
+          description: Flag determining No Item
+        period_id:
+          type: number
+          description: ID of the period
+        prod_prep_temp:
+          type: boolean
+          description: Flag determining Prod Prep Temp
+        service_area_id:
+          type: number
+          description: Service Area Id of the Temperature
+        station_id:
+          type: number
+          description: Station Id of the Temperature
+        is_bluetooth:
+          type: boolean
+          description: Flag determining is bluetooth
+        corrective_action:
+          type: string
+          description: Corrective Action
+    temperature_cooling:
+      type: object
+      properties:
+        cooldown_log_id:
+          type: string
+          description: ID of the Cooldown log
+        temperature_value:
+          type: number
+          description: Value of the Temperature
+        cooldown_initiated:
+          type: boolean
+          description: Flag to determine cooldown initiated
+        corrective_action:
+          type: string
+          description: Corrective Action of the cooldown log
+        initial_temp:
+          type: number
+          description: Initial Temp of the item
+        start_time:
+          type: string
+          description: Time of the Initial Temp
+        timer_period:
+          type: number
+          description: Timer Period of the Cooldown
+        log_time:
+          type: string
+          description: Log Time of the Temperature
+        food_item_name:
+          type: string
+          description: Name of the Food Item
+        food_item_id:
+          type: number
+          description: ID of the Food Item
+        period_id:
+          type: number
+          description: ID of the period
+        station_id:
+          type: number
+          description: Station Id of the Temperature
+        service_area_id:
+          type: number
+          description: Service Area Id of the Cooldown
+    serviceTemperatures:
+      type: object
+      properties:
+        location_equipment_id:
+          type: number
+        temperature_id:
+          type: string
+        temperature_value:
+          type: number
+        log_time:
+          type: string
+        equipment_name:
+          type: string
+        equipment_type:
+          type: string
+        station_name:
+          type: string
+        station_id:
+          type: number
+        service_area_id:
+          type: number
+        corrective_action:
+          type: string
+        is_bluetooth:
+          type: boolean
+        initials:
+          type: string
+        temp_check_frequency:
+          type: number
+  parameters:
+    serviceDateParam:
+      name: service_date
+      in: query
+      description: Service Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
+      required: false
+      schema:
+        type: string
+    equipmentTypeParam:
+      name: equipment_type
+      in: query
+      description: Equipemnt type of the requested data
+      required: false
+      schema:
+        type: string
+    logDateReqParam:
+      name: log_date
+      in: query
+      description: Log Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdNoReqParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: false
+      schema:
+        type: number
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    endLogDateParam:
+      name: end_log_date
+      in: query
+      description: End Log Date of the requested data. YYYY-MM-DD foramt.
+      required: false
+      schema:
+        type: string
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: false
+      schema:
+        type: number
+    logDateParam:
+      name: log_date
+      in: query
+      description: Log Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

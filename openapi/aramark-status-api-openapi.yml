@@ -1,0 +1,113 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return Employee information
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/labor/employee`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Labor Employee Status API
+servers:
+- url: https://qa-marko.aramark.net/v1/labor/employee
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/labor/employee
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Status
+  description: Get Status information for an Employee
+paths:
+  /status:
+    get:
+      summary: Employee status
+      description: 'Returns Employement status of an employee
+
+
+        !This endpoint is in QA'
+      operationId: getEmployeeStatus
+      tags:
+      - Status
+      parameters:
+      - $ref: '#/components/parameters/employeeIdParam'
+      - $ref: '#/components/parameters/dateOfBirthParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides employment status information for an employee
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                  count:
+                    type: integer
+                    description: Number of records being returned
+                  employee_status:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/employee_status'
+components:
+  parameters:
+    employeeIdParam:
+      in: query
+      name: employee_id
+      description: Unique identifier of the employee
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    dateOfBirthParam:
+      in: query
+      name: date_of_birth
+      description: Date of Birth of the employee
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    employee_status:
+      type: object
+      properties:
+        employee_id:
+          type: string
+          description: Unique ID for the employee
+        first_name:
+          type: string
+          description: First name of the employee
+        last_name:
+          type: string
+          description: Last name of the employee
+        employee_status:
+          type: string
+          description: Employment Status of the employee
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

@@ -1,0 +1,190 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return a collection of Service Data.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/service`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Service Food Bank API
+servers:
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Food Bank
+  description: A collection of Food Bank data
+paths:
+  /food_bank_items:
+    get:
+      summary: Get Food Bank Items for a Location
+      description: Returns a collection of Food Bank Items for a Location.
+      operationId: getFoodBankItems
+      tags:
+      - Food Bank
+      parameters:
+      - $ref: '#/components/parameters/locationIdParam'
+      - $ref: '#/components/parameters/serviceDateReqParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      responses:
+        '200':
+          description: Lists Food Bank Items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  food_bank_items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/food_bank_items'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+  /food_bank_items/activity:
+    put:
+      summary: Update Food Bank Item Activity
+      description: Allows updates to Menu Items
+      operationId: putFoodBankItemsActivity
+      tags:
+      - Food Bank
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Food Bank Item that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putFoodBankItemsActivityBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  schemas:
+    food_bank_items:
+      type: object
+      properties:
+        food_bank_item_id:
+          type: number
+        location_id:
+          type: number
+        recipe_id:
+          type: string
+        recipe_type:
+          type: string
+        par_min:
+          type: number
+        par_max:
+          type: number
+        batch:
+          type: number
+        production_department_id:
+          type: number
+        production_notes:
+          type: string
+        comments:
+          type: string
+        master_system_id:
+          type: number
+        service_date:
+          type: string
+        begin_inventory:
+          type: number
+        planned_prep:
+          type: number
+        actual_prep_amount:
+          type: number
+        ending_inventory:
+          type: number
+        recipe_name:
+          type: string
+        serving_size_number:
+          type: number
+        serving_size_fraction:
+          type: string
+        serving_size_unit_of_measure:
+          type: string
+    putFoodBankItemsActivityBody:
+      type: object
+      properties:
+        activity_date:
+          type: string
+        food_bank_item_id:
+          type: number
+        begin_inventory:
+          type: number
+        planned_prep:
+          type: number
+        actual_prep_amount:
+          type: number
+        ending_inventory:
+          type: number
+        comments:
+          type: string
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+    serviceDateReqParam:
+      name: service_date
+      in: query
+      description: Service Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security

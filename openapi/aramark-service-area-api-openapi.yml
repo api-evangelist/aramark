@@ -1,0 +1,243 @@
+openapi: 3.2.0
+info:
+  title: Aramark Service Area API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Service Area across 2 of this provider''s published API definitions: aramark-service-areas-v2-openapi.json, aramark-service-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v2
+  description: Testing server
+- url: https://dev-marko.aramark.net/v2
+  description: Development server
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Service Area
+  description: A collection of Service Area Data
+paths:
+  /service_areas:
+    get:
+      summary: Service Areas
+      description: Returns Service Area Data
+      operationId: getServiceAreasV2
+      tags:
+      - Service Area
+      parameters:
+      - $ref: '#/components/parameters/siteIdParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Service Area Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  service_areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_areas'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v2
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v2
+      description: Development server
+  /service_areas/updates:
+    get:
+      summary: Service Areas with Updates
+      description: Returns Service Area Data
+      operationId: getServiceAreasWithUpdatesV2
+      tags:
+      - Service Area
+      parameters:
+      - $ref: '#/components/parameters/lastUpdateDateParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Service Area Data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records
+                  service_areas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_area_updates'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v2
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v2
+      description: Development server
+  /service_area/recipe_list:
+    get:
+      summary: Get Service Area Recipe List
+      description: Returns a collection of Recipe Lists for a Service Area
+      operationId: getServiceAreaRecipeList
+      tags:
+      - Service Area
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Lists of Recipe data for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  recipe_list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_area_recipe_list'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+components:
+  parameters:
+    siteIdParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: true
+      schema:
+        type: number
+    lastUpdateDateParam:
+      name: last_update_date
+      in: query
+      description: Last Update Date for the Service Area
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+  schemas:
+    service_areas:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: ID of the Location
+        profit_center:
+          type: string
+          description: Profit Center value
+        profit_center_name:
+          type: string
+          description: Name of the Profit Center
+        service_area_id:
+          type: number
+          description: ID of the Service Area
+        service_area_name:
+          type: string
+          description: Name of the Service Area
+        enabled:
+          type: string
+          description: Flag to determine if the Service Area is enabled
+    service_area_updates:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+          description: ID of the Service Area
+        last_update_date:
+          type: string
+          description: Last update date of the Service Area
+    service_area_recipe_list:
+      type: object
+      properties:
+        master_system_id:
+          type: number
+        recipe_id:
+          type: string
+        recipe_name:
+          type: string
+        recipe_alternate_name:
+          type: string
+        calories:
+          type: number
+        recipe_cost:
+          type: number
+        serving_size_display:
+          type: string
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-service-areas-v2-openapi.json
+- aramark-service-openapi.json

@@ -1,0 +1,213 @@
+openapi: 3.2.0
+info:
+  description: 'This API will return Daily Labor Metrics data from Aramark''s labor management systems.
+
+
+    The base endpoint URL for this API in production is:
+
+    `https://marko.aramark.net/v1/labor/daily`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use
+
+    either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Labor Daily Summary API
+servers:
+- url: https://qa-marko.aramark.net/v1/labor/daily
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/labor/daily
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Labor Daily Summary
+paths:
+  /summary/{org_value}:
+    get:
+      summary: Labor daily summary
+      description: 'Returns ALL Labor Daily Summary
+
+
+        !This endpoint is in production'
+      operationId: getDailyLaborSummary
+      tags:
+      - Labor Daily Summary
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/startDateParam'
+      - $ref: '#/components/parameters/endDateParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides the labor summary data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                  count:
+                    type: integer
+                    description: Number of records being returned
+                  labor_summary:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/labor_summary'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Business Organization code to filter data set
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        default: 'false'
+  schemas:
+    labor_summary:
+      type: object
+      properties:
+        calendar_date:
+          type: string
+          description: Date or transactional rollup
+        fiscal_period:
+          type: string
+          description: Fiscal Month of data
+        fiscal_week_no:
+          type: string
+          description: Fiscal Week of Month
+        fiscal_day:
+          type: string
+          description: Fiscal Day of Week
+        org_value:
+          type: string
+          description: Aramark Organization code for rollup
+        org_name:
+          type: string
+          description: Name or Aramark Organization rollup
+        scheduled_ot_hours:
+          type: number
+          description: Scheduled OT Hours
+        scheduled_ot_wages:
+          type: number
+          description: Scheduled OT Wages
+        scheduled_prod_hours:
+          type: number
+          description: Scheduled Productive Hours
+        scheduled_prod_wages:
+          type: number
+          description: Scheduled Productive Wages
+        actual_ot_hours:
+          type: number
+          description: Actual OT Hours
+        actual_ot_wages:
+          type: number
+          description: Actual OT Wages
+        actual_prod_hours:
+          type: number
+          description: Actual Productive Hours
+        actual_prod_wages:
+          type: number
+          description: Actual Productive Wages
+        actual_non_prod_hours:
+          type: number
+          description: Actual Non Productive Hours
+        actual_non_prod_wages:
+          type: number
+          description: Actual Non Productive Wages
+        very_early_hours:
+          type: number
+          description: Very Early Hours
+        very_early_wages:
+          type: number
+          description: Very Early Wages
+        late_hours:
+          type: number
+          description: Late Hours
+        late_wages:
+          type: number
+          description: Late Wages
+        very_late_hours:
+          type: number
+          description: Very Late Hours
+        very_late_wages:
+          type: number
+          description: Very Late Wages
+        short_lunch_hours:
+          type: number
+          description: Short Lunch Hours
+        short_lunch_wages:
+          type: number
+          description: Short Lunch Wages
+        unscheduled_ot_hours:
+          type: number
+          description: Unscheduled OT Hours
+        unscheduled_ot_wages:
+          type: number
+          description: Unscheduled OT Wages
+        unscheduled_prod_hours:
+          type: number
+          description: Unscheduled Productive Hours
+        unscheduled_prod_wages:
+          type: number
+          description: Unscheduled Productive Wages
+        unscheduled_non_prod_hours:
+          type: number
+          description: Unscheduled Non Productive Hours
+        unscheduled_non_prod_wages:
+          type: number
+          description: Unscheduled Non Productive Hours
+        add_edits:
+          type: number
+          description: Number of Add Edits
+        existing_edits:
+          type: number
+          description: Number of Existing Edits
+        punch_count:
+          type: number
+          description: Number of Clock Punches
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify permissions.

@@ -1,0 +1,560 @@
+openapi: 3.2.0
+info:
+  title: Aramark Results API
+  version: 1.0.0-oas3
+  description: 'Operations tagged Results across 3 of this provider''s published API definitions: aramark-financial-daily-account-summary-openapi.json, aramark-service-openapi.json, aramark-service-results-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://qa-marko.aramark.net/v1/financial/daily
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/financial/daily
+  description: Development server
+- url: https://qa-marko.aramark.net/v1/service
+  description: Testing server
+- url: https://dev-marko.aramark.net/v1/service
+  description: Development server
+tags:
+- name: Results
+  description: Get Daily Financial data by Accounts
+paths:
+  /account_summary/{org_value}:
+    get:
+      operationId: getFinancialSummaryByOrgValue
+      summary: GFF daily summary
+      description: 'Returns ALL GFF Daily Accounts Summary
+
+
+        !This endpoint is in production'
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/orgValueParam'
+      - $ref: '#/components/parameters/accountParam'
+      - $ref: '#/components/parameters/rollupParam'
+      - $ref: '#/components/parameters/startDateParam'
+      - $ref: '#/components/parameters/endDateParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: Provides the Financial Account Summary for a specific Organization
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                    default: Success
+                  count:
+                    type: string
+                    description: Number of records returned
+                    default: '0'
+                  financial_summary:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/financial_summary'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      security:
+      - apiKey: []
+    servers:
+    - url: https://qa-marko.aramark.net/v1/financial/daily
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/financial/daily
+      description: Development server
+  /result:
+    put:
+      summary: Update Result
+      description: Allows updates to Service Result
+      operationId: putServiceResult
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Result that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putResultsBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+  /results/waste:
+    get:
+      summary: Get Waste by Service Area
+      description: Returns a collection of Waste results for a specific service area
+      operationId: getWasteResults
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/serviceAreaIdParam'
+      - $ref: '#/components/parameters/dateParam'
+      - $ref: '#/components/parameters/sourceSystemParam'
+      - $ref: '#/components/parameters/bypassCacheParam_2'
+      - $ref: '#/components/parameters/smokeParam_2'
+      responses:
+        '200':
+          description: List all Waste for a Service Area
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records
+                  inventory:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_waste'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    put:
+      summary: Update Waste
+      description: Allows updates to Waste
+      operationId: putResultsWaste
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Waste that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putWasteBody'
+      responses:
+        '200':
+          description: Status of the Update Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Update Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    delete:
+      summary: Delete Waste
+      description: Allows deletes to Waste
+      operationId: deleteResultsWaste
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/sourceSystemParam'
+      requestBody:
+        description: Details for the Waste that is being updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteWasteBody'
+      responses:
+        '200':
+          description: Status of the Delete Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  message:
+                    type: string
+                    description: Status Message for the Delete Request
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+  /results/{service_menu_item_id}:
+    get:
+      summary: Menu item from menu item id
+      description: 'Returns a menu item results for a specific menu item id.
+
+
+        !This endpoint is in production'
+      operationId: getServiceResults
+      parameters:
+      - $ref: '#/components/parameters/serviceMenuItemId'
+      - $ref: '#/components/parameters/bypassCacheParam_3'
+      - $ref: '#/components/parameters/smokeParam_3'
+      tags:
+      - Results
+      responses:
+        '200':
+          description: Provides the service results for a specific menu item
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  service_results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/service_results'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      security:
+      - apiKey: []
+    put:
+      summary: Update service results for a menu id
+      description: 'This method will accept a service menu id and results to update
+
+
+        !This endpoint is in production'
+      operationId: putServiceResults
+      parameters:
+      - $ref: '#/components/parameters/serviceMenuItemId'
+      - $ref: '#/components/parameters/bypassCacheParam_3'
+      - $ref: '#/components/parameters/smokeParam_3'
+      tags:
+      - Results
+      responses:
+        '200':
+          description: Menu item was updated with no exceptions
+        '400':
+          description: The server cannot or will not process the request due to an apparent client error (e.g., malformed request syntax, size too large, invalid request message framing, or deceptive request routing).
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service_results'
+        description: Recipes object, MDG will generate the recipe_id so not required.
+      security:
+      - apiKey: []
+    servers:
+    - url: https://qa-marko.aramark.net/v1/service
+      description: Testing server
+    - url: https://dev-marko.aramark.net/v1/service
+      description: Development server
+components:
+  parameters:
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code for rollup
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    rollupParam:
+      in: query
+      name: rollup
+      description: Flag to rollup results. If 'Y' all results will be summarized into one object per day. 'N' will group the data by Day and Account.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: N
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    accountParam:
+      in: query
+      name: account
+      description: Provide a single or multiple accounts in comma delimited string for rollup
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam_3:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceMenuItemId:
+      in: path
+      name: service_menu_item_id
+      description: Unique ID of Service Menu Item.
+      required: true
+      schema:
+        type: string
+    bypassCacheParam_3:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+  schemas:
+    financial_summary:
+      type: object
+      properties:
+        calendar_date:
+          type: string
+          description: Date or transactional rollup
+        fiscal_period:
+          type: string
+          description: Fiscal Month of data
+        fiscal_week_no:
+          type: number
+          description: Fiscal Week of Month
+        fiscal_day:
+          type: number
+          description: Fiscal Day of Week
+        org_value:
+          type: string
+          description: Aramark Organization code for rollup
+        org_name:
+          type: string
+          description: Name or Aramark Organization rollup
+        gl_account:
+          type: string
+          description: GL Account code. This can be Null if rollup = 'Y'
+        gl_account_description:
+          type: string
+          description: GL Account code description. This can be Null if rollup = 'Y'
+        actual_amount:
+          type: number
+          description: Total sales number
+        prior_year_amount:
+          type: number
+          description: Total sales number last year for same period
+    deleteWasteBody:
+      type: object
+      properties:
+        waste_id:
+          type: string
+          description: ID of the Waste
+    putWasteBody:
+      type: object
+      properties:
+        waste_id:
+          type: string
+          description: ID of the Waste
+        waste_date:
+          type: string
+          description: Date of the Waste
+        service_area_id:
+          type: number
+          description: Service Area ID for the Waste
+        station_id:
+          type: number
+          description: Station ID for the Waste
+        waste_type:
+          type: number
+          description: Type of Waste
+        waste_value:
+          type: number
+          description: Value of the Waste
+        waste_unit:
+          type: string
+          description: Unit of the Waste
+    putResultsBody:
+      type: object
+      properties:
+        service_menu_item_id:
+          type: number
+          description: Service Menu Item ID
+        planned_count:
+          type: number
+          description: Planned Count of the menu item
+        prep_count:
+          type: number
+          description: Prep Count of the menu item
+        on_hand_count:
+          type: number
+          description: On Hand Count of the menu item
+        leftover_count:
+          type: number
+          description: Leftover Count of the menu item
+        waste_count:
+          type: number
+          description: Waste Count of the menu item
+        comments:
+          type: string
+          description: Comments of the menu item
+        served_reimbursable:
+          type: number
+        served_alacarte:
+          type: number
+        served_adult:
+          type: number
+    service_waste:
+      type: object
+      properties:
+        waste_id:
+          type: string
+          description: ID of the Waste
+        station_id:
+          type: number
+          description: Station ID for the Waste
+        waste_type:
+          type: number
+          description: Type of Waste
+        waste_value:
+          type: number
+          description: Value of the Waste
+        waste_unit:
+          type: string
+          description: Unit of the Waste
+    service_results:
+      type: object
+      properties:
+        planned_count:
+          type: number
+          description: Planned number of portions per service period
+        prep_count:
+          type: number
+          description: Actual prepared portions
+        on_hand_count:
+          type: number
+          description: Number of portions reused for service
+        leftover_count:
+          type: number
+          description: Number of portions not sold
+        waste_count:
+          type: number
+          description: Number of portions wasted
+        comments:
+          type: string
+          description: Menu Item Comments
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+    apikey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
+x-refined-from:
+- aramark-financial-daily-account-summary-openapi.json
+- aramark-service-openapi.json
+- aramark-service-results-openapi.json

@@ -1,0 +1,211 @@
+openapi: 3.2.0
+info:
+  title: Product PO API
+  description: Returns Product data
+  version: 1.0.0
+servers:
+- url: https://qa-marko.aramark.net/v1
+- url: https://dev-marko.aramark.net/v1
+tags:
+- name: PO
+  description: Returns PO data
+paths:
+  /product/po/lookup:
+    post:
+      tags:
+      - PO
+      description: Submit a request to lookup POs
+      operationId: postPOLookup
+      requestBody:
+        description: Parameters used to identify PO lookup
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/poBodyParam'
+        required: true
+      responses:
+        '200':
+          description: PO lookup submitted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records returned in request
+                  pos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/pos'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Post PO lookup
+      x-summary-source: derived
+  /product/po/number:
+    get:
+      tags:
+      - PO
+      description: Returns PO Number Data
+      operationId: getPONumbers
+      parameters:
+      - name: po_number
+        in: query
+        description: PO Number
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Page of result set. Default to 1.
+        required: false
+        schema:
+          type: number
+          default: 1
+      - name: size
+        in: query
+        description: Size of result set. Default to 50.
+        required: false
+        schema:
+          type: number
+          default: 50
+      - name: bypass-cache
+        in: header
+        description: This HTTP Header variable will bypass cache
+        schema:
+          type: string
+          default: 'false'
+          enum:
+          - 'true'
+          - 'false'
+      responses:
+        '200':
+          description: Lists PO Numbers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: number
+                    description: Number of records returned in request
+                  page:
+                    type: number
+                    description: Page Number of the result set
+                  size:
+                    type: number
+                    description: Size of the result set
+                  po_numbers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/po_number'
+        '404':
+          description: Requested resource does not exist.
+          content: {}
+        '405':
+          description: HTTP Verb / Operation not supported
+          content: {}
+      summary: Get PO numbers
+      x-summary-source: derived
+components:
+  schemas:
+    po_number:
+      type: object
+      properties:
+        vendor_number:
+          type: number
+        vendor_site_name:
+          type: string
+        po_number:
+          type: string
+        po_date:
+          type: string
+        po_line_item:
+          type: number
+        po_line_item_description:
+          type: string
+        unit_price:
+          type: number
+        quantity:
+          type: number
+        profit_center:
+          type: string
+        account:
+          type: string
+        category:
+          type: string
+        concept:
+          type: string
+        event:
+          type: string
+        future:
+          type: string
+        bill_code:
+          type: string
+        line_type:
+          type: string
+    poBodyParam:
+      type: object
+      properties:
+        po_number:
+          type: string
+        item_description:
+          type: string
+        price:
+          type: number
+        item_seq:
+          type: number
+    pos:
+      type: object
+      properties:
+        po_number:
+          type: string
+        vendor_number:
+          type: number
+        vendor_site_name:
+          type: string
+        line_description:
+          type: string
+        po_line_number:
+          type: number
+        line_type:
+          type: string
+        profit_center:
+          type: string
+        service_type:
+          type: string
+        account:
+          type: string
+        category:
+          type: string
+        concept:
+          type: string
+        event:
+          type: string
+        future:
+          type: string
+        bill_code:
+          type: string
+        attribute_category:
+          type: string
+        similarity_match:
+          type: number
+        item_seq:
+          type: number
+  securitySchemes:
+    apikey:
+      type: apiKey
+      description: This HTTP Header variable will verify security
+      name: apikey
+      in: header
+x-original-swagger-version: '2.0'

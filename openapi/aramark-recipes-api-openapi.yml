@@ -1,0 +1,160 @@
+openapi: 3.2.0
+info:
+  description: 'Master data for individual recipes, ingredients and nutrition.
+
+
+    The base endpoint URL for this API in production is: `https://marko.aramark.net/v1/product/recipe`.
+
+
+    For testing the API with the "Try" tool on this page or in your app, use either our testing server "qa-marko" or our development server "dev-marko".'
+  version: 1.0.0-oas3
+  title: Product Recipe Recipes API
+servers:
+- url: https://dev-marko.aramark.net/v1/product/recipe
+  description: Development server
+security:
+- apiKey: []
+tags:
+- name: Recipes
+  description: Master Data for an individual recipe and ingredients
+paths:
+  /:
+    get:
+      summary: Ingredients for a recipe
+      description: 'Returns master data for an individual recipe and the ingredients that are used.A
+
+
+        !This endpoint is in production'
+      operationId: getMasterRecipes
+      tags:
+      - Recipes
+      parameters:
+      - $ref: '#/components/parameters/recipeIdParam'
+      - $ref: '#/components/parameters/masterSystemIdParam'
+      - $ref: '#/components/parameters/bypassCacheParam'
+      - $ref: '#/components/parameters/smokeParam'
+      responses:
+        '200':
+          description: List all Menu Items for Location, Service Data and Meal Period.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: ENUM 'Success', 'Error' or 'Not Found'
+                  count:
+                    type: string
+                    description: Number of records returned in request
+                  master_recipe:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/recipe'
+        '404':
+          description: Requested resource does not exist.
+        '405':
+          description: HTTP Verb / Operation not supported
+components:
+  parameters:
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Area for a Service Date
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Unique ID of Master System, given that recipe IDs are not unique
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    recipe:
+      type: object
+      properties:
+        recipe_id:
+          type: string
+          description: PRIMA Recipe ID
+        recipe_name:
+          type: string
+          description: PRIMA Recipe name of Menu Items
+        serving_size_display:
+          type: string
+          description: Serving Size Description
+        uom_system:
+          type: string
+          description: What Unit of measurement system is being used
+        special_instructions:
+          type: string
+          description: Special Instructions
+        assembly_instructions:
+          type: string
+          description: Assembly Instructions
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingredients'
+    ingredients:
+      type: object
+      properties:
+        ingredient_id:
+          type: string
+          description: PRIMA Recipe Ingredient ID
+        ingredient_name:
+          type: string
+          description: PRIMA Recipe Ingredient Name
+        ingredient_size_display:
+          type: string
+          description: Dispaly value of ingredient
+        unit_of_measure_id:
+          type: string
+          description: Unit of measure type ID
+        unit_of_measure:
+          type: string
+          description: Unit of measure description
+        amount_needed:
+          type: number
+          description: Ingredient amount per serving
+        prep_tech:
+          type: string
+          description: Preparation Technique (Nullable)
+        prep_method:
+          type: string
+          description: Preparation Method (Nullable)
+        sub_assembly_id:
+          type: string
+          description: PRIMA Recipe ID if Ingredient is a sub-assembly (Nullable)
+        is_lb_threshold:
+          type: string
+          description: Y/N is ingredient lb threshold
+        ozw_per_tsp:
+          type: string
+          description: Decimal factor used for conversion of Once Weight (Nullable)
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: apikey
+      description: This HTTP Header variable will verify security
