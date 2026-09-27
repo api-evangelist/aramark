@@ -96,6 +96,13 @@ components:
         enum:
         - 'true'
         - 'false'
+    serviceDateReqParam:
+      name: service_date
+      in: query
+      description: Service Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
     sourceSystemParam:
       name: source_system
       in: query
@@ -113,14 +120,24 @@ components:
       required: true
       schema:
         type: number
-    serviceDateReqParam:
-      name: service_date
-      in: query
-      description: Service Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
   schemas:
+    serviceCustomerCount:
+      type: object
+      properties:
+        actual_patrons:
+          type: number
+        actual_employees:
+          type: number
+        actual_reimbursable_count:
+          type: number
+        actual_a_la_carte_count:
+          type: number
+        actual_adult_count:
+          type: number
+        employee_tracking_flag:
+          type: boolean
+        reimbursable_tracking_flag:
+          type: boolean
     putCustomerCountBody:
       type: object
       properties:
@@ -140,23 +157,6 @@ components:
           type: number
         adult:
           type: number
-    serviceCustomerCount:
-      type: object
-      properties:
-        actual_patrons:
-          type: number
-        actual_employees:
-          type: number
-        actual_reimbursable_count:
-          type: number
-        actual_a_la_carte_count:
-          type: number
-        actual_adult_count:
-          type: number
-        employee_tracking_flag:
-          type: boolean
-        reimbursable_tracking_flag:
-          type: boolean
   securitySchemes:
     apikey:
       type: apiKey

@@ -57,13 +57,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Service Area for a Service Date
-      required: true
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -74,13 +67,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    masterSystemIdParam:
-      name: master_system_id
-      in: query
-      description: Unique ID of Master System, given that recipe IDs are not unique
-      required: false
-      schema:
-        type: string
     smokeParam:
       in: header
       name: smoke
@@ -90,6 +76,20 @@ components:
         enum:
         - 'true'
         - 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Area for a Service Date
+      required: true
+      schema:
+        type: string
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Unique ID of Master System, given that recipe IDs are not unique
+      required: false
+      schema:
+        type: string
   schemas:
     recipe:
       type: object

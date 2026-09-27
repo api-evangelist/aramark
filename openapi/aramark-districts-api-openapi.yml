@@ -70,21 +70,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    userIdParam:
-      name: user_id
-      in: query
-      description: Email address of user
-      required: true
-      schema:
-        type: string
-        default: last-first@aramark.com
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -104,6 +89,21 @@ components:
         enum:
         - 'true'
         - 'false'
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
     pageParam:
       name: page
       in: query

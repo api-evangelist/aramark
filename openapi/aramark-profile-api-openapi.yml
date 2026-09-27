@@ -128,11 +128,11 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    profileIdParamTrue:
+    profileIdParamFalse:
       in: query
       name: profile_id
       description: Unique identifier of a user Profile
-      required: true
+      required: false
       schema:
         type: string
     smokeParam:
@@ -145,11 +145,11 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    profileIdParamFalse:
+    profileIdParamTrue:
       in: query
       name: profile_id
       description: Unique identifier of a user Profile
-      required: false
+      required: true
       schema:
         type: string
   schemas:

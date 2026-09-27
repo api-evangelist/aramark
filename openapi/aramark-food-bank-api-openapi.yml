@@ -87,6 +87,40 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceDateReqParam:
+      name: service_date
+      in: query
+      description: Service Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   schemas:
     food_bank_items:
       type: object
@@ -148,40 +182,6 @@ components:
           type: number
         comments:
           type: string
-  parameters:
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    locationIdParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: true
-      schema:
-        type: number
-    serviceDateReqParam:
-      name: service_date
-      in: query
-      description: Service Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
   securitySchemes:
     apikey:
       type: apiKey

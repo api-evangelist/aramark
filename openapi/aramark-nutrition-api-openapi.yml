@@ -173,20 +173,6 @@ paths:
       description: Development server
 components:
   parameters:
-    lastModifiedDateNoReqParam:
-      name: last_modified_date
-      in: query
-      description: Last Modified Date of the data
-      required: false
-      schema:
-        type: string
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: ID of the Recipe
-      required: false
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -196,22 +182,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: Inventory source system
-      required: true
-      schema:
-        type: string
-        enum:
-        - PRMA
-    serviceAreaIdNoReqParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area. Must pass Location ID or Service Area ID
-      required: false
-      schema:
-        type: number
     smokeParam:
       in: header
       name: smoke
@@ -223,6 +193,13 @@ components:
         enum:
         - 'true'
         - 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
+      required: false
+      schema:
+        type: string
     lastModifiedDateParam:
       name: last_modified_date
       in: query
@@ -230,6 +207,22 @@ components:
       required: true
       schema:
         type: string
+    lastModifiedDateNoReqParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: false
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
     locationIdNoReqParam:
       name: location_id
       in: query
@@ -237,18 +230,25 @@ components:
       required: false
       schema:
         type: number
-    lastModifiedDateNoReqParam_2:
-      name: last_update_date
+    serviceAreaIdNoReqParam:
+      name: service_area_id
       in: query
-      description: Last Update Date of the data
+      description: ID of the Service Area. Must pass Location ID or Service Area ID
       required: false
       schema:
-        type: string
+        type: number
     lastModifiedDateParam_2:
       name: last_update_date
       in: query
       description: Last Modified Date of the data
       required: true
+      schema:
+        type: string
+    lastModifiedDateNoReqParam_2:
+      name: last_update_date
+      in: query
+      description: Last Update Date of the data
+      required: false
       schema:
         type: string
   schemas:

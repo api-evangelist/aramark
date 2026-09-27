@@ -56,33 +56,7 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  schemas:
-    recommendations:
-      type: object
-      properties:
-        recipe_id:
-          type: string
-        recipe_name:
-          type: string
-        rank:
-          type: number
-        recommendation_type:
-          type: string
   parameters:
-    serviceChannelIdParam:
-      name: service_channel_id
-      in: query
-      description: Service Channel ID of the Recipe
-      required: true
-      schema:
-        type: string
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: ID of the Recipe
-      required: true
-      schema:
-        type: string
     rankLowParam:
       name: rank_low
       in: query
@@ -100,13 +74,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    masterSystemIdParam:
-      name: master_system_id
-      in: query
-      description: Master System ID of the Recipe
-      required: true
-      schema:
-        type: string
     rankHighParam:
       name: rank_high
       in: query
@@ -115,6 +82,27 @@ components:
       schema:
         type: number
         default: 5
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
+      required: true
+      schema:
+        type: string
+    serviceChannelIdParam:
+      name: service_channel_id
+      in: query
+      description: Service Channel ID of the Recipe
+      required: true
+      schema:
+        type: string
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Master System ID of the Recipe
+      required: true
+      schema:
+        type: string
     typeParam:
       name: type
       in: query
@@ -127,6 +115,18 @@ components:
         - Similar Ingredients
         - Similar Nutritional Values
         - Similar AI Attributes
+  schemas:
+    recommendations:
+      type: object
+      properties:
+        recipe_id:
+          type: string
+        recipe_name:
+          type: string
+        rank:
+          type: number
+        recommendation_type:
+          type: string
   securitySchemes:
     apikey:
       type: apiKey

@@ -71,32 +71,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    formatParam:
-      name: format
-      in: query
-      description: File format to return data
-      required: false
-      schema:
-        type: string
-        enum:
-        - JSON
-        - XLS
-        - CSV
-        default: JSON
-    siteIdParam:
-      name: site_id
-      in: query
-      description: Unique ID of Site to return Sites.
-      required: false
-      schema:
-        type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -114,6 +88,32 @@ components:
       schema:
         type: string
         default: 'false'
+    siteIdParam:
+      name: site_id
+      in: query
+      description: Unique ID of Site to return Sites.
+      required: false
+      schema:
+        type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    formatParam:
+      name: format
+      in: query
+      description: File format to return data
+      required: false
+      schema:
+        type: string
+        enum:
+        - JSON
+        - XLS
+        - CSV
+        default: JSON
     pageParam:
       in: query
       name: page

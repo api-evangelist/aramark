@@ -53,6 +53,15 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     sizeParam:
       in: query
       name: size
@@ -67,15 +76,6 @@ components:
       required: true
       schema:
         type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     pageParam:
       in: query
       name: page

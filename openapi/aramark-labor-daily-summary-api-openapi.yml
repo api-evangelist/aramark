@@ -64,27 +64,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for daily transactions. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Business Organization code to filter data set
-      required: true
-      schema:
-        type: string
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -102,6 +81,27 @@ components:
       schema:
         type: string
         default: 'false'
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Business Organization code to filter data set
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
   schemas:
     labor_summary:
       type: object

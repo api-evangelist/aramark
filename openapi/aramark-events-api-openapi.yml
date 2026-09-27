@@ -101,37 +101,7 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    orgValueParam:
-      name: org_value
-      in: path
-      description: Location Code of the Device
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
   schemas:
-    post_temp_events_body:
-      type: object
-      properties:
-        start_date_time:
-          type: string
-        end_date_time:
-          type: string
-        page:
-          type: number
-        size:
-          type: number
-        device_ids:
-          type: object
     temperature_events:
       type: object
       properties:
@@ -173,6 +143,36 @@ components:
           type: string
         last_updated_datetime:
           type: string
+    post_temp_events_body:
+      type: object
+      properties:
+        start_date_time:
+          type: string
+        end_date_time:
+          type: string
+        page:
+          type: number
+        size:
+          type: number
+        device_ids:
+          type: object
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    orgValueParam:
+      name: org_value
+      in: path
+      description: Location Code of the Device
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apikey:
       type: apiKey

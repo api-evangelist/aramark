@@ -52,12 +52,32 @@ paths:
         description: Body of the message sent to the Ask Marko Chat Bot
 components:
   schemas:
-    outputText:
+    insight:
       type: object
       properties:
         text:
           type: string
-          description: Message of the output text
+          description: Message of the insight
+    quickReplies:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Message of the Quick Replies
+        buttons:
+          type: array
+          items:
+            $ref: '#/components/schemas/buttons'
+    attachment:
+      type: object
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/content'
+        text:
+          type: string
+          description: Message of the attachment
     body:
       type: object
       properties:
@@ -73,6 +93,24 @@ components:
         message:
           type: string
           description: Message to ask the Ask Marko Chat Bot
+    buttons:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Name of the button
+        payload:
+          type: string
+          description: Message of the button
+    content:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Filetype of the attachment
+        url:
+          type: string
+          description: URL of the attachment
     response:
       type: object
       properties:
@@ -92,50 +130,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/quickReplies'
-    attachment:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/content'
-        text:
-          type: string
-          description: Message of the attachment
-    quickReplies:
+    outputText:
       type: object
       properties:
         text:
           type: string
-          description: Message of the Quick Replies
-        buttons:
-          type: array
-          items:
-            $ref: '#/components/schemas/buttons'
-    buttons:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Name of the button
-        payload:
-          type: string
-          description: Message of the button
-    content:
-      type: object
-      properties:
-        type:
-          type: string
-          description: Filetype of the attachment
-        url:
-          type: string
-          description: URL of the attachment
-    insight:
-      type: object
-      properties:
-        text:
-          type: string
-          description: Message of the insight
+          description: Message of the output text
   parameters:
     bypassCacheParam:
       in: header

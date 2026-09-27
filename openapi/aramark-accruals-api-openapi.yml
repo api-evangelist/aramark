@@ -60,20 +60,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    employeeIdParam:
-      in: query
-      name: employee_id
-      description: Unique identifier of the employee
-      required: true
-      schema:
-        type: string
-    effectiveDateParam:
-      in: query
-      name: effective_date
-      description: Calendar date for which the accrual balance is effective "MM/DD/YYYY"
-      required: true
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -93,6 +79,20 @@ components:
         enum:
         - 'true'
         - 'false'
+    effectiveDateParam:
+      in: query
+      name: effective_date
+      description: Calendar date for which the accrual balance is effective "MM/DD/YYYY"
+      required: true
+      schema:
+        type: string
+    employeeIdParam:
+      in: query
+      name: employee_id
+      description: Unique identifier of the employee
+      required: true
+      schema:
+        type: string
   schemas:
     accrual_balances:
       type: object

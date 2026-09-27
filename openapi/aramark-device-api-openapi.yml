@@ -209,20 +209,6 @@ paths:
       description: Development server
 components:
   parameters:
-    userIdParamFalse:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: false
-      schema:
-        type: string
-    deviceIdParamFalse:
-      in: query
-      name: device_id
-      description: Unique identifier of a user Device. Used for returning specific device, otherwise returns all devices
-      required: false
-      schema:
-        type: string
     deviceIdParamTrue:
       in: query
       name: device_id
@@ -250,6 +236,29 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    userIdParamFalse:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: false
+      schema:
+        type: string
+    deviceIdParamFalse:
+      in: query
+      name: device_id
+      description: Unique identifier of a user Device. Used for returning specific device, otherwise returns all devices
+      required: false
+      schema:
+        type: string
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     sizeParam:
       in: query
       name: size
@@ -264,15 +273,6 @@ components:
       required: true
       schema:
         type: string
-    bypassCacheParam_2:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     pageParam:
       in: query
       name: page
@@ -280,23 +280,6 @@ components:
       required: false
       schema:
         type: number
-    deviceSerialNumberParam:
-      name: device_serial_number
-      in: query
-      description: Serial Number of the Device
-      required: true
-      schema:
-        type: string
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
     bypassCacheParam_3:
       in: header
       name: bypass-cache
@@ -306,6 +289,13 @@ components:
         enum:
         - 'true'
         - 'false'
+    deviceSerialNumberParam:
+      name: device_serial_number
+      in: query
+      description: Serial Number of the Device
+      required: true
+      schema:
+        type: string
     smokeParam_2:
       in: header
       name: smoke
@@ -317,6 +307,16 @@ components:
         enum:
         - 'true'
         - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   schemas:
     Device:
       type: object

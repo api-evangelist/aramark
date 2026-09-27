@@ -54,16 +54,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -73,13 +63,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
     smokeParam:
       in: header
       name: smoke
@@ -91,6 +74,23 @@ components:
         enum:
         - 'true'
         - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
   schemas:
     service_feature:
       type: object

@@ -89,17 +89,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    searchDetailsParam:
-      in: query
-      name: search
-      description: field to search against
-      required: true
-      schema:
-        type: string
-        enum:
-        - category
-        - gl_account
-        - category_code
     valueReqParam:
       name: value
       in: query
@@ -107,14 +96,6 @@ components:
       required: true
       schema:
         type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Size of the result set
-      required: false
-      schema:
-        type: number
-        default: 50
     levelParam:
       name: level
       in: query
@@ -128,6 +109,13 @@ components:
         - 3
         - 4
         - 5
+    valueParam:
+      name: value
+      in: query
+      description: Value
+      required: false
+      schema:
+        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -157,6 +145,25 @@ components:
       required: true
       schema:
         type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
+    searchDetailsParam:
+      in: query
+      name: search
+      description: field to search against
+      required: true
+      schema:
+        type: string
+        enum:
+        - category
+        - gl_account
+        - category_code
     pageParam:
       name: page
       in: query
@@ -165,14 +172,20 @@ components:
       schema:
         type: number
         default: 1
-    valueParam:
-      name: value
-      in: query
-      description: Value
-      required: false
-      schema:
-        type: string
   schemas:
+    gl_account_details:
+      type: object
+      properties:
+        long_description:
+          type: string
+        short_description:
+          type: string
+        gl_account_catergory:
+          type: string
+        gl_level:
+          type: string
+        category_code:
+          type: string
     gl_accounts:
       type: object
       properties:
@@ -193,19 +206,6 @@ components:
         gl_level:
           type: string
         gl_acc_category:
-          type: string
-    gl_account_details:
-      type: object
-      properties:
-        long_description:
-          type: string
-        short_description:
-          type: string
-        gl_account_catergory:
-          type: string
-        gl_level:
-          type: string
-        category_code:
           type: string
   securitySchemes:
     apikey:

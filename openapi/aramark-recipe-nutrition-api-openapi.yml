@@ -57,13 +57,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Service Area for a Service Date
-      required: true
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -74,13 +67,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    masterSystemIdParam:
-      name: master_system_id
-      in: query
-      description: Unique ID of Master System, given that recipe IDs are not unique
-      required: false
-      schema:
-        type: string
     smokeParam:
       in: header
       name: smoke
@@ -90,60 +76,21 @@ components:
         enum:
         - 'true'
         - 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Area for a Service Date
+      required: true
+      schema:
+        type: string
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Unique ID of Master System, given that recipe IDs are not unique
+      required: false
+      schema:
+        type: string
   schemas:
-    dietary_attributes:
-      type: object
-      properties:
-        kosher:
-          type: string
-          description: indicator if the recipe is kosher
-        halal:
-          type: string
-          description: indicator if the recipe is halal
-    nutrition:
-      type: object
-      properties:
-        location_id:
-          type: string
-          description: Unique ID for the location
-        recipe_id:
-          type: string
-          description: Unique ID for the recipe
-        serving_size_number:
-          type: number
-          description: serving size number
-        recipe_fraction_description:
-          type: string
-          description: description of recipe fraction
-        description:
-          type: string
-          description: description of measurement
-        recipe_name:
-          type: string
-          description: name of the recipe
-        ingredient_statement:
-          type: string
-          description: list of ingredients
-        allergen_attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/allergen_attributes'
-        dietary_attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/dietary_attributes'
-        HFL_attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/HFL_attributes'
-        primary_attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/primary_attributes'
-        secondary_attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/secondary_attributes'
     HFL_attributes:
       type: object
       properties:
@@ -162,105 +109,6 @@ components:
         eat_well:
           type: string
           description: indicator if the recipe is Eat Well
-    secondary_attributes:
-      type: object
-      properties:
-        ash:
-          type: number
-          description: ash content in g
-        water:
-          type: number
-          description: water content in g
-        magnesium:
-          type: number
-          description: magnesium content in mg
-        phosphorous:
-          type: number
-          description: phosphorous content in mg
-        zinc:
-          type: number
-          description: zinc content in mg
-        copper:
-          type: number
-          description: copper content in mg
-        manganese:
-          type: number
-          description: manganese content in mg
-        selenium:
-          type: number
-          description: selenium content in mcg
-        vitamin_a_(IU):
-          type: number
-          description: vitamin A content in IU
-        vitamin_a_(RAE):
-          type: number
-          description: vitamin A content in RAE
-        beta_carotene:
-          type: number
-          description: beta carotene content in mcg
-        alpha_carotene:
-          type: number
-          description: alpha carotene content in mcg
-        vitamin_e_(A-tocopherol):
-          type: number
-          description: vitamin E content in mg
-        vitamin_d_(IU):
-          type: number
-          description: vitamin D content in IU
-        vitamin_c:
-          type: number
-          description: vitamin C content in mg
-        thiamin_(B1):
-          type: number
-          description: thiamin B1 content in mg
-        riboflavin_(B2):
-          type: number
-          description: riboflavin B2 content in mg
-        niacin:
-          type: number
-          description: niacin content in mg
-        pantothenic_acid:
-          type: number
-          description: pantothenic_acid content in mg
-        vitamin_b6:
-          type: number
-          description: vitamin B6 content in mg
-        folacin_(folic_acid):
-          type: number
-          description: folacin content in mcg
-        vitamin_b12:
-          type: number
-          description: vitamin B12 content in mcg
-        vitamin_k:
-          type: number
-          description: vitamin K content in mcg
-        folic_acid:
-          type: number
-          description: folic acid content in mcg
-        folate_food:
-          type: number
-          description: folate food content in mcg
-        folate_DFE:
-          type: number
-          description: folate DFE content in mcg_DFE
-        vitamin_a_(RE):
-          type: number
-          description: vitamin A (RE) content in RE
-        pct_calories_from_protein:
-          type: number
-          description: percent of calorie content from protein
-        pct_calories_from_carbohydrates:
-          type: number
-          description: percent of calorie content from carbohydrates
-        biotin:
-          type: number
-          description: biotin content in mcg
-        niacin_(mg_NE):
-          type: number
-          description: niacin content in mg
-        vitamin_e_(IU):
-          type: number
-          description: vitamin e content in IU
     primary_attributes:
       type: object
       properties:
@@ -384,6 +232,158 @@ components:
         contains_gluten:
           type: string
           description: indicator if the recipe contains gluten
+    nutrition:
+      type: object
+      properties:
+        location_id:
+          type: string
+          description: Unique ID for the location
+        recipe_id:
+          type: string
+          description: Unique ID for the recipe
+        serving_size_number:
+          type: number
+          description: serving size number
+        recipe_fraction_description:
+          type: string
+          description: description of recipe fraction
+        description:
+          type: string
+          description: description of measurement
+        recipe_name:
+          type: string
+          description: name of the recipe
+        ingredient_statement:
+          type: string
+          description: list of ingredients
+        allergen_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/allergen_attributes'
+        dietary_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/dietary_attributes'
+        HFL_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/HFL_attributes'
+        primary_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/primary_attributes'
+        secondary_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/secondary_attributes'
+    secondary_attributes:
+      type: object
+      properties:
+        ash:
+          type: number
+          description: ash content in g
+        water:
+          type: number
+          description: water content in g
+        magnesium:
+          type: number
+          description: magnesium content in mg
+        phosphorous:
+          type: number
+          description: phosphorous content in mg
+        zinc:
+          type: number
+          description: zinc content in mg
+        copper:
+          type: number
+          description: copper content in mg
+        manganese:
+          type: number
+          description: manganese content in mg
+        selenium:
+          type: number
+          description: selenium content in mcg
+        vitamin_a_(IU):
+          type: number
+          description: vitamin A content in IU
+        vitamin_a_(RAE):
+          type: number
+          description: vitamin A content in RAE
+        beta_carotene:
+          type: number
+          description: beta carotene content in mcg
+        alpha_carotene:
+          type: number
+          description: alpha carotene content in mcg
+        vitamin_e_(A-tocopherol):
+          type: number
+          description: vitamin E content in mg
+        vitamin_d_(IU):
+          type: number
+          description: vitamin D content in IU
+        vitamin_c:
+          type: number
+          description: vitamin C content in mg
+        thiamin_(B1):
+          type: number
+          description: thiamin B1 content in mg
+        riboflavin_(B2):
+          type: number
+          description: riboflavin B2 content in mg
+        niacin:
+          type: number
+          description: niacin content in mg
+        pantothenic_acid:
+          type: number
+          description: pantothenic_acid content in mg
+        vitamin_b6:
+          type: number
+          description: vitamin B6 content in mg
+        folacin_(folic_acid):
+          type: number
+          description: folacin content in mcg
+        vitamin_b12:
+          type: number
+          description: vitamin B12 content in mcg
+        vitamin_k:
+          type: number
+          description: vitamin K content in mcg
+        folic_acid:
+          type: number
+          description: folic acid content in mcg
+        folate_food:
+          type: number
+          description: folate food content in mcg
+        folate_DFE:
+          type: number
+          description: folate DFE content in mcg_DFE
+        vitamin_a_(RE):
+          type: number
+          description: vitamin A (RE) content in RE
+        pct_calories_from_protein:
+          type: number
+          description: percent of calorie content from protein
+        pct_calories_from_carbohydrates:
+          type: number
+          description: percent of calorie content from carbohydrates
+        biotin:
+          type: number
+          description: biotin content in mcg
+        niacin_(mg_NE):
+          type: number
+          description: niacin content in mg
+        vitamin_e_(IU):
+          type: number
+          description: vitamin e content in IU
+    dietary_attributes:
+      type: object
+      properties:
+        kosher:
+          type: string
+          description: indicator if the recipe is kosher
+        halal:
+          type: string
+          description: indicator if the recipe is halal
   securitySchemes:
     apiKey:
       type: apiKey

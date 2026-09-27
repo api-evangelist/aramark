@@ -63,76 +63,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for responses. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code for rollup
-      required: true
-      schema:
-        type: string
-    surveyTypeParam:
-      name: survey_type
-      in: query
-      description: "Comma separated list of codes to determine which type of survey questions to return.  - \"HLTH\" - Health \n  - \"PERS\" - Personalization\n  - \"QUAL\" - Quality\n  - \"SAT\" - Satisfaction\n  - \"ALL\" - All Types"
-      required: false
-      schema:
-        type: string
-        default: ALL
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar date end date for responses. Will use start_date if not provided. "mm/dd/yyyy"
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of rows in each page to return.
-      required: false
-      schema:
-        type: string
-        default: 50
-    surveyGroupParam:
-      name: survey_group
-      in: query
-      description: "Comma separated list of codes to determine which survey group to return.  - \"CATERING\" - Catering\n  - \"DINING\" - Dining\n  - \"ALL\" - All Groups"
-      required: false
-      schema:
-        type: string
-        default: ALL
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        default: false
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      required: false
-      schema:
-        type: number
-        default: 1
   schemas:
     survey_response:
       type: object
@@ -164,6 +94,76 @@ components:
         country:
           type: string
           description: Coutnry code of the response
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        default: false
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code for rollup
+      required: true
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return.
+      required: false
+      schema:
+        type: string
+        default: 50
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar date end date for responses. Will use start_date if not provided. "mm/dd/yyyy"
+      schema:
+        type: string
+    surveyTypeParam:
+      name: survey_type
+      in: query
+      description: "Comma separated list of codes to determine which type of survey questions to return.  - \"HLTH\" - Health \n  - \"PERS\" - Personalization\n  - \"QUAL\" - Quality\n  - \"SAT\" - Satisfaction\n  - \"ALL\" - All Types"
+      required: false
+      schema:
+        type: string
+        default: ALL
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for responses. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    surveyGroupParam:
+      name: survey_group
+      in: query
+      description: "Comma separated list of codes to determine which survey group to return.  - \"CATERING\" - Catering\n  - \"DINING\" - Dining\n  - \"ALL\" - All Groups"
+      required: false
+      schema:
+        type: string
+        default: ALL
   securitySchemes:
     apiKey:
       type: apiKey

@@ -164,6 +164,59 @@ paths:
     - url: https://dev-marko.aramark.net/v1/service
       description: Development server
 components:
+  parameters:
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    includeDisabledParam:
+      name: include_disabled
+      in: query
+      description: Flag to determine if disabled Items should be included in results
+      required: false
+      schema:
+        type: boolean
+        default: false
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    inventoryItemIdParam:
+      name: inventory_item_id
+      in: path
+      description: ID of the Inventory Item to be udpated
+      required: true
+      schema:
+        type: number
   schemas:
     pack_unit_size:
       type: object
@@ -186,6 +239,31 @@ components:
         inner_pack_size:
           type: number
           description: Inner Pack Size of the Item
+    inventory:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: ID of the Location
+        inventory_item_storage_area_name:
+          type: string
+          description: Name of the Storage Area for the Item
+        inventory_item_storage_area_id:
+          type: number
+          description: ID of the Storage Area for the Item
+        inventory_item_name:
+          type: string
+          description: Name of the Item
+        inventory_item_id:
+          description: ID of the Item
+        sort_order:
+          type: number
+        enabled:
+          type: boolean
+        pack_unit_size:
+          $ref: '#/components/schemas/pack_unit_size'
+        details:
+          $ref: '#/components/schemas/details'
     putItemBody:
       type: object
       properties:
@@ -236,7 +314,7 @@ components:
           type: string
         vendor_name:
           type: string
-    inventory:
+    inventory_2:
       type: object
       properties:
         location_id:
@@ -252,15 +330,12 @@ components:
           type: string
           description: Name of the Item
         inventory_item_id:
-          description: ID of the Item
-        sort_order:
           type: number
-        enabled:
-          type: boolean
+          description: ID of the Item
         pack_unit_size:
           $ref: '#/components/schemas/pack_unit_size'
         details:
-          $ref: '#/components/schemas/details'
+          $ref: '#/components/schemas/details_2'
     putItemBody_2:
       type: object
       properties:
@@ -300,81 +375,6 @@ components:
         fiscal_time_period_id:
           type: number
           description: ID of the Fiscal Period for the Item
-    inventory_2:
-      type: object
-      properties:
-        location_id:
-          type: number
-          description: ID of the Location
-        inventory_item_storage_area_name:
-          type: string
-          description: Name of the Storage Area for the Item
-        inventory_item_storage_area_id:
-          type: number
-          description: ID of the Storage Area for the Item
-        inventory_item_name:
-          type: string
-          description: Name of the Item
-        inventory_item_id:
-          type: number
-          description: ID of the Item
-        pack_unit_size:
-          $ref: '#/components/schemas/pack_unit_size'
-        details:
-          $ref: '#/components/schemas/details_2'
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: Inventory source system
-      required: true
-      schema:
-        type: string
-        enum:
-        - PRMA
-        - CLIENT
-    includeDisabledParam:
-      name: include_disabled
-      in: query
-      description: Flag to determine if disabled Items should be included in results
-      required: false
-      schema:
-        type: boolean
-        default: false
-    locationIdParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: true
-      schema:
-        type: number
-    inventoryItemIdParam:
-      name: inventory_item_id
-      in: path
-      description: ID of the Inventory Item to be udpated
-      required: true
-      schema:
-        type: number
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
   securitySchemes:
     apikey:
       type: apiKey

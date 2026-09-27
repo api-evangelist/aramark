@@ -117,6 +117,29 @@ paths:
       description: Development server
 components:
   parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    hierarchyGroupParam:
+      in: query
+      name: hierarchy_group
+      required: true
+      description: comma separated list of hierarchy levels. This is used to limit the return set to only include specified org levels. Accepted values - CMP, DIV, BSU, LOB, REG, DST, PC, LOC, SLOC
+      schema:
+        type: string
     orgValueParam:
       in: path
       name: org_value
@@ -131,29 +154,6 @@ components:
       schema:
         type: string
         default: 50
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    hierarchyGroupParam:
-      in: query
-      name: hierarchy_group
-      required: true
-      description: comma separated list of hierarchy levels. This is used to limit the return set to only include specified org levels. Accepted values - CMP, DIV, BSU, LOB, REG, DST, PC, LOC, SLOC
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
     pageParam:
       in: query
       name: page
@@ -161,6 +161,13 @@ components:
       schema:
         type: number
         default: 1
+    userIdNoReqParam:
+      name: user_id
+      in: query
+      description: Email address of the user
+      required: false
+      schema:
+        type: string
     smokeParam_2:
       in: header
       name: smoke
@@ -170,13 +177,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    userIdNoReqParam:
-      name: user_id
-      in: query
-      description: Email address of the user
-      required: false
-      schema:
-        type: string
   schemas:
     financial_organizations:
       type: object

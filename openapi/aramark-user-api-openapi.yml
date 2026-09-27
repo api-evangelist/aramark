@@ -208,20 +208,6 @@ paths:
       description: Development server
 components:
   parameters:
-    userIdParamTrue:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: true
-      schema:
-        type: string
-    userIdParamFalse:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: false
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -242,23 +228,20 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    emailParam:
-      name: sp_guid
+    userIdParamFalse:
+      name: user_id
       in: query
-      description: sp GUID of the User
-      required: true
-      schema:
-        type: string
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
       required: false
       schema:
         type: string
-        enum:
-        - PRMA
-        default: PRMA
+    userIdParamTrue:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: true
+      schema:
+        type: string
     bypassCacheParam_2:
       in: header
       name: bypass-cache
@@ -279,6 +262,23 @@ components:
         enum:
         - 'true'
         - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    emailParam:
+      name: sp_guid
+      in: query
+      description: sp GUID of the User
+      required: true
+      schema:
+        type: string
   schemas:
     User:
       type: object
@@ -310,6 +310,15 @@ components:
         update_date:
           type: string
           description: date that profile was last updated
+    user_sites:
+      type: object
+      properties:
+        site_id:
+          type: number
+          description: ID for the Site
+        site_name:
+          type: string
+          description: Name of the Site
     putDisabledUserLocationsBody:
       type: object
       properties:
@@ -322,15 +331,6 @@ components:
         enalbed:
           type: string
           description: Status to determine if location is disabled - true or false
-    user_sites:
-      type: object
-      properties:
-        site_id:
-          type: number
-          description: ID for the Site
-        site_name:
-          type: string
-          description: Name of the Site
     user_disabled_locations:
       type: object
       properties:

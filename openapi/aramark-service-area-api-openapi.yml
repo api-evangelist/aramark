@@ -133,20 +133,6 @@ paths:
       description: Development server
 components:
   parameters:
-    siteIdParam:
-      name: site_id
-      in: query
-      description: ID of the Site
-      required: true
-      schema:
-        type: number
-    lastUpdateDateParam:
-      name: last_update_date
-      in: query
-      description: Last Update Date for the Service Area
-      required: true
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -167,6 +153,20 @@ components:
         enum:
         - 'true'
         - 'false'
+    siteIdParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: true
+      schema:
+        type: number
+    lastUpdateDateParam:
+      name: last_update_date
+      in: query
+      description: Last Update Date for the Service Area
+      required: true
+      schema:
+        type: string
     sourceSystemParam:
       name: source_system
       in: query
@@ -185,6 +185,15 @@ components:
       schema:
         type: number
   schemas:
+    service_area_updates:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+          description: ID of the Service Area
+        last_update_date:
+          type: string
+          description: Last update date of the Service Area
     service_areas:
       type: object
       properties:
@@ -206,15 +215,6 @@ components:
         enabled:
           type: string
           description: Flag to determine if the Service Area is enabled
-    service_area_updates:
-      type: object
-      properties:
-        service_area_id:
-          type: number
-          description: ID of the Service Area
-        last_update_date:
-          type: string
-          description: Last update date of the Service Area
     service_area_recipe_list:
       type: object
       properties:

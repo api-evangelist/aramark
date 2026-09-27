@@ -44,16 +44,20 @@ modified: '2026-09-16'
 specificationVersion: '0.23'
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - aramarkservicesinc/markoapis
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
-  - probe
-  generated: '2026-09-04'
-  method: probed
+  - pricing
+  - repository-not-product
+  generated: '2026-09-25'
+  method: derived
 accessModel:
   pricing: unpublished
   onboarding: registration-plus-approval
@@ -9542,6 +9546,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Finance
+  tags_raw:
   - Financial
   properties:
   - type: OpenAPI
@@ -39235,8 +39241,6 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
-  - Real-Time
-  tags_raw:
   - Realtime
   properties:
   - type: OpenAPI

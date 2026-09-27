@@ -98,55 +98,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization Code
-      required: true
-      schema:
-        type: string
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for starting range of service dates. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar date for ending range of service dates. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      name: bypass-cache
-      in: header
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    sortParam:
-      in: query
-      name: sort
-      description: Result set sorting
-      required: false
-      schema:
-        type: string
-        enum:
-        - ASC
-        - DESC
-        default: ASC
-    smokeParam:
-      name: smoke
-      in: header
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
   schemas:
     food_waste:
       type: object
@@ -181,6 +132,55 @@ components:
         waste_days_required:
           type: number
           description: Number of Days Waste was expected to be reported
+  parameters:
+    bypassCacheParam:
+      name: bypass-cache
+      in: header
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      name: smoke
+      in: header
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization Code
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar date for ending range of service dates. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for starting range of service dates. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    sortParam:
+      in: query
+      name: sort
+      description: Result set sorting
+      required: false
+      schema:
+        type: string
+        enum:
+        - ASC
+        - DESC
+        default: ASC
   securitySchemes:
     apiKeyAuth:
       type: apiKey

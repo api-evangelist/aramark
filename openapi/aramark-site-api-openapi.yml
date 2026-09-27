@@ -253,7 +253,137 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    siteIdRequiredParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: true
+      schema:
+        type: number
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
   schemas:
+    putSitePinBody:
+      type: object
+      properties:
+        site_id:
+          type: number
+        pin:
+          type: string
+        sp_guid:
+          type: string
+        pin_required:
+          type: boolean
+    site_pin:
+      type: object
+      properties:
+        pin:
+          type: number
+        pin_required:
+          type: string
+    putSiteRequestBody:
+      type: object
+      properties:
+        request_token:
+          type: number
+          description: Request Token of the Site Request
+        status:
+          type: string
+          description: Status of the Request
+    postSiteRequestBody:
+      type: object
+      properties:
+        approval_email:
+          type: string
+          description: Email of the approver of the site request
+        site_id:
+          type: number
+          description: ID of the Site for the request
+        requestor_email:
+          type: string
+          description: Email of the requestor
+        requestor_name:
+          type: string
+          description: Name of the requestor
+        requestor_sp_guid:
+          type: string
+          description: sp GUID of the requestor for the Site. Either requestor_sp_guid or device_serial_number MUST be included
+        device_serial_number:
+          type: string
+          description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
+    put_site_journal_body:
+      type: object
+      properties:
+        journal_id:
+          type: string
+          description: ID of the Journal
+        description:
+          type: string
+          description: Description of the Journal
+        journal_date:
+          type: string
+          description: Date of the Journal entry
+        from_station_id:
+          type: number
+          description: ID of the From Station for the Journal
+        from_station_name:
+          type: string
+          description: Name of the From Station for the Journal
+        to_station_id:
+          type: number
+          description: ID of the To Station for the Journal
+        to_station_name:
+          type: number
+          description: Name of the To Station for the Journal
+        site_id:
+          type: number
+          description: Site ID of the Journal
+        service_area_id:
+          type: number
+          description: Service Area ID of the Journal
     site_journal:
       type: object
       properties:
@@ -290,136 +420,6 @@ components:
         source_system:
           type: string
           description: Source System used at the Site
-    putSiteRequestBody:
-      type: object
-      properties:
-        request_token:
-          type: number
-          description: Request Token of the Site Request
-        status:
-          type: string
-          description: Status of the Request
-    site_pin:
-      type: object
-      properties:
-        pin:
-          type: number
-        pin_required:
-          type: string
-    postSiteRequestBody:
-      type: object
-      properties:
-        approval_email:
-          type: string
-          description: Email of the approver of the site request
-        site_id:
-          type: number
-          description: ID of the Site for the request
-        requestor_email:
-          type: string
-          description: Email of the requestor
-        requestor_name:
-          type: string
-          description: Name of the requestor
-        requestor_sp_guid:
-          type: string
-          description: sp GUID of the requestor for the Site. Either requestor_sp_guid or device_serial_number MUST be included
-        device_serial_number:
-          type: string
-          description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
-    putSitePinBody:
-      type: object
-      properties:
-        site_id:
-          type: number
-        pin:
-          type: string
-        sp_guid:
-          type: string
-        pin_required:
-          type: boolean
-    put_site_journal_body:
-      type: object
-      properties:
-        journal_id:
-          type: string
-          description: ID of the Journal
-        description:
-          type: string
-          description: Description of the Journal
-        journal_date:
-          type: string
-          description: Date of the Journal entry
-        from_station_id:
-          type: number
-          description: ID of the From Station for the Journal
-        from_station_name:
-          type: string
-          description: Name of the From Station for the Journal
-        to_station_id:
-          type: number
-          description: ID of the To Station for the Journal
-        to_station_name:
-          type: number
-          description: Name of the To Station for the Journal
-        site_id:
-          type: number
-          description: Site ID of the Journal
-        service_area_id:
-          type: number
-          description: Service Area ID of the Journal
-  parameters:
-    siteIdRequiredParam:
-      name: site_id
-      in: query
-      description: ID of the Site
-      required: true
-      schema:
-        type: number
-    dateParam:
-      name: date
-      in: query
-      description: Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
   securitySchemes:
     apikey:
       type: apiKey

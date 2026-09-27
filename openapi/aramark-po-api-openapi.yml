@@ -119,6 +119,43 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    pos:
+      type: object
+      properties:
+        po_number:
+          type: string
+        vendor_number:
+          type: number
+        vendor_site_name:
+          type: string
+        line_description:
+          type: string
+        po_line_number:
+          type: number
+        line_type:
+          type: string
+        profit_center:
+          type: string
+        service_type:
+          type: string
+        account:
+          type: string
+        category:
+          type: string
+        concept:
+          type: string
+        event:
+          type: string
+        future:
+          type: string
+        bill_code:
+          type: string
+        attribute_category:
+          type: string
+        similarity_match:
+          type: number
+        item_seq:
+          type: number
     po_number:
       type: object
       properties:
@@ -162,43 +199,6 @@ components:
         item_description:
           type: string
         price:
-          type: number
-        item_seq:
-          type: number
-    pos:
-      type: object
-      properties:
-        po_number:
-          type: string
-        vendor_number:
-          type: number
-        vendor_site_name:
-          type: string
-        line_description:
-          type: string
-        po_line_number:
-          type: number
-        line_type:
-          type: string
-        profit_center:
-          type: string
-        service_type:
-          type: string
-        account:
-          type: string
-        category:
-          type: string
-        concept:
-          type: string
-        event:
-          type: string
-        future:
-          type: string
-        bill_code:
-          type: string
-        attribute_category:
-          type: string
-        similarity_match:
           type: number
         item_seq:
           type: number

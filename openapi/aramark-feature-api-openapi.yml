@@ -55,23 +55,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    siteIdParam:
-      name: site_id
-      in: query
-      description: ID of the Site
-      required: false
-      schema:
-        type: number
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -92,6 +75,23 @@ components:
         enum:
         - 'true'
         - 'false'
+    siteIdParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: false
+      schema:
+        type: number
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
     locationIdNoReqParam:
       name: location_id
       in: query

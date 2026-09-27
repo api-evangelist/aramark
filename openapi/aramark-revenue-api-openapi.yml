@@ -128,40 +128,6 @@ paths:
       description: Marko API Production Server
 components:
   parameters:
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for daily transactions. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
-
-        '
-      required: true
-      schema:
-        type: string
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
-    rollupParam:
-      in: query
-      name: rollup
-      description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-        default: Y
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -181,6 +147,40 @@ components:
         enum:
         - 'true'
         - 'false'
+    orgValueParam:
+      in: path
+      name: org_value
+      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
+
+        '
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    rollupParam:
+      in: query
+      name: rollup
+      description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: Y
     posParam:
       in: query
       name: pos
@@ -247,6 +247,17 @@ components:
         last_updated:
           type: string
           description: Time at which the data was last refreshed
+    RevenueSnapshotResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueSnapshot'
+        count:
+          type: integer
+          description: Total record count
+          example: 12
     RevenueSnapshot:
       type: object
       properties:
@@ -281,17 +292,6 @@ components:
           type: integer
           description: Error code
           example: 401
-    RevenueSnapshotResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevenueSnapshot'
-        count:
-          type: integer
-          description: Total record count
-          example: 12
   securitySchemes:
     apikey:
       type: apiKey

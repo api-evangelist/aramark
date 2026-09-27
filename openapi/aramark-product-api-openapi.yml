@@ -68,17 +68,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProductResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        count:
-          type: integer
-          description: Total record count
-          example: 50
     Product:
       type: object
       properties:
@@ -127,6 +116,17 @@ components:
           type: integer
           description: Error code
           example: 401
+    ProductResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total record count
+          example: 50
   securitySchemes:
     apiKey:
       type: apiKey

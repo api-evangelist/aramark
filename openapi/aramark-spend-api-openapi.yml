@@ -56,27 +56,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    startDateParam:
-      in: query
-      name: start_date
-      description: Start Date of the result set. MM/DD/YYY format
-      required: true
-      schema:
-        type: string
-    endDateParam:
-      in: query
-      name: end_date
-      description: End Date of the result set. MM/DD/YYY format
-      required: true
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 1000
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -87,6 +66,27 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 1000
+    endDateParam:
+      in: query
+      name: end_date
+      description: End Date of the result set. MM/DD/YYY format
+      required: true
+      schema:
+        type: string
+    startDateParam:
+      in: query
+      name: start_date
+      description: Start Date of the result set. MM/DD/YYY format
+      required: true
+      schema:
+        type: string
     pageParam:
       in: query
       name: page

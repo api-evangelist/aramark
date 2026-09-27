@@ -58,10 +58,10 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    recipeIdParam:
-      name: recipe_id
+    locationIdParam:
+      name: location_id
       in: query
-      description: Unique ID of Service Recipe
+      description: Unique ID of Location (Service Area ID OR Location ID is required)
       required: false
       schema:
         type: string
@@ -74,13 +74,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
-      required: false
-      schema:
-        type: string
     smokeParam:
       in: header
       name: smoke
@@ -92,32 +85,178 @@ components:
         enum:
         - 'true'
         - 'false'
-    locationIdParam:
-      name: location_id
+    recipeIdParam:
+      name: recipe_id
       in: query
-      description: Unique ID of Location (Service Area ID OR Location ID is required)
+      description: Unique ID of Service Recipe
+      required: false
+      schema:
+        type: string
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
       required: false
       schema:
         type: string
   schemas:
-    dietary_attributes:
+    primary_attributes:
       type: object
       properties:
-        vegan:
+        protein:
+          type: number
+          description: protein content in g
+          example: 4.841
+        total_fat:
+          type: number
+          description: total fat content in g
+          example: 2.851
+        carbohydrate:
+          type: number
+          description: carbohydrate content in g
+          example: 7.514
+        calories:
+          type: number
+          description: calorie content in kcal
+          example: 76.801
+        total_sugars:
+          type: number
+          description: total sugar content in g
+          example: 0.775
+        fiber:
+          type: number
+          description: fiber content in g
+          example: 0.593
+        calcium:
+          type: number
+          description: calcium content in mg
+          example: 20.62
+        iron:
+          type: number
+          description: iron content in mg
+          example: 0.657
+        potassium:
+          type: number
+          description: potassium content in mg
+          example: 101.964
+        sodium:
+          type: number
+          description: sodium content in mg
+          example: 211.123
+        cholesterol:
+          type: number
+          description: cholesterol content in mg
+          example: 9.273
+        trans_fat:
+          type: number
+          description: trans fat content in g
+          example: 0.027
+        saturated_fat:
+          type: number
+          description: saturated fat content in g
+          example: 0.422
+        monounsaturated_fat:
+          type: number
+          description: monounsaturated fat content in g
+          example: 1.118
+        polyunsaturated_fat:
+          type: number
+          description: polyunsaturated fat content in g
+          example: 0.825
+        calories_from_fat:
+          type: number
+          description: calorie content from fat in kcal
+          example: 25.66
+        pct_calories_from_fat:
+          type: number
+          description: percent of calorie content from fat
+          example: 33.411
+        pct_calories_from_saturated_fat:
+          type: number
+          description: percent of calorie content from saturated fat
+          example: 4.942
+        added_sugars:
+          type: number
+          description: added sugar content in g
+          example: 0
+        vitamin_d_(mcg):
+          type: number
+          description: vitamin D content in mcg
+          example: 0
+    allergen_attributes:
+      type: object
+      properties:
+        allergen_statement_not_available:
           type: string
-          description: indicator if the recipe is vegan
+          description: whether or not the allergen statement is available
+          example: 'null'
+        contains_shellfish:
+          type: string
+          description: indicator if the recipe contains shellfish
           example: 'NO'
-        vegetarian:
+        contains_peanut:
           type: string
-          description: indicator if the recipe is vegetarian
+          description: indicator if the recipe contains peanuts
           example: 'NO'
-        kosher:
+        contains_tree_nuts:
           type: string
-          description: indicator if the recipe is kosher
+          description: indicator if the recipe contains tree nuts
           example: 'NO'
-        halal:
+        contains_milk:
           type: string
-          description: indicator if the recipe is halal
+          description: indicator if the recipe contains milk
+          example: 'NO'
+        contains_wheat:
+          type: string
+          description: indicator if the recipe contains wheat
+          example: 'NO'
+        contains_soy:
+          type: string
+          description: indicator if the recipe contains soy
+          example: 'NO'
+        contains_eggs:
+          type: string
+          description: indicator if the recipe contains eggs
+          example: 'NO'
+        contains_fish:
+          type: string
+          description: indicator if the recipe contains fish
+          example: 'NO'
+        contains_added_msg:
+          type: string
+          description: indicator if the recipe contains added msg
+          example: UNKNOWN
+        contains_hfcs:
+          type: string
+          description: indicator if the recipe contains HFCS
+          example: UNKNOWN
+        contains_mustard:
+          type: string
+          description: indicator if the recipe contains mustard
+          example: UNKNOWN
+        contains_celery:
+          type: string
+          description: indicator if the recipe contains celery
+          example: UNKNOWN
+        contains_sesame:
+          type: string
+          description: indicator if the recipe contains sesame
+          example: UNKNOWN
+        contains_red_yellow_blue_dye:
+          type: string
+          description: indicator if the recipe contains red, yellow, or blue dye
+          example: UNKNOWN
+        gluten_free_per_FDA:
+          type: string
+          description: indicator if the recipe is gluten free per FDA definition
+          example: UNKNOWN
+        non_gmo_claim:
+          type: string
+          description: indicator if the recipe claims to be non GMO
+          example: UNKNOWN
+        contains_gluten:
+          type: string
+          description: indicator if the recipe contains gluten
           example: 'NO'
     nutrition:
       type: object
@@ -305,163 +444,24 @@ components:
           type: number
           description: vitamin e content in IU
           example: 0
-    primary_attributes:
+    dietary_attributes:
       type: object
       properties:
-        protein:
-          type: number
-          description: protein content in g
-          example: 4.841
-        total_fat:
-          type: number
-          description: total fat content in g
-          example: 2.851
-        carbohydrate:
-          type: number
-          description: carbohydrate content in g
-          example: 7.514
-        calories:
-          type: number
-          description: calorie content in kcal
-          example: 76.801
-        total_sugars:
-          type: number
-          description: total sugar content in g
-          example: 0.775
-        fiber:
-          type: number
-          description: fiber content in g
-          example: 0.593
-        calcium:
-          type: number
-          description: calcium content in mg
-          example: 20.62
-        iron:
-          type: number
-          description: iron content in mg
-          example: 0.657
-        potassium:
-          type: number
-          description: potassium content in mg
-          example: 101.964
-        sodium:
-          type: number
-          description: sodium content in mg
-          example: 211.123
-        cholesterol:
-          type: number
-          description: cholesterol content in mg
-          example: 9.273
-        trans_fat:
-          type: number
-          description: trans fat content in g
-          example: 0.027
-        saturated_fat:
-          type: number
-          description: saturated fat content in g
-          example: 0.422
-        monounsaturated_fat:
-          type: number
-          description: monounsaturated fat content in g
-          example: 1.118
-        polyunsaturated_fat:
-          type: number
-          description: polyunsaturated fat content in g
-          example: 0.825
-        calories_from_fat:
-          type: number
-          description: calorie content from fat in kcal
-          example: 25.66
-        pct_calories_from_fat:
-          type: number
-          description: percent of calorie content from fat
-          example: 33.411
-        pct_calories_from_saturated_fat:
-          type: number
-          description: percent of calorie content from saturated fat
-          example: 4.942
-        added_sugars:
-          type: number
-          description: added sugar content in g
-          example: 0
-        vitamin_d_(mcg):
-          type: number
-          description: vitamin D content in mcg
-          example: 0
-    allergen_attributes:
-      type: object
-      properties:
-        allergen_statement_not_available:
+        vegan:
           type: string
-          description: whether or not the allergen statement is available
-          example: 'null'
-        contains_shellfish:
-          type: string
-          description: indicator if the recipe contains shellfish
+          description: indicator if the recipe is vegan
           example: 'NO'
-        contains_peanut:
+        vegetarian:
           type: string
-          description: indicator if the recipe contains peanuts
+          description: indicator if the recipe is vegetarian
           example: 'NO'
-        contains_tree_nuts:
+        kosher:
           type: string
-          description: indicator if the recipe contains tree nuts
+          description: indicator if the recipe is kosher
           example: 'NO'
-        contains_milk:
+        halal:
           type: string
-          description: indicator if the recipe contains milk
-          example: 'NO'
-        contains_wheat:
-          type: string
-          description: indicator if the recipe contains wheat
-          example: 'NO'
-        contains_soy:
-          type: string
-          description: indicator if the recipe contains soy
-          example: 'NO'
-        contains_eggs:
-          type: string
-          description: indicator if the recipe contains eggs
-          example: 'NO'
-        contains_fish:
-          type: string
-          description: indicator if the recipe contains fish
-          example: 'NO'
-        contains_added_msg:
-          type: string
-          description: indicator if the recipe contains added msg
-          example: UNKNOWN
-        contains_hfcs:
-          type: string
-          description: indicator if the recipe contains HFCS
-          example: UNKNOWN
-        contains_mustard:
-          type: string
-          description: indicator if the recipe contains mustard
-          example: UNKNOWN
-        contains_celery:
-          type: string
-          description: indicator if the recipe contains celery
-          example: UNKNOWN
-        contains_sesame:
-          type: string
-          description: indicator if the recipe contains sesame
-          example: UNKNOWN
-        contains_red_yellow_blue_dye:
-          type: string
-          description: indicator if the recipe contains red, yellow, or blue dye
-          example: UNKNOWN
-        gluten_free_per_FDA:
-          type: string
-          description: indicator if the recipe is gluten free per FDA definition
-          example: UNKNOWN
-        non_gmo_claim:
-          type: string
-          description: indicator if the recipe claims to be non GMO
-          example: UNKNOWN
-        contains_gluten:
-          type: string
-          description: indicator if the recipe contains gluten
+          description: indicator if the recipe is halal
           example: 'NO'
   securitySchemes:
     apikey:

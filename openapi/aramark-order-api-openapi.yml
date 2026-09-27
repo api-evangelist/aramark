@@ -66,17 +66,35 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    startDateTimeParam:
-      in: query
-      name: start_date_time
-      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
-      required: true
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
       schema:
         type: string
+        enum:
+        - 'true'
+        - 'false'
+    rawParam:
+      in: query
+      name: raw
+      description: Flag used to determine if the data is direct from the source system, unconformed or not
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
     orgValueParam:
       in: path
       name: org_value
       description: Aramark Organization code
+      required: true
+      schema:
+        type: string
+    endDateTimeParam:
+      in: query
+      name: end_date_time
+      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
       required: true
       schema:
         type: string
@@ -87,24 +105,6 @@ components:
       required: false
       schema:
         type: string
-    rawParam:
-      in: query
-      name: raw
-      description: Flag used to determine if the data is direct from the source system, unconformed or not
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     sourceSystemParam:
       in: query
       name: source_system
@@ -114,13 +114,6 @@ components:
         type: string
         enum:
         - SWZD
-    endDateTimeParam:
-      in: query
-      name: end_date_time
-      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
-      required: true
-      schema:
-        type: string
     pageParam:
       in: query
       name: page
@@ -128,7 +121,33 @@ components:
       required: false
       schema:
         type: number
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
+      required: true
+      schema:
+        type: string
   schemas:
+    orders:
+      type: object
+      properties:
+        source_system:
+          type: string
+          description: Identifier of the source POS system
+        org_value:
+          type: string
+          description: Aramark Organization Code for rollup
+        org_name:
+          type: string
+          description: Name of the Aramark Organization
+        order_count:
+          type: number
+          description: Number of orders
+        suite_wizard_orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/suite_wizard_order_details'
     suite_wizard_order_details:
       type: object
       properties:
@@ -201,25 +220,6 @@ components:
         last_update_date:
           type: string
           description: Date-Time the records was last updated
-    orders:
-      type: object
-      properties:
-        source_system:
-          type: string
-          description: Identifier of the source POS system
-        org_value:
-          type: string
-          description: Aramark Organization Code for rollup
-        org_name:
-          type: string
-          description: Name of the Aramark Organization
-        order_count:
-          type: number
-          description: Number of orders
-        suite_wizard_orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/suite_wizard_order_details'
   securitySchemes:
     apiKey:
       type: apiKey

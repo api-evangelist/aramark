@@ -61,20 +61,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    userIdParam:
-      in: query
-      name: user_id
-      description: Email address of the manager
-      required: true
-      schema:
-        type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -96,6 +82,20 @@ components:
       schema:
         type: string
         default: false
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    userIdParam:
+      in: query
+      name: user_id
+      description: Email address of the manager
+      required: true
+      schema:
+        type: string
     pageParam:
       in: query
       name: page

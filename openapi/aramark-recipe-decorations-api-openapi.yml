@@ -76,6 +76,50 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
+    bypassCacheParam:
+      name: bypass-cache
+      in: header
+      description: This HTTP Header variable will bypassDo not cache call
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: false
+    smokeParam:
+      name: smoke
+      in: header
+      description: 'When set to ''true'' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+
+        '
+      schema:
+        type: string
+        default: false
+    isPatientParam:
+      name: is_patient
+      in: query
+      description: Indicator of when recipe is for patient services
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    isHarvestTableParam:
+      name: is_harvest_table
+      in: query
+      description: Indicator of when recipe is for Harvest Table menu
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Recipe from Prima Web
+      required: false
+      schema:
+        type: string
     isSmiParam:
       name: is_smi
       in: query
@@ -94,10 +138,11 @@ components:
       required: false
       schema:
         type: string
-    isResidentialParam:
-      name: is_residential
+    isMm2Param:
+      name: is_mm2
       in: query
-      description: Indicator of whether Residential is enabled
+      description: Indicator of whether Master the Menu 2 or mm2 is enabled
+      required: false
       schema:
         type: string
         enum:
@@ -111,13 +156,6 @@ components:
       schema:
         type: string
         default: 50
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Recipe from Prima Web
-      required: false
-      schema:
-        type: string
     isRetailParam:
       name: is_retail
       in: query
@@ -131,62 +169,6 @@ components:
       name: is_alsr
       in: query
       description: Indicator of whether alsr is enabled
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    isPatientParam:
-      name: is_patient
-      in: query
-      description: Indicator of when recipe is for patient services
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    bypassCacheParam:
-      name: bypass-cache
-      in: header
-      description: This HTTP Header variable will bypassDo not cache call
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: false
-    isHarvestTableParam:
-      name: is_harvest_table
-      in: query
-      description: Indicator of when recipe is for Harvest Table menu
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    isTrueEatsParam:
-      name: is_true_eats
-      in: query
-      description: Indicator of when recipe is for True Eats menu
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    smokeParam:
-      name: smoke
-      in: header
-      description: 'When set to ''true'' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-
-        '
-      schema:
-        type: string
-        default: false
-    isMm2Param:
-      name: is_mm2
-      in: query
-      description: Indicator of whether Master the Menu 2 or mm2 is enabled
       required: false
       schema:
         type: string
@@ -208,6 +190,24 @@ components:
       required: false
       schema:
         type: string
+    isResidentialParam:
+      name: is_residential
+      in: query
+      description: Indicator of whether Residential is enabled
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    isTrueEatsParam:
+      name: is_true_eats
+      in: query
+      description: Indicator of when recipe is for True Eats menu
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
   schemas:
     recipe_decorations:
       type: object

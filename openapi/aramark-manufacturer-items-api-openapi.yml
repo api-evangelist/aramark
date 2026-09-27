@@ -51,6 +51,26 @@ paths:
                       $ref: '#/components/schemas/manufacturer_item_pricing'
 components:
   parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     locationOrgValueParam:
       name: location_org_value
       in: query
@@ -68,15 +88,6 @@ components:
         enum:
         - PRMA
         default: PRMA
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     mfgItemSequenceParam:
       name: mfg_item_seqs
       in: query
@@ -84,17 +95,6 @@ components:
       required: true
       schema:
         type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
   schemas:
     manufacturer_item_pricing:
       type: object

@@ -57,24 +57,19 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    enabledOnlyParam:
-      name: enabled_only
+    enablementTypeParam:
+      name: enablement_type
       in: query
-      description: Flag used to determine if Enabled or not
+      description: User to filter records by Enablement Type. Multiple entries allowed in a comma separated list
       required: false
       schema:
         type: string
         enum:
-        - true
-        - false
-    sizeParam:
-      name: size
-      in: query
-      description: Size of the result set
-      required: false
-      schema:
-        type: number
-        default: 50
+        - DIRECT BILL
+        - ERCV
+        - PROGRAM - INVOICE ONLY
+        - PUNCHOUT
+        - ADOPTED
     msaParam:
       in: query
       name: msa
@@ -91,6 +86,16 @@ components:
         enum:
         - 'true'
         - 'false'
+    enabledOnlyParam:
+      name: enabled_only
+      in: query
+      description: Flag used to determine if Enabled or not
+      required: false
+      schema:
+        type: string
+        enum:
+        - true
+        - false
     orgValuePathParam:
       in: path
       name: org_value
@@ -98,6 +103,14 @@ components:
       required: true
       schema:
         type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
     pageParam:
       name: page
       in: query
@@ -106,19 +119,6 @@ components:
       schema:
         type: number
         default: 1
-    enablementTypeParam:
-      name: enablement_type
-      in: query
-      description: User to filter records by Enablement Type. Multiple entries allowed in a comma separated list
-      required: false
-      schema:
-        type: string
-        enum:
-        - DIRECT BILL
-        - ERCV
-        - PROGRAM - INVOICE ONLY
-        - PUNCHOUT
-        - ADOPTED
     searchParam:
       name: search
       in: query

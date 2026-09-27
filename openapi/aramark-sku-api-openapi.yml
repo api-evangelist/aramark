@@ -59,7 +59,7 @@ paths:
       tags:
       - Sku
       description: Submit a request to lookup SKUs
-      operationId: postSKULookup
+      operationId: postSkuLookup
       parameters:
       - $ref: '#/components/parameters/skuBodyParam'
       responses:
@@ -86,6 +86,8 @@ paths:
           description: HTTP Verb / Operation not supported
       summary: Post SKU lookup
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: postSKULookup
     servers:
     - url: https://qa-marko.aramark.net/v1/product
 components:

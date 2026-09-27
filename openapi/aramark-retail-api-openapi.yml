@@ -114,7 +114,7 @@ paths:
   /retail/items/{org_value}:
     get:
       description: Returns location level data for retail items
-      operationId: getRetailItems
+      operationId: getRetailItemsByOrgValue
       tags:
       - Retail
       parameters:
@@ -148,6 +148,8 @@ paths:
           description: HTTP Verb / Operation not supported
       summary: Get retail items
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: getRetailItems
     servers:
     - url: https://qa-marko.aramark.net/v1/product
   /retail/items:
@@ -171,30 +173,6 @@ paths:
     - url: https://qa-marko.aramark.net/v1/product
 components:
   schemas:
-    menuitem:
-      type: object
-      properties:
-        request_type:
-          type: number
-          description: Numeric value to indicate the type of request; 1-New, 2-Add, 3-Update, 4-Delete; Required
-        item_name:
-          type: string
-          description: Name of the item; Required for request_type=1 or New Menu Item
-        object_number:
-          type: string
-          description: Number for the object; Required for request_type=2,3,4
-        barcode:
-          type: string
-          description: Barcode for the item; Required for request_type=1 or New CPG Item
-        catalog:
-          type: string
-          description: Catalog to place the item in; Optional
-        slu:
-          type: string
-          description: Screen Look Up code for item; Optional
-        price:
-          type: number
-          description: Price of the item; Required for request_type=2,3
     retail_items:
       type: object
       properties:
@@ -301,28 +279,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/menuitem'
+    menuitem:
+      type: object
+      properties:
+        request_type:
+          type: number
+          description: Numeric value to indicate the type of request; 1-New, 2-Add, 3-Update, 4-Delete; Required
+        item_name:
+          type: string
+          description: Name of the item; Required for request_type=1 or New Menu Item
+        object_number:
+          type: string
+          description: Number for the object; Required for request_type=2,3,4
+        barcode:
+          type: string
+          description: Barcode for the item; Required for request_type=1 or New CPG Item
+        catalog:
+          type: string
+          description: Catalog to place the item in; Optional
+        slu:
+          type: string
+          description: Screen Look Up code for item; Optional
+        price:
+          type: number
+          description: Price of the item; Required for request_type=2,3
   parameters:
-    bodyParam:
-      in: body
-      name: body
-      description: List of Items to have created with contact information.
-      required: false
-      schema:
-        $ref: '#/components/schemas/request'
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code
-      required: true
-      schema:
-        type: string
-    barcodeParam:
-      name: barcode
-      in: query
-      description: Barcode value for a specific item (Must use if NOT using Search)
-      required: false
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -355,10 +336,31 @@ components:
         - NONCPG
         - ALL
         default: ALL
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code
+      required: true
+      schema:
+        type: string
+    bodyParam:
+      in: body
+      name: body
+      description: List of Items to have created with contact information.
+      required: false
+      schema:
+        $ref: '#/components/schemas/request'
     searchParam:
       name: search
       in: query
       description: Text used to search for a specific product (Must use if NOT using Barcode)
+      required: false
+      schema:
+        type: string
+    barcodeParam:
+      name: barcode
+      in: query
+      description: Barcode value for a specific item (Must use if NOT using Search)
       required: false
       schema:
         type: string
