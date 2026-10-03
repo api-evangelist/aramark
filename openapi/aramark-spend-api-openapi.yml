@@ -55,45 +55,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 1000
-    endDateParam:
-      in: query
-      name: end_date
-      description: End Date of the result set. MM/DD/YYY format
-      required: true
-      schema:
-        type: string
-    startDateParam:
-      in: query
-      name: start_date
-      description: Start Date of the result set. MM/DD/YYY format
-      required: true
-      schema:
-        type: string
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      schema:
-        type: number
-        default: 1
   schemas:
     item_detail_spend:
       type: object
@@ -168,6 +129,45 @@ components:
           type: number
         quantity:
           type: number
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    endDateParam:
+      in: query
+      name: end_date
+      description: End Date of the result set. MM/DD/YYY format
+      required: true
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 1000
+    startDateParam:
+      in: query
+      name: start_date
+      description: Start Date of the result set. MM/DD/YYY format
+      required: true
+      schema:
+        type: string
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
   securitySchemes:
     apiKey:
       type: apiKey

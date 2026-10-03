@@ -55,15 +55,20 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH24:mm"
+      required: true
+      schema:
+        type: string
     sourceSystemRealTimeParam:
       in: query
       name: source_system
@@ -78,24 +83,19 @@ components:
       required: true
       schema:
         type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     endDateTimeParam:
       in: query
       name: end_date_time
       description: Calendar end date and time for transactions. "MM/dd/yyyy HH24:mm"
-      required: true
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code
-      required: true
-      schema:
-        type: string
-    startDateTimeParam:
-      in: query
-      name: start_date_time
-      description: Calendar start date and time for transactions. "MM/dd/yyyy HH24:mm"
       required: true
       schema:
         type: string

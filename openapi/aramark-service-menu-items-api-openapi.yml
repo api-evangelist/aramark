@@ -113,26 +113,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    isResultRequiredParam:
-      name: is_result_required
+    subLocationIdParam:
+      name: sub_location_id
       in: query
-      description: Filter on the menu items that have a service result.
+      description: Unique ID of Sub Location aka Station for a Service Date.
       required: false
       schema:
         type: string
-        enum:
-        - Y
-        - N
     serviceAreaIdParam:
       name: service_area_id
       in: query
@@ -140,17 +127,20 @@ components:
       required: false
       schema:
         type: string
-    serviceDateParam:
-      name: service_date
-      in: query
-      description: Service Date in Format "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
     isTempRequiredParam:
       name: is_temp_required
       in: query
       description: Filter on the menu items that require regular temperature monitoring.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    isResultRequiredParam:
+      name: is_result_required
+      in: query
+      description: Filter on the menu items that have a service result.
       required: false
       schema:
         type: string
@@ -164,13 +154,6 @@ components:
       required: false
       schema:
         type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        default: false
     fieldsParam:
       name: fields
       in: query
@@ -184,13 +167,6 @@ components:
       required: false
       schema:
         type: string
-    mealPeriodIdParam:
-      name: meal_period_id
-      in: query
-      description: Unique ID of Meal Period for a Location and Service Date.
-      required: false
-      schema:
-        type: string
     isMtoParam:
       name: is_mto
       in: query
@@ -201,27 +177,64 @@ components:
         enum:
         - Y
         - N
-    subLocationIdParam:
-      name: sub_location_id
+    mealPeriodIdParam:
+      name: meal_period_id
       in: query
-      description: Unique ID of Sub Location aka Station for a Service Date.
+      description: Unique ID of Meal Period for a Location and Service Date.
       required: false
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        default: false
+    serviceDateParam:
+      name: service_date
+      in: query
+      description: Service Date in Format "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
+    sub_locations:
+      type: object
+      properties:
+        sub_location_id:
+          type: integer
+          description: Unique code for a Sub Location, sourced by PRIMA or MDG
+        sub_location_name:
+          type: string
+          description: Sub Location descriptive name
+        sub_location:
+          type: string
+          description: Unique code for a Sub Location, sourced by MDG
+        menu_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/menu_items'
     service_menus:
       type: object
       properties:
@@ -343,32 +356,38 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-    sub_locations:
+    menu:
       type: object
       properties:
-        sub_location_id:
+        location_id:
           type: integer
-          description: Unique code for a Sub Location, sourced by PRIMA or MDG
-        sub_location_name:
+          description: Unique code for a Location, sourced by BIC or MDG
+        location_name:
           type: string
-          description: Sub Location descriptive name
-        sub_location:
+          description: Location descriptive name
+        location:
           type: string
-          description: Unique code for a Sub Location, sourced by MDG
-        menu_items:
+          description: Unique code for a Location, sourced by MDG
+        service_area_id:
+          type: integer
+          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
+        service_area_name:
+          type: integer
+          description: Service Area descriptive name
+        service_menu_id:
+          type: integer
+          description: Unique ID of Service Menu
+        service_date:
+          type: string
+          description: Calendar date of service in 'MM/DD/YYYY' format
+        meal_period_id:
+          type: integer
+        meal_period_name:
+          type: string
+        sub_locations:
           type: array
           items:
-            $ref: '#/components/schemas/menu_items'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-      required:
-      - code
-      - message
+            $ref: '#/components/schemas/sub_locations'
     menu_items:
       type: object
       properties:
@@ -449,38 +468,19 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-    menu:
-      type: object
-      properties:
-        location_id:
-          type: integer
-          description: Unique code for a Location, sourced by BIC or MDG
-        location_name:
-          type: string
-          description: Location descriptive name
-        location:
-          type: string
-          description: Unique code for a Location, sourced by MDG
-        service_area_id:
-          type: integer
-          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
-        service_area_name:
-          type: integer
-          description: Service Area descriptive name
-        service_menu_id:
-          type: integer
-          description: Unique ID of Service Menu
-        service_date:
-          type: string
-          description: Calendar date of service in 'MM/DD/YYYY' format
-        meal_period_id:
-          type: integer
-        meal_period_name:
-          type: string
-        sub_locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/sub_locations'
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiKey:
       type: apiKey

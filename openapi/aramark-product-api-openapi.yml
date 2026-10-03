@@ -68,6 +68,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ProductResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+          description: Total record count
+          example: 50
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     Product:
       type: object
       properties:
@@ -105,28 +127,6 @@ components:
           example:
           - GLUTEN
           - DAIRY
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
-    ProductResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-        count:
-          type: integer
-          description: Total record count
-          example: 50
   securitySchemes:
     apiKey:
       type: apiKey

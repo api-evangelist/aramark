@@ -57,35 +57,10 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    rankLowParam:
-      name: rank_low
+    masterSystemIdParam:
+      name: master_system_id
       in: query
-      description: Lowest ranked swap match to return
-      required: false
-      schema:
-        type: number
-        default: 1
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    rankHighParam:
-      name: rank_high
-      in: query
-      description: Highest ranked swap match to return
-      required: false
-      schema:
-        type: number
-        default: 5
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: ID of the Recipe
+      description: Master System ID of the Recipe
       required: true
       schema:
         type: string
@@ -96,10 +71,27 @@ components:
       required: true
       schema:
         type: string
-    masterSystemIdParam:
-      name: master_system_id
+    rankHighParam:
+      name: rank_high
       in: query
-      description: Master System ID of the Recipe
+      description: Highest ranked swap match to return
+      required: false
+      schema:
+        type: number
+        default: 5
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
       required: true
       schema:
         type: string
@@ -115,6 +107,14 @@ components:
         - Similar Ingredients
         - Similar Nutritional Values
         - Similar AI Attributes
+    rankLowParam:
+      name: rank_low
+      in: query
+      description: Lowest ranked swap match to return
+      required: false
+      schema:
+        type: number
+        default: 1
   schemas:
     recommendations:
       type: object

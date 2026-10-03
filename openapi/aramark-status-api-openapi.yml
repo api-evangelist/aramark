@@ -56,6 +56,22 @@ paths:
                       $ref: '#/components/schemas/employee_status'
 components:
   parameters:
+    dateOfBirthParam:
+      in: query
+      name: date_of_birth
+      description: Date of Birth of the employee
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -66,22 +82,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    dateOfBirthParam:
-      in: query
-      name: date_of_birth
-      description: Date of Birth of the employee
-      required: true
-      schema:
-        type: string
     employeeIdParam:
       in: query
       name: employee_id

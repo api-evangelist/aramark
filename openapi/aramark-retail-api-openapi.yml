@@ -173,6 +173,43 @@ paths:
     - url: https://qa-marko.aramark.net/v1/product
 components:
   schemas:
+    request:
+      type: object
+      properties:
+        source_id:
+          type: number
+          description: Unique ID for the source system of the item; Required
+        location_type_id:
+          type: number
+          description: Unique ID for the type of location; Required
+        location_code:
+          type: string
+          description: Aramark code for the location; Required when location_type_id=1
+        source_location_id:
+          type: number
+          description: POS Location ID; Required when location_type_id=3
+        revenue_center_id:
+          type: number
+          description: POS Revenue Center ID; Required when location_type_id=3
+        csp_location_id:
+          type: number
+          description: CSP Location ID; Required when location_type_id=2
+        contact_name:
+          type: string
+          description: Name of the requestor; Required
+        contact_phone:
+          type: string
+          description: Phone Number of the requestor; Required
+        email:
+          type: string
+          description: Email Address of the requestor; Required
+        effective_date:
+          type: string
+          description: Date the items will need to be available by; Optional
+        menuitem:
+          type: array
+          items:
+            $ref: '#/components/schemas/menuitem'
     retail_items:
       type: object
       properties:
@@ -242,43 +279,6 @@ components:
         catalog_name:
           type: string
           description: Name of the catalog
-    request:
-      type: object
-      properties:
-        source_id:
-          type: number
-          description: Unique ID for the source system of the item; Required
-        location_type_id:
-          type: number
-          description: Unique ID for the type of location; Required
-        location_code:
-          type: string
-          description: Aramark code for the location; Required when location_type_id=1
-        source_location_id:
-          type: number
-          description: POS Location ID; Required when location_type_id=3
-        revenue_center_id:
-          type: number
-          description: POS Revenue Center ID; Required when location_type_id=3
-        csp_location_id:
-          type: number
-          description: CSP Location ID; Required when location_type_id=2
-        contact_name:
-          type: string
-          description: Name of the requestor; Required
-        contact_phone:
-          type: string
-          description: Phone Number of the requestor; Required
-        email:
-          type: string
-          description: Email Address of the requestor; Required
-        effective_date:
-          type: string
-          description: Date the items will need to be available by; Optional
-        menuitem:
-          type: array
-          items:
-            $ref: '#/components/schemas/menuitem'
     menuitem:
       type: object
       properties:
@@ -304,26 +304,13 @@ components:
           type: number
           description: Price of the item; Required for request_type=2,3
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
     itemTypeParam:
       name: item_type
       in: query
@@ -336,20 +323,26 @@ components:
         - NONCPG
         - ALL
         default: ALL
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code
-      required: true
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
       schema:
         type: string
-    bodyParam:
-      in: body
-      name: body
-      description: List of Items to have created with contact information.
-      required: false
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
-        $ref: '#/components/schemas/request'
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
     searchParam:
       name: search
       in: query
@@ -364,6 +357,13 @@ components:
       required: false
       schema:
         type: string
+    bodyParam:
+      in: body
+      name: body
+      description: List of Items to have created with contact information.
+      required: false
+      schema:
+        $ref: '#/components/schemas/request'
   securitySchemes:
     apikey:
       type: apiKey

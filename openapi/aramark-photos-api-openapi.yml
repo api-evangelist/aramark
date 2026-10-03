@@ -120,24 +120,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   schemas:
-    service_photos:
-      type: object
-      properties:
-        service_area_id:
-          type: number
-          description: Service Area ID of the Photo
-        station_id:
-          type: number
-          description: Station ID of the Photo
-        period_id:
-          type: number
-          description: Period ID of the Photo
-        photo_id:
-          type: string
-          description: ID of the photo
-        time_taken:
-          type: string
-          description: Time the Photo was taken
     putPhotosBody:
       type: object
       properties:
@@ -156,6 +138,24 @@ components:
         service_area_id:
           type: number
           description: Service Area ID of the Photo
+    service_photos:
+      type: object
+      properties:
+        service_area_id:
+          type: number
+          description: Service Area ID of the Photo
+        station_id:
+          type: number
+          description: Station ID of the Photo
+        period_id:
+          type: number
+          description: Period ID of the Photo
+        photo_id:
+          type: string
+          description: ID of the photo
+        time_taken:
+          type: string
+          description: Time the Photo was taken
     deletePhotosBody:
       type: object
       properties:
@@ -163,15 +163,6 @@ components:
           type: string
           description: ID of the Photo
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     smokeParam:
       in: header
       name: smoke
@@ -183,6 +174,22 @@ components:
         enum:
         - 'true'
         - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
     sourceSystemParam:
       name: source_system
       in: query
@@ -193,13 +200,6 @@ components:
         enum:
         - PRMA
         default: PRMA
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
   securitySchemes:
     apikey:
       type: apiKey

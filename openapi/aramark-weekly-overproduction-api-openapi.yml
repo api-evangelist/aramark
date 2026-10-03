@@ -98,34 +98,10 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        default: 'false'
     orgValueParam:
       in: path
       name: org_value
       description: Provide business organization code in URL to filter data set
-      required: true
-      schema:
-        type: string
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for fiscal week to roll backwards. "mm/dd/yyyy"
       required: true
       schema:
         type: string
@@ -137,6 +113,30 @@ components:
       schema:
         type: integer
         default: 0
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        default: 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for fiscal week to roll backwards. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
   schemas:
     measure:
       type: object

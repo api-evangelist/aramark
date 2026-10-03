@@ -149,132 +149,24 @@ paths:
     - url: https://dev-marko.aramark.net/v1/organization
 components:
   schemas:
-    sub_locations:
+    divisions:
       type: object
       properties:
-        sub_location_name:
+        division_name:
           type: string
-          description: Aramark Sub Location Name
-        sub_location:
+          description: Aramark Division Name
+        division:
           type: string
-          description: Aramark Sub Location Code
-        sub_location_id:
+          description: Aramark Division Code
+        division_id:
           type: number
-          description: Sub Location Node ID
+          description: Division Node ID
         status:
           type: string
-          description: The status of the Sub Location. A-Active, X-Inactive
+          description: The status of the Division. A-Active, X-Inactive
         status_description:
           type: string
-          description: Description of the Sub Location Status
-    profit_centers:
-      type: object
-      properties:
-        profit_center_name:
-          type: string
-          description: Aramark Profit Center Name
-        profit_center:
-          type: string
-          description: Aramark Profit Center Code
-        profit_center_id:
-          type: number
-          description: Profit Center Node ID
-        status:
-          type: string
-          description: The status of the Profit Center. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the Profit Center Status
-    regions:
-      type: object
-      properties:
-        region_name:
-          type: string
-          description: Aramark Region Name
-        region:
-          type: string
-          description: Aramark Region Code
-        region_id:
-          type: number
-          description: Region Node ID
-        status:
-          type: string
-          description: The status of the Region. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the Region Status
-    districts:
-      type: object
-      properties:
-        district_name:
-          type: string
-          description: Aramark District Name
-        district:
-          type: string
-          description: Aramark District Code
-        district_id:
-          type: number
-          description: District Node ID
-        status:
-          type: string
-          description: The status of the District. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the District Status
-    business_units:
-      type: object
-      properties:
-        business_units_name:
-          type: string
-          description: Aramark Business Unit Name
-        business_units:
-          type: string
-          description: Aramark Business Unit Code
-        business_units_id:
-          type: number
-          description: Business Unit Node ID
-        status:
-          type: string
-          description: The status of the Business Unit. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the Business Unit Status
-    lines_of_business:
-      type: object
-      properties:
-        line_of_business_name:
-          type: string
-          description: Aramark Line of Business Name
-        line_of_business:
-          type: string
-          description: Aramark Line of Business Code
-        line_of_business_id:
-          type: number
-          description: Line of Business Node ID
-        status:
-          type: string
-          description: The status of the Line of Business. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the Line of Business Status
-    locations:
-      type: object
-      properties:
-        location_name:
-          type: string
-          description: Aramark Location Name
-        location:
-          type: string
-          description: Aramark Location Code
-        location_id:
-          type: number
-          description: Location Node ID
-        status:
-          type: string
-          description: The status of the Location. A-Active, X-Inactive
-        status_description:
-          type: string
-          description: Description of the Location Status
+          description: Description of the Division Status
     financial_organizations:
       type: object
       properties:
@@ -313,24 +205,132 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/divisions'
-    divisions:
+    locations:
       type: object
       properties:
-        division_name:
+        location_name:
           type: string
-          description: Aramark Division Name
-        division:
+          description: Aramark Location Name
+        location:
           type: string
-          description: Aramark Division Code
-        division_id:
+          description: Aramark Location Code
+        location_id:
           type: number
-          description: Division Node ID
+          description: Location Node ID
         status:
           type: string
-          description: The status of the Division. A-Active, X-Inactive
+          description: The status of the Location. A-Active, X-Inactive
         status_description:
           type: string
-          description: Description of the Division Status
+          description: Description of the Location Status
+    districts:
+      type: object
+      properties:
+        district_name:
+          type: string
+          description: Aramark District Name
+        district:
+          type: string
+          description: Aramark District Code
+        district_id:
+          type: number
+          description: District Node ID
+        status:
+          type: string
+          description: The status of the District. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the District Status
+    business_units:
+      type: object
+      properties:
+        business_units_name:
+          type: string
+          description: Aramark Business Unit Name
+        business_units:
+          type: string
+          description: Aramark Business Unit Code
+        business_units_id:
+          type: number
+          description: Business Unit Node ID
+        status:
+          type: string
+          description: The status of the Business Unit. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the Business Unit Status
+    profit_centers:
+      type: object
+      properties:
+        profit_center_name:
+          type: string
+          description: Aramark Profit Center Name
+        profit_center:
+          type: string
+          description: Aramark Profit Center Code
+        profit_center_id:
+          type: number
+          description: Profit Center Node ID
+        status:
+          type: string
+          description: The status of the Profit Center. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the Profit Center Status
+    lines_of_business:
+      type: object
+      properties:
+        line_of_business_name:
+          type: string
+          description: Aramark Line of Business Name
+        line_of_business:
+          type: string
+          description: Aramark Line of Business Code
+        line_of_business_id:
+          type: number
+          description: Line of Business Node ID
+        status:
+          type: string
+          description: The status of the Line of Business. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the Line of Business Status
+    regions:
+      type: object
+      properties:
+        region_name:
+          type: string
+          description: Aramark Region Name
+        region:
+          type: string
+          description: Aramark Region Code
+        region_id:
+          type: number
+          description: Region Node ID
+        status:
+          type: string
+          description: The status of the Region. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the Region Status
+    sub_locations:
+      type: object
+      properties:
+        sub_location_name:
+          type: string
+          description: Aramark Sub Location Name
+        sub_location:
+          type: string
+          description: Aramark Sub Location Code
+        sub_location_id:
+          type: number
+          description: Sub Location Node ID
+        status:
+          type: string
+          description: The status of the Sub Location. A-Active, X-Inactive
+        status_description:
+          type: string
+          description: Description of the Sub Location Status
     profit_center_financial_details:
       type: object
       properties:
@@ -533,32 +533,6 @@ components:
           type: string
           description: Date on which the information was last updated
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    searchParam:
-      in: query
-      name: search
-      description: Used to search against the Organization Name.  Must be between 2-10 characters without white spaces
-      required: false
-      schema:
-        type: string
     orgValueParam:
       in: path
       name: org_value
@@ -568,16 +542,6 @@ components:
       required: true
       schema:
         type: string
-    statusParam:
-      in: query
-      name: status
-      description: "Organization status:\n  * `A` - Active\n  * `X` - Inactive\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - A
-        - X
     hierarchyLevelParam:
       in: query
       name: hierarchy_level
@@ -594,12 +558,42 @@ components:
         - LOB
         - BSU
         - DIV
-    smokeParam_2:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+    searchParam:
+      in: query
+      name: search
+      description: Used to search against the Organization Name.  Must be between 2-10 characters without white spaces
+      required: false
       schema:
         type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    statusParam:
+      in: query
+      name: status
+      description: "Organization status:\n  * `A` - Active\n  * `X` - Inactive\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - A
+        - X
     orgValueParam_2:
       in: path
       name: org_value
@@ -607,13 +601,18 @@ components:
       description: provide business organization code in URL to filter data set
       schema:
         type: string
-    sizeParam:
+    searchParam_2:
       in: query
-      name: size
-      description: Number of records to be returned in each page of result set
+      name: search
+      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
       schema:
         type: string
-        default: 50
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
     formatParam:
       in: query
       name: format
@@ -625,6 +624,13 @@ components:
         - JSON
         - CSV
         - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
     pageParam:
       in: query
       name: page
@@ -632,12 +638,6 @@ components:
       schema:
         type: number
         default: 1
-    searchParam_2:
-      in: query
-      name: search
-      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
-      schema:
-        type: string
   securitySchemes:
     apiKey:
       type: apiKey

@@ -54,15 +54,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     smokeParam:
       in: header
       name: smoke
@@ -74,6 +65,22 @@ components:
         enum:
         - 'true'
         - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
     sourceSystemParam:
       name: source_system
       in: query
@@ -84,13 +91,6 @@ components:
         enum:
         - PRMA
         default: PRMA
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
   schemas:
     service_feature:
       type: object

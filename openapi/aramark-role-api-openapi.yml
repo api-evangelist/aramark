@@ -59,41 +59,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    userIdParam:
-      name: user_id
-      in: query
-      description: Email address of user
-      required: true
-      schema:
-        type: string
-        default: last-first@aramark.com
-    searchParam:
-      name: search
-      in: query
-      description: Search string to find Organizations
-      required: false
-      schema:
-        type: string
   schemas:
     roles:
       type: object
@@ -104,6 +69,41 @@ components:
         role_level_number:
           type: string
           description: Digit associated with a level in the Aramark Organization
+  parameters:
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    searchParam:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
   securitySchemes:
     apiKey:
       type: apiKey

@@ -216,20 +216,20 @@ components:
       required: true
       schema:
         type: string
-    bypassCacheParam:
+    smokeParam:
       in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
       schema:
         type: string
         enum:
         - 'true'
         - 'false'
         default: 'false'
-    smokeParam:
+    bypassCacheParam:
       in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:
@@ -280,28 +280,21 @@ components:
       required: false
       schema:
         type: number
-    bypassCacheParam_3:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    deviceSerialNumberParam:
-      name: device_serial_number
-      in: query
-      description: Serial Number of the Device
-      required: true
-      schema:
-        type: string
     smokeParam_2:
       in: header
       name: smoke
       description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
 
         '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam_3:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:
@@ -317,6 +310,13 @@ components:
         enum:
         - PRMA
         default: PRMA
+    deviceSerialNumberParam:
+      name: device_serial_number
+      in: query
+      description: Serial Number of the Device
+      required: true
+      schema:
+        type: string
   schemas:
     Device:
       type: object

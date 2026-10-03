@@ -121,6 +121,15 @@ paths:
       description: Marko API Production Server
 components:
   parameters:
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -131,30 +140,13 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sizeParam:
-      name: size
+    searchParam:
+      name: search
       in: query
-      description: Number of records to be returned in each page of result set
+      description: Search string to find Organizations
+      required: false
       schema:
         type: string
-        default: 50
-    userIdParam:
-      name: user_id
-      in: query
-      description: Email address of user
-      required: true
-      schema:
-        type: string
-        default: last-first@aramark.com
     segmentCategoryParam:
       name: segment_category
       in: query
@@ -170,6 +162,13 @@ components:
         - ALL
         - ALL_CLOSED
         default: OPERATIONAL
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
     pageParam:
       name: page
       in: query
@@ -178,13 +177,14 @@ components:
       schema:
         type: string
         default: 1
-    searchParam:
-      name: search
+    userIdParam:
+      name: user_id
       in: query
-      description: Search string to find Organizations
-      required: false
+      description: Email address of user
+      required: true
       schema:
         type: string
+        default: last-first@aramark.com
   schemas:
     profit_centers:
       type: object
@@ -201,6 +201,28 @@ components:
         segment:
           type: string
           description: detailed segmentation group
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    ProfitCenterResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProfitCenter'
+        count:
+          type: integer
+          description: Total record count
+          example: 20
     ProfitCenter:
       type: object
       properties:
@@ -224,28 +246,6 @@ components:
           type: boolean
           description: Whether the profit center is active
           example: true
-    ProfitCenterResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProfitCenter'
-        count:
-          type: integer
-          description: Total record count
-          example: 20
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
   securitySchemes:
     apiKey:
       type: apiKey

@@ -172,85 +172,6 @@ paths:
     - url: https://dev-marko.aramark.net/v3/service
       description: Development server
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: ID of the Recipe
-      required: false
-      schema:
-        type: string
-    lastModifiedDateParam:
-      name: last_modified_date
-      in: query
-      description: Last Modified Date of the data
-      required: true
-      schema:
-        type: string
-    lastModifiedDateNoReqParam:
-      name: last_modified_date
-      in: query
-      description: Last Modified Date of the data
-      required: false
-      schema:
-        type: string
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: Inventory source system
-      required: true
-      schema:
-        type: string
-        enum:
-        - PRMA
-    locationIdNoReqParam:
-      name: location_id
-      in: query
-      description: ID of the location. Must pass Location ID or Service Area ID
-      required: false
-      schema:
-        type: number
-    serviceAreaIdNoReqParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area. Must pass Location ID or Service Area ID
-      required: false
-      schema:
-        type: number
-    lastModifiedDateParam_2:
-      name: last_update_date
-      in: query
-      description: Last Modified Date of the data
-      required: true
-      schema:
-        type: string
-    lastModifiedDateNoReqParam_2:
-      name: last_update_date
-      in: query
-      description: Last Update Date of the data
-      required: false
-      schema:
-        type: string
   schemas:
     nutrition:
       type: object
@@ -1066,6 +987,85 @@ components:
         service_area_id:
           type: number
           description: Service Area ID
+  parameters:
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the location. Must pass Location ID or Service Area ID
+      required: false
+      schema:
+        type: number
+    serviceAreaIdNoReqParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area. Must pass Location ID or Service Area ID
+      required: false
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    lastModifiedDateNoReqParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: false
+      schema:
+        type: string
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: ID of the Recipe
+      required: false
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+    lastModifiedDateParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: true
+      schema:
+        type: string
+    lastModifiedDateNoReqParam_2:
+      name: last_update_date
+      in: query
+      description: Last Update Date of the data
+      required: false
+      schema:
+        type: string
+    lastModifiedDateParam_2:
+      name: last_update_date
+      in: query
+      description: Last Modified Date of the data
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apikey:
       type: apiKey

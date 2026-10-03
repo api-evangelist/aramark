@@ -254,15 +254,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
     smokeParam:
       in: header
       name: smoke
@@ -274,17 +272,19 @@ components:
         enum:
         - 'true'
         - 'false'
-    dateParam:
-      name: date
-      in: query
-      description: Date of the requested data. YYYY-MM-DD foramt.
-      required: true
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
-    siteIdRequiredParam:
-      name: site_id
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
       in: query
-      description: ID of the Site
+      description: ID of the Service Area
       required: true
       schema:
         type: number
@@ -298,41 +298,14 @@ components:
         enum:
         - PRMA
         default: PRMA
-    serviceAreaIdParam:
-      name: service_area_id
+    siteIdRequiredParam:
+      name: site_id
       in: query
-      description: ID of the Service Area
+      description: ID of the Site
       required: true
       schema:
         type: number
   schemas:
-    putSitePinBody:
-      type: object
-      properties:
-        site_id:
-          type: number
-        pin:
-          type: string
-        sp_guid:
-          type: string
-        pin_required:
-          type: boolean
-    site_pin:
-      type: object
-      properties:
-        pin:
-          type: number
-        pin_required:
-          type: string
-    putSiteRequestBody:
-      type: object
-      properties:
-        request_token:
-          type: number
-          description: Request Token of the Site Request
-        status:
-          type: string
-          description: Status of the Request
     postSiteRequestBody:
       type: object
       properties:
@@ -354,6 +327,13 @@ components:
         device_serial_number:
           type: string
           description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
+    site_pin:
+      type: object
+      properties:
+        pin:
+          type: number
+        pin_required:
+          type: string
     put_site_journal_body:
       type: object
       properties:
@@ -384,6 +364,15 @@ components:
         service_area_id:
           type: number
           description: Service Area ID of the Journal
+    site_details:
+      type: object
+      properties:
+        site_id:
+          type: number
+          description: ID of the Site
+        source_system:
+          type: string
+          description: Source System used at the Site
     site_journal:
       type: object
       properties:
@@ -411,15 +400,26 @@ components:
         site_id:
           type: number
           description: Site ID of the Journal
-    site_details:
+    putSitePinBody:
       type: object
       properties:
         site_id:
           type: number
-          description: ID of the Site
-        source_system:
+        pin:
           type: string
-          description: Source System used at the Site
+        sp_guid:
+          type: string
+        pin_required:
+          type: boolean
+    putSiteRequestBody:
+      type: object
+      properties:
+        request_token:
+          type: number
+          description: Request Token of the Site Request
+        status:
+          type: string
+          description: Status of the Request
   securitySchemes:
     apikey:
       type: apiKey

@@ -88,13 +88,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    locationIdParam:
-      name: location_id
+    serviceDateReqParam:
+      name: service_date
       in: query
-      description: ID of the Location
+      description: Service Date of the requested data. YYYY-MM-DD foramt.
       required: true
       schema:
-        type: number
+        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -104,13 +104,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    serviceDateReqParam:
-      name: service_date
-      in: query
-      description: Service Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
     sourceSystemParam:
       name: source_system
       in: query
@@ -121,6 +114,13 @@ components:
         enum:
         - PRMA
         default: PRMA
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
   schemas:
     food_bank_items:
       type: object

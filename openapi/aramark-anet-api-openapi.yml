@@ -86,16 +86,6 @@ components:
           type: string
           description: unique ID of the employee
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
     smokeParam:
       in: header
       name: smoke
@@ -106,6 +96,22 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    emailParam:
+      name: email
+      in: query
+      description: email address of the employee
+      schema:
+        type: string
     sizeParam:
       in: query
       name: size
@@ -114,12 +120,6 @@ components:
       schema:
         type: string
         default: 50
-    employeeIdParam:
-      name: employee_id
-      in: query
-      description: unique ID of the employee
-      schema:
-        type: string
     pageParam:
       in: query
       name: page
@@ -128,10 +128,10 @@ components:
       schema:
         type: number
         default: 1
-    emailParam:
-      name: email
+    employeeIdParam:
+      name: employee_id
       in: query
-      description: email address of the employee
+      description: unique ID of the employee
       schema:
         type: string
   securitySchemes:

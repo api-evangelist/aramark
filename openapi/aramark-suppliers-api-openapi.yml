@@ -57,35 +57,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    enablementTypeParam:
-      name: enablement_type
-      in: query
-      description: User to filter records by Enablement Type. Multiple entries allowed in a comma separated list
-      required: false
-      schema:
-        type: string
-        enum:
-        - DIRECT BILL
-        - ERCV
-        - PROGRAM - INVOICE ONLY
-        - PUNCHOUT
-        - ADOPTED
-    msaParam:
-      in: query
-      name: msa
-      description: MSA of the data to be returned
-      required: false
-      schema:
-        type: number
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     enabledOnlyParam:
       name: enabled_only
       in: query
@@ -96,21 +67,6 @@ components:
         enum:
         - true
         - false
-    orgValuePathParam:
-      in: path
-      name: org_value
-      description: Org Value for data to be returned
-      required: true
-      schema:
-        type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Size of the result set
-      required: false
-      schema:
-        type: number
-        default: 50
     pageParam:
       name: page
       in: query
@@ -126,6 +82,50 @@ components:
       required: false
       schema:
         type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    enablementTypeParam:
+      name: enablement_type
+      in: query
+      description: User to filter records by Enablement Type. Multiple entries allowed in a comma separated list
+      required: false
+      schema:
+        type: string
+        enum:
+        - DIRECT BILL
+        - ERCV
+        - PROGRAM - INVOICE ONLY
+        - PUNCHOUT
+        - ADOPTED
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
+    orgValuePathParam:
+      in: path
+      name: org_value
+      description: Org Value for data to be returned
+      required: true
+      schema:
+        type: string
+    msaParam:
+      in: query
+      name: msa
+      description: MSA of the data to be returned
+      required: false
+      schema:
+        type: number
   schemas:
     suppliers:
       type: object

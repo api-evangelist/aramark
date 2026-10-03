@@ -128,6 +128,24 @@ paths:
       description: Marko API Production Server
 components:
   parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
+
+        '
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -138,24 +156,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    orgValueParam:
-      in: path
-      name: org_value
-      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
-
-        '
-      required: true
-      schema:
-        type: string
     endDateParam:
       in: query
       name: end_date
@@ -163,6 +163,17 @@ components:
       required: false
       schema:
         type: string
+    posParam:
+      in: query
+      name: pos
+      required: false
+      description: Flag used to determine whether or not output will display an aggregate of POS system or not.
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: Y
     startDateParam:
       in: query
       name: start_date
@@ -175,17 +186,6 @@ components:
       name: rollup
       description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
       required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-        default: Y
-    posParam:
-      in: query
-      name: pos
-      required: false
-      description: Flag used to determine whether or not output will display an aggregate of POS system or not.
       schema:
         type: string
         enum:
@@ -247,17 +247,17 @@ components:
         last_updated:
           type: string
           description: Time at which the data was last refreshed
-    RevenueSnapshotResponse:
+    ErrorResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevenueSnapshot'
-        count:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
           type: integer
-          description: Total record count
-          example: 12
+          description: Error code
+          example: 401
     RevenueSnapshot:
       type: object
       properties:
@@ -281,17 +281,17 @@ components:
           type: number
           description: Average transaction value in USD
           example: 39.02
-    ErrorResponse:
+    RevenueSnapshotResponse:
       type: object
       properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueSnapshot'
+        count:
           type: integer
-          description: Error code
-          example: 401
+          description: Total record count
+          example: 12
   securitySchemes:
     apikey:
       type: apiKey

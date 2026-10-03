@@ -156,117 +156,52 @@ paths:
                     items:
                       $ref: '#/components/schemas/service_menu_items_updates'
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    isResultRequiredParam:
-      name: is_result_required
-      in: query
-      description: Filter for menu results required for Menu Items
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
-    isTempRequiredParam:
-      name: is_temp_required
-      in: query
-      description: Filter for Menu Items which require temperature readings
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    locationIdParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: true
-      schema:
-        type: number
-    lastUpdatedDateParam:
-      name: last_update_dated
-      in: query
-      description: Last Updated Date of the data
-      required: true
-      schema:
-        type: string
-    dateParam:
-      name: date
-      in: query
-      description: Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    fieldsParam:
-      name: fields
-      in: query
-      description: Comma delimited list to reduce the fields of response object.  When used the property "location_id" will always be appended to the list for a consistent field for response testing.
-      required: false
-      schema:
-        type: string
-    isMTOParam:
-      name: is_mto
-      in: query
-      description: Filter for Made to Order Menu Items
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    mealPeriodIdParam:
-      name: meal_period_id
-      in: query
-      description: Unique ID of Meal Period for a Location and Service Date
-      required: false
-      schema:
-        type: number
-    subLocationIdParam:
-      name: sub_location_id
-      in: query
-      description: Unique ID of Sub Location aka Station for a Service Date.
-      required: true
-      schema:
-        type: number
   schemas:
+    putMenuItemsBody:
+      type: object
+      properties:
+        service_menu_item_id:
+          type: number
+        service_menu_id:
+          type: number
+        service_area_id:
+          type: number
+        station_id:
+          type: number
+        service_date:
+          type: string
+        meal_period_id:
+          type: number
+        recipe_id:
+          type: string
+        master_system_id:
+          type: number
+        row_num:
+          type: number
+        future_cycle:
+          type: boolean
+    sub_locations:
+      type: object
+      properties:
+        sub_location_id:
+          type: integer
+          description: Unique code for a Sub Location, sourced by PRIMA or MDG
+        sub_location_name:
+          type: string
+          description: Sub Location descriptive name
+        sub_location:
+          type: string
+          description: Unique code for a Sub Location, sourced by MDG
+        sub_location_type_id:
+          type: string
+          description: Unique code for a Sub Location Types, sourced by MDG
+        sub_location_type:
+          type: string
+          description: Description of Sub Location Types, sourced by MDG
+        menu_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/menu_items'
     service_menus:
       type: object
       properties:
@@ -274,6 +209,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/menu'
+    service_menu_items_updates:
+      type: object
+      properties:
+        location_id:
+          type: number
+        service_area_id:
+          type: number
+        last_update_date:
+          type: string
     service_items:
       type: object
       properties:
@@ -411,51 +355,40 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-    putMenuItemsBody:
+    menu:
       type: object
       properties:
-        service_menu_item_id:
-          type: number
-        service_menu_id:
-          type: number
+        location_id:
+          type: integer
+          description: Unique code for a Location, sourced by BIC or MDG
+        location_name:
+          type: string
+          description: Location descriptive name
+        location:
+          type: string
+          description: Unique code for a Location, sourced by MDG
         service_area_id:
-          type: number
-        station_id:
-          type: number
+          type: integer
+          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
+        service_area_name:
+          type: integer
+          description: Service Area descriptive name
+        service_menu_id:
+          type: integer
+          description: Unique ID of Service Menu
         service_date:
           type: string
+          description: Calendar date of service in 'MM/DD/YYYY' format
         meal_period_id:
-          type: number
-        recipe_id:
-          type: string
-        master_system_id:
-          type: number
-        row_num:
-          type: number
-        future_cycle:
-          type: boolean
-    sub_locations:
-      type: object
-      properties:
-        sub_location_id:
           type: integer
-          description: Unique code for a Sub Location, sourced by PRIMA or MDG
-        sub_location_name:
+        meal_period_name:
           type: string
-          description: Sub Location descriptive name
-        sub_location:
-          type: string
-          description: Unique code for a Sub Location, sourced by MDG
-        sub_location_type_id:
-          type: string
-          description: Unique code for a Sub Location Types, sourced by MDG
-        sub_location_type:
-          type: string
-          description: Description of Sub Location Types, sourced by MDG
-        menu_items:
+        reimbursable_tracking:
+          type: boolean
+        sub_locations:
           type: array
           items:
-            $ref: '#/components/schemas/menu_items'
+            $ref: '#/components/schemas/sub_locations'
     menu_items:
       type: object
       properties:
@@ -554,49 +487,116 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-    service_menu_items_updates:
-      type: object
-      properties:
-        location_id:
-          type: number
-        service_area_id:
-          type: number
-        last_update_date:
-          type: string
-    menu:
-      type: object
-      properties:
-        location_id:
-          type: integer
-          description: Unique code for a Location, sourced by BIC or MDG
-        location_name:
-          type: string
-          description: Location descriptive name
-        location:
-          type: string
-          description: Unique code for a Location, sourced by MDG
-        service_area_id:
-          type: integer
-          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
-        service_area_name:
-          type: integer
-          description: Service Area descriptive name
-        service_menu_id:
-          type: integer
-          description: Unique ID of Service Menu
-        service_date:
-          type: string
-          description: Calendar date of service in 'MM/DD/YYYY' format
-        meal_period_id:
-          type: integer
-        meal_period_name:
-          type: string
-        reimbursable_tracking:
-          type: boolean
-        sub_locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/sub_locations'
+  parameters:
+    subLocationIdParam:
+      name: sub_location_id
+      in: query
+      description: Unique ID of Sub Location aka Station for a Service Date.
+      required: true
+      schema:
+        type: number
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    isTempRequiredParam:
+      name: is_temp_required
+      in: query
+      description: Filter for Menu Items which require temperature readings
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    isResultRequiredParam:
+      name: is_result_required
+      in: query
+      description: Filter for menu results required for Menu Items
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
+    fieldsParam:
+      name: fields
+      in: query
+      description: Comma delimited list to reduce the fields of response object.  When used the property "location_id" will always be appended to the list for a consistent field for response testing.
+      required: false
+      schema:
+        type: string
+    mealPeriodIdParam:
+      name: meal_period_id
+      in: query
+      description: Unique ID of Meal Period for a Location and Service Date
+      required: false
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    lastUpdatedDateParam:
+      name: last_update_dated
+      in: query
+      description: Last Updated Date of the data
+      required: true
+      schema:
+        type: string
+    isMTOParam:
+      name: is_mto
+      in: query
+      description: Filter for Made to Order Menu Items
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
   securitySchemes:
     apikey:
       type: apiKey

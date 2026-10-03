@@ -156,56 +156,7 @@ paths:
     - url: https://qa-marko.aramark.net/v1
     - url: https://dev-marko.aramark.net/v1
 components:
-  parameters:
-    locationIdParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: true
-      schema:
-        type: number
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: Inventory source system
-      required: true
-      schema:
-        type: string
-        enum:
-        - PRMA
-        - CLIENT
   schemas:
-    putPurchaseOrderBody:
-      type: object
-      properties:
-        po_header_id:
-          type: number
-        po_detail_id:
-          type: number
-        received_qty:
-          type: number
-        is_catchweight:
-          type: boolean
     purchase_orders:
       type: object
       properties:
@@ -270,6 +221,17 @@ components:
         vendor_item_number:
           type: string
           description: Vendor Item Number for the Purchase Order Detail
+    putPurchaseOrderBody:
+      type: object
+      properties:
+        po_header_id:
+          type: number
+        po_detail_id:
+          type: number
+        received_qty:
+          type: number
+        is_catchweight:
+          type: boolean
     purchase_orders_2:
       type: object
       properties:
@@ -285,6 +247,44 @@ components:
           type: number
         po_item_count:
           type: number
+  parameters:
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
+    locationIdParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: true
+      schema:
+        type: number
   securitySchemes:
     apikey:
       type: apiKey

@@ -92,6 +92,34 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    payPeriodParam:
+      in: query
+      name: pay_period
+      description: Pay period code for the timecard. P-Previous; C-Current
+      required: true
+      schema:
+        type: string
+        enum:
+        - P
+        - C
+    bypassCacheParam:
+      name: bypass-cache
+      in: header
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: false
+    employeeIdParam:
+      in: query
+      name: employee_id
+      description: Unique identifier of the employee
+      required: true
+      schema:
+        type: string
   schemas:
     shift_segments:
       type: object
@@ -166,34 +194,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/shift_segments'
-  parameters:
-    bypassCacheParam:
-      name: bypass-cache
-      in: header
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: false
-    payPeriodParam:
-      in: query
-      name: pay_period
-      description: Pay period code for the timecard. P-Previous; C-Current
-      required: true
-      schema:
-        type: string
-        enum:
-        - P
-        - C
-    employeeIdParam:
-      in: query
-      name: employee_id
-      description: Unique identifier of the employee
-      required: true
-      schema:
-        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

@@ -56,122 +56,7 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Service Area for a Service Date
-      required: true
-      schema:
-        type: string
-    masterSystemIdParam:
-      name: master_system_id
-      in: query
-      description: Unique ID of Master System, given that recipe IDs are not unique
-      required: false
-      schema:
-        type: string
   schemas:
-    HFL_attributes:
-      type: object
-      properties:
-        vegan:
-          type: string
-          description: indicator if the recipe is vegan
-        vegetarian:
-          type: string
-          description: indicator if the recipe is vegetarian
-        plant_forward:
-          type: string
-          description: indicator if the recipe is Plant Forward
-        hearty_whole_grains:
-          type: string
-          description: indicator if the recipe is Hearty Whole Grains
-        eat_well:
-          type: string
-          description: indicator if the recipe is Eat Well
-    primary_attributes:
-      type: object
-      properties:
-        protein:
-          type: number
-          description: protein content in g
-        total_fat:
-          type: number
-          description: total fat content in g
-        carbohydrate:
-          type: number
-          description: carbohydrate content in g
-        calories:
-          type: number
-          description: calorie content in kcal
-        total_sugars:
-          type: number
-          description: total sugar content in g
-        fiber:
-          type: number
-          description: fiber content in g
-        calcium:
-          type: number
-          description: calcium content in mg
-        iron:
-          type: number
-          description: iron content in mg
-        potassium:
-          type: number
-          description: potassium content in mg
-        sodium:
-          type: number
-          description: sodium content in mg
-        cholesterol:
-          type: number
-          description: cholesterol content in mg
-        trans_fat:
-          type: number
-          description: trans fat content in g
-        saturated_fat:
-          type: number
-          description: saturated fat content in g
-        monounsaturated_fat:
-          type: number
-          description: monounsaturated fat content in g
-        polyunsaturated_fat:
-          type: number
-          description: polyunsaturated fat content in g
-        calories_from_fat:
-          type: number
-          description: calorie content from fat in kcal
-        pct_calories_from_fat:
-          type: number
-          description: percent of calorie content from fat
-        pct_calories_from_saturated_fat:
-          type: number
-          description: percent of calorie content from saturated fat
-        added_sugars:
-          type: number
-          description: added sugar content in g
-        vitamin_d_(mcg):
-          type: number
-          description: vitamin D content in mcg
     allergen_attributes:
       type: object
       properties:
@@ -276,6 +161,96 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/secondary_attributes'
+    primary_attributes:
+      type: object
+      properties:
+        protein:
+          type: number
+          description: protein content in g
+        total_fat:
+          type: number
+          description: total fat content in g
+        carbohydrate:
+          type: number
+          description: carbohydrate content in g
+        calories:
+          type: number
+          description: calorie content in kcal
+        total_sugars:
+          type: number
+          description: total sugar content in g
+        fiber:
+          type: number
+          description: fiber content in g
+        calcium:
+          type: number
+          description: calcium content in mg
+        iron:
+          type: number
+          description: iron content in mg
+        potassium:
+          type: number
+          description: potassium content in mg
+        sodium:
+          type: number
+          description: sodium content in mg
+        cholesterol:
+          type: number
+          description: cholesterol content in mg
+        trans_fat:
+          type: number
+          description: trans fat content in g
+        saturated_fat:
+          type: number
+          description: saturated fat content in g
+        monounsaturated_fat:
+          type: number
+          description: monounsaturated fat content in g
+        polyunsaturated_fat:
+          type: number
+          description: polyunsaturated fat content in g
+        calories_from_fat:
+          type: number
+          description: calorie content from fat in kcal
+        pct_calories_from_fat:
+          type: number
+          description: percent of calorie content from fat
+        pct_calories_from_saturated_fat:
+          type: number
+          description: percent of calorie content from saturated fat
+        added_sugars:
+          type: number
+          description: added sugar content in g
+        vitamin_d_(mcg):
+          type: number
+          description: vitamin D content in mcg
+    HFL_attributes:
+      type: object
+      properties:
+        vegan:
+          type: string
+          description: indicator if the recipe is vegan
+        vegetarian:
+          type: string
+          description: indicator if the recipe is vegetarian
+        plant_forward:
+          type: string
+          description: indicator if the recipe is Plant Forward
+        hearty_whole_grains:
+          type: string
+          description: indicator if the recipe is Hearty Whole Grains
+        eat_well:
+          type: string
+          description: indicator if the recipe is Eat Well
+    dietary_attributes:
+      type: object
+      properties:
+        kosher:
+          type: string
+          description: indicator if the recipe is kosher
+        halal:
+          type: string
+          description: indicator if the recipe is halal
     secondary_attributes:
       type: object
       properties:
@@ -375,15 +350,40 @@ components:
         vitamin_e_(IU):
           type: number
           description: vitamin e content in IU
-    dietary_attributes:
-      type: object
-      properties:
-        kosher:
-          type: string
-          description: indicator if the recipe is kosher
-        halal:
-          type: string
-          description: indicator if the recipe is halal
+  parameters:
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Unique ID of Master System, given that recipe IDs are not unique
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Area for a Service Date
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

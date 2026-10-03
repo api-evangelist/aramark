@@ -113,107 +113,6 @@ paths:
     - url: https://dev-marko.aramark.net/v1/profile/user
       description: Development server
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    profitCenterParam:
-      in: query
-      name: org_value
-      description: Provide profit center code to filter data set
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
-    formatParam:
-      in: query
-      name: format
-      required: false
-      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
-      schema:
-        type: string
-        enum:
-        - JSON
-        - CSV
-        - XLS
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      schema:
-        type: number
-        default: 1
-    searchParam:
-      in: query
-      name: search
-      description: Used to search a specific Client.  Will match against Name and Value or Client or Profit Center or Client Family.  Maximum length of 20 characters.
-      schema:
-        type: string
-    smokeParam_2:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    userIdParam:
-      name: user_id
-      in: query
-      description: Email address of user
-      required: true
-      schema:
-        type: string
-        default: last-first@aramark.com
-    segmentCategoryParam:
-      name: segment_category
-      in: query
-      description: Identifier of different financial groupings
-      required: false
-      schema:
-        type: string
-        enum:
-        - OPERATIONAL
-        - OVERHEAD
-        - NVD
-        - LOST
-        - ALL
-        - ALL_CLOSED
-        default: OPERATIONAL
-    pageParam_2:
-      name: page
-      in: query
-      description: Page number of result set
-      required: false
-      schema:
-        type: string
-        default: 1
-    searchParam_2:
-      name: search
-      in: query
-      description: Search string to find Organizations
-      required: false
-      schema:
-        type: string
   schemas:
     clients:
       type: object
@@ -254,6 +153,107 @@ components:
         client_name:
           type: string
           description: Client name
+  parameters:
+    profitCenterParam:
+      in: query
+      name: org_value
+      description: Provide profit center code to filter data set
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Client.  Will match against Name and Value or Client or Profit Center or Client Family.  Maximum length of 20 characters.
+      schema:
+        type: string
+    formatParam:
+      in: query
+      name: format
+      required: false
+      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    searchParam_2:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
+    segmentCategoryParam:
+      name: segment_category
+      in: query
+      description: Identifier of different financial groupings
+      required: false
+      schema:
+        type: string
+        enum:
+        - OPERATIONAL
+        - OVERHEAD
+        - NVD
+        - LOST
+        - ALL
+        - ALL_CLOSED
+        default: OPERATIONAL
+    pageParam_2:
+      name: page
+      in: query
+      description: Page number of result set
+      required: false
+      schema:
+        type: string
+        default: 1
+    userIdParam:
+      name: user_id
+      in: query
+      description: Email address of user
+      required: true
+      schema:
+        type: string
+        default: last-first@aramark.com
   securitySchemes:
     apiKey:
       type: apiKey

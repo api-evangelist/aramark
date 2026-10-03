@@ -686,6 +686,19 @@ paths:
     - url: https://dev-marko.aramark.net/v1/organization
 components:
   parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      required: true
+      description: provide business organization code in URL to filter data set
+      schema:
+        type: string
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Business Unit.  Will match against Name and Value.  Maximum length of 20 characters.
+      schema:
+        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -702,29 +715,6 @@ components:
       description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
       schema:
         type: string
-    contactTypeParam:
-      in: query
-      name: contact_type
-      description: optional parameter to limit results to a specfic address type
-      schema:
-        type: string
-        enum:
-        - manager
-        - consumer_alert
-    orgValueParam:
-      in: path
-      name: org_value
-      required: true
-      description: provide business organization code in URL to filter data set
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
     formatParam:
       in: query
       name: format
@@ -736,6 +726,13 @@ components:
         - JSON
         - CSV
         - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
     pageParam:
       in: query
       name: page
@@ -743,12 +740,15 @@ components:
       schema:
         type: number
         default: 1
-    searchParam:
+    contactTypeParam:
       in: query
-      name: search
-      description: Used to search a specific Business Unit.  Will match against Name and Value.  Maximum length of 20 characters.
+      name: contact_type
+      description: optional parameter to limit results to a specfic address type
       schema:
         type: string
+        enum:
+        - manager
+        - consumer_alert
     searchParam_2:
       in: query
       name: search

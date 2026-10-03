@@ -85,60 +85,7 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    locationIdNoReqParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: false
-      schema:
-        type: number
-    serviceAreaIdNoReqParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: false
-      schema:
-        type: number
   schemas:
-    service_equipment:
-      type: object
-      properties:
-        equipment_id:
-          type: number
-        equipment_description:
-          type: string
-        equipment_type:
-          type: string
-        station_id:
-          type: number
-        station_name:
-          type: string
-        instructions:
-          type: string
-        temp_check_frequency:
-          type: number
-        thresholds:
-          type: string
     putEquipmentTemperatureBody:
       type: object
       properties:
@@ -164,6 +111,59 @@ components:
           type: string
         temp_check_frequency:
           type: number
+    service_equipment:
+      type: object
+      properties:
+        equipment_id:
+          type: number
+        equipment_description:
+          type: string
+        equipment_type:
+          type: string
+        station_id:
+          type: number
+        station_name:
+          type: string
+        instructions:
+          type: string
+        temp_check_frequency:
+          type: number
+        thresholds:
+          type: string
+  parameters:
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: false
+      schema:
+        type: number
+    serviceAreaIdNoReqParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: false
+      schema:
+        type: number
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   securitySchemes:
     apikey:
       type: apiKey

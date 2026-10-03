@@ -208,16 +208,13 @@ paths:
       description: Development server
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+    userIdParamTrue:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
     smokeParam:
       in: header
       name: smoke
@@ -235,14 +232,7 @@ components:
       required: false
       schema:
         type: string
-    userIdParamTrue:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: true
-      schema:
-        type: string
-    bypassCacheParam_2:
+    bypassCacheParam:
       in: header
       name: bypass-cache
       description: This HTTP Header variable will bypass cache
@@ -251,6 +241,7 @@ components:
         enum:
         - 'true'
         - 'false'
+        default: 'false'
     smokeParam_2:
       in: header
       name: smoke
@@ -262,6 +253,22 @@ components:
         enum:
         - 'true'
         - 'false'
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    emailParam:
+      name: sp_guid
+      in: query
+      description: sp GUID of the User
+      required: true
+      schema:
+        type: string
     sourceSystemParam:
       name: source_system
       in: query
@@ -272,13 +279,6 @@ components:
         enum:
         - PRMA
         default: PRMA
-    emailParam:
-      name: sp_guid
-      in: query
-      description: sp GUID of the User
-      required: true
-      schema:
-        type: string
   schemas:
     User:
       type: object

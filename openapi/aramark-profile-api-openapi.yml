@@ -117,42 +117,31 @@ paths:
         '400':
           description: Bad Request
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    profileIdParamFalse:
-      in: query
-      name: profile_id
-      description: Unique identifier of a user Profile
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    profileIdParamTrue:
-      in: query
-      name: profile_id
-      description: Unique identifier of a user Profile
-      required: true
-      schema:
-        type: string
   schemas:
+    Profile:
+      type: object
+      properties:
+        profile_id:
+          type: string
+          description: Unique identifier of a profile
+        profile_name:
+          type: string
+          description: name of a profile
+        profile_type:
+          type: string
+          description: type of profile
+        user_id:
+          type: string
+          description: Unique identifier of a user associated with profile
+        valid:
+          type: string
+          description: boolean determining validity of profile
+        create_date:
+          type: string
+          description: date that profile was created
+        update_date:
+          type: string
+          description: date that profile was last updated
     User:
       type: object
       properties:
@@ -183,30 +172,41 @@ components:
         update_date:
           type: string
           description: date that profile was last updated
-    Profile:
-      type: object
-      properties:
-        profile_id:
-          type: string
-          description: Unique identifier of a profile
-        profile_name:
-          type: string
-          description: name of a profile
-        profile_type:
-          type: string
-          description: type of profile
-        user_id:
-          type: string
-          description: Unique identifier of a user associated with profile
-        valid:
-          type: string
-          description: boolean determining validity of profile
-        create_date:
-          type: string
-          description: date that profile was created
-        update_date:
-          type: string
-          description: date that profile was last updated
+  parameters:
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    profileIdParamTrue:
+      in: query
+      name: profile_id
+      description: Unique identifier of a user Profile
+      required: true
+      schema:
+        type: string
+    profileIdParamFalse:
+      in: query
+      name: profile_id
+      description: Unique identifier of a user Profile
+      required: false
+      schema:
+        type: string
   securitySchemes:
     apikey:
       type: apiKey

@@ -74,17 +74,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    OrganizationResponse:
+    ErrorResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrganizationUnit'
-        count:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
           type: integer
-          description: Total record count
-          example: 10
+          description: Error code
+          example: 401
     OrganizationUnit:
       type: object
       properties:
@@ -113,17 +113,17 @@ components:
           type: integer
           description: Number of locations under this unit
           example: 45
-    ErrorResponse:
+    OrganizationResponse:
       type: object
       properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationUnit'
+        count:
           type: integer
-          description: Error code
-          example: 401
+          description: Total record count
+          example: 10
   securitySchemes:
     apiKey:
       type: apiKey

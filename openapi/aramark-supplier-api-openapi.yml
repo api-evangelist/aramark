@@ -640,75 +640,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/supplier_receipt_detail_items'
-    supplier_receipt_detail_items:
-      type: object
-      properties:
-        line_type:
-          type: string
-          description: Line Type of the Receipt
-        supplier_sku:
-          type: string
-          description: Supplier SKU of the Receipt
-        purchase_unit_of_measure:
-          type: string
-          description: Purchase Unit of Measure of the Receipt
-        item_description:
-          type: string
-          description: Item Description of the Receipt
-        item_quantity:
-          type: number
-          description: Item Quantity of the Receipt
-        unit_cost:
-          type: number
-          description: Unit Cost of the Receipt
-        unit_amount:
-          type: number
-          description: Unit Amount of the Receipt
-        tax_amount:
-          type: number
-          description: Tax Amount of the Receipt
-        freight_amount:
-          type: number
-          description: Freight Amount of the Receipt
-        discount_amount:
-          type: number
-          description: Discount Amount of the Receipt
-        country_legal_entity:
-          type: string
-          description: Country Legal Entity of the Receipt
-        service_type:
-          type: string
-          description: Service Type of the Receipt
-        summary_account:
-          type: string
-          description: Summary Account of the Receipt
-        account_category:
-          type: string
-          description: Account Category of the Receipt
-        user_email_address:
-          type: string
-          description: User Email Address of the Receipt
-        manufacturer_name:
-          type: string
-          description: Manufacturer Name of the Receipt
-        manufacturer_part_number:
-          type: string
-          description: Manufacturer Part Number of the Receipt
-        brand:
-          type: string
-          description: Brand of the Receipt
-        base_unit_of_measurement:
-          type: string
-          description: Base Unit of Measurement of the Receipt
-        pack_size:
-          type: string
-          description: Pack Size of the Receipt
-        pack_quantity:
-          type: string
-          description: Pack Quantity of the Receipt
-        mdg_item_category_id:
-          type: string
-          description: MDG Item Category ID of the Receipt
     supplier_receipts:
       type: object
       properties:
@@ -925,11 +856,95 @@ components:
         last_updated_date:
           type: string
           description: Last Updated Date of the Item
+    supplier_receipt_detail_items:
+      type: object
+      properties:
+        line_type:
+          type: string
+          description: Line Type of the Receipt
+        supplier_sku:
+          type: string
+          description: Supplier SKU of the Receipt
+        purchase_unit_of_measure:
+          type: string
+          description: Purchase Unit of Measure of the Receipt
+        item_description:
+          type: string
+          description: Item Description of the Receipt
+        item_quantity:
+          type: number
+          description: Item Quantity of the Receipt
+        unit_cost:
+          type: number
+          description: Unit Cost of the Receipt
+        unit_amount:
+          type: number
+          description: Unit Amount of the Receipt
+        tax_amount:
+          type: number
+          description: Tax Amount of the Receipt
+        freight_amount:
+          type: number
+          description: Freight Amount of the Receipt
+        discount_amount:
+          type: number
+          description: Discount Amount of the Receipt
+        country_legal_entity:
+          type: string
+          description: Country Legal Entity of the Receipt
+        service_type:
+          type: string
+          description: Service Type of the Receipt
+        summary_account:
+          type: string
+          description: Summary Account of the Receipt
+        account_category:
+          type: string
+          description: Account Category of the Receipt
+        user_email_address:
+          type: string
+          description: User Email Address of the Receipt
+        manufacturer_name:
+          type: string
+          description: Manufacturer Name of the Receipt
+        manufacturer_part_number:
+          type: string
+          description: Manufacturer Part Number of the Receipt
+        brand:
+          type: string
+          description: Brand of the Receipt
+        base_unit_of_measurement:
+          type: string
+          description: Base Unit of Measurement of the Receipt
+        pack_size:
+          type: string
+          description: Pack Size of the Receipt
+        pack_quantity:
+          type: string
+          description: Pack Quantity of the Receipt
+        mdg_item_category_id:
+          type: string
+          description: MDG Item Category ID of the Receipt
   parameters:
-    msaParam:
-      name: msa
+    startDateTimeParam:
+      name: start_date_time
       in: query
-      description: List of MSAs by which to filter. Limited to 25 comma separated values
+      description: Used to specify the starting date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code
+      required: true
+      schema:
+        type: string
+    endDateTimeParam:
+      name: end_date_time
+      in: query
+      description: Used to specify the ending date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+      required: true
       schema:
         type: string
     bypassCacheParam:
@@ -952,34 +967,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    orgValueConditionalParam:
-      in: path
-      name: org_value
-      description: Aramark Location code; Required if MSA not provided
-      required: true
-      schema:
-        type: string
-    msaConditionalParam:
-      name: msa
-      in: query
-      description: MSA of item
-      required: true
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code
-      required: true
-      schema:
-        type: string
-    endDateTimeParam:
-      name: end_date_time
-      in: query
-      description: Used to specify the ending date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
-      required: true
-      schema:
-        type: string
     typeParam:
       name: type
       in: query
@@ -992,10 +979,23 @@ components:
         - PO
         - NON-PO
         - PO-INV
-    startDateTimeParam:
-      name: start_date_time
+    msaConditionalParam:
+      name: msa
       in: query
-      description: Used to specify the starting date. Goes against Last Updated Date Time. Format - "MM/DD/YYYY HH:MI"
+      description: MSA of item
+      required: true
+      schema:
+        type: string
+    msaParam:
+      name: msa
+      in: query
+      description: List of MSAs by which to filter. Limited to 25 comma separated values
+      schema:
+        type: string
+    orgValueConditionalParam:
+      in: path
+      name: org_value
+      description: Aramark Location code; Required if MSA not provided
       required: true
       schema:
         type: string

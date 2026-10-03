@@ -96,26 +96,14 @@ components:
       required: true
       schema:
         type: string
-    levelParam:
-      name: level
+    sizeParam:
+      name: size
       in: query
-      description: Level against which search will be done
-      required: true
-      schema:
-        type: number
-        enum:
-        - 1
-        - 2
-        - 3
-        - 4
-        - 5
-    valueParam:
-      name: value
-      in: query
-      description: Value
+      description: Size of the result set
       required: false
       schema:
-        type: string
+        type: number
+        default: 50
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -138,6 +126,26 @@ components:
         - class
         - commodity
         - offering
+    levelParam:
+      name: level
+      in: query
+      description: Level against which search will be done
+      required: true
+      schema:
+        type: number
+        enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    valueParam:
+      name: value
+      in: query
+      description: Value
+      required: false
+      schema:
+        type: string
     orgValuePathParam:
       in: path
       name: org_value
@@ -145,14 +153,14 @@ components:
       required: true
       schema:
         type: string
-    sizeParam:
-      name: size
+    pageParam:
+      name: page
       in: query
-      description: Size of the result set
+      description: Page of the result set
       required: false
       schema:
         type: number
-        default: 50
+        default: 1
     searchDetailsParam:
       in: query
       name: search
@@ -164,14 +172,6 @@ components:
         - category
         - gl_account
         - category_code
-    pageParam:
-      name: page
-      in: query
-      description: Page of the result set
-      required: false
-      schema:
-        type: number
-        default: 1
   schemas:
     gl_account_details:
       type: object

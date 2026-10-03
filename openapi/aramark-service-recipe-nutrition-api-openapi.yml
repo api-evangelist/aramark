@@ -57,132 +57,7 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    locationIdParam:
-      name: location_id
-      in: query
-      description: Unique ID of Location (Service Area ID OR Location ID is required)
-      required: false
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Service Recipe
-      required: false
-      schema:
-        type: string
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
-      required: false
-      schema:
-        type: string
   schemas:
-    primary_attributes:
-      type: object
-      properties:
-        protein:
-          type: number
-          description: protein content in g
-          example: 4.841
-        total_fat:
-          type: number
-          description: total fat content in g
-          example: 2.851
-        carbohydrate:
-          type: number
-          description: carbohydrate content in g
-          example: 7.514
-        calories:
-          type: number
-          description: calorie content in kcal
-          example: 76.801
-        total_sugars:
-          type: number
-          description: total sugar content in g
-          example: 0.775
-        fiber:
-          type: number
-          description: fiber content in g
-          example: 0.593
-        calcium:
-          type: number
-          description: calcium content in mg
-          example: 20.62
-        iron:
-          type: number
-          description: iron content in mg
-          example: 0.657
-        potassium:
-          type: number
-          description: potassium content in mg
-          example: 101.964
-        sodium:
-          type: number
-          description: sodium content in mg
-          example: 211.123
-        cholesterol:
-          type: number
-          description: cholesterol content in mg
-          example: 9.273
-        trans_fat:
-          type: number
-          description: trans fat content in g
-          example: 0.027
-        saturated_fat:
-          type: number
-          description: saturated fat content in g
-          example: 0.422
-        monounsaturated_fat:
-          type: number
-          description: monounsaturated fat content in g
-          example: 1.118
-        polyunsaturated_fat:
-          type: number
-          description: polyunsaturated fat content in g
-          example: 0.825
-        calories_from_fat:
-          type: number
-          description: calorie content from fat in kcal
-          example: 25.66
-        pct_calories_from_fat:
-          type: number
-          description: percent of calorie content from fat
-          example: 33.411
-        pct_calories_from_saturated_fat:
-          type: number
-          description: percent of calorie content from saturated fat
-          example: 4.942
-        added_sugars:
-          type: number
-          description: added sugar content in g
-          example: 0
-        vitamin_d_(mcg):
-          type: number
-          description: vitamin D content in mcg
-          example: 0
     allergen_attributes:
       type: object
       properties:
@@ -313,6 +188,108 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/secondary_attributes'
+    primary_attributes:
+      type: object
+      properties:
+        protein:
+          type: number
+          description: protein content in g
+          example: 4.841
+        total_fat:
+          type: number
+          description: total fat content in g
+          example: 2.851
+        carbohydrate:
+          type: number
+          description: carbohydrate content in g
+          example: 7.514
+        calories:
+          type: number
+          description: calorie content in kcal
+          example: 76.801
+        total_sugars:
+          type: number
+          description: total sugar content in g
+          example: 0.775
+        fiber:
+          type: number
+          description: fiber content in g
+          example: 0.593
+        calcium:
+          type: number
+          description: calcium content in mg
+          example: 20.62
+        iron:
+          type: number
+          description: iron content in mg
+          example: 0.657
+        potassium:
+          type: number
+          description: potassium content in mg
+          example: 101.964
+        sodium:
+          type: number
+          description: sodium content in mg
+          example: 211.123
+        cholesterol:
+          type: number
+          description: cholesterol content in mg
+          example: 9.273
+        trans_fat:
+          type: number
+          description: trans fat content in g
+          example: 0.027
+        saturated_fat:
+          type: number
+          description: saturated fat content in g
+          example: 0.422
+        monounsaturated_fat:
+          type: number
+          description: monounsaturated fat content in g
+          example: 1.118
+        polyunsaturated_fat:
+          type: number
+          description: polyunsaturated fat content in g
+          example: 0.825
+        calories_from_fat:
+          type: number
+          description: calorie content from fat in kcal
+          example: 25.66
+        pct_calories_from_fat:
+          type: number
+          description: percent of calorie content from fat
+          example: 33.411
+        pct_calories_from_saturated_fat:
+          type: number
+          description: percent of calorie content from saturated fat
+          example: 4.942
+        added_sugars:
+          type: number
+          description: added sugar content in g
+          example: 0
+        vitamin_d_(mcg):
+          type: number
+          description: vitamin D content in mcg
+          example: 0
+    dietary_attributes:
+      type: object
+      properties:
+        vegan:
+          type: string
+          description: indicator if the recipe is vegan
+          example: 'NO'
+        vegetarian:
+          type: string
+          description: indicator if the recipe is vegetarian
+          example: 'NO'
+        kosher:
+          type: string
+          description: indicator if the recipe is kosher
+          example: 'NO'
+        halal:
+          type: string
+          description: indicator if the recipe is halal
+          example: 'NO'
     secondary_attributes:
       type: object
       properties:
@@ -444,25 +421,48 @@ components:
           type: number
           description: vitamin e content in IU
           example: 0
-    dietary_attributes:
-      type: object
-      properties:
-        vegan:
-          type: string
-          description: indicator if the recipe is vegan
-          example: 'NO'
-        vegetarian:
-          type: string
-          description: indicator if the recipe is vegetarian
-          example: 'NO'
-        kosher:
-          type: string
-          description: indicator if the recipe is kosher
-          example: 'NO'
-        halal:
-          type: string
-          description: indicator if the recipe is halal
-          example: 'NO'
+  parameters:
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Recipe
+      required: false
+      schema:
+        type: string
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
+      required: false
+      schema:
+        type: string
+    locationIdParam:
+      name: location_id
+      in: query
+      description: Unique ID of Location (Service Area ID OR Location ID is required)
+      required: false
+      schema:
+        type: string
   securitySchemes:
     apikey:
       type: apiKey

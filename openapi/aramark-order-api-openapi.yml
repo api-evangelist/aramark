@@ -66,6 +66,27 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return. Default 50
+      required: false
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code
+      required: true
+      schema:
+        type: string
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
+      required: true
+      schema:
+        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -84,27 +105,6 @@ components:
         enum:
         - Y
         - N
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code
-      required: true
-      schema:
-        type: string
-    endDateTimeParam:
-      in: query
-      name: end_date_time
-      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
-      required: true
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of rows in each page to return. Default 50
-      required: false
-      schema:
-        type: string
     sourceSystemParam:
       in: query
       name: source_system
@@ -121,10 +121,10 @@ components:
       required: false
       schema:
         type: number
-    startDateTimeParam:
+    endDateTimeParam:
       in: query
-      name: start_date_time
-      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
+      name: end_date_time
+      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
       required: true
       schema:
         type: string

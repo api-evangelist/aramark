@@ -95,6 +95,20 @@ components:
           type: string
           description: Coutnry code of the response
   parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code for rollup
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        default: false
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -105,18 +119,26 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+    surveyGroupParam:
+      name: survey_group
+      in: query
+      description: "Comma separated list of codes to determine which survey group to return.  - \"CATERING\" - Catering\n  - \"DINING\" - Dining\n  - \"ALL\" - All Groups"
+      required: false
       schema:
         type: string
-        default: false
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code for rollup
-      required: true
+        default: ALL
+    surveyTypeParam:
+      name: survey_type
+      in: query
+      description: "Comma separated list of codes to determine which type of survey questions to return.  - \"HLTH\" - Health \n  - \"PERS\" - Personalization\n  - \"QUAL\" - Quality\n  - \"SAT\" - Satisfaction\n  - \"ALL\" - All Types"
+      required: false
+      schema:
+        type: string
+        default: ALL
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar date end date for responses. Will use start_date if not provided. "mm/dd/yyyy"
       schema:
         type: string
     sizeParam:
@@ -127,20 +149,6 @@ components:
       schema:
         type: string
         default: 50
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar date end date for responses. Will use start_date if not provided. "mm/dd/yyyy"
-      schema:
-        type: string
-    surveyTypeParam:
-      name: survey_type
-      in: query
-      description: "Comma separated list of codes to determine which type of survey questions to return.  - \"HLTH\" - Health \n  - \"PERS\" - Personalization\n  - \"QUAL\" - Quality\n  - \"SAT\" - Satisfaction\n  - \"ALL\" - All Types"
-      required: false
-      schema:
-        type: string
-        default: ALL
     startDateParam:
       in: query
       name: start_date
@@ -156,14 +164,6 @@ components:
       schema:
         type: number
         default: 1
-    surveyGroupParam:
-      name: survey_group
-      in: query
-      description: "Comma separated list of codes to determine which survey group to return.  - \"CATERING\" - Catering\n  - \"DINING\" - Dining\n  - \"ALL\" - All Groups"
-      required: false
-      schema:
-        type: string
-        default: ALL
   securitySchemes:
     apiKey:
       type: apiKey

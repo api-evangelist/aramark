@@ -92,6 +92,18 @@ paths:
     - url: https://qa-marko.aramark.net/v1/product
 components:
   schemas:
+    skuBodyParam:
+      type: object
+      properties:
+        msa:
+          type: string
+          description: MSA of the Item to lookup
+        item_description:
+          type: string
+          description: Description of the Item
+        price:
+          type: number
+          description: Price of the Item
     skus:
       type: object
       properties:
@@ -113,18 +125,6 @@ components:
           type: string
         supplier_sku:
           type: string
-    skuBodyParam:
-      type: object
-      properties:
-        msa:
-          type: string
-          description: MSA of the Item to lookup
-        item_description:
-          type: string
-          description: Description of the Item
-        price:
-          type: number
-          description: Price of the Item
     skus_2:
       type: object
       properties:

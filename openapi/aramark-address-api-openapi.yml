@@ -678,74 +678,6 @@ paths:
       description: Testing server
     - url: https://dev-marko.aramark.net/v1/organization
 components:
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      required: true
-      description: provide business organization code in URL to filter data set
-      schema:
-        type: string
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
-    formatParam:
-      in: query
-      name: format
-      required: false
-      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
-      schema:
-        type: string
-        enum:
-        - JSON
-        - CSV
-        - XLS
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      schema:
-        type: number
-        default: 1
-    addressTypeParam:
-      in: query
-      name: address_type
-      description: optional parameter to limit results to a specfic address type
-      schema:
-        type: string
-        enum:
-        - billing
-        - forwarding
-        - mailing
-        - physical
-        - remit
-        - shipping
-    searchParam:
-      in: query
-      name: search
-      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
-      schema:
-        type: string
   schemas:
     business_unit_address_details:
       type: object
@@ -1383,6 +1315,74 @@ components:
         admin_area_level_3:
           type: string
           description: Admin Area Level 3 description of the Profit Center
+  parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      required: true
+      description: provide business organization code in URL to filter data set
+      schema:
+        type: string
+    addressTypeParam:
+      in: query
+      name: address_type
+      description: optional parameter to limit results to a specfic address type
+      schema:
+        type: string
+        enum:
+        - billing
+        - forwarding
+        - mailing
+        - physical
+        - remit
+        - shipping
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    formatParam:
+      in: query
+      name: format
+      required: false
+      description: allows to change the output to a desired format. 'JSON' - JSON, 'CSV' - CSV, 'XLS' - Excel
+      schema:
+        type: string
+        enum:
+        - JSON
+        - CSV
+        - XLS
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

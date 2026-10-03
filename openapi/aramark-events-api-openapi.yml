@@ -157,6 +157,13 @@ components:
         device_ids:
           type: object
   parameters:
+    orgValueParam:
+      name: org_value
+      in: path
+      description: Location Code of the Device
+      required: true
+      schema:
+        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -166,13 +173,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    orgValueParam:
-      name: org_value
-      in: path
-      description: Location Code of the Device
-      required: true
-      schema:
-        type: string
   securitySchemes:
     apikey:
       type: apiKey

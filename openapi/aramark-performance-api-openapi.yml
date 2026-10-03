@@ -63,6 +63,68 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    orgValueParam:
+      in: path
+      name: org_value
+      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
+
+        '
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    groupParam:
+      in: query
+      name: group
+      description: Used to determine what parameter by which data is grouped
+      schema:
+        type: string
+        enum:
+        - POS
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    rollupParam:
+      in: query
+      name: rollup
+      description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: Y
   schemas:
     performance_snapshot:
       type: object
@@ -118,68 +180,6 @@ components:
         last_updated:
           type: string
           description: Time at which the data was last refreshed
-  parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    orgValueParam:
-      in: path
-      name: org_value
-      description: 'Aramark Organization code for rollup. This must be at the same level of the top_node parameter. Expects nine characters, _include leading zeros_.
-
-        '
-      required: true
-      schema:
-        type: string
-    groupParam:
-      in: query
-      name: group
-      description: Used to determine what parameter by which data is grouped
-      schema:
-        type: string
-        enum:
-        - POS
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for daily transactions. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    rollupParam:
-      in: query
-      name: rollup
-      description: Flag used to determine whether or not output will display an aggregate of child organizations or not.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-        default: Y
   securitySchemes:
     apikey:
       type: apiKey

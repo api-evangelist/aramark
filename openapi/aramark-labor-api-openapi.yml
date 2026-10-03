@@ -61,16 +61,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
+    orgValueParam:
+      in: path
+      name: org_value
+      description: provide business organization code in URL to filter data set
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: false
     smokeParam:
       in: header
       name: smoke
@@ -82,13 +79,16 @@ components:
       schema:
         type: string
         default: false
-    orgValueParam:
-      in: path
-      name: org_value
-      description: provide business organization code in URL to filter data set
-      required: true
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
       schema:
         type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: false
     endDateParam:
       in: query
       name: end_date
