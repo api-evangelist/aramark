@@ -112,19 +112,25 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    subLocationIdParam:
-      name: sub_location_id
+    serviceDateParam:
+      name: service_date
       in: query
-      description: Unique ID of Sub Location aka Station for a Service Date.
-      required: false
-      schema:
-        type: string
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: Unique ID of Service Area for a Service Date.
-      required: false
+      description: Service Date in Format "mm/dd/yyyy"
+      required: true
       schema:
         type: string
     isTempRequiredParam:
@@ -137,20 +143,41 @@ components:
         enum:
         - Y
         - N
-    isResultRequiredParam:
-      name: is_result_required
+    serviceAreaIdParam:
+      name: service_area_id
       in: query
-      description: Filter on the menu items that have a service result.
+      description: Unique ID of Service Area for a Service Date.
+      required: false
+      schema:
+        type: string
+    mealPeriodIdParam:
+      name: meal_period_id
+      in: query
+      description: Unique ID of Meal Period for a Location and Service Date.
+      required: false
+      schema:
+        type: string
+    isMtoParam:
+      name: is_mto
+      in: query
+      description: Filter for Made to Order Menu Items.
       required: false
       schema:
         type: string
         enum:
         - Y
         - N
-    locationIdParam:
-      name: location_id
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        default: false
+    subLocationIdParam:
+      name: sub_location_id
       in: query
-      description: Unique ID of Location to return Menus.
+      description: Unique ID of Sub Location aka Station for a Service Date.
       required: false
       schema:
         type: string
@@ -167,37 +194,6 @@ components:
       required: false
       schema:
         type: string
-    isMtoParam:
-      name: is_mto
-      in: query
-      description: Filter for Made to Order Menu Items.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    mealPeriodIdParam:
-      name: meal_period_id
-      in: query
-      description: Unique ID of Meal Period for a Location and Service Date.
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        default: false
-    serviceDateParam:
-      name: service_date
-      in: query
-      description: Service Date in Format "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -208,17 +204,104 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    locationIdParam:
+      name: location_id
+      in: query
+      description: Unique ID of Location to return Menus.
+      required: false
+      schema:
+        type: string
+    isResultRequiredParam:
+      name: is_result_required
+      in: query
+      description: Filter on the menu items that have a service result.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
   schemas:
-    Error:
+    menu_items:
       type: object
       properties:
-        code:
+        service_menu_item_id:
+          type: integer
+          description: Unique ID of Service Menu Item
+        master_system_id:
+          type: integer
+        recipe_id:
           type: string
-        message:
+          description: PRIMA Recipe ID, required master_system_id and recipe_id for uniqueness.
+        recipe_name:
           type: string
-      required:
-      - code
-      - message
+          description: PRIMA Recipe name of Menu Items
+        recipe_marketing_name:
+          type: string
+          description: PRIMA Recipe marketing name of Menu Items
+        recipe_short_name:
+          type: string
+          description: Alternate name used for Recipe, driven by Marketing or Operations
+        production_area_id:
+          type: string
+          description: Unique ID of the Production Area
+        production_area_name:
+          type: string
+          description: Production Area descriptive name
+        is_mto:
+          type: string
+          description: Is item made to order? 'Y' indicates it is.
+        is_temp_required:
+          type: string
+          description: Is regular temperature monitoring required for this item? 'Y' indicates it is.
+        serving_size_uom_id:
+          type: string
+        serving_size_number:
+          type: integer
+          description: Portion Size (integer portion)
+        serving_size_description:
+          type: string
+          description: Portion Size Unit of Measure Description
+        serving_size_fraction_id:
+          type: string
+        serving_size_fraction_description:
+          type: string
+          description: Portion Size Fraction Description
+        serving_size_display:
+          type: string
+          description: Serving Size Description
+        food_cost:
+          type: number
+          description: Local food cost of item
+        acceptability_factor:
+          type: number
+          description: Forecast percentage per patron
+        planned_count:
+          type: number
+          description: Planned number of portions per service period
+        prep_count:
+          type: number
+          description: Actual prepared portions
+        on_hand_count:
+          type: number
+          description: Number of portions reused for service
+        sold_count:
+          type: number
+          description: Number of portions sold
+        leftover_count:
+          type: number
+        waste_count:
+          type: number
+          description: Number of portions wasted
+        is_result_required:
+          type: string
+          description: Y indicates the menu item requires a service result.
+        smi_row_no:
+          type: number
+          description: SMI Number
+        comments:
+          type: string
+          description: Menu Item Comments
     sub_locations:
       type: object
       properties:
@@ -242,6 +325,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/menu'
+    menu:
+      type: object
+      properties:
+        location_id:
+          type: integer
+          description: Unique code for a Location, sourced by BIC or MDG
+        location_name:
+          type: string
+          description: Location descriptive name
+        location:
+          type: string
+          description: Unique code for a Location, sourced by MDG
+        service_area_id:
+          type: integer
+          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
+        service_area_name:
+          type: integer
+          description: Service Area descriptive name
+        service_menu_id:
+          type: integer
+          description: Unique ID of Service Menu
+        service_date:
+          type: string
+          description: Calendar date of service in 'MM/DD/YYYY' format
+        meal_period_id:
+          type: integer
+        meal_period_name:
+          type: string
+        sub_locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/sub_locations'
     service_items:
       type: object
       properties:
@@ -356,131 +471,16 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-    menu:
+    Error:
       type: object
       properties:
-        location_id:
-          type: integer
-          description: Unique code for a Location, sourced by BIC or MDG
-        location_name:
+        code:
           type: string
-          description: Location descriptive name
-        location:
+        message:
           type: string
-          description: Unique code for a Location, sourced by MDG
-        service_area_id:
-          type: integer
-          description: Unique code for a Service Area, sourced by PRIMA and kept for backwards compatibility, will be DEPRECATED
-        service_area_name:
-          type: integer
-          description: Service Area descriptive name
-        service_menu_id:
-          type: integer
-          description: Unique ID of Service Menu
-        service_date:
-          type: string
-          description: Calendar date of service in 'MM/DD/YYYY' format
-        meal_period_id:
-          type: integer
-        meal_period_name:
-          type: string
-        sub_locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/sub_locations'
-    menu_items:
-      type: object
-      properties:
-        service_menu_item_id:
-          type: integer
-          description: Unique ID of Service Menu Item
-        master_system_id:
-          type: integer
-        recipe_id:
-          type: string
-          description: PRIMA Recipe ID, required master_system_id and recipe_id for uniqueness.
-        recipe_name:
-          type: string
-          description: PRIMA Recipe name of Menu Items
-        recipe_marketing_name:
-          type: string
-          description: PRIMA Recipe marketing name of Menu Items
-        recipe_short_name:
-          type: string
-          description: Alternate name used for Recipe, driven by Marketing or Operations
-        production_area_id:
-          type: string
-          description: Unique ID of the Production Area
-        production_area_name:
-          type: string
-          description: Production Area descriptive name
-        is_mto:
-          type: string
-          description: Is item made to order? 'Y' indicates it is.
-        is_temp_required:
-          type: string
-          description: Is regular temperature monitoring required for this item? 'Y' indicates it is.
-        serving_size_uom_id:
-          type: string
-        serving_size_number:
-          type: integer
-          description: Portion Size (integer portion)
-        serving_size_description:
-          type: string
-          description: Portion Size Unit of Measure Description
-        serving_size_fraction_id:
-          type: string
-        serving_size_fraction_description:
-          type: string
-          description: Portion Size Fraction Description
-        serving_size_display:
-          type: string
-          description: Serving Size Description
-        food_cost:
-          type: number
-          description: Local food cost of item
-        acceptability_factor:
-          type: number
-          description: Forecast percentage per patron
-        planned_count:
-          type: number
-          description: Planned number of portions per service period
-        prep_count:
-          type: number
-          description: Actual prepared portions
-        on_hand_count:
-          type: number
-          description: Number of portions reused for service
-        sold_count:
-          type: number
-          description: Number of portions sold
-        leftover_count:
-          type: number
-        waste_count:
-          type: number
-          description: Number of portions wasted
-        is_result_required:
-          type: string
-          description: Y indicates the menu item requires a service result.
-        smi_row_no:
-          type: number
-          description: SMI Number
-        comments:
-          type: string
-          description: Menu Item Comments
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The specified resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+      required:
+      - code
+      - message
   securitySchemes:
     apiKey:
       type: apiKey

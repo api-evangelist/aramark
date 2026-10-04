@@ -57,6 +57,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
+    orgValuePathParam:
+      in: path
+      name: org_value
+      description: Org Value for data to be returned
+      required: true
+      schema:
+        type: string
     enabledOnlyParam:
       name: enabled_only
       in: query
@@ -67,21 +74,6 @@ components:
         enum:
         - true
         - false
-    pageParam:
-      name: page
-      in: query
-      description: Page of the result set
-      required: false
-      schema:
-        type: number
-        default: 1
-    searchParam:
-      name: search
-      in: query
-      description: Search value
-      required: false
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -104,6 +96,21 @@ components:
         - PROGRAM - INVOICE ONLY
         - PUNCHOUT
         - ADOPTED
+    pageParam:
+      name: page
+      in: query
+      description: Page of the result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    searchParam:
+      name: search
+      in: query
+      description: Search value
+      required: false
+      schema:
+        type: string
     sizeParam:
       name: size
       in: query
@@ -112,13 +119,6 @@ components:
       schema:
         type: number
         default: 50
-    orgValuePathParam:
-      in: path
-      name: org_value
-      description: Org Value for data to be returned
-      required: true
-      schema:
-        type: string
     msaParam:
       in: query
       name: msa

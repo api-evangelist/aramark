@@ -86,20 +86,28 @@ components:
           type: string
           description: unique ID of the employee
   parameters:
-    smokeParam:
+    bypassCacheParam:
       in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:
         - 'true'
         - 'false'
         default: 'false'
-    bypassCacheParam:
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    smokeParam:
       in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
       schema:
         type: string
         enum:
@@ -120,14 +128,6 @@ components:
       schema:
         type: string
         default: 50
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      required: false
-      schema:
-        type: number
-        default: 1
     employeeIdParam:
       name: employee_id
       in: query

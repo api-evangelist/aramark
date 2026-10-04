@@ -179,6 +179,48 @@ paths:
       x-operation-id-source: normalized
       x-operation-id-original: deleteUserProfileSet Value
 components:
+  parameters:
+    userIdParamFalse:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    setIdParamTrue:
+      in: query
+      name: set_id
+      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
+      required: true
+      schema:
+        type: string
+    setIdParamFalse:
+      in: query
+      name: set_id
+      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
+      required: false
+      schema:
+        type: string
   schemas:
     Set:
       type: object
@@ -201,48 +243,6 @@ components:
         update_date:
           type: string
           description: date that profile was last updated
-  parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    userIdParamFalse:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: false
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    setIdParamTrue:
-      in: query
-      name: set_id
-      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
-      required: true
-      schema:
-        type: string
-    setIdParamFalse:
-      in: query
-      name: set_id
-      description: Unique identifier of a user Set. Used for returning specific set, otherwise returns all set
-      required: false
-      schema:
-        type: string
   securitySchemes:
     apikey:
       type: apiKey

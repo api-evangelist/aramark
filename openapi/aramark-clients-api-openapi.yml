@@ -154,18 +154,6 @@ components:
           type: string
           description: Client name
   parameters:
-    profitCenterParam:
-      in: query
-      name: org_value
-      description: Provide profit center code to filter data set
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -176,10 +164,29 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
     searchParam:
       in: query
       name: search
       description: Used to search a specific Client.  Will match against Name and Value or Client or Profit Center or Client Family.  Maximum length of 20 characters.
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    profitCenterParam:
+      in: query
+      name: org_value
+      description: Provide profit center code to filter data set
       schema:
         type: string
     formatParam:
@@ -200,29 +207,14 @@ components:
       schema:
         type: string
         default: 50
-    pageParam:
+    userIdParam:
+      name: user_id
       in: query
-      name: page
-      description: Page number of result set
-      schema:
-        type: number
-        default: 1
-    smokeParam_2:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      description: Email address of user
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
-    searchParam_2:
-      name: search
-      in: query
-      description: Search string to find Organizations
-      required: false
-      schema:
-        type: string
+        default: last-first@aramark.com
     segmentCategoryParam:
       name: segment_category
       in: query
@@ -238,6 +230,13 @@ components:
         - ALL
         - ALL_CLOSED
         default: OPERATIONAL
+    searchParam_2:
+      name: search
+      in: query
+      description: Search string to find Organizations
+      required: false
+      schema:
+        type: string
     pageParam_2:
       name: page
       in: query
@@ -246,14 +245,15 @@ components:
       schema:
         type: string
         default: 1
-    userIdParam:
-      name: user_id
-      in: query
-      description: Email address of user
-      required: true
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
       schema:
         type: string
-        default: last-first@aramark.com
+        enum:
+        - 'true'
+        - 'false'
   securitySchemes:
     apiKey:
       type: apiKey

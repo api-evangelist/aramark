@@ -56,41 +56,32 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    masterSystemIdParam:
-      name: master_system_id
-      in: query
-      description: Unique ID of Master System, given that recipe IDs are not unique
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Service Area for a Service Date
-      required: true
-      schema:
-        type: string
   schemas:
+    recipe:
+      type: object
+      properties:
+        recipe_id:
+          type: string
+          description: PRIMA Recipe ID
+        recipe_name:
+          type: string
+          description: PRIMA Recipe name of Menu Items
+        serving_size_display:
+          type: string
+          description: Serving Size Description
+        uom_system:
+          type: string
+          description: What Unit of measurement system is being used
+        special_instructions:
+          type: string
+          description: Special Instructions
+        assembly_instructions:
+          type: string
+          description: Assembly Instructions
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingredients'
     ingredients:
       type: object
       properties:
@@ -127,31 +118,40 @@ components:
         ozw_per_tsp:
           type: string
           description: Decimal factor used for conversion of Once Weight (Nullable)
-    recipe:
-      type: object
-      properties:
-        recipe_id:
-          type: string
-          description: PRIMA Recipe ID
-        recipe_name:
-          type: string
-          description: PRIMA Recipe name of Menu Items
-        serving_size_display:
-          type: string
-          description: Serving Size Description
-        uom_system:
-          type: string
-          description: What Unit of measurement system is being used
-        special_instructions:
-          type: string
-          description: Special Instructions
-        assembly_instructions:
-          type: string
-          description: Assembly Instructions
-        ingredients:
-          type: array
-          items:
-            $ref: '#/components/schemas/ingredients'
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    masterSystemIdParam:
+      name: master_system_id
+      in: query
+      description: Unique ID of Master System, given that recipe IDs are not unique
+      required: false
+      schema:
+        type: string
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Service Area for a Service Date
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

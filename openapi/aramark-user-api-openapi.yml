@@ -208,23 +208,6 @@ paths:
       description: Development server
 components:
   parameters:
-    userIdParamTrue:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: true
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
     userIdParamFalse:
       name: user_id
       in: query
@@ -242,6 +225,32 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    userIdParamTrue:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     smokeParam_2:
       in: header
       name: smoke
@@ -253,22 +262,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    bypassCacheParam_2:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    emailParam:
-      name: sp_guid
-      in: query
-      description: sp GUID of the User
-      required: true
-      schema:
-        type: string
     sourceSystemParam:
       name: source_system
       in: query
@@ -279,6 +272,13 @@ components:
         enum:
         - PRMA
         default: PRMA
+    emailParam:
+      name: sp_guid
+      in: query
+      description: sp GUID of the User
+      required: true
+      schema:
+        type: string
   schemas:
     User:
       type: object
@@ -310,15 +310,15 @@ components:
         update_date:
           type: string
           description: date that profile was last updated
-    user_sites:
+    user_disabled_locations:
       type: object
       properties:
-        site_id:
+        location_id:
           type: number
-          description: ID for the Site
-        site_name:
+          description: ID of the Location
+        is_disabled:
           type: string
-          description: Name of the Site
+          description: Status to determine if location is disabled - true or false
     putDisabledUserLocationsBody:
       type: object
       properties:
@@ -331,15 +331,15 @@ components:
         enalbed:
           type: string
           description: Status to determine if location is disabled - true or false
-    user_disabled_locations:
+    user_sites:
       type: object
       properties:
-        location_id:
+        site_id:
           type: number
-          description: ID of the Location
-        is_disabled:
+          description: ID for the Site
+        site_name:
           type: string
-          description: Status to determine if location is disabled - true or false
+          description: Name of the Site
   securitySchemes:
     apikey:
       type: apiKey

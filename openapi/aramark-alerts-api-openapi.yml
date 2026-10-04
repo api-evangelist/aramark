@@ -61,24 +61,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    sizeParam:
-      name: size
+    userIdParam:
       in: query
-      description: Number of records to be returned in each page of result set
+      name: user_id
+      description: Email address of the manager
+      required: true
       schema:
         type: string
-        default: 50
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP header variable will route the API call to
-
-        the Integration testing environment. Only applicable in QA.
-
-        '
-      schema:
-        type: string
-        default: false
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -97,27 +86,25 @@ components:
       schema:
         type: number
         default: 1
-    userIdParam:
-      in: query
-      name: user_id
-      description: Email address of the manager
-      required: true
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP header variable will route the API call to
+
+        the Integration testing environment. Only applicable in QA.
+
+        '
       schema:
         type: string
+        default: false
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
   schemas:
-    alerts:
-      type: object
-      properties:
-        type:
-          type: string
-          description: description of the type of alert
-          enum:
-          - LABOR
-          - PURCHASE ORDER
-          - POINT OF SALES
-        value:
-          type: number
-          description: value of the alert
     notifications:
       type: object
       properties:
@@ -131,6 +118,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/alerts'
+    alerts:
+      type: object
+      properties:
+        type:
+          type: string
+          description: description of the type of alert
+          enum:
+          - LABOR
+          - PURCHASE ORDER
+          - POINT OF SALES
+        value:
+          type: number
+          description: value of the alert
   securitySchemes:
     apiKey:
       type: apiKey

@@ -60,20 +60,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    updateDateParam:
-      in: query
-      name: update_date
-      description: Calendar date for last update. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        default: false
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -84,6 +70,21 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      required: false
+      schema:
+        type: number
+        default: 1
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        default: false
     enabledParam:
       in: query
       name: enabled
@@ -102,14 +103,13 @@ components:
       schema:
         type: string
         default: 50
-    pageParam:
+    updateDateParam:
       in: query
-      name: page
-      description: Page number of result set
+      name: update_date
+      description: Calendar date for last update. "mm/dd/yyyy"
       required: false
       schema:
-        type: number
-        default: 1
+        type: string
   schemas:
     brands:
       type: object

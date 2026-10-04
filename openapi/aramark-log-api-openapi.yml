@@ -53,6 +53,17 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   schemas:
     postLogRequestBody:
       type: object
@@ -69,17 +80,6 @@ components:
         email:
           type: string
           description: Email for the Log data request
-  parameters:
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
   securitySchemes:
     apikey:
       type: apiKey

@@ -65,69 +65,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    sizeParam:
-      in: query
-      name: size
-      description: Number of rows in each page to return. Default 50
-      required: false
-      schema:
-        type: string
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code
-      required: true
-      schema:
-        type: string
-    startDateTimeParam:
-      in: query
-      name: start_date_time
-      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    rawParam:
-      in: query
-      name: raw
-      description: Flag used to determine if the data is direct from the source system, unconformed or not
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    sourceSystemParam:
-      in: query
-      name: source_system
-      description: "Name of the Catering System:\n * `SWZD` - Suite Wizard\n"
-      required: true
-      schema:
-        type: string
-        enum:
-        - SWZD
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set. Default 1
-      required: false
-      schema:
-        type: number
-    endDateTimeParam:
-      in: query
-      name: end_date_time
-      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
-      required: true
-      schema:
-        type: string
   schemas:
     orders:
       type: object
@@ -220,6 +157,69 @@ components:
         last_update_date:
           type: string
           description: Date-Time the records was last updated
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set. Default 1
+      required: false
+      schema:
+        type: number
+    rawParam:
+      in: query
+      name: raw
+      description: Flag used to determine if the data is direct from the source system, unconformed or not
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      in: query
+      name: source_system
+      description: "Name of the Catering System:\n * `SWZD` - Suite Wizard\n"
+      required: true
+      schema:
+        type: string
+        enum:
+        - SWZD
+    endDateTimeParam:
+      in: query
+      name: end_date_time
+      description: Calendar end date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of start_date_time.
+      required: true
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return. Default 50
+      required: false
+      schema:
+        type: string
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH:mm". Must be within 24 hours of end_date_time.
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

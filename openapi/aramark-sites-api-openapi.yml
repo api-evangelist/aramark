@@ -96,13 +96,6 @@ components:
           type: string
           description: Calendar date when Site was last updated
   parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        default: 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -113,6 +106,14 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    pageParam:
+      in: query
+      name: page
+      escription: Page number of result set
+      required: false
+      schema:
+        type: number
+        default: 1
     searchParam:
       name: search
       in: query
@@ -120,6 +121,20 @@ components:
       required: false
       schema:
         type: string
+    siteIdParam:
+      name: site_id
+      in: query
+      description: Unique ID of Site to return Sites.
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        default: 'false'
     formatParam:
       name: format
       in: query
@@ -139,21 +154,6 @@ components:
       schema:
         type: string
         default: 50
-    pageParam:
-      in: query
-      name: page
-      escription: Page number of result set
-      required: false
-      schema:
-        type: number
-        default: 1
-    siteIdParam:
-      name: site_id
-      in: query
-      description: Unique ID of Site to return Sites.
-      required: false
-      schema:
-        type: string
   securitySchemes:
     apiKey:
       type: apiKey

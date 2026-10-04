@@ -64,27 +64,20 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code for rollup
-      required: true
-      schema:
-        type: string
-    smokeParam:
+    bypassCacheParam:
       in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:
         - 'true'
         - 'false'
         default: 'false'
-    bypassCacheParam:
+    smokeParam:
       in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
       schema:
         type: string
         enum:
@@ -96,6 +89,13 @@ components:
       name: end_date
       description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
       required: false
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code for rollup
+      required: true
       schema:
         type: string
     startDateParam:

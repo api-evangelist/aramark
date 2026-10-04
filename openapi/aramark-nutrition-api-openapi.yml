@@ -173,6 +173,18 @@ paths:
       description: Development server
 components:
   schemas:
+    nutrition_updates:
+      type: object
+      properties:
+        location_id:
+          type: number
+          description: Location ID
+        service_area_id:
+          type: number
+          description: Service Area ID
+        count:
+          type: number
+          description: Number of Updates
     nutrition:
       type: object
       properties:
@@ -461,7 +473,7 @@ components:
         zinc:
           type: number
           description: Zinc of the recipe
-    nutrition_updates:
+    nutrition_updates_2:
       type: object
       properties:
         location_id:
@@ -470,9 +482,6 @@ components:
         service_area_id:
           type: number
           description: Service Area ID
-        count:
-          type: number
-          description: Number of Updates
     nutrition_2:
       type: object
       properties:
@@ -978,23 +987,7 @@ components:
           type: string
         last_update_date:
           type: string
-    nutrition_updates_2:
-      type: object
-      properties:
-        location_id:
-          type: number
-          description: Location ID
-        service_area_id:
-          type: number
-          description: Service Area ID
   parameters:
-    locationIdNoReqParam:
-      name: location_id
-      in: query
-      description: ID of the location. Must pass Location ID or Service Area ID
-      required: false
-      schema:
-        type: number
     serviceAreaIdNoReqParam:
       name: service_area_id
       in: query
@@ -1002,6 +995,22 @@ components:
       required: false
       schema:
         type: number
+    lastModifiedDateNoReqParam:
+      name: last_modified_date
+      in: query
+      description: Last Modified Date of the data
+      required: false
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     smokeParam:
       in: header
       name: smoke
@@ -1013,27 +1022,11 @@ components:
         enum:
         - 'true'
         - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    lastModifiedDateNoReqParam:
+    lastModifiedDateParam:
       name: last_modified_date
       in: query
       description: Last Modified Date of the data
-      required: false
-      schema:
-        type: string
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: ID of the Recipe
-      required: false
+      required: true
       schema:
         type: string
     sourceSystemParam:
@@ -1045,13 +1038,20 @@ components:
         type: string
         enum:
         - PRMA
-    lastModifiedDateParam:
-      name: last_modified_date
+    recipeIdParam:
+      name: recipe_id
       in: query
-      description: Last Modified Date of the data
-      required: true
+      description: ID of the Recipe
+      required: false
       schema:
         type: string
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the location. Must pass Location ID or Service Area ID
+      required: false
+      schema:
+        type: number
     lastModifiedDateNoReqParam_2:
       name: last_update_date
       in: query

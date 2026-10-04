@@ -76,58 +76,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    isSmiParam:
-      name: is_smi
-      in: query
-      description: Indicator of whether smi is enabled
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    sizeParam:
-      name: size
-      in: query
-      description: Number of rows in each page to return.
-      required: false
-      schema:
-        type: string
-        default: 50
-    isResidentialParam:
-      name: is_residential
-      in: query
-      description: Indicator of whether Residential is enabled
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    pageParam:
-      name: page
-      in: query
-      description: Page number of data set to return
-      required: false
-      schema:
-        type: string
-        default: 1
-    fieldsParam:
-      name: fields
-      in: query
-      description: 'Comma delimited list to reduce the fields of response object. When used the property "recipe_id" will always be appended to the list for a consistent field for response testing.
-
-        '
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      name: smoke
-      in: header
-      description: 'When set to ''true'' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-
-        '
-      schema:
-        type: string
-        default: false
     bypassCacheParam:
       name: bypass-cache
       in: header
@@ -138,43 +86,11 @@ components:
         - 'true'
         - 'false'
         default: false
-    recipeIdParam:
-      name: recipe_id
-      in: query
-      description: Unique ID of Recipe from Prima Web
-      required: false
-      schema:
-        type: string
     isMm2Param:
       name: is_mm2
       in: query
       description: Indicator of whether Master the Menu 2 or mm2 is enabled
       required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    searchParam:
-      name: search
-      in: query
-      description: Sting used to search for recipe by name
-      required: false
-      schema:
-        type: string
-    isHarvestTableParam:
-      name: is_harvest_table
-      in: query
-      description: Indicator of when recipe is for Harvest Table menu
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-    isRetailParam:
-      name: is_retail
-      in: query
-      description: Indicator of whether Retail is enabled
       schema:
         type: string
         enum:
@@ -190,10 +106,85 @@ components:
         enum:
         - Y
         - N
+    pageParam:
+      name: page
+      in: query
+      description: Page number of data set to return
+      required: false
+      schema:
+        type: string
+        default: 1
+    isSmiParam:
+      name: is_smi
+      in: query
+      description: Indicator of whether smi is enabled
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    smokeParam:
+      name: smoke
+      in: header
+      description: 'When set to ''true'' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+
+        '
+      schema:
+        type: string
+        default: false
+    searchParam:
+      name: search
+      in: query
+      description: Sting used to search for recipe by name
+      required: false
+      schema:
+        type: string
+    isResidentialParam:
+      name: is_residential
+      in: query
+      description: Indicator of whether Residential is enabled
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    isRetailParam:
+      name: is_retail
+      in: query
+      description: Indicator of whether Retail is enabled
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    recipeIdParam:
+      name: recipe_id
+      in: query
+      description: Unique ID of Recipe from Prima Web
+      required: false
+      schema:
+        type: string
     isPatientParam:
       name: is_patient
       in: query
       description: Indicator of when recipe is for patient services
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+    sizeParam:
+      name: size
+      in: query
+      description: Number of rows in each page to return.
+      required: false
+      schema:
+        type: string
+        default: 50
+    isHarvestTableParam:
+      name: is_harvest_table
+      in: query
+      description: Indicator of when recipe is for Harvest Table menu
       schema:
         type: string
         enum:
@@ -208,6 +199,15 @@ components:
         enum:
         - Y
         - N
+    fieldsParam:
+      name: fields
+      in: query
+      description: 'Comma delimited list to reduce the fields of response object. When used the property "recipe_id" will always be appended to the list for a consistent field for response testing.
+
+        '
+      required: false
+      schema:
+        type: string
   schemas:
     recipe_decorations:
       type: object

@@ -50,51 +50,6 @@ paths:
                     items:
                       $ref: '#/components/schemas/manufacturer_item_pricing'
 components:
-  parameters:
-    mfgItemSequenceParam:
-      name: mfg_item_seqs
-      in: query
-      description: Comma seperated list of Manufacture Item Sequence values
-      required: true
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    locationOrgValueParam:
-      name: location_org_value
-      in: query
-      description: Location Org Value
-      required: true
-      schema:
-        type: string
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
   schemas:
     manufacturer_item_pricing:
       type: object
@@ -132,6 +87,51 @@ components:
         location_last_purchase_date:
           type: string
           description: Last Purcahse Date for the Manufacturer Item
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    locationOrgValueParam:
+      name: location_org_value
+      in: query
+      description: Location Org Value
+      required: true
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    mfgItemSequenceParam:
+      name: mfg_item_seqs
+      in: query
+      description: Comma seperated list of Manufacture Item Sequence values
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   securitySchemes:
     apikey:
       type: apiKey

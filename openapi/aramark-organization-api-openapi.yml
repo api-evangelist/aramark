@@ -74,17 +74,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     OrganizationUnit:
       type: object
       properties:
@@ -113,6 +102,17 @@ components:
           type: integer
           description: Number of locations under this unit
           example: 45
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     OrganizationResponse:
       type: object
       properties:

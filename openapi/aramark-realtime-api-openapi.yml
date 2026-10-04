@@ -54,51 +54,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code
-      required: true
-      schema:
-        type: string
-    startDateTimeParam:
-      in: query
-      name: start_date_time
-      description: Calendar start date and time for transactions. "MM/dd/yyyy HH24:mm"
-      required: true
-      schema:
-        type: string
-    sourceSystemRealTimeParam:
-      in: query
-      name: source_system
-      description: "Name of the POS System:\n * `BYPS` - Bypass\n"
-      required: true
-      schema:
-        type: string
-    skusParam:
-      in: query
-      name: skus
-      description: Comma separated list of Item SKUs
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    endDateTimeParam:
-      in: query
-      name: end_date_time
-      description: Calendar end date and time for transactions. "MM/dd/yyyy HH24:mm"
-      required: true
-      schema:
-        type: string
   schemas:
     item_sales:
       type: object
@@ -121,6 +76,51 @@ components:
         last_order_time:
           type: string
           description: Time of the Last Item Sold
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    skusParam:
+      in: query
+      name: skus
+      description: Comma separated list of Item SKUs
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code
+      required: true
+      schema:
+        type: string
+    sourceSystemRealTimeParam:
+      in: query
+      name: source_system
+      description: "Name of the POS System:\n * `BYPS` - Bypass\n"
+      required: true
+      schema:
+        type: string
+    endDateTimeParam:
+      in: query
+      name: end_date_time
+      description: Calendar end date and time for transactions. "MM/dd/yyyy HH24:mm"
+      required: true
+      schema:
+        type: string
+    startDateTimeParam:
+      in: query
+      name: start_date_time
+      description: Calendar start date and time for transactions. "MM/dd/yyyy HH24:mm"
+      required: true
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

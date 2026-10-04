@@ -68,6 +68,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ServiceResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+        count:
+          type: integer
+          description: Total record count
+          example: 5
     Service:
       type: object
       properties:
@@ -100,17 +111,6 @@ components:
           type: string
           description: Service name
           example: Campus Dining
-    ServiceResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
-        count:
-          type: integer
-          description: Total record count
-          example: 5
     ErrorResponse:
       type: object
       properties:

@@ -58,7 +58,91 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    serviceDateParam:
+      name: service_date
+      in: query
+      description: Service Date in Format "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    subLocationIdParam:
+      name: sub_location_id
+      in: query
+      description: 'Unique ID of Sub Location aka Station for a Service Date. Either service_area_id or sub_location_id are REQUIRED.
+
+        '
+      required: false
+      schema:
+        type: string
+    mealPeriodIdParam:
+      name: meal_period_id
+      in: query
+      description: Unique ID of Meal Period for a Location and Service Date.
+      required: false
+      schema:
+        type: string
   schemas:
+    ingredients:
+      type: object
+      properties:
+        ingredient_id:
+          type: string
+          description: PRIMA Recipe Ingredient ID
+        ingredient_name:
+          type: string
+          description: PRIMA Recipe Ingredient Name
+        unit_of_measure_id:
+          type: string
+          description: Unit of measure type ID
+        unit_of_measure:
+          type: string
+          description: Unit of measure description
+        amount_needed:
+          type: number
+          description: Ingredient amount per serving
+        prep_tech:
+          type: string
+          description: Preparation Technique (Nullable)
+        prep_method:
+          type: string
+          description: Preparation Method (Nullable)
+        sub_assembly_id:
+          type: string
+          description: PRIMA Recipe ID if Ingredient is a sub-assembly (Nullable)
+        is_lb_threshold:
+          type: string
+          description: Y/N is ingredient lb threshold
+        ozw_per_tsp:
+          type: string
+          description: Decimal factor used for conversion of Once Weight (Nullable)
     service_recipes:
       type: object
       properties:
@@ -112,90 +196,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ingredients'
-    ingredients:
-      type: object
-      properties:
-        ingredient_id:
-          type: string
-          description: PRIMA Recipe Ingredient ID
-        ingredient_name:
-          type: string
-          description: PRIMA Recipe Ingredient Name
-        unit_of_measure_id:
-          type: string
-          description: Unit of measure type ID
-        unit_of_measure:
-          type: string
-          description: Unit of measure description
-        amount_needed:
-          type: number
-          description: Ingredient amount per serving
-        prep_tech:
-          type: string
-          description: Preparation Technique (Nullable)
-        prep_method:
-          type: string
-          description: Preparation Method (Nullable)
-        sub_assembly_id:
-          type: string
-          description: PRIMA Recipe ID if Ingredient is a sub-assembly (Nullable)
-        is_lb_threshold:
-          type: string
-          description: Y/N is ingredient lb threshold
-        ozw_per_tsp:
-          type: string
-          description: Decimal factor used for conversion of Once Weight (Nullable)
-  parameters:
-    mealPeriodIdParam:
-      name: meal_period_id
-      in: query
-      description: Unique ID of Meal Period for a Location and Service Date.
-      required: false
-      schema:
-        type: string
-    subLocationIdParam:
-      name: sub_location_id
-      in: query
-      description: 'Unique ID of Sub Location aka Station for a Service Date. Either service_area_id or sub_location_id are REQUIRED.
-
-        '
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceDateParam:
-      name: service_date
-      in: query
-      description: Service Date in Format "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: Unique ID of Service Area for a Service Date.  Either service_area_id or sub_location_id are REQUIRED.
-      required: false
-      schema:
-        type: string
   securitySchemes:
     apikey:
       type: apiKey

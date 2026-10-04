@@ -209,6 +209,13 @@ paths:
       description: Development server
 components:
   parameters:
+    userIdParamFalse:
+      name: user_id
+      in: query
+      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
+      required: false
+      schema:
+        type: string
     deviceIdParamTrue:
       in: query
       name: device_id
@@ -216,16 +223,6 @@ components:
       required: true
       schema:
         type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -236,13 +233,16 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    userIdParamFalse:
-      name: user_id
-      in: query
-      description: Unique identifier of a Marko User.  Used for returning specific user, otherwise returns all users
-      required: false
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
       schema:
         type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
     deviceIdParamFalse:
       in: query
       name: device_id
@@ -259,6 +259,13 @@ components:
         enum:
         - 'true'
         - 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set. Default 1
+      required: false
+      schema:
+        type: number
     sizeParam:
       in: query
       name: size
@@ -273,28 +280,21 @@ components:
       required: true
       schema:
         type: string
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set. Default 1
-      required: false
+    bypassCacheParam_3:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
-        type: number
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     smokeParam_2:
       in: header
       name: smoke
       description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
 
         '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam_3:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:

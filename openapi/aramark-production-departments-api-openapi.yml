@@ -58,13 +58,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    siteIdParam:
-      name: site_id
-      in: query
-      description: Unique ID of Site
-      required: true
-      schema:
-        type: string
     smokeParam:
       in: header
       name: smoke
@@ -82,6 +75,13 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    siteIdParam:
+      name: site_id
+      in: query
+      description: Unique ID of Site
+      required: true
+      schema:
+        type: string
   schemas:
     production_departments:
       type: object

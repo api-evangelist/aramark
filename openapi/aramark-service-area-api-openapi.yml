@@ -133,21 +133,28 @@ paths:
       description: Development server
 components:
   parameters:
+    lastUpdateDateParam:
+      name: last_update_date
+      in: query
+      description: Last Update Date for the Service Area
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     smokeParam:
       in: header
       name: smoke
       description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
 
         '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
       schema:
         type: string
         enum:
@@ -160,13 +167,6 @@ components:
       required: true
       schema:
         type: number
-    lastUpdateDateParam:
-      name: last_update_date
-      in: query
-      description: Last Update Date for the Service Area
-      required: true
-      schema:
-        type: string
     serviceAreaIdParam:
       name: service_area_id
       in: query

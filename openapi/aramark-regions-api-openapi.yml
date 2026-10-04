@@ -70,43 +70,15 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  schemas:
-    regions:
-      type: object
-      properties:
-        region:
-          type: string
-          description: Unique code for a Region, sourced by BIC or MDG
-        region_name:
-          type: string
-          description: Region name
   parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    searchParam:
-      name: search
+    userIdParam:
+      name: user_id
       in: query
-      description: Search string to find Organizations
-      required: false
+      description: Email address of user
+      required: true
       schema:
         type: string
+        default: last-first@aramark.com
     segmentCategoryParam:
       name: segment_category
       in: query
@@ -122,13 +94,16 @@ components:
         - ALL
         - ALL_CLOSED
         default: OPERATIONAL
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records to be returned in each page of result set
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
       schema:
         type: string
-        default: 50
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
     pageParam:
       name: page
       in: query
@@ -137,14 +112,39 @@ components:
       schema:
         type: string
         default: 1
-    userIdParam:
-      name: user_id
+    searchParam:
+      name: search
       in: query
-      description: Email address of user
-      required: true
+      description: Search string to find Organizations
+      required: false
       schema:
         type: string
-        default: last-first@aramark.com
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+  schemas:
+    regions:
+      type: object
+      properties:
+        region:
+          type: string
+          description: Unique code for a Region, sourced by BIC or MDG
+        region_name:
+          type: string
+          description: Region name
   securitySchemes:
     apiKey:
       type: apiKey

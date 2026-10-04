@@ -253,80 +253,27 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    dateParam:
-      name: date
-      in: query
-      description: Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    siteIdRequiredParam:
-      name: site_id
-      in: query
-      description: ID of the Site
-      required: true
-      schema:
-        type: number
   schemas:
-    postSiteRequestBody:
+    putSiteRequestBody:
       type: object
       properties:
-        approval_email:
+        request_token:
+          type: number
+          description: Request Token of the Site Request
+        status:
           type: string
-          description: Email of the approver of the site request
+          description: Status of the Request
+    putSitePinBody:
+      type: object
+      properties:
         site_id:
           type: number
-          description: ID of the Site for the request
-        requestor_email:
+        pin:
           type: string
-          description: Email of the requestor
-        requestor_name:
+        sp_guid:
           type: string
-          description: Name of the requestor
-        requestor_sp_guid:
-          type: string
-          description: sp GUID of the requestor for the Site. Either requestor_sp_guid or device_serial_number MUST be included
-        device_serial_number:
-          type: string
-          description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
+        pin_required:
+          type: boolean
     site_pin:
       type: object
       properties:
@@ -334,6 +281,15 @@ components:
           type: number
         pin_required:
           type: string
+    site_details:
+      type: object
+      properties:
+        site_id:
+          type: number
+          description: ID of the Site
+        source_system:
+          type: string
+          description: Source System used at the Site
     put_site_journal_body:
       type: object
       properties:
@@ -364,15 +320,6 @@ components:
         service_area_id:
           type: number
           description: Service Area ID of the Journal
-    site_details:
-      type: object
-      properties:
-        site_id:
-          type: number
-          description: ID of the Site
-        source_system:
-          type: string
-          description: Source System used at the Site
     site_journal:
       type: object
       properties:
@@ -400,26 +347,79 @@ components:
         site_id:
           type: number
           description: Site ID of the Journal
-    putSitePinBody:
+    postSiteRequestBody:
       type: object
       properties:
+        approval_email:
+          type: string
+          description: Email of the approver of the site request
         site_id:
           type: number
-        pin:
+          description: ID of the Site for the request
+        requestor_email:
           type: string
-        sp_guid:
+          description: Email of the requestor
+        requestor_name:
           type: string
-        pin_required:
-          type: boolean
-    putSiteRequestBody:
-      type: object
-      properties:
-        request_token:
-          type: number
-          description: Request Token of the Site Request
-        status:
+          description: Name of the requestor
+        requestor_sp_guid:
           type: string
-          description: Status of the Request
+          description: sp GUID of the requestor for the Site. Either requestor_sp_guid or device_serial_number MUST be included
+        device_serial_number:
+          type: string
+          description: Device Serial Number of the request. Either requestor_sp_guid or device_serial_number MUST be included
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    siteIdRequiredParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: true
+      schema:
+        type: number
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   securitySchemes:
     apikey:
       type: apiKey

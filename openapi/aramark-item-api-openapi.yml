@@ -52,37 +52,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    sizeParam:
-      in: query
-      name: size
-      description: Number of rows in each page to return. Default 50
-      required: false
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      in: query
-      name: source_system
-      description: "Name of the POS System:\n * `BYPS` - Bypass\n * `MASH` - Mashgin\n * `SMCS` - S&E Micros\n * `EMCS` - Enterprise Micros\n * `CMCS` - Cloud Micros\n * `ZIPP` - Zippin\n * `TAP2` - Tapin2\n * `NXTP` - Nextep\n * `SYTP` - Systopia\n"
-      required: true
-      schema:
-        type: string
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set. Default 1
-      required: false
-      schema:
-        type: number
   schemas:
     pos_items:
       type: object
@@ -111,6 +80,37 @@ components:
         last_update_date:
           type: string
           description: Date and Time the Item data was updated
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set. Default 1
+      required: false
+      schema:
+        type: number
+    sourceSystemParam:
+      in: query
+      name: source_system
+      description: "Name of the POS System:\n * `BYPS` - Bypass\n * `MASH` - Mashgin\n * `SMCS` - S&E Micros\n * `EMCS` - Enterprise Micros\n * `CMCS` - Cloud Micros\n * `ZIPP` - Zippin\n * `TAP2` - Tapin2\n * `NXTP` - Nextep\n * `SYTP` - Systopia\n"
+      required: true
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return. Default 50
+      required: false
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

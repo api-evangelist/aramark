@@ -59,33 +59,15 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  schemas:
-    roles:
-      type: object
-      properties:
-        role_level:
-          type: string
-          description: Unique code for a level in the Aramark Organization
-        role_level_number:
-          type: string
-          description: Digit associated with a level in the Aramark Organization
   parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    searchParam:
-      name: search
+    userIdParam:
+      name: user_id
       in: query
-      description: Search string to find Organizations
-      required: false
+      description: Email address of user
+      required: true
       schema:
         type: string
+        default: last-first@aramark.com
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -96,14 +78,32 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    userIdParam:
-      name: user_id
+    searchParam:
+      name: search
       in: query
-      description: Email address of user
-      required: true
+      description: Search string to find Organizations
+      required: false
       schema:
         type: string
-        default: last-first@aramark.com
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+  schemas:
+    roles:
+      type: object
+      properties:
+        role_level:
+          type: string
+          description: Unique code for a level in the Aramark Organization
+        role_level_number:
+          type: string
+          description: Digit associated with a level in the Aramark Organization
   securitySchemes:
     apiKey:
       type: apiKey

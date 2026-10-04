@@ -119,25 +119,45 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
   schemas:
-    putPhotosBody:
-      type: object
-      properties:
-        photo_id:
-          type: string
-          description: ID of the photo
-        time_taken:
-          type: string
-          description: Time the Photo was taken
-        station_id:
-          type: number
-          description: Station ID of the Photo
-        period_id:
-          type: number
-          description: Period ID of the Photo
-        service_area_id:
-          type: number
-          description: Service Area ID of the Photo
     service_photos:
       type: object
       properties:
@@ -162,44 +182,24 @@ components:
         photo_id:
           type: string
           description: ID of the Photo
-  parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
+    putPhotosBody:
+      type: object
+      properties:
+        photo_id:
+          type: string
+          description: ID of the photo
+        time_taken:
+          type: string
+          description: Time the Photo was taken
+        station_id:
+          type: number
+          description: Station ID of the Photo
+        period_id:
+          type: number
+          description: Period ID of the Photo
+        service_area_id:
+          type: number
+          description: Service Area ID of the Photo
   securitySchemes:
     apikey:
       type: apiKey

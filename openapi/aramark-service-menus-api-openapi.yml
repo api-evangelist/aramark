@@ -60,59 +60,6 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  parameters:
-    mealPeriodIdParam:
-      name: meal_period_id
-      in: query
-      description: Unique ID of Meal Period for a Location and Service Date.
-      required: false
-      schema:
-        type: string
-    endServiceDateParam:
-      name: end_service_date
-      in: query
-      description: End Service Date. Service date will be used if not provided. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        default: 'false'
-    serviceDateParam:
-      name: service_date
-      in: query
-      description: Service Date. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: Unique ID of Service Area for Menus.
-      required: false
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    locationIdParam:
-      name: location_id
-      in: query
-      description: Unique ID of Location to return a Sub Locations.
-      required: true
-      schema:
-        type: string
   schemas:
     service_menus:
       type: object
@@ -141,6 +88,59 @@ components:
         meal_period:
           type: string
           description: Meal Period descriptive name
+  parameters:
+    serviceDateParam:
+      name: service_date
+      in: query
+      description: Service Date. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: Unique ID of Service Area for Menus.
+      required: false
+      schema:
+        type: string
+    endServiceDateParam:
+      name: end_service_date
+      in: query
+      description: End Service Date. Service date will be used if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        default: 'false'
+    locationIdParam:
+      name: location_id
+      in: query
+      description: Unique ID of Location to return a Sub Locations.
+      required: true
+      schema:
+        type: string
+    mealPeriodIdParam:
+      name: meal_period_id
+      in: query
+      description: Unique ID of Meal Period for a Location and Service Date.
+      required: false
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

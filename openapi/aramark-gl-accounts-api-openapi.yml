@@ -89,43 +89,13 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    valueReqParam:
-      name: value
-      in: query
-      description: Value to search
+    orgValuePathParam:
+      in: path
+      name: org_value
+      description: Org Value for data to be returned
       required: true
       schema:
         type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Size of the result set
-      required: false
-      schema:
-        type: number
-        default: 50
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    hierarchyParam:
-      name: hierarchy
-      in: query
-      description: Hierarchy of account
-      required: false
-      schema:
-        type: string
-        enum:
-        - segment
-        - family
-        - class
-        - commodity
-        - offering
     levelParam:
       name: level
       in: query
@@ -139,20 +109,22 @@ components:
         - 3
         - 4
         - 5
-    valueParam:
+    valueReqParam:
       name: value
       in: query
-      description: Value
-      required: false
-      schema:
-        type: string
-    orgValuePathParam:
-      in: path
-      name: org_value
-      description: Org Value for data to be returned
+      description: Value to search
       required: true
       schema:
         type: string
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     pageParam:
       name: page
       in: query
@@ -161,6 +133,13 @@ components:
       schema:
         type: number
         default: 1
+    valueParam:
+      name: value
+      in: query
+      description: Value
+      required: false
+      schema:
+        type: string
     searchDetailsParam:
       in: query
       name: search
@@ -172,20 +151,28 @@ components:
         - category
         - gl_account
         - category_code
+    sizeParam:
+      name: size
+      in: query
+      description: Size of the result set
+      required: false
+      schema:
+        type: number
+        default: 50
+    hierarchyParam:
+      name: hierarchy
+      in: query
+      description: Hierarchy of account
+      required: false
+      schema:
+        type: string
+        enum:
+        - segment
+        - family
+        - class
+        - commodity
+        - offering
   schemas:
-    gl_account_details:
-      type: object
-      properties:
-        long_description:
-          type: string
-        short_description:
-          type: string
-        gl_account_catergory:
-          type: string
-        gl_level:
-          type: string
-        category_code:
-          type: string
     gl_accounts:
       type: object
       properties:
@@ -206,6 +193,19 @@ components:
         gl_level:
           type: string
         gl_acc_category:
+          type: string
+    gl_account_details:
+      type: object
+      properties:
+        long_description:
+          type: string
+        short_description:
+          type: string
+        gl_account_catergory:
+          type: string
+        gl_level:
+          type: string
+        category_code:
           type: string
   securitySchemes:
     apikey:

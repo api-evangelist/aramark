@@ -53,6 +53,17 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
+  parameters:
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: Inventory source system
+      required: true
+      schema:
+        type: string
+        enum:
+        - PRMA
+        - CLIENT
   schemas:
     putConfigurationBody:
       type: object
@@ -65,17 +76,6 @@ components:
           type: number
         enabled:
           type: boolean
-  parameters:
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: Inventory source system
-      required: true
-      schema:
-        type: string
-        enum:
-        - PRMA
-        - CLIENT
   securitySchemes:
     apikey:
       type: apiKey

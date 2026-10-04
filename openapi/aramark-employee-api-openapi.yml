@@ -56,14 +56,17 @@ paths:
         '405':
           description: HTTP Verb / Operation not supported
 components:
-  schemas:
-    employees:
-      type: object
-      properties:
-        employee_id:
-          type: string
-          description: Unqiue ID for the employee's manager
   parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
     employeeIdParam:
       in: query
       name: employee_id
@@ -81,16 +84,13 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
+  schemas:
+    employees:
+      type: object
+      properties:
+        employee_id:
+          type: string
+          description: Unqiue ID for the employee's manager
   securitySchemes:
     apikey:
       type: apiKey

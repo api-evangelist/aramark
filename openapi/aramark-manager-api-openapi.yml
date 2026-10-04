@@ -59,6 +59,16 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
     employeeIdParam:
       in: query
       name: employee_id
@@ -75,16 +85,6 @@ components:
         enum:
         - 'true'
         - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
   schemas:
     manager:
       type: object

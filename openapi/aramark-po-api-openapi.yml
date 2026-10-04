@@ -119,41 +119,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    po_number:
+    poBodyParam:
       type: object
       properties:
-        vendor_number:
-          type: number
-        vendor_site_name:
-          type: string
         po_number:
           type: string
-        po_date:
+        item_description:
           type: string
-        po_line_item:
+        price:
           type: number
-        po_line_item_description:
-          type: string
-        unit_price:
+        item_seq:
           type: number
-        quantity:
-          type: number
-        profit_center:
-          type: string
-        account:
-          type: string
-        category:
-          type: string
-        concept:
-          type: string
-        event:
-          type: string
-        future:
-          type: string
-        bill_code:
-          type: string
-        line_type:
-          type: string
     pos:
       type: object
       properties:
@@ -191,17 +167,41 @@ components:
           type: number
         item_seq:
           type: number
-    poBodyParam:
+    po_number:
       type: object
       properties:
+        vendor_number:
+          type: number
+        vendor_site_name:
+          type: string
         po_number:
           type: string
-        item_description:
+        po_date:
           type: string
-        price:
+        po_line_item:
           type: number
-        item_seq:
+        po_line_item_description:
+          type: string
+        unit_price:
           type: number
+        quantity:
+          type: number
+        profit_center:
+          type: string
+        account:
+          type: string
+        category:
+          type: string
+        concept:
+          type: string
+        event:
+          type: string
+        future:
+          type: string
+        bill_code:
+          type: string
+        line_type:
+          type: string
   securitySchemes:
     apikey:
       type: apiKey

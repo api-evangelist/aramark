@@ -65,22 +65,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: provide business organization code in URL to filter data set
-      required: true
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -91,28 +75,6 @@ components:
         - 'true'
         - 'false'
         default: 'false'
-    employeeIdParamNotRequired:
-      in: query
-      name: employee_id
-      description: Unique identifier of the employee
-      required: false
-      schema:
-        type: string
-    employeeEmailParam:
-      in: query
-      name: email
-      schema:
-        type: string
-      description: Email address of the employee
-      required: false
-    sizeParam:
-      in: query
-      name: size
-      description: Number of rows in each page to return.
-      required: false
-      schema:
-        type: string
-        default: 50
     pageParam:
       in: query
       name: page
@@ -121,6 +83,44 @@ components:
       schema:
         type: number
         default: 1
+    employeeEmailParam:
+      in: query
+      name: email
+      schema:
+        type: string
+      description: Email address of the employee
+      required: false
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    orgValueParam:
+      in: path
+      name: org_value
+      description: provide business organization code in URL to filter data set
+      required: true
+      schema:
+        type: string
+    employeeIdParamNotRequired:
+      in: query
+      name: employee_id
+      description: Unique identifier of the employee
+      required: false
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of rows in each page to return.
+      required: false
+      schema:
+        type: string
+        default: 50
   schemas:
     employee_details:
       type: object

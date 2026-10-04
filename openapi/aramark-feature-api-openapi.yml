@@ -55,13 +55,15 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    locationIdNoReqParam:
-      name: location_id
-      in: query
-      description: ID of the Location
-      required: false
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
-        type: number
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     smokeParam:
       in: header
       name: smoke
@@ -73,15 +75,13 @@ components:
         enum:
         - 'true'
         - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
+    siteIdParam:
+      name: site_id
+      in: query
+      description: ID of the Site
+      required: false
       schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
+        type: number
     sourceSystemParam:
       name: source_system
       in: query
@@ -92,10 +92,10 @@ components:
         enum:
         - PRMA
         default: PRMA
-    siteIdParam:
-      name: site_id
+    locationIdNoReqParam:
+      name: location_id
       in: query
-      description: ID of the Site
+      description: ID of the Location
       required: false
       schema:
         type: number

@@ -172,50 +172,6 @@ paths:
       description: Testing server
     - url: https://dev-marko.aramark.net/v1/organization
 components:
-  parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      required: true
-      description: provide business organization code in URL to filter data set
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    sizeParam:
-      in: query
-      name: size
-      description: Number of records to be returned in each page of result set
-      schema:
-        type: string
-        default: 50
-    pageParam:
-      in: query
-      name: page
-      description: Page number of result set
-      schema:
-        type: number
-        default: 1
-    searchParam:
-      in: query
-      name: search
-      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
-      schema:
-        type: string
   schemas:
     location_core_details:
       type: object
@@ -379,6 +335,50 @@ components:
         contract_type:
           type: string
           description: Description of the contract type of the Profit Center
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    pageParam:
+      in: query
+      name: page
+      description: Page number of result set
+      schema:
+        type: number
+        default: 1
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      required: true
+      description: provide business organization code in URL to filter data set
+      schema:
+        type: string
+    sizeParam:
+      in: query
+      name: size
+      description: Number of records to be returned in each page of result set
+      schema:
+        type: string
+        default: 50
+    searchParam:
+      in: query
+      name: search
+      description: Used to search a specific Profit Center.  Will match against Name and Value.  Maximum length of 20 characters.
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

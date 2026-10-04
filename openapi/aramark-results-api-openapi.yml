@@ -281,6 +281,135 @@ paths:
     - url: https://dev-marko.aramark.net/v1/service
       description: Development server
 components:
+  parameters:
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    accountParam:
+      in: query
+      name: account
+      description: Provide a single or multiple accounts in comma delimited string for rollup
+      required: true
+      schema:
+        type: string
+    endDateParam:
+      in: query
+      name: end_date
+      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
+      required: false
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization code for rollup
+      required: true
+      schema:
+        type: string
+    rollupParam:
+      in: query
+      name: rollup
+      description: Flag to rollup results. If 'Y' all results will be summarized into one object per day. 'N' will group the data by Day and Account.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Y
+        - N
+        default: N
+    startDateParam:
+      in: query
+      name: start_date
+      description: Calendar date for daily transactions. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    bypassCacheParam_2:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceAreaIdParam:
+      name: service_area_id
+      in: query
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam_2:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    dateParam:
+      name: date
+      in: query
+      description: Date of the requested data. YYYY-MM-DD foramt.
+      required: true
+      schema:
+        type: string
+    sourceSystemParam:
+      name: source_system
+      in: query
+      description: source system
+      required: false
+      schema:
+        type: string
+        enum:
+        - PRMA
+        default: PRMA
+    bypassCacheParam_3:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    smokeParam_3:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+    serviceMenuItemId:
+      in: path
+      name: service_menu_item_id
+      description: Unique ID of Service Menu Item.
+      required: true
+      schema:
+        type: string
   schemas:
     financial_summary:
       type: object
@@ -315,48 +444,6 @@ components:
         prior_year_amount:
           type: number
           description: Total sales number last year for same period
-    putWasteBody:
-      type: object
-      properties:
-        waste_id:
-          type: string
-          description: ID of the Waste
-        waste_date:
-          type: string
-          description: Date of the Waste
-        service_area_id:
-          type: number
-          description: Service Area ID for the Waste
-        station_id:
-          type: number
-          description: Station ID for the Waste
-        waste_type:
-          type: number
-          description: Type of Waste
-        waste_value:
-          type: number
-          description: Value of the Waste
-        waste_unit:
-          type: string
-          description: Unit of the Waste
-    service_waste:
-      type: object
-      properties:
-        waste_id:
-          type: string
-          description: ID of the Waste
-        station_id:
-          type: number
-          description: Station ID for the Waste
-        waste_type:
-          type: number
-          description: Type of Waste
-        waste_value:
-          type: number
-          description: Value of the Waste
-        waste_unit:
-          type: string
-          description: Unit of the Waste
     putResultsBody:
       type: object
       properties:
@@ -387,12 +474,54 @@ components:
           type: number
         served_adult:
           type: number
+    service_waste:
+      type: object
+      properties:
+        waste_id:
+          type: string
+          description: ID of the Waste
+        station_id:
+          type: number
+          description: Station ID for the Waste
+        waste_type:
+          type: number
+          description: Type of Waste
+        waste_value:
+          type: number
+          description: Value of the Waste
+        waste_unit:
+          type: string
+          description: Unit of the Waste
     deleteWasteBody:
       type: object
       properties:
         waste_id:
           type: string
           description: ID of the Waste
+    putWasteBody:
+      type: object
+      properties:
+        waste_id:
+          type: string
+          description: ID of the Waste
+        waste_date:
+          type: string
+          description: Date of the Waste
+        service_area_id:
+          type: number
+          description: Service Area ID for the Waste
+        station_id:
+          type: number
+          description: Station ID for the Waste
+        waste_type:
+          type: number
+          description: Type of Waste
+        waste_value:
+          type: number
+          description: Value of the Waste
+        waste_unit:
+          type: string
+          description: Unit of the Waste
     service_results:
       type: object
       properties:
@@ -414,135 +543,6 @@ components:
         comments:
           type: string
           description: Menu Item Comments
-  parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization code for rollup
-      required: true
-      schema:
-        type: string
-    accountParam:
-      in: query
-      name: account
-      description: Provide a single or multiple accounts in comma delimited string for rollup
-      required: true
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    endDateParam:
-      in: query
-      name: end_date
-      description: Calendar end date for daily transactions. Will use start_date if not provided. "mm/dd/yyyy"
-      required: false
-      schema:
-        type: string
-    startDateParam:
-      in: query
-      name: start_date
-      description: Calendar date for daily transactions. "mm/dd/yyyy"
-      required: true
-      schema:
-        type: string
-    rollupParam:
-      in: query
-      name: rollup
-      description: Flag to rollup results. If 'Y' all results will be summarized into one object per day. 'N' will group the data by Day and Account.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Y
-        - N
-        default: N
-    dateParam:
-      name: date
-      in: query
-      description: Date of the requested data. YYYY-MM-DD foramt.
-      required: true
-      schema:
-        type: string
-    smokeParam_2:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
-      schema:
-        type: number
-    bypassCacheParam_2:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    sourceSystemParam:
-      name: source_system
-      in: query
-      description: source system
-      required: false
-      schema:
-        type: string
-        enum:
-        - PRMA
-        default: PRMA
-    serviceMenuItemId:
-      in: path
-      name: service_menu_item_id
-      description: Unique ID of Service Menu Item.
-      required: true
-      schema:
-        type: string
-    smokeParam_3:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment. Only applicable in QA.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    bypassCacheParam_3:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache.
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
   securitySchemes:
     apiKey:
       type: apiKey

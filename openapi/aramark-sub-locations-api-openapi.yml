@@ -54,17 +54,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
     bypassCacheParam:
       in: header
       name: bypass-cache
@@ -81,6 +70,17 @@ components:
       required: true
       schema:
         type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
     sourceSystemParam:
       name: source_system
       in: query

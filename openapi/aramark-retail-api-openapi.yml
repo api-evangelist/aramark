@@ -210,6 +210,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/menuitem'
+    menuitem:
+      type: object
+      properties:
+        request_type:
+          type: number
+          description: Numeric value to indicate the type of request; 1-New, 2-Add, 3-Update, 4-Delete; Required
+        item_name:
+          type: string
+          description: Name of the item; Required for request_type=1 or New Menu Item
+        object_number:
+          type: string
+          description: Number for the object; Required for request_type=2,3,4
+        barcode:
+          type: string
+          description: Barcode for the item; Required for request_type=1 or New CPG Item
+        catalog:
+          type: string
+          description: Catalog to place the item in; Optional
+        slu:
+          type: string
+          description: Screen Look Up code for item; Optional
+        price:
+          type: number
+          description: Price of the item; Required for request_type=2,3
     retail_items:
       type: object
       properties:
@@ -279,38 +303,48 @@ components:
         catalog_name:
           type: string
           description: Name of the catalog
-    menuitem:
-      type: object
-      properties:
-        request_type:
-          type: number
-          description: Numeric value to indicate the type of request; 1-New, 2-Add, 3-Update, 4-Delete; Required
-        item_name:
-          type: string
-          description: Name of the item; Required for request_type=1 or New Menu Item
-        object_number:
-          type: string
-          description: Number for the object; Required for request_type=2,3,4
-        barcode:
-          type: string
-          description: Barcode for the item; Required for request_type=1 or New CPG Item
-        catalog:
-          type: string
-          description: Catalog to place the item in; Optional
-        slu:
-          type: string
-          description: Screen Look Up code for item; Optional
-        price:
-          type: number
-          description: Price of the item; Required for request_type=2,3
   parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Location code
-      required: true
+    bypassCacheParam:
+      in: header
+      name: bypass-cache
+      description: This HTTP Header variable will bypass cache
       schema:
         type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    barcodeParam:
+      name: barcode
+      in: query
+      description: Barcode value for a specific item (Must use if NOT using Search)
+      required: false
+      schema:
+        type: string
+    searchParam:
+      name: search
+      in: query
+      description: Text used to search for a specific product (Must use if NOT using Barcode)
+      required: false
+      schema:
+        type: string
+    smokeParam:
+      in: header
+      name: smoke
+      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+      schema:
+        type: string
+        enum:
+        - 'true'
+        - 'false'
+        default: 'false'
+    bodyParam:
+      in: body
+      name: body
+      description: List of Items to have created with contact information.
+      required: false
+      schema:
+        $ref: '#/components/schemas/request'
     itemTypeParam:
       name: item_type
       in: query
@@ -323,47 +357,13 @@ components:
         - NONCPG
         - ALL
         default: ALL
-    smokeParam:
-      in: header
-      name: smoke
-      description: When set to 'true' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Location code
+      required: true
       schema:
         type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    bypassCacheParam:
-      in: header
-      name: bypass-cache
-      description: This HTTP Header variable will bypass cache
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-        default: 'false'
-    searchParam:
-      name: search
-      in: query
-      description: Text used to search for a specific product (Must use if NOT using Barcode)
-      required: false
-      schema:
-        type: string
-    barcodeParam:
-      name: barcode
-      in: query
-      description: Barcode value for a specific item (Must use if NOT using Search)
-      required: false
-      schema:
-        type: string
-    bodyParam:
-      in: body
-      name: body
-      description: List of Items to have created with contact information.
-      required: false
-      schema:
-        $ref: '#/components/schemas/request'
   securitySchemes:
     apikey:
       type: apiKey

@@ -99,13 +99,6 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    orgValueParam:
-      in: path
-      name: org_value
-      description: Aramark Organization Code
-      required: true
-      schema:
-        type: string
     sortParam:
       in: query
       name: sort
@@ -117,12 +110,6 @@ components:
         - ASC
         - DESC
         default: ASC
-    smokeParam:
-      name: smoke
-      in: header
-      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
-      schema:
-        type: string
     bypassCacheParam:
       name: bypass-cache
       in: header
@@ -133,10 +120,23 @@ components:
         - 'true'
         - 'false'
         default: 'false'
+    smokeParam:
+      name: smoke
+      in: header
+      description: When set to 'true' this HTTP header variable will route the API call to the Integration testing environment.  Only applicable in QA.
+      schema:
+        type: string
     endDateParam:
       in: query
       name: end_date
       description: Calendar date for ending range of service dates. "mm/dd/yyyy"
+      required: true
+      schema:
+        type: string
+    orgValueParam:
+      in: path
+      name: org_value
+      description: Aramark Organization Code
       required: true
       schema:
         type: string

@@ -194,50 +194,18 @@ paths:
           description: HTTP Verb / Operation not supported
 components:
   parameters:
-    locationIdNoReqParam:
-      name: location_id
+    serviceDateParam:
+      name: service_date
       in: query
-      description: ID of the Location
+      description: Service Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
       required: false
       schema:
-        type: number
+        type: string
     serviceAreaIdNoReqParam:
       name: service_area_id
       in: query
       description: ID of the Service Area
       required: false
-      schema:
-        type: number
-    equipmentTypeParam:
-      name: equipment_type
-      in: query
-      description: Equipemnt type of the requested data
-      required: false
-      schema:
-        type: string
-    endLogDateParam:
-      name: end_log_date
-      in: query
-      description: End Log Date of the requested data. YYYY-MM-DD foramt.
-      required: false
-      schema:
-        type: string
-    smokeParam:
-      in: header
-      name: smoke
-      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
-
-        '
-      schema:
-        type: string
-        enum:
-        - 'true'
-        - 'false'
-    serviceAreaIdParam:
-      name: service_area_id
-      in: query
-      description: ID of the Service Area
-      required: true
       schema:
         type: number
     logDateReqParam:
@@ -256,20 +224,24 @@ components:
         enum:
         - 'true'
         - 'false'
-    serviceDateParam:
-      name: service_date
+    serviceAreaIdParam:
+      name: service_area_id
       in: query
-      description: Service Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
-      required: false
+      description: ID of the Service Area
+      required: true
+      schema:
+        type: number
+    smokeParam:
+      in: header
+      name: smoke
+      description: 'When set to ''true'' this HTTP Header variable will route to the Integration environment.  Only applicable in QA Server.
+
+        '
       schema:
         type: string
-    logDateParam:
-      name: log_date
-      in: query
-      description: Log Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
-      required: false
-      schema:
-        type: string
+        enum:
+        - 'true'
+        - 'false'
     sourceSystemParam:
       name: source_system
       in: query
@@ -280,7 +252,77 @@ components:
         enum:
         - PRMA
         default: PRMA
+    endLogDateParam:
+      name: end_log_date
+      in: query
+      description: End Log Date of the requested data. YYYY-MM-DD foramt.
+      required: false
+      schema:
+        type: string
+    locationIdNoReqParam:
+      name: location_id
+      in: query
+      description: ID of the Location
+      required: false
+      schema:
+        type: number
+    logDateParam:
+      name: log_date
+      in: query
+      description: Log Date of the requested data. YYYY-MM-DD foramt. log_date or service_date is required
+      required: false
+      schema:
+        type: string
+    equipmentTypeParam:
+      name: equipment_type
+      in: query
+      description: Equipemnt type of the requested data
+      required: false
+      schema:
+        type: string
   schemas:
+    put_temperature_cooling_body:
+      type: object
+      properties:
+        cooldown_log_id:
+          type: string
+          description: ID of the Cooldown log
+        temperature_value:
+          type: number
+          description: Value of the Temperature
+        cooldown_initiated:
+          type: boolean
+          description: Flag to determine cooldown initiated
+        corrective_action:
+          type: string
+          description: Corrective Action of the cooldown log
+        initial_temp:
+          type: number
+          description: Initial Temp of the item
+        start_time:
+          type: string
+          description: Time of the Initial Temp
+        timer_period:
+          type: number
+          description: Timer Period of the Cooldown
+        log_time:
+          type: string
+          description: Log Time of the Temperature
+        food_item_name:
+          type: string
+          description: Name of the Food Item
+        food_item_id:
+          type: number
+          description: ID of the Food Item
+        period_id:
+          type: number
+          description: ID of the period
+        service_area_id:
+          type: number
+          description: Service Area ID of the Cooldown log
+        station_id:
+          type: number
+          description: Station Id of the Temperature
     serviceTemperatures:
       type: object
       properties:
@@ -361,48 +403,6 @@ components:
         creation_date:
           type: string
           description: Creation Date of the Temperature
-    temperature_cooling:
-      type: object
-      properties:
-        cooldown_log_id:
-          type: string
-          description: ID of the Cooldown log
-        temperature_value:
-          type: number
-          description: Value of the Temperature
-        cooldown_initiated:
-          type: boolean
-          description: Flag to determine cooldown initiated
-        corrective_action:
-          type: string
-          description: Corrective Action of the cooldown log
-        initial_temp:
-          type: number
-          description: Initial Temp of the item
-        start_time:
-          type: string
-          description: Time of the Initial Temp
-        timer_period:
-          type: number
-          description: Timer Period of the Cooldown
-        log_time:
-          type: string
-          description: Log Time of the Temperature
-        food_item_name:
-          type: string
-          description: Name of the Food Item
-        food_item_id:
-          type: number
-          description: ID of the Food Item
-        period_id:
-          type: number
-          description: ID of the period
-        station_id:
-          type: number
-          description: Station Id of the Temperature
-        service_area_id:
-          type: number
-          description: Service Area Id of the Cooldown
     put_prep_temperatures_body:
       type: object
       properties:
@@ -445,7 +445,7 @@ components:
         corrective_action:
           type: string
           description: Corrective Action
-    put_temperature_cooling_body:
+    temperature_cooling:
       type: object
       properties:
         cooldown_log_id:
@@ -481,12 +481,12 @@ components:
         period_id:
           type: number
           description: ID of the period
-        service_area_id:
-          type: number
-          description: Service Area ID of the Cooldown log
         station_id:
           type: number
           description: Station Id of the Temperature
+        service_area_id:
+          type: number
+          description: Service Area Id of the Cooldown
   securitySchemes:
     apikey:
       type: apiKey
