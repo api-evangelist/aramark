@@ -39241,6 +39241,8 @@ apis:
   humanURL: https://marko-developers.aramark.net/doc/alerts
   baseURL: https://marko.aramark.net/v1/alerts
   tags:
+  - Real-Time
+  tags_raw:
   - Realtime
   properties:
   - type: OpenAPI
