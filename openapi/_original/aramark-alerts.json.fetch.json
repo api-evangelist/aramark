@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json",
+ "requested_url": "https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 10585,
+ "sha256": "01a4660b7946bb15c8ec1d9da76ad2b62ea1e5769e3773afd6b2409cbd3cd346",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
