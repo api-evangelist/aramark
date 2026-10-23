@@ -153,127 +153,7 @@ artifacts:
   json-structure/marko-api-service-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -357,6 +237,21 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/aramark-lifecycle.yml:
     method: unknown
     evidence: no authorship recorded
@@ -368,45 +263,29 @@ artifacts:
     evidence: declared in the artifact
   openapi/_original/aramark-alerts-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-alerts-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json
+      (sha256 01a4660b7946, fetched 2026-10-04)
   openapi/_original/aramark-alerts.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/alerts.json
+      (sha256 01a4660b7946, fetched 2026-10-04)
   openapi/_original/aramark-ask-marko-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-ask-marko-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/ask-marko.json
+      (sha256 5e1ab7305fdd, fetched 2026-10-04)
   openapi/_original/aramark-ask-marko.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/ask-marko.json
+      (sha256 5e1ab7305fdd, fetched 2026-10-04)
   openapi/_original/aramark-business-unit-core-details-openapi.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-business-unit-core-details-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_bsu_details.json
+      (sha256 e4a3a606f9db, fetched 2026-10-04)
   openapi/_original/aramark-business-unit-core-details.json:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/aramarkservicesinc/markoapis/master/oas3/json/organization_bsu_details.json
+      (sha256 e4a3a606f9db, fetched 2026-10-04)
   openapi/_original/aramark-calendar-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-calendar-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -418,19 +297,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-catering-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-catering.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-daily-food-waste-tracking-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-daily-food-waste-tracking-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -442,19 +313,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-district-core-details-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-district-core-details.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-division-core-details-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-division-core-details-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -466,19 +329,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-financial-daily-account-summary-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-financial-daily-account-summary.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-growth-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-growth-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -490,19 +345,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-gsc-gpo-0-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-gsc-gpo-0.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-inventory-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-inventory-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -514,19 +361,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-iot-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-iot.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-labor-daily-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-labor-daily-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -538,19 +377,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-labor-employee-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-labor-employee.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-labor-manager-employees-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-labor-manager-employees-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -570,19 +401,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-line-business-core-details-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-line-business-core-details.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-location-core-details-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-location-core-details-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -594,19 +417,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-marko-users-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-marko-users.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-operational-daily-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-operational-daily-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -618,19 +433,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-organization-brands-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-organization-brands.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-organization-clients-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-organization-clients-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -642,15 +449,7 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-organization-hierarchy-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-organization-hierarchy-v2-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-organization-hierarchy-v2-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -666,15 +465,7 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-organization-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-organization-profit-center-core-details-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-organization-profit-center-core-details-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -683,10 +474,6 @@ artifacts:
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-organization-suppliers-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-organization-suppliers-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -702,19 +489,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-point-sale-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-point-sale.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-pos-daily-product-ranking-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-pos-daily-product-ranking-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -726,19 +505,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-pos-daily-sales-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-pos-daily-sales.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-pos-items-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-pos-items-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -750,10 +521,6 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-pos-transactions-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-pos-transactions.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -762,15 +529,7 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-product-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-product-recipe-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-product-recipe-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -779,10 +538,6 @@ artifacts:
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-product-retail-items-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-product-retail-items-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -798,19 +553,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-profile-app-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-profile-app.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-profile-user-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-profile-user-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -822,19 +569,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-recipe-decorations-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-recipe-decorations.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-region-core-details-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-region-core-details-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -846,10 +585,6 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-security-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-security.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -858,15 +593,7 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-areas-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-areas-v2-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-service-areas-v2-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -882,19 +609,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-inventory-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-inventory.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-service-meal-periods-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-service-meal-periods-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -914,19 +633,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-menus-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-menus.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-service-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-service-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -950,19 +661,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-recipe-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-recipe.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-service-recipes-v2-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-service-recipes-v2-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -974,10 +677,6 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-results-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-results.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -986,19 +685,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-service-v3-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-service-v3.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-service-weekly-overproduction-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-service-weekly-overproduction-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -1014,19 +705,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-sites-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-sites.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-sub-location-core-details-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-sub-location-core-details-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -1038,10 +721,6 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-sub-locations-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-sub-locations.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -1050,19 +729,11 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
-  openapi/_original/aramark-units-measure-openapi.json.archived.txt:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
   openapi/_original/aramark-units-measure.json:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/aramark-vendor-openapi.json:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/aramark-vendor-openapi.json.archived.txt:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -1347,185 +1018,185 @@ artifacts:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/aramark-alerts-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-ask-marko-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-business-unit-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-calendar-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-catering-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-daily-food-waste-tracking-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-district-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-division-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-financial-daily-account-summary-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-growth-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-gsc-gpo-0-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-inventory-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-iot-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-labor-daily-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-labor-employee-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-labor-manager-employees-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-labor-schedule-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-line-business-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-location-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-marko-users-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-operational-daily-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-brands-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-clients-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-hierarchy-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-hierarchy-v2-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-profit-center-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-organization-suppliers-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-point-sale-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-pos-daily-product-ranking-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-pos-daily-sales-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-pos-items-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-pos-transactions-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-product-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-product-recipe-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-product-retail-items-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-profile-app-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-profile-user-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-recipe-decorations-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-region-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-security-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-areas-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-areas-v2-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-inventory-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-meal-periods-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-menu-items-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-menus-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-production-areas-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-production-departments-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-recipe-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-recipes-v2-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-results-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-v3-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-service-weekly-overproduction-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-sites-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-sub-location-core-details-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-sub-locations-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-units-measure-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-vendor-overlay.yaml:
-    method: generated
-    evidence: declared in the artifact
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   packages/aramark-packages.yml:
     method: searched
     evidence: declared in the artifact
