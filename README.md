@@ -1,4 +1,4 @@
-# Aramark (aramark)
+# Aramark
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,170 +64,332 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-
 Aramark is a Fortune 500 food, facilities and uniform services company. Its Marko platform is a data and AI layer over Aramark operations, published as 60 documented REST APIs on an Apigee gateway at marko.aramark.net and catalogued on the Marko Developer Portal. The surface spans the full Aramark organization hierarchy (division, region, district, line of business, business unit, client, location, sub location, profit center), point-of-sale transactions and daily sales, labor scheduling and daily labor, inventory and purchasing, product, recipe and nutrition data, service execution, food waste and IoT temperature monitoring. Aramark publishes every OpenAPI document itself, in JSON and YAML, in the public aramarkservicesinc/markoapis GitHub repository, and renders each one in an in-page RapiDoc console. Access is gated: you register an application, choose API products, and a per-application apikey is issued on approval.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/apis.yml)
+**Areas:** Food Service · Facilities Management · Uniform Services · Data Platform · Point-of-Sale · Labor · Inventory · Recipes and Nutrition · Organization Hierarchy · Fortune 500 · Apigee · Hospitality
 
-## Scope
+## Aramark on APIs.io
 
-- **Type:** Index
-- **APIs profiled:** 60
-- **Documented operations:** 216 across 191 paths
-- **Contract source:** Aramark publishes every OpenAPI itself at [github.com/aramarkservicesinc/markoapis](https://github.com/aramarkservicesinc/markoapis) and renders each one on its own portal page. All 60 specs in `openapi/` are verbatim harvests; `openapi/_original/` holds the untouched bytes.
-- **Production gateway:** `https://marko.aramark.net` (Apigee). Probed 2026-09-04: 43 of the 60 documented production base paths answered HTTP 401 `steps.oauth.v2.FailedToResolveAPIKey` (proxy live, key required); 17 answered HTTP 404 `ApplicationNotFound` (documented but not routed in production) — see `lifecycle/aramark-lifecycle.yml`.
-- **Authentication:** `apikey` request header, issued per registered application after portal approval.
+Everything profiled for Aramark is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aramark/](https://apis.io/providers/aramark/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (92)
 
-- Food Services
-- Facilities Management
-- Uniform Services
-- Data Platform
-- Point of Sale
-- Labor
-- Inventory
-- Recipes and Nutrition
-- Organization Hierarchy
-- Fortune 500
-- Apigee
-- Hospitality
+- [Aramark Accruals API](https://apis.io/apis/aramark/aramark-accruals-api/) — Get Employee Scheduled Shifts
+- [Aramark Address API](https://apis.io/apis/aramark/aramark-address-api/) — The Address API from Aramark — 16 operation(s) for address.
+- [Aramark Alerts API](https://apis.io/apis/aramark/aramark-alerts-api/) — Get Daily Profit Center Alerts Aggregate
+- [Aramark Anet API](https://apis.io/apis/aramark/aramark-anet-api/) — Gets the current list of ANET Users
+- [Aramark Ask API](https://apis.io/apis/aramark/aramark-ask-api/) — This API will return messages from the Ask Marko Chat Bot
+- [Aramark Brand API](https://apis.io/apis/aramark/aramark-brand-api/) — This API will return a list of Organizational Brand information
+- [Aramark Calendar Day API](https://apis.io/apis/aramark/aramark-calendar-day-api/) — The Calendar Day API from Aramark — 1 operation(s) for calendar day.
+- [Aramark Clients API](https://apis.io/apis/aramark/aramark-clients-api/) — The Clients API from Aramark — 2 operation(s) for clients.
+- [Aramark Configuration API](https://apis.io/apis/aramark/aramark-configuration-api/) — A collection of Configuration data endpoints
+- [Aramark Contact API](https://apis.io/apis/aramark/aramark-contact-api/) — The Contact API from Aramark — 16 operation(s) for contact.
+- [Aramark Core API](https://apis.io/apis/aramark/aramark-core-api/) — The Core API from Aramark — 4 operation(s) for core.
+- [Aramark Customer API](https://apis.io/apis/aramark/aramark-customer-api/) — A collection of Customer data
+- [Aramark Daily Sales API](https://apis.io/apis/aramark/aramark-daily-sales-api/) — Get POS Daily Sales
+- [Aramark Details API](https://apis.io/apis/aramark/aramark-details-api/) — Get Detail information for an Employee
+- [Aramark Device API](https://apis.io/apis/aramark/aramark-device-api/) — Gets, Updates, Creates or Removes Marko Profile Device information
+- [Aramark Districts API](https://apis.io/apis/aramark/aramark-districts-api/) — This API will return a list of Aramark Districts to which a user is mapped
+- [Aramark Employee API](https://apis.io/apis/aramark/aramark-employee-api/) — Get information about Employees who report to a Manager
+- [Aramark Employee Daily Schedule API](https://apis.io/apis/aramark/aramark-employee-daily-schedule-api/) — The Employee Daily Schedule API from Aramark — 1 operation(s) for employee daily schedule.
+- [Aramark Employee Daily Summary API](https://apis.io/apis/aramark/aramark-employee-daily-summary-api/) — The Employee Daily Summary API from Aramark — 1 operation(s) for employee daily summary.
+- [Aramark Equipment API](https://apis.io/apis/aramark/aramark-equipment-api/) — A collection of Equipment data
+- [Aramark Events API](https://apis.io/apis/aramark/aramark-events-api/) — A collection of Event data
+- [Aramark Feature API](https://apis.io/apis/aramark/aramark-feature-api/) — A collection of Feature data
+- [Aramark Financial API](https://apis.io/apis/aramark/aramark-financial-api/) — Get Financial Hierarchy Nodes
+- [Aramark Fiscal Day API](https://apis.io/apis/aramark/aramark-fiscal-day-api/) — The Fiscal Day API from Aramark — 1 operation(s) for fiscal day.
+- [Aramark Food Bank API](https://apis.io/apis/aramark/aramark-food-bank-api/) — A collection of Food Bank data
+- [Aramark GL Accounts API](https://apis.io/apis/aramark/aramark-gl-accounts-api/) — A collection of GL Account Data
+- [Aramark Hierarchy API](https://apis.io/apis/aramark/aramark-hierarchy-api/) — The Hierarchy API from Aramark — 2 operation(s) for hierarchy.
+- [Aramark Item API](https://apis.io/apis/aramark/aramark-item-api/) — Get POS Item Data
+- [Aramark Items API](https://apis.io/apis/aramark/aramark-items-api/) — Get or Update Inventory Items
+- [Aramark Labor API](https://apis.io/apis/aramark/aramark-labor-api/) — Gets Labor Alert details
+- [Aramark Labor Daily Forecast API](https://apis.io/apis/aramark/aramark-labor-daily-forecast-api/) — The Labor Daily Forecast API from Aramark — 1 operation(s) for labor daily forecast.
+- [Aramark Labor Daily Summary API](https://apis.io/apis/aramark/aramark-labor-daily-summary-api/) — The Labor Daily Summary API from Aramark — 1 operation(s) for labor daily summary.
+- [Aramark Locations API](https://apis.io/apis/aramark/aramark-locations-api/) — This API will return a list of Aramark Locations to which a user is mapped for a specific App
+- [Aramark Log API](https://apis.io/apis/aramark/aramark-log-api/) — A collection of Log requests
+- [Aramark Manager API](https://apis.io/apis/aramark/aramark-manager-api/) — Get Manager information for an Employee
+- [Aramark Manufacturer Items API](https://apis.io/apis/aramark/aramark-manufacturer-items-api/) — A collection of Manufacturer Items
+- [Aramark Menu Items API](https://apis.io/apis/aramark/aramark-menu-items-api/) — A collection of Menu Item data
+- [Aramark Nutrition API](https://apis.io/apis/aramark/aramark-nutrition-api/) — A collection of Nutrition Data
+- [Aramark Operational Day API](https://apis.io/apis/aramark/aramark-operational-day-api/) — The Operational Day API from Aramark — 1 operation(s) for operational day.
+- [Aramark Order API](https://apis.io/apis/aramark/aramark-order-api/) — The Order API from Aramark — 1 operation(s) for order.
+- [Aramark Organization API](https://apis.io/apis/aramark/aramark-organization-api/) — Organization hierarchy and location management
+- [Aramark Payroll API](https://apis.io/apis/aramark/aramark-payroll-api/) — The Payroll API from Aramark — 2 operation(s) for payroll.
+- [Aramark Performance API](https://apis.io/apis/aramark/aramark-performance-api/) — Get Performance Metrics
+- [Aramark Photos API](https://apis.io/apis/aramark/aramark-photos-api/) — A collection of Photo data
+- [Aramark PO API](https://apis.io/apis/aramark/aramark-po-api/) — Returns PO data
+- [Aramark Point of Sale API](https://apis.io/apis/aramark/aramark-point-of-sale-api/) — Gets POS Alert details
+- [Aramark Product API](https://apis.io/apis/aramark/aramark-product-api/) — Product and menu catalog data
+- [Aramark Production Areas API](https://apis.io/apis/aramark/aramark-production-areas-api/) — The Production Areas API from Aramark — 1 operation(s) for production areas.
+- [Aramark Production Departments API](https://apis.io/apis/aramark/aramark-production-departments-api/) — Service Production Departments by Production Area
+- [Aramark Profile API](https://apis.io/apis/aramark/aramark-profile-api/) — Gets, Updates, Creates or Removes Marko Profile information
+- [Aramark Profit Centers API](https://apis.io/apis/aramark/aramark-profit-centers-api/) — This API will return a list of Aramark Profit Centers to which a user is mapped
+- [Aramark Purchase Orders API](https://apis.io/apis/aramark/aramark-purchase-orders-api/) — A collection of Purchase Order data
+- [Aramark Purchasing API](https://apis.io/apis/aramark/aramark-purchasing-api/) — Gets Purchasing Alert details
+- [Aramark Recipe API](https://apis.io/apis/aramark/aramark-recipe-api/) — A collection of Recipe data
+- [Aramark Recipe Decorations API](https://apis.io/apis/aramark/aramark-recipe-decorations-api/) — Service to provide a collection of Recipes and core attribution for the Front Line Enablement Application.
+- [Aramark Recipe Nutrition API](https://apis.io/apis/aramark/aramark-recipe-nutrition-api/) — Master Nutrition Data for an individual recipe and ingredients
+- [Aramark Recipes API](https://apis.io/apis/aramark/aramark-recipes-api/) — Master Data for an individual recipe and ingredients
+- [Aramark Regions API](https://apis.io/apis/aramark/aramark-regions-api/) — This API will return a list of Aramark Regions to which a user is mapped
+- [Aramark Results API](https://apis.io/apis/aramark/aramark-results-api/) — Get Daily Financial data by Accounts
+- [Aramark Retail API](https://apis.io/apis/aramark/aramark-retail-api/) — Location level data for retail items sold
+- [Aramark Revenue API](https://apis.io/apis/aramark/aramark-revenue-api/) — Get Revenue Metrics
+- [Aramark Role API](https://apis.io/apis/aramark/aramark-role-api/) — This API will return a list of Role Levels to which a user is mapped
+- [Aramark Sales Ranking API](https://apis.io/apis/aramark/aramark-sales-ranking-api/) — The Sales Ranking API from Aramark — 1 operation(s) for sales ranking.
+- [Aramark Schedule API](https://apis.io/apis/aramark/aramark-schedule-api/) — Get Employee Scheduled Shifts
+- [Aramark Self Service API](https://apis.io/apis/aramark/aramark-self-service-api/) — Get POS Daily Self Service Sales
+- [Aramark Service API](https://apis.io/apis/aramark/aramark-service-api/) — Service management and tracking
+- [Aramark Service Area API](https://apis.io/apis/aramark/aramark-service-area-api/) — A collection of Service Area Data
+- [Aramark Service Daily Food Waste API](https://apis.io/apis/aramark/aramark-service-daily-food-waste-api/) — The Service Daily Food Waste API from Aramark — 2 operation(s) for service daily food waste.
+- [Aramark Service Meal Periods API](https://apis.io/apis/aramark/aramark-service-meal-periods-api/) — The Service Meal Periods API from Aramark — 1 operation(s) for service meal periods.
+- [Aramark Service Menu Items API](https://apis.io/apis/aramark/aramark-service-menu-items-api/) — An individual Service Menu and its Items for a Location and Service Date
+- [Aramark Service Menus API](https://apis.io/apis/aramark/aramark-service-menus-api/) — The Service Menus API from Aramark — 1 operation(s) for service menus.
+- [Aramark Service Recipe Nutrition API](https://apis.io/apis/aramark/aramark-service-recipe-nutrition-api/) — Nutritional information for a recipe in a particular service area
+- [Aramark Service Recipes API](https://apis.io/apis/aramark/aramark-service-recipes-api/) — An individual Service Recipe and its Ingredients for a Location, Service Date, Service Area and Meal Period
+- [Aramark Set API](https://apis.io/apis/aramark/aramark-set-api/) — Gets, Updates, Creates or Removes Marko Profile Set information
+- [Aramark Site API](https://apis.io/apis/aramark/aramark-site-api/) — A collectin of Site data
+- [Aramark Sites API](https://apis.io/apis/aramark/aramark-sites-api/) — This API will return a list of Aramark Sites
+- [Aramark SKU API](https://apis.io/apis/aramark/aramark-sku-api/) — The SKU API from Aramark — 2 operation(s) for sku.
+- [Aramark Spend API](https://apis.io/apis/aramark/aramark-spend-api/) — The Spend API from Aramark — 1 operation(s) for spend.
+- [Aramark Status API](https://apis.io/apis/aramark/aramark-status-api/) — Get Status information for an Employee
+- [Aramark Storage API](https://apis.io/apis/aramark/aramark-storage-api/) — A collection of Storage Areas for a Location
+- [Aramark Sub Locations API](https://apis.io/apis/aramark/aramark-sub-locations-api/) — A Collectin of Sub Location data
+- [Aramark Supplier API](https://apis.io/apis/aramark/aramark-supplier-api/) — This API will return a list of Organizational Supplier information
+- [Aramark Suppliers API](https://apis.io/apis/aramark/aramark-suppliers-api/) — A collection of Suppliers Data
+- [Aramark Temperature API](https://apis.io/apis/aramark/aramark-temperature-api/) — A collection of Temperature data
+- [Aramark Transactions API](https://apis.io/apis/aramark/aramark-transactions-api/) — Get POS Transaction Data
+- [Aramark UAP API](https://apis.io/apis/aramark/aramark-uap-api/) — A collection of UAP Security endpoints
+- [Aramark Units of Measure API](https://apis.io/apis/aramark/aramark-units-of-measure-api/) — The Units of Measure API from Aramark — 1 operation(s) for units of measure.
+- [Aramark User API](https://apis.io/apis/aramark/aramark-user-api/) — Gets, Updates or Creates Marko User information
+- [Aramark VOC API](https://apis.io/apis/aramark/aramark-voc-api/) — Voice of the Consumer Survey Results
+- [Aramark Volume Ranking API](https://apis.io/apis/aramark/aramark-volume-ranking-api/) — The Volume Ranking API from Aramark — 1 operation(s) for volume ranking.
+- [Aramark Weekly Overproduction API](https://apis.io/apis/aramark/aramark-weekly-overproduction-api/) — The Weekly Overproduction API from Aramark — 2 operation(s) for weekly overproduction.
+- [Aramark Realtime API](https://apis.io/apis/aramark/aramark-realtime-api/) — Get POS Real Time Data
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-09-04
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-| API | Docs | Production base | Ops |
-|---|---|---|---|
-| Aramark Marko Alerts | [docs](https://marko-developers.aramark.net/doc/alerts) | `https://marko.aramark.net/v1/alerts` | 4 |
-| Aramark Marko Ask Marko | [docs](https://marko-developers.aramark.net/doc/ask-marko) | `https://marko.aramark.net/v1/ask` | 1 |
-| Aramark Marko Business Unit Core Details | [docs](https://marko-developers.aramark.net/doc/business-unit-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Calendar | [docs](https://marko-developers.aramark.net/doc/calendar) | `https://marko.aramark.net/v1` | 3 |
-| Aramark Marko Catering | [docs](https://marko-developers.aramark.net/doc/catering) | `https://marko.aramark.net/v1/catering` | 1 |
-| Aramark Marko Daily Food Waste Tracking | [docs](https://marko-developers.aramark.net/doc/daily-food-waste-tracking) | `https://marko.aramark.net/v1/service/daily` | 2 |
-| Aramark Marko District Core Details | [docs](https://marko-developers.aramark.net/doc/district-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Division Core Details | [docs](https://marko-developers.aramark.net/doc/division-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Financial Daily Account Summary | [docs](https://marko-developers.aramark.net/doc/financial-daily-account-summary) | `https://marko.aramark.net/v1/financial/daily` | 1 |
-| Aramark Marko Growth | [docs](https://marko-developers.aramark.net/doc/growth) | `https://marko.aramark.net/v1/growth` | 1 |
-| Aramark Marko GSC GPO | [docs](https://marko-developers.aramark.net/doc/gsc-gpo-0) | `https://marko.aramark.net/v1/gsc_gpo` | 1 |
-| Aramark Marko Inventory | [docs](https://marko-developers.aramark.net/doc/inventory) | `https://marko.aramark.net/v1/inventory` | 6 |
-| Aramark Marko IoT | [docs](https://marko-developers.aramark.net/doc/iot) | `https://marko.aramark.net/v1/iot` | 2 |
-| Aramark Marko Labor Daily | [docs](https://marko-developers.aramark.net/doc/labor-daily) | `https://marko.aramark.net/v1/labor/daily` | 4 |
-| Aramark Marko Labor Employee | [docs](https://marko-developers.aramark.net/doc/labor-employee) | `https://marko.aramark.net/v1/labor/employee` | 4 |
-| Aramark Marko Labor Manager Employees | [docs](https://marko-developers.aramark.net/doc/labor-manager-employees) | `https://marko.aramark.net/v1/labor/manager` | 1 |
-| Aramark Marko Labor Schedule | [docs](https://marko-developers.aramark.net/doc/labor-schedule) | `https://marko.aramark.net/v1/labor/schedule` | 2 |
-| Aramark Marko Line of Business Core Details | [docs](https://marko-developers.aramark.net/doc/line-business-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Location Core Details | [docs](https://marko-developers.aramark.net/doc/location-core-details) | `https://marko.aramark.net/v1/organization` | 6 |
-| Aramark Marko Marko Users | [docs](https://marko-developers.aramark.net/doc/marko-users) | `https://marko.aramark.net/v1/marko` |  |
-| Aramark Marko Operational Daily | [docs](https://marko-developers.aramark.net/doc/operational-daily) | `https://marko.aramark.net/v1/operational/daily` | 2 |
-| Aramark Marko Organization | [docs](https://marko-developers.aramark.net/doc/organization) | `https://marko.aramark.net/v1` | 3 |
-| Aramark Marko Organization Brands | [docs](https://marko-developers.aramark.net/doc/organization-brands) | `https://marko.aramark.net/v1/organization` | 1 |
-| Aramark Marko Organization Clients | [docs](https://marko-developers.aramark.net/doc/organization-clients) | `https://marko.aramark.net/v1/organization` | 1 |
-| Aramark Marko Organization Hierarchy | [docs](https://marko-developers.aramark.net/doc/organization-hierarchy) | `https://marko.aramark.net/v1/organization/hierarchy` | 1 |
-| Aramark Marko Organization Hierarchy V2 | [docs](https://marko-developers.aramark.net/doc/organization-hierarchy-v2) | `https://marko.aramark.net/v2/organization` | 1 |
-| Aramark Marko Organization Profit Center Core Details | [docs](https://marko-developers.aramark.net/doc/organization-profit-center-core-details) | `https://marko.aramark.net/v1/organization` | 10 |
-| Aramark Marko Organization Suppliers | [docs](https://marko-developers.aramark.net/doc/organization-suppliers) | `https://qa-marko.aramark.net/v1/organization` | 1 |
-| Aramark Marko Point of Sale | [docs](https://marko-developers.aramark.net/doc/point-sale) | `https://marko.aramark.net/v1/pos` | 9 |
-| Aramark Marko POS Daily Product Ranking | [docs](https://marko-developers.aramark.net/doc/pos-daily-product-ranking) | `https://marko.aramark.net/v1/pos/daily/product` | 2 |
-| Aramark Marko POS Daily Sales | [docs](https://marko-developers.aramark.net/doc/pos-daily-sales) | `https://marko.aramark.net/v1/pos/daily` | 2 |
-| Aramark Marko POS Items | [docs](https://marko-developers.aramark.net/doc/pos-items) | `https://marko.aramark.net/v1/pos` | 1 |
-| Aramark Marko POS Transactions | [docs](https://marko-developers.aramark.net/doc/pos-transactions) | `https://marko.aramark.net/v1/pos` | 11 |
-| Aramark Marko Product | [docs](https://marko-developers.aramark.net/doc/product) | `https://qa-marko.aramark.net/v1` | 9 |
-| Aramark Marko Product Recipe | [docs](https://marko-developers.aramark.net/doc/product-recipe) | `https://marko.aramark.net/v1/product/recipe` | 2 |
-| Aramark Marko Product Items | [docs](https://marko-developers.aramark.net/doc/product-retail-items) | `https://qa-marko.aramark.net/v1/product` | 6 |
-| Aramark Marko Profile App | [docs](https://marko-developers.aramark.net/doc/profile-app) | `https://marko.aramark.net/v1/profile/app` | 2 |
-| Aramark Marko Profile User | [docs](https://marko-developers.aramark.net/doc/profile-user) | `https://marko.aramark.net/v1/profile/user` | 7 |
-| Aramark Marko Recipe Decorations | [docs](https://marko-developers.aramark.net/doc/recipe-decorations) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Region Core Details | [docs](https://marko-developers.aramark.net/doc/region-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Security | [docs](https://marko-developers.aramark.net/doc/security) | `https://marko.aramark.net/v1/security` | 2 |
-| Aramark Marko Service | [docs](https://marko-developers.aramark.net/doc/service) | `https://marko.aramark.net/v1/service` | 39 |
-| Aramark Marko Service Areas | [docs](https://marko-developers.aramark.net/doc/service-areas) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Service Areas V2 | [docs](https://marko-developers.aramark.net/doc/service-areas-v2) | `https://marko.aramark.net/v2` | 2 |
-| Aramark Marko Service Inventory | [docs](https://marko-developers.aramark.net/doc/service-inventory) | `https://marko.aramark.net/v1/service` | 3 |
-| Aramark Marko Service Meal Periods | [docs](https://marko-developers.aramark.net/doc/service-meal-periods) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Service Menu Items | [docs](https://marko-developers.aramark.net/doc/service-menu-items) | `https://marko.aramark.net/v1/service_menu_items` | 2 |
-| Aramark Marko Service Menus | [docs](https://marko-developers.aramark.net/doc/service-menus) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Service Production Areas | [docs](https://marko-developers.aramark.net/doc/service-production-areas) | `https://marko.aramark.net/v1/service` | 1 |
-| Aramark Marko Service Production Departments | [docs](https://marko-developers.aramark.net/doc/service-production-departments) | `https://marko.aramark.net/v1/service` | 1 |
-| Aramark Marko Service Recipe | [docs](https://marko-developers.aramark.net/doc/service-recipe) | `https://marko.aramark.net/v1/service` | 2 |
-| Aramark Marko Service Recipes V2 | [docs](https://marko-developers.aramark.net/doc/service-recipes-v2) | `https://marko.aramark.net/v2/service/recipe` | 2 |
-| Aramark Marko Service Results | [docs](https://marko-developers.aramark.net/doc/service-results) | `https://marko.aramark.net/v1/service` | 2 |
-| Aramark Marko Service V3 | [docs](https://marko-developers.aramark.net/doc/service-v3) | `https://marko.aramark.net/v3/service` | 2 |
-| Aramark Marko Service Weekly Overproduction | [docs](https://marko-developers.aramark.net/doc/service-weekly-overproduction) | `https://marko.aramark.net/v1/service/weekly` | 2 |
-| Aramark Marko Sites | [docs](https://marko-developers.aramark.net/doc/sites) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Sub Location Core Details | [docs](https://marko-developers.aramark.net/doc/sub-location-core-details) | `https://marko.aramark.net/v1/organization` | 4 |
-| Aramark Marko Sub Locations | [docs](https://marko-developers.aramark.net/doc/sub-locations) | `https://marko.aramark.net/v1` | 1 |
-| Aramark Marko Units of Measure | [docs](https://marko-developers.aramark.net/doc/units-measure) | `https://marko.aramark.net/v1/recipe` | 1 |
-| Aramark Marko Vendor | [docs](https://marko-developers.aramark.net/doc/vendor) | `https://qa-marko.aramark.net/v1` | 1 |
+Model Context Protocol servers that expose the API to agents.
 
-## Artifacts
+- [aramark-mcp.yml](https://apis.io/servers/aramark/aramark-mcp-yml/)
 
-| Artifact | Method | What it records |
-|---|---|---|
-| `openapi/` (60 + `_original/`) | searched | Verbatim first-party OpenAPI 3.0/3.0.1 and Swagger 2.0 contracts. |
-| `overlays/` (60) | generated | OpenAPI Overlay 1.0.0 adding the production server each contract names in prose but omits from `servers[]`, plus the harvest and probe record. |
-| `authentication/` | searched | apikey header scheme, the portal approval flow, and the live 401 that proves enforcement. |
-| `conventions/` | derived | Response envelope, `bypass-cache`, pagination, idempotency (`none`) and reversibility (`documented`). |
-| `errors/` | derived | Two distinct error envelopes — the Apigee fault and the in-200 `status` field. |
-| `data-model/` | derived | 222 entities, 76 relationships, and the `org_value` pivot the whole platform turns on. |
-| `lifecycle/` | probed | URI versioning across v1/v2/v3, no deprecation policy, and the production availability probe. |
-| `conformance/` | derived | What the contracts do and do not conform to; no domain standard is declared and none exists to declare. |
-| `sandbox/` | searched | The in-page RapiDoc console and the published qa/dev hosts. |
-| `skills/` (4) | generated | Packaged Agent Skills grounded in real operationIds. |
-| `llms/` | generated | llms.txt for the whole platform. |
-| `well-known/` | probed | Every `/.well-known/` path on five hosts — all 404. No pointer is emitted for an absence. |
-| `mcp/` | derived | A candidate tool list only. Aramark ships no MCP server, so this is wired as `X-MCPServerCandidate`, not `MCPServer`. |
-| `packages/` | searched | No first-party SDK exists in any registry — an honest zero. |
-| `plans/`, `rate-limits/` | searched | Nothing published. Recorded as `plan_count: 0` and `limit_count: 0` with the URLs that were checked. |
-| `security/` | probed | TLS, HSTS, SPF and DMARC across three hosts. No security.txt, no bug bounty, no trust center. |
+#### Agentic access (1)
 
-## Common Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [DeveloperPortal](https://marko-developers.aramark.net/)
-- [Portal](https://marko-developers.aramark.net/)
-- [Documentation](https://marko-developers.aramark.net/catalog)
-- [APIReference](https://marko-developers.aramark.net/catalog)
-- [GettingStarted](https://marko-developers.aramark.net/faqs)
-- [FAQ](https://marko-developers.aramark.net/faqs)
-- [SignUp](https://marko-developers.aramark.net/user/register)
-- [Login](https://marko-developers.aramark.net/user/login)
-- [Blog](https://marko-developers.aramark.net/blog)
-- [GitHubOrganization](https://github.com/aramarkservicesinc)
-- [SourceCode](https://github.com/aramarkservicesinc/markoapis)
-- [Support](https://www.aramark.com/contact-us)
-- [TermsOfService](https://www.aramark.com/terms-conditions)
-- [PrivacyPolicy](https://www.aramark.com/privacy-policy)
-- [LinkedIn](https://www.linkedin.com/company/aramark)
+- [Aramark Agentic Access](https://apis.io/agentic-access/aramark/aramark-agentic-access/)
+
+#### JSON Schema (13)
+
+The data models the API reads and writes.
+
+- [ErrorResponse](https://apis.io/schemas/aramark/marko-api-error-response/)
+- [OrganizationResponse](https://apis.io/schemas/aramark/marko-api-organization-response/)
+- [OrganizationUnit](https://apis.io/schemas/aramark/marko-api-organization-unit/)
+- [POSResponse](https://apis.io/schemas/aramark/marko-api-pos-response/)
+- [POSTransaction](https://apis.io/schemas/aramark/marko-api-pos-transaction/)
+- [Product](https://apis.io/schemas/aramark/marko-api-product/)
+- [ProductResponse](https://apis.io/schemas/aramark/marko-api-product-response/)
+- [ProfitCenter](https://apis.io/schemas/aramark/marko-api-profit-center/)
+- [ProfitCenterResponse](https://apis.io/schemas/aramark/marko-api-profit-center-response/)
+- [RevenueSnapshot](https://apis.io/schemas/aramark/marko-api-revenue-snapshot/)
+- [RevenueSnapshotResponse](https://apis.io/schemas/aramark/marko-api-revenue-snapshot-response/)
+- [Service](https://apis.io/schemas/aramark/marko-api-service/)
+- [ServiceResponse](https://apis.io/schemas/aramark/marko-api-service-response/)
+
+#### JSON Structure (13)
+
+Data models expressed in JSON Structure.
+
+- [Marko Api Error Response Structure](https://apis.io/json-structure/aramark/marko-api-error-response-structure/)
+- [Marko Api Organization Response Structure](https://apis.io/json-structure/aramark/marko-api-organization-response-structure/)
+- [Marko Api Organization Unit Structure](https://apis.io/json-structure/aramark/marko-api-organization-unit-structure/)
+- [Marko Api Pos Response Structure](https://apis.io/json-structure/aramark/marko-api-pos-response-structure/)
+- [Marko Api Pos Transaction Structure](https://apis.io/json-structure/aramark/marko-api-pos-transaction-structure/)
+- [Marko Api Product Response Structure](https://apis.io/json-structure/aramark/marko-api-product-response-structure/)
+- [Marko Api Product Structure](https://apis.io/json-structure/aramark/marko-api-product-structure/)
+- [Marko Api Profit Center Response Structure](https://apis.io/json-structure/aramark/marko-api-profit-center-response-structure/)
+- [Marko Api Profit Center Structure](https://apis.io/json-structure/aramark/marko-api-profit-center-structure/)
+- [Marko Api Revenue Snapshot Response Structure](https://apis.io/json-structure/aramark/marko-api-revenue-snapshot-response-structure/)
+- [Marko Api Revenue Snapshot Structure](https://apis.io/json-structure/aramark/marko-api-revenue-snapshot-structure/)
+- [Marko Api Service Response Structure](https://apis.io/json-structure/aramark/marko-api-service-response-structure/)
+- [Marko Api Service Structure](https://apis.io/json-structure/aramark/marko-api-service-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Aramark Marko Api Context](https://apis.io/jsonld/aramark/aramark-marko-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Aramark Vocabulary](https://apis.io/vocabularies/aramark/aramark-vocabulary/)
+
+#### Examples (13)
+
+Example requests and responses.
+
+- [Marko Api Error Response Example](https://apis.io/examples/aramark/marko-api-error-response-example/)
+- [Marko Api Organization Response Example](https://apis.io/examples/aramark/marko-api-organization-response-example/)
+- [Marko Api Organization Unit Example](https://apis.io/examples/aramark/marko-api-organization-unit-example/)
+- [Marko Api Pos Response Example](https://apis.io/examples/aramark/marko-api-pos-response-example/)
+- [Marko Api Pos Transaction Example](https://apis.io/examples/aramark/marko-api-pos-transaction-example/)
+- [Marko Api Product Example](https://apis.io/examples/aramark/marko-api-product-example/)
+- [Marko Api Product Response Example](https://apis.io/examples/aramark/marko-api-product-response-example/)
+- [Marko Api Profit Center Example](https://apis.io/examples/aramark/marko-api-profit-center-example/)
+- [Marko Api Profit Center Response Example](https://apis.io/examples/aramark/marko-api-profit-center-response-example/)
+- [Marko Api Revenue Snapshot Example](https://apis.io/examples/aramark/marko-api-revenue-snapshot-example/)
+- [Marko Api Revenue Snapshot Response Example](https://apis.io/examples/aramark/marko-api-revenue-snapshot-response-example/)
+- [Marko Api Service Example](https://apis.io/examples/aramark/marko-api-service-example/)
+- [Marko Api Service Response Example](https://apis.io/examples/aramark/marko-api-service-response-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-organization-api/)
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-point-of-sale-api/)
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-product-api/)
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-profit-centers-api/)
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-revenue-api/)
+- [Moved to /providers/aramark/](https://apis.io/collections/aramark/open-aramark-service-api/)
+- [Aramark Marko API](https://apis.io/collections/aramark/open-marko-api/)
+
+#### Overlays (60)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Aramark Alerts Overlay](https://apis.io/overlays/aramark/aramark-alerts-overlay/)
+- [Aramark Ask Marko Overlay](https://apis.io/overlays/aramark/aramark-ask-marko-overlay/)
+- [Aramark Business Unit Core Details Overlay](https://apis.io/overlays/aramark/aramark-business-unit-core-details-overlay/)
+- [Aramark Calendar Overlay](https://apis.io/overlays/aramark/aramark-calendar-overlay/)
+- [Aramark Catering Overlay](https://apis.io/overlays/aramark/aramark-catering-overlay/)
+- [Aramark Daily Food Waste Tracking Overlay](https://apis.io/overlays/aramark/aramark-daily-food-waste-tracking-overlay/)
+- [Aramark District Core Details Overlay](https://apis.io/overlays/aramark/aramark-district-core-details-overlay/)
+- [Aramark Division Core Details Overlay](https://apis.io/overlays/aramark/aramark-division-core-details-overlay/)
+- [Aramark Financial Daily Account Summary Overlay](https://apis.io/overlays/aramark/aramark-financial-daily-account-summary-overlay/)
+- [Aramark Growth Overlay](https://apis.io/overlays/aramark/aramark-growth-overlay/)
+- [Aramark Gsc Gpo 0 Overlay](https://apis.io/overlays/aramark/aramark-gsc-gpo-0-overlay/)
+- [Aramark Inventory Overlay](https://apis.io/overlays/aramark/aramark-inventory-overlay/)
+- [Aramark Iot Overlay](https://apis.io/overlays/aramark/aramark-iot-overlay/)
+- [Aramark Labor Daily Overlay](https://apis.io/overlays/aramark/aramark-labor-daily-overlay/)
+- [Aramark Labor Employee Overlay](https://apis.io/overlays/aramark/aramark-labor-employee-overlay/)
+- [Aramark Labor Manager Employees Overlay](https://apis.io/overlays/aramark/aramark-labor-manager-employees-overlay/)
+- [Aramark Labor Schedule Overlay](https://apis.io/overlays/aramark/aramark-labor-schedule-overlay/)
+- [Aramark Line Business Core Details Overlay](https://apis.io/overlays/aramark/aramark-line-business-core-details-overlay/)
+- [Aramark Location Core Details Overlay](https://apis.io/overlays/aramark/aramark-location-core-details-overlay/)
+- [Aramark Marko Users Overlay](https://apis.io/overlays/aramark/aramark-marko-users-overlay/)
+- [Aramark Operational Daily Overlay](https://apis.io/overlays/aramark/aramark-operational-daily-overlay/)
+- [Aramark Organization Brands Overlay](https://apis.io/overlays/aramark/aramark-organization-brands-overlay/)
+- [Aramark Organization Clients Overlay](https://apis.io/overlays/aramark/aramark-organization-clients-overlay/)
+- [Aramark Organization Hierarchy Overlay](https://apis.io/overlays/aramark/aramark-organization-hierarchy-overlay/)
+- [Aramark Organization Hierarchy V2 Overlay](https://apis.io/overlays/aramark/aramark-organization-hierarchy-v2-overlay/)
+- …and 35 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Aramark — jsonschema rules](https://apis.io/rules/aramark/aramark-jsonschema-spectral-rules/)
+- [Aramark API Rules](https://apis.io/rules/aramark/aramark-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aramark Authentication](https://apis.io/security/aramark/aramark-authentication/)
+- [Aramark Domain Security](https://apis.io/security/aramark/aramark-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Aramark Plans Pricing](https://apis.io/plans/aramark/aramark-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aramark Rate Limits](https://apis.io/rate-limits/aramark/aramark-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Aramark Finops](https://apis.io/finops/aramark/aramark-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.aramark.com/)
-- [AgenticAccess](agentic-access/aramark-agentic-access.yml)
-- [DomainSecurity](security/aramark-domain-security.yml)
-- [Authentication](authentication/aramark-authentication.yml)
-- [APIKeys](authentication/aramark-authentication.yml)
-- [Conventions](conventions/aramark-conventions.yml)
-- [ErrorCatalog](errors/aramark-problem-types.yml)
-- [DataModel](data-model/aramark-data-model.yml)
-- [Lifecycle](lifecycle/aramark-lifecycle.yml)
-- [Conformance](conformance/aramark-conformance.yml)
-- [Sandbox](sandbox/aramark-sandbox.yml)
-- [Console](sandbox/aramark-sandbox.yml)
-- [Packages](packages/aramark-packages.yml)
-- [X-MCPServerCandidate](mcp/aramark-mcp.yml)
-- [AgentSkill](skills/_index.yml)
-- [LLMsTxt](llms/aramark-llms.txt)
-- [RateLimits](rate-limits/aramark-rate-limits.yml)
-- [Plans](plans/aramark-plans-pricing.yml)
-- [FinOps](finops/aramark-finops.yml)
-- [Examples](examples/)
-- [SpectralRules](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/rules/aramark-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/vocabulary/aramark-vocabulary.yaml)
-- [JSONLD](https://raw.githubusercontent.com/api-evangelist/aramark/refs/heads/main/json-ld/aramark-marko-api-context.jsonld)
-- [Overlay](overlays/)
+- [Documentation](https://marko-developers.aramark.net/catalog)
+- [Getting started](https://marko-developers.aramark.net/faqs)
+- [API reference](https://marko-developers.aramark.net/catalog)
+- [Sign up](https://marko-developers.aramark.net/user/register)
+- [Support](https://www.aramark.com/contact-us)
+- [Blog](https://marko-developers.aramark.net/blog)
+- [Terms of service](https://www.aramark.com/terms-conditions)
+- [Privacy policy](https://www.aramark.com/privacy-policy)
+- [GitHub](https://github.com/aramarkservicesinc)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 45.5** — developing · rubric 0.25.0 · scored 2026-10-23
 
-**Email:** kin@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 55.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 34.2 |
+
+**Agent readiness 26.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aramark/](https://apis.io/providers/aramark/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aramark: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aramark/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
