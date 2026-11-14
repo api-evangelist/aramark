@@ -8,6 +8,12 @@ artifacts:
   authentication/aramark-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   collections/marko-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -20,8 +26,14 @@ artifacts:
   conventions/aramark-conventions.yml:
     method: derived
     evidence: declared in the artifact
+  data-license/aramark-data-license.yml:
+    method: harvested
+    evidence: declared in the artifact
   data-model/aramark-data-model.yml:
     method: derived
+    evidence: declared in the artifact
+  eligibility/aramark-eligibility.yml:
+    method: harvested
     evidence: declared in the artifact
   errors/aramark-problem-types.yml:
     method: derived
@@ -72,6 +84,12 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   heartbeat/2026-11-02.yml:
+    method: unknown
+    evidence: no authorship recorded
+  heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
     method: unknown
     evidence: no authorship recorded
   json-ld/aramark-marko-api-context.jsonld:
@@ -158,7 +176,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -225,6 +243,9 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-11-02T082323.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/aramark-lifecycle.yml:
@@ -995,9 +1016,15 @@ artifacts:
   overlays/aramark-alerts-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-anet-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-ask-marko-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-brand-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-business-unit-core-details-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
@@ -1007,18 +1034,36 @@ artifacts:
   overlays/aramark-catering-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-customer-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-daily-food-waste-tracking-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-device-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-district-core-details-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/aramark-division-core-details-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-equipment-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
+  overlays/aramark-feature-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-financial-daily-account-summary-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-food-bank-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
+  overlays/aramark-gl-accounts-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-growth-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
@@ -1031,6 +1076,9 @@ artifacts:
   overlays/aramark-iot-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
+  overlays/aramark-item-api-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   overlays/aramark-labor-daily-overlay.yaml:
     method: derived
     evidence: an API Evangelist overlay (title) over the provider's contract
@@ -1193,6 +1241,9 @@ artifacts:
   press/2026-05-25-05-from-dining-to-facilities-aramark-celebrates-innovation.md:
     method: unknown
     evidence: no authorship recorded
+  privacy/aramark-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/aramark-rate-limits.yml:
     method: searched
     evidence: declared in the artifact
@@ -1237,6 +1288,9 @@ artifacts:
     evidence: declared in the artifact
   skills/aramark-resolve-org-scope.md:
     method: generated
+    evidence: declared in the artifact
+  terms/aramark-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   vocabulary/aramark-vocabulary.yaml:
     method: unknown
